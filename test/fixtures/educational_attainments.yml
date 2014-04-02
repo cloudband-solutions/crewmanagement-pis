@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  crew_id: 1
+  year_graduated: 1
+  school: MyString
+  course_finished: MyString
+
+two:
+  crew_id: 1
+  year_graduated: 1
+  school: MyString
+  course_finished: MyString

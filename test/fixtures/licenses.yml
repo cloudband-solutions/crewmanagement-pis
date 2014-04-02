@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  crew_id: 1
+  country: MyString
+  kind: MyString
+  license_number: MyString
+  date_issued: 2014-04-01
+  expiry_date: 2014-04-01
+  issued_by: MyString
+
+two:
+  crew_id: 1
+  country: MyString
+  kind: MyString
+  license_number: MyString
+  date_issued: 2014-04-01
+  expiry_date: 2014-04-01
+  issued_by: MyString

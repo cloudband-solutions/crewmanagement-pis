@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  flag: MyString
+  vessel_type: MyString
+  horse_power: 1
+  engine_make: MyString
+
+two:
+  name: MyString
+  flag: MyString
+  vessel_type: MyString
+  horse_power: 1
+  engine_make: MyString

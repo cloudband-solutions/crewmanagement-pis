@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vessel_id: 1
+  manning_agent: MyString
+  rank: MyString
+  sign_on: 2014-04-01
+  sign_off: 2014-04-01
+  reason_of_disembarkation: MyString
+
+two:
+  vessel_id: 1
+  manning_agent: MyString
+  rank: MyString
+  sign_on: 2014-04-01
+  sign_off: 2014-04-01
+  reason_of_disembarkation: MyString

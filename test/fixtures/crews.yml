@@ -1,0 +1,57 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  form_number: MyString
+  code_number: MyString
+  date_employed: 2014-04-01
+  date_printed: 2014-04-01
+  rank_id: 1
+  vessel_id: 1
+  surname: MyString
+  lastname: MyString
+  firstname: MyString
+  birthday: 2014-04-01
+  birthplace: MyString
+  telephone_no: MyString
+  nationality: MyString
+  civil_status: MyString
+  age: 1
+  height: 9.99
+  weight: 9.99
+  eye_color: MyString
+  sss_no: MyString
+  tin_no: MyString
+  shoe_size: MyString
+  cloth_size: MyString
+  nearest_relative_name: MyString
+  nearest_relative_relationship: MyString
+  nearest_relative_address: MyText
+  address: MyText
+
+two:
+  form_number: MyString
+  code_number: MyString
+  date_employed: 2014-04-01
+  date_printed: 2014-04-01
+  rank_id: 1
+  vessel_id: 1
+  surname: MyString
+  lastname: MyString
+  firstname: MyString
+  birthday: 2014-04-01
+  birthplace: MyString
+  telephone_no: MyString
+  nationality: MyString
+  civil_status: MyString
+  age: 1
+  height: 9.99
+  weight: 9.99
+  eye_color: MyString
+  sss_no: MyString
+  tin_no: MyString
+  shoe_size: MyString
+  cloth_size: MyString
+  nearest_relative_name: MyString
+  nearest_relative_relationship: MyString
+  nearest_relative_address: MyText
+  address: MyText
