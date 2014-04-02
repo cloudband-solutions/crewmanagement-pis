@@ -1,0 +1,33 @@
+1) Create page for vessel list
+
+URL: /vessels
+
+Displays all vessels in the page
+
+Instance variable: @vessels
+Query from database: Vessel.all (returns an array of vessel objects)
+
+2) Create navigation
+
+- Add Crew
+- Display all crews
+- All vessels
+
+Mark
+- ActiveAdmin
+- Controller for Crews (crews_controller.rb)
+  => index
+    - @crews --> query to all crews
+  => show
+    - @crew --> select one crew based on id
+
+Kath
+- Views for crews_controller.rb
+  => index
+    - display all crews in table (minimal info) with link to show
+  => show
+    - display all crew information
+  => layout of form (wait for form for crews)
+    - app/views/crews/_form.html.erb
+Happy
+- Form for crews
