@@ -1,3 +1,5 @@
+<h1 style="text-align: center">BALIWAG NAVIGATION INC.</h1>
+  <h2 style="text-align: center">BIODATA</h2>
 <div class="row">
     <%= simple_form_for :user, defaults: { wrapper_html: { class: "form-group" }, input_html: { class: 'form-control' } } do |f| %>
      <div class="row crew_form">
@@ -59,12 +61,14 @@
         </div>    
 
         <div class="form-group name">
-          <%= f.input :age, label: "Age", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Age" %>
+          <%= f.input :age, label: "Age", input_html: { class: "form-control input-size" }, placeholder: "Enter Age" %>
         </div>  
     </div>
     <div class="row crew_form">
         
-
+         <div class="form-group name">
+             <%= f.input :nationality, label: "Nationality", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Nationality" %>
+        </div> 
           <div class="form-group name">
              <%= f.input :height, label: "Height", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Height" %>
         </div> 
@@ -72,12 +76,41 @@
            <%= f.input :weight, label: "Weight", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Weight" %>
         </div> 
         <div class="form-group name">
-           <%= f.input :eye_color, label: "Weight", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Weight" %>
-        </div> 
+           <%= f.input :eye_color, label: "Eye Color", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Eye Color" %>
+        </div>
 
-         <%= f.input :civil_status, label: "Eye Color", as: :select, input_html: { class: "form-control input-size_age" }, placeholder: "Enter Eye Color" %>
+        <%= f.input :vessel_id, label: "  Cloth Size", as: :select, input_html: { class: "form-control input-size_age" }, collection: ["XS","S","M","L","XL"] %>
+ 
+       
     </div>
 
+     <div class="row crew_form">
+        <div class="form-group name">
+             <%= f.input :sss_no, label: "SSS No.", input_html: { class: "form-control input-size" }, placeholder: "Enter SSS Number" %>
+        </div> 
+
+        <div class="form-group name">
+             <%= f.input :tin_no, label: "TIN No.", input_html: { class: "form-control input-size" }, placeholder: "Enter TIN Number" %>
+        </div>
+
+        <div class="form-group name">
+             <%= f.input :shoe_size, label: "Shoe Size", input_html: { class: "form-control input-size" }, placeholder: "Enter Shoe Size" %>
+        </div>
+     </div>
+
+     <div class="row crew_form">
+         <div class="form-group name">
+             <%= f.input :nearest_relative_name, label: "Nearest Relative", input_html: { class: "form-control input-size" }, placeholder: "Enter Nearest Ralative" %>
+        </div>
+         <div class="form-group name">
+             <%= f.input :nearest_relative_relationship, label: "Relationship", input_html: { class: "form-control input-size" }, placeholder: "Enter Relationship" %>
+        </div>
+
+         <div class="form-group name">
+             <%= f.input :nearest_relative_address, label: "Address", input_html: { class: "form-control input-size" }, placeholder: "Enter Address" %>
+        </div>
+
+     </div>
 
         <div class="form-group">
           <label for="exampleInputFile">File input</label>
