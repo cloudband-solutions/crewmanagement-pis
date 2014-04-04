@@ -1,4 +1,5 @@
 BaliwagIs::Application.routes.draw do
+  devise_for :users
   # Syntax for to: symbol
   # --> to: "controller#method"
   # --> Looks for a file called controller_controller.rb under app/controllers
