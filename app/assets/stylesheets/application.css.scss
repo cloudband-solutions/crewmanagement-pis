@@ -13,3 +13,16 @@
  */
 
  @import "bootstrap";
+
+
+ #header {
+  border: black 1px solid;
+  background-color: green;
+ }
+
+ // Bootstrap overrides
+.input {
+  border-radius: 0px;
+}
+
+

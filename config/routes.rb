@@ -9,4 +9,5 @@ BaliwagIs::Application.routes.draw do
   # Creates a URL /vessels and attaches to controller vessels_controller.rb method index
   # as: :vessels --> Creates a variable for the URL called vessels_path
   get "/vessels", to: "vessels#index", as: :vessels
+  resources :crews
 end

@@ -1,0 +1,91 @@
+<div class="row">
+    <%= simple_form_for :user, defaults: { wrapper_html: { class: "form-group" }, input_html: { class: 'form-control' } } do |f| %>
+     <div class="row crew_form">
+       
+       <div class="form-group name">
+        <%= f.input :date_employed, label: "Date Employed", input_html: { class: "form-control input-size", id: "datepicker" } %>
+       </div>
+    </div>
+
+    <div class="row crew_form">
+         
+       <div class="form-group name">
+         <%= f.input :form_number, label: "Form Number", input_html: { class: "form-control input-size" }, placeholder: "Enter Form Number" %>
+       </div> 
+
+       <div class="form-group name">
+         <%= f.input :code_number, label: "Code Number", input_html: { class: "form-control input-size" }, placeholder: "Enter Code Number" %>
+       </div> 
+
+
+       <%= f.input :vessel_id, label: "Vessel Assigned", as: :select, input_html: { class: "form-control input-size" }, collection: [1,2,3,4,5] %>
+ 
+    </div>
+
+   <div class="row crew_form">
+
+      <div class="form-group name">
+          <%= f.input :firstname, label: "First Name", input_html: { class: "form-control input-size" }, placeholder: "Enter Middle Name"%>
+      </div>
+
+      <div class="form-group name">
+          <%= f.input :middlename, label: "Middle Name", input_html: { class: "form-control input-size" }, placeholder: "Enter Middle Name" %>
+      </div>
+      <div class="form-group name">
+          <%= f.input :surname, label: "Surname", input_html: { class: "form-control input-size" }, placeholder: "Enter Surname" %>
+      </div>
+  </div>
+    
+
+    <div class="row crew_form">
+      
+       <div class="form-group name">
+         <%= f.input :address, label: "Address", input_html: { class: "form-control input-size" }, placeholder: "Enter Address" %>
+      </div>
+       <div class="form-group name">
+          <%= f.input :telephone_no, label: "Telephone Number", input_html: { class: "form-control input-size" }, placeholder: "Enter Telephone Number" %>
+      </div>  
+       <div class="form-group name">
+          <%= f.input :cellphone_no, label: "Cellphone Number", input_html: { class: "form-control input-size" }, placeholder: "Enter Cellphone Number" %>
+      </div>      
+    </div>
+
+    <div class="row crew_form">
+        <div class="form-group name">
+         <%= f.input :birthday, label: "Birthday", input_html: { class: "form-control input-size", id: "datepicker1" } %>
+        </div>
+        <div class="form-group name">
+          <%= f.input :birthplace, label: "Birth Place", input_html: { class: "form-control input-size" }, placeholder: "Enter Birth Place" %>
+        </div>    
+
+        <div class="form-group name">
+          <%= f.input :age, label: "Age", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Age" %>
+        </div>  
+    </div>
+    <div class="row crew_form">
+        
+
+          <div class="form-group name">
+             <%= f.input :height, label: "Height", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Height" %>
+        </div> 
+         <div class="form-group name">
+           <%= f.input :weight, label: "Weight", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Weight" %>
+        </div> 
+        <div class="form-group name">
+           <%= f.input :eye_color, label: "Weight", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Weight" %>
+        </div> 
+
+         <%= f.input :civil_status, label: "Eye Color", as: :select, input_html: { class: "form-control input-size_age" }, placeholder: "Enter Eye Color" %>
+    </div>
+
+
+        <div class="form-group">
+          <label for="exampleInputFile">File input</label>
+          <input type="file" id="exampleInputFile">
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    <% end %>
+
+  </div>
+</div>
