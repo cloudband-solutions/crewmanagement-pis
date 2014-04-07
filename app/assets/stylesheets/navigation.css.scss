@@ -12,21 +12,22 @@
 
 .input-size {
   width: 365px;
-  border-radius: 0px;
+ 
 }
 
 .input-size_add {
   width: 365px;
-  border-radius: 0px;
+ 
 } 
 
 .input-size_age {
   width: 210px;
-  border-radius: 0px;
+
 } 
 
 .input-size_login {
   width: 365px;
+  padding-bottom: 10px;
 }
 
 
@@ -50,10 +51,18 @@
   padding-top: 40px;
   height: 300px;
   color: black;
+  border-radius: 0px;
 }
 
 .button {
   width: 365px
+}
+
+.baliwag_logo {
+  img {
+    margin-left: 333px;
+    width: 400px;
+  }
 }
 
 
