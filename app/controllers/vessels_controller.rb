@@ -4,7 +4,9 @@ class VesselsController < ApplicationController
     @vessels = Vessel.all
   end
 
-  
+  def new
+    @vessel = Vessel.new
+  end  
 
 
 end

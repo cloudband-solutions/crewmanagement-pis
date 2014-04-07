@@ -11,4 +11,6 @@ BaliwagIs::Application.routes.draw do
   # as: :vessels --> Creates a variable for the URL called vessels_path
   get "/vessels", to: "vessels#index", as: :vessels
   resources :crews
+
+  resources :vessels
 end
