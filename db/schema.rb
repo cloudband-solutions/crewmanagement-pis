@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140404085945) do
+ActiveRecord::Schema.define(version: 20140408125939) do
 
   create_table "certificates", force: true do |t|
     t.integer  "crew_id"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20140404085945) do
     t.text     "address"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "middlename"
+    t.string   "cellphone_no"
   end
 
   create_table "educational_attainments", force: true do |t|
