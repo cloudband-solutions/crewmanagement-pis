@@ -1,0 +1,12 @@
+
+<table>
+  <% @crews.each do |crew| %>
+    <tr>
+      <td><%= crew %></td>
+      <td>
+        <%= link_to "Show", crew_path(crew) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
