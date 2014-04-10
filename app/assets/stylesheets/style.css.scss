@@ -54,6 +54,11 @@
   border: 1px solid black;
   height: 150px;
   width: 150px;
+
+  img {
+    height: 150px;
+  width: 150px;
+  }
 }
 
 .name-crew {
@@ -85,7 +90,7 @@
 }
 
 .nearest-rel {
-  border: 1px solid black;
+  
   font-size: 20px;
 }
 
