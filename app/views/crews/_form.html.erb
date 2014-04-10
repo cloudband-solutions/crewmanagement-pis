@@ -1,128 +1,115 @@
-<div class="row">
-    <%= simple_form_for crew, defaults: { wrapper_html: { class: "form-group" }, input_html: { class: 'form-control' } } do |f| %>
-     <div class="row crew_form">
-       <div class="col-md-4">
-        <%= f.input :date_employed, label: "Date Employed", input_html: { class: "form-control ", id: "datepicker" } %>
-       </div>
+<%= simple_form_for crew, defaults: { wrapper_html: { class: "form-group" }, input_html: { class: 'form-control' } } do |f| %>
+  <div class="row">
+  </div>
+
+  <div class="row crew_form">       
+    <div class="col-md-4">
+      <%= f.input :date_employed, label: "Date Employed", as: :string, input_html: { class: "datepicker form-control" } %>
     </div>
+     <div class="col-md-4">
+       <%= f.input :code_number, label: "Code Number", input_html: { class: "form-control" }, placeholder: "Enter Code Number" %>
+     </div> 
+     <div class="col-md-4">
+     <%= f.input :vessel_id, label: "Vessel Assigned", as: :select, input_html: { class: "form-control" }, collection: [1,2,3,4,5] %>
+    </div>
+  </div>
 
-    <div class="row crew_form">
-         
-       <div class="col-md-4">
-         <%= f.input :form_number, label: "Form Number", input_html: { class: "form-control" }, placeholder: "Enter Form Number" %>
-       </div> 
+  <div class="row crew_form">
+    <div class="col-md-4">
+      <%= f.input :firstname, label: "First Name", input_html: { class: "form-control" }, placeholder: "Enter Middle Name"%>
+    </div>
+    <div class="col-md-4">
+      <%= f.input :middlename, label: "Middle Name", input_html: { class: "form-control" }, placeholder: "Enter Middle Name" %>
+    </div>
+    <div class="col-md-4">
+      <%= f.input :lastname, label: "Last Name", input_html: { class: "form-control" }, placeholder: "Enter Surname" %>
+    </div>
+  </div>
+  
 
-       <div class="col-md-4">
-         <%= f.input :code_number, label: "Code Number", input_html: { class: "form-control" }, placeholder: "Enter Code Number" %>
-       </div> 
+  <div class="row crew_form">
+    
+     <div class="col-md-4">
+       <%= f.input :address, label: "Address", input_html: { class: "form-control" }, placeholder: "Enter Address" %>
+    </div>
+     <div class="col-md-4">
+        <%= f.input :telephone_no, label: "Telephone Number", input_html: { class: "form-control" }, placeholder: "Enter Telephone Number" %>
+    </div>  
+     <div class="col-md-4">
+        <%= f.input :cellphone_no, label: "Cellphone Number", input_html: { class: "form-control" }, placeholder: "Enter Cellphone Number" %>
+    </div>      
+  </div>
 
-       <div class="col-md-4">
-       <%= f.input :vessel_id, label: "Vessel Assigned", as: :select, input_html: { class: "form-control" }, collection: [1,2,3,4,5] %>
+  <div class="row crew_form">
+      <div class="col-md-4">
+       <%= f.input :birthday, label: "Birthday", as: :string, input_html: { class: "form-control datepicker" } %>
       </div>
+      <div class="col-md-4">
+        <%= f.input :birthplace, label: "Birth Place", input_html: { class: "form-control" }, placeholder: "Enter Birth Place" %>
+      </div>    
+  </div>
+  <div class="row crew_form"> 
+    <div class="col-md-4">
+      <%= f.input :nationality, label: "Nationality", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Nationality" %>
+    </div> 
+    <div class="col-md-4">
+      <%= f.input :height, label: "Height", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Height" %>
+    </div> 
+     <div class="col-md-4">
+       <%= f.input :weight, label: "Weight", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Weight" %>
+    </div> 
+    <div class="col-md-4">
+       <%= f.input :eye_color, label: "Eye Color", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Eye Color" %>
     </div>
+    <div class="col-md-4">
+    <%= f.input :vessel_id, label: "  Cloth Size", as: :select, input_html: { class: "form-control input-size_age" }, collection: ["XS","S","M","L","XL"] %>
+    </div> 
+  </div>
 
    <div class="row crew_form">
+      <div class="col-md-4">
+           <%= f.input :sss_no, label: "SSS No.", input_html: { class: "form-control" }, placeholder: "Enter SSS Number" %>
+      </div> 
 
       <div class="col-md-4">
-          <%= f.input :firstname, label: "First Name", input_html: { class: "form-control" }, placeholder: "Enter Middle Name"%>
+           <%= f.input :tin_no, label: "TIN No.", input_html: { class: "form-control" }, placeholder: "Enter TIN Number" %>
       </div>
 
       <div class="col-md-4">
-          <%= f.input :middlename, label: "Middle Name", input_html: { class: "form-control" }, placeholder: "Enter Middle Name" %>
+           <%= f.input :shoe_size, label: "Shoe Size", input_html: { class: "form-control" }, placeholder: "Enter Shoe Size" %>
       </div>
-      <div class="col-md-4">
-          <%= f.input :surname, label: "Surname", input_html: { class: "form-control" }, placeholder: "Enter Surname" %>
-      </div>
-  </div>
-    
+   </div>
 
-    <div class="row crew_form">
-      
+   <div class="row crew_form">
        <div class="col-md-4">
-         <%= f.input :address, label: "Address", input_html: { class: "form-control" }, placeholder: "Enter Address" %>
+           <%= f.input :nearest_relative_name, label: "Nearest Relative", input_html: { class: "form-control" }, placeholder: "Enter Nearest Ralative" %>
       </div>
        <div class="col-md-4">
-          <%= f.input :telephone_no, label: "Telephone Number", input_html: { class: "form-control" }, placeholder: "Enter Telephone Number" %>
-      </div>  
+           <%= f.input :nearest_relative_relationship, label: "Relationship", input_html: { class: "form-control" }, placeholder: "Enter Relationship" %>
+      </div>
+
        <div class="col-md-4">
-          <%= f.input :cellphone_no, label: "Cellphone Number", input_html: { class: "form-control" }, placeholder: "Enter Cellphone Number" %>
-      </div>      
-    </div>
+           <%= f.input :nearest_relative_address, label: "Address", input_html: { class: "form-control" }, placeholder: "Enter Address" %>
+      </div>
 
-    <div class="row crew_form">
-        <div class="col-md-4">
-         <%= f.input :birthday, label: "Birthday", input_html: { class: "form-control", id: "datepicker1" } %>
-        </div>
-        <div class="col-md-4">
-          <%= f.input :birthplace, label: "Birth Place", input_html: { class: "form-control" }, placeholder: "Enter Birth Place" %>
-        </div>    
+   </div>
 
-        <div class="col-md-4">
-          <%= f.input :age, label: "Age", input_html: { class: "form-control" }, placeholder: "Enter Age" %>
-        </div>  
-    </div>
-    <div class="row crew_form">
-        
-         <div class="col-md-4">
-             <%= f.input :nationality, label: "Nationality", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Nationality" %>
-        </div> 
-          <div class="col-md-4">
-             <%= f.input :height, label: "Height", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Height" %>
-        </div> 
-         <div class="col-md-4">
-           <%= f.input :weight, label: "Weight", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Weight" %>
-        </div> 
-        <div class="col-md-4">
-           <%= f.input :eye_color, label: "Eye Color", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Eye Color" %>
-        </div>
-        <div class="col-md-4">
-        <%= f.input :vessel_id, label: "  Cloth Size", as: :select, input_html: { class: "form-control input-size_age" }, collection: ["XS","S","M","L","XL"] %>
-        </div>
-       
-    </div>
+    <div class="row">
+      <div class="col-md-4 form-file">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" id="exampleInputFile">
+      </div>
 
-     <div class="row crew_form">
-        <div class="col-md-4">
-             <%= f.input :sss_no, label: "SSS No.", input_html: { class: "form-control" }, placeholder: "Enter SSS Number" %>
-        </div> 
+      <div class="col-md-12">
+          <hr></hr>
+          <button type="submit" class="btn btn-default form-button">Submit</button>
+           <hr></hr>
+       </div>
+       </div>
+<% end %>
 
-        <div class="col-md-4">
-             <%= f.input :tin_no, label: "TIN No.", input_html: { class: "form-control" }, placeholder: "Enter TIN Number" %>
-        </div>
-
-        <div class="col-md-4">
-             <%= f.input :shoe_size, label: "Shoe Size", input_html: { class: "form-control" }, placeholder: "Enter Shoe Size" %>
-        </div>
-     </div>
-
-     <div class="row crew_form">
-         <div class="col-md-4">
-             <%= f.input :nearest_relative_name, label: "Nearest Relative", input_html: { class: "form-control" }, placeholder: "Enter Nearest Ralative" %>
-        </div>
-         <div class="col-md-4">
-             <%= f.input :nearest_relative_relationship, label: "Relationship", input_html: { class: "form-control" }, placeholder: "Enter Relationship" %>
-        </div>
-
-         <div class="col-md-4">
-             <%= f.input :nearest_relative_address, label: "Address", input_html: { class: "form-control" }, placeholder: "Enter Address" %>
-        </div>
-
-     </div>
-
-      <div class="row">
-        <div class="col-md-4 form-file">
-          <label for="exampleInputFile">File input</label>
-          <input type="file" id="exampleInputFile">
-        </div>
-
-        <div class="col-md-12">
-            <hr></hr>
-            <button type="submit" class="btn btn-default form-button">Submit</button>
-             <hr></hr>
-         </div>
-         </div>
-    <% end %>
-
-  </div>
-
-
+<script>
+$(document).ready(function() {
+  initDatePicker();
+});
+</script>
