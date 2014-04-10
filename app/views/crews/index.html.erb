@@ -1,9 +1,21 @@
-<table>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>NAME</th>
+      <th>FORM NUMBER</th>
+      <th>CODE NUMBER</th>
+      <th>ACTIONS</th>
+    </tr>
+  </thead>
   <% @crews.each do |crew| %>
     <tr>
       <td><%= crew %></td>
+      <td><%= crew.form_number %></td>
+      <td><%= crew.code_number %></td>
       <td>
-        <%= link_to "Show", crew_path(crew) %>
+        <%= link_to "Show", crew_path(crew) %> | 
+        <%= link_to "Edit", "crews/" + crew.id.to_s + "/edit" %> | 
+        <%= link_to "Delete", "crews/" + crew.id.to_s, method: :delete %>
       </td>
     </tr>
   <% end %>

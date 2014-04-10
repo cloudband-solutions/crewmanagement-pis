@@ -11,27 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408125939) do
+ActiveRecord::Schema.define(version: 20140408135656) do
 
-  create_table "certificates", force: true do |t|
-    t.integer  "crew_id"
-    t.string   "name"
-    t.string   "certificate_number"
-    t.date     "date_issued"
-    t.date     "expiry_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "issued_by"
-  end
-
-  create_table "crews", force: true do |t|
+  create_table "Crews", force: true do |t|
     t.string   "form_number"
     t.string   "code_number"
     t.date     "date_employed"
     t.date     "date_printed"
     t.integer  "rank_id"
     t.integer  "vessel_id"
-    t.string   "surname"
     t.string   "lastname"
     t.string   "firstname"
     t.date     "birthday"
@@ -55,6 +43,17 @@ ActiveRecord::Schema.define(version: 20140408125939) do
     t.datetime "updated_at"
     t.string   "middlename"
     t.string   "cellphone_no"
+  end
+
+  create_table "certificates", force: true do |t|
+    t.integer  "crew_id"
+    t.string   "name"
+    t.string   "certificate_number"
+    t.date     "date_issued"
+    t.date     "expiry_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "issued_by"
   end
 
   create_table "educational_attainments", force: true do |t|
