@@ -81,9 +81,27 @@
 .details {
   font-size: 20px;
   border: 1px solid black;
+  padding: 10px;
 }
 
 .nearest-rel {
   border: 1px solid black;
   font-size: 20px;
+}
+
+
+.label-a {
+   background-color: green;
+   color: white;
+   width: 20%;
+  
+  
+}
+
+ .b {
+    font-weight: bold;
+   }
+.label-b {
+   background-color: white;
+   color: black;
 }
