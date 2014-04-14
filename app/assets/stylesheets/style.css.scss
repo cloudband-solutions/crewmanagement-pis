@@ -49,3 +49,59 @@
   padding-right: 20px;
   
 }
+
+.box-image {
+  border: 1px solid black;
+  height: 150px;
+  width: 150px;
+}
+
+.name-crew {
+  padding-top: 70px;
+  text-align: left;
+
+  h2 { 
+    margin-top: 5px;
+  }
+
+  h4 {
+     margin-top: 5px;
+  }
+}
+
+.form-number {
+  background-color: #e2e2e2;
+  border: 1px solid black;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 20px;
+  padding-left: 15px;
+}
+
+.details {
+  font-size: 20px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.nearest-rel {
+  border: 1px solid black;
+  font-size: 20px;
+}
+
+
+.label-a {
+   background-color: green;
+   color: white;
+   width: 20%;
+  
+  
+}
+
+ .b {
+    font-weight: bold;
+   }
+.label-b {
+   background-color: white;
+   color: black;
+}

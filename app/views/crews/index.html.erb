@@ -14,9 +14,10 @@
       <td><%= crew.code_number %></td>
       <td>
         <%= link_to "Show", crew_path(crew) %> | 
-        <%= link_to "Edit", "crews/" + crew.id.to_s + "/edit" %> | 
-        <%= link_to "Delete", "crews/" + crew.id.to_s, method: :delete %>
+        <%= link_to "Edit", edit_crew_path(crew.id) %> | 
+        <%= link_to "Delete", crew_path(crew), method: :delete %>
       </td>
     </tr>
   <% end %>
 </table>
+
