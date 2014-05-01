@@ -1,0 +1,14 @@
+<h2>Employment Records</h2>
+<hr>
+<div>
+<%= f.simple_fields_for :employment_records do |ff| %>
+  <%= ff.input :vessel %> 
+  <%= ff.input :manning_agent %>
+  <%= ff.input :rank %>
+  <%= ff.input :sign_on %>
+  <%= ff.input :sign_off %>
+  <%= ff.input :reason_of_disembarkation %>
+  <%= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
+<% end %>
+</div>
+<%= f.link_to_add "Add Employment Record", :employment_records, class: "btn btn-info" %>

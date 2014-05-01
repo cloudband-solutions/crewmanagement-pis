@@ -1,7 +1,4 @@
-<%= simple_form_for crew, defaults: { wrapper_html: { class: "form-group" }, input_html: { class: 'form-control' } } do |f| %>
-  <div class="row">
-  </div>
-
+<%= simple_nested_form_for crew, defaults: { wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control' } }, html: { multipart: true, novalidate: true } do |f| %>
   <div class="row crew_form">       
     <div class="col-md-4">
       <%= f.input :date_employed, label: "Date Employed", as: :string, input_html: { class: "datepicker form-control" } %>
@@ -25,7 +22,7 @@
       <%= f.input :lastname, label: "Last Name", input_html: { class: "form-control" }, placeholder: "Enter Surname" %>
     </div>
   </div>
-  
+
 
   <div class="row crew_form">
     
@@ -66,46 +63,48 @@
     </div> 
   </div>
 
-   <div class="row crew_form">
-      <div class="col-md-4">
-           <%= f.input :sss_no, label: "SSS No.", input_html: { class: "form-control" }, placeholder: "Enter SSS Number" %>
-      </div> 
+  <div class="row crew_form">
+    <div class="col-md-4">
+         <%= f.input :sss_no, label: "SSS No.", input_html: { class: "form-control" }, placeholder: "Enter SSS Number" %>
+    </div> 
 
-      <div class="col-md-4">
-           <%= f.input :tin_no, label: "TIN No.", input_html: { class: "form-control" }, placeholder: "Enter TIN Number" %>
-      </div>
+    <div class="col-md-4">
+         <%= f.input :tin_no, label: "TIN No.", input_html: { class: "form-control" }, placeholder: "Enter TIN Number" %>
+    </div>
 
-      <div class="col-md-4">
-           <%= f.input :shoe_size, label: "Shoe Size", input_html: { class: "form-control" }, placeholder: "Enter Shoe Size" %>
-      </div>
-   </div>
+    <div class="col-md-4">
+         <%= f.input :shoe_size, label: "Shoe Size", input_html: { class: "form-control" }, placeholder: "Enter Shoe Size" %>
+    </div>
+  </div>
 
-   <div class="row crew_form">
-       <div class="col-md-4">
-           <%= f.input :nearest_relative_name, label: "Nearest Relative", input_html: { class: "form-control" }, placeholder: "Enter Nearest Ralative" %>
-      </div>
-       <div class="col-md-4">
-           <%= f.input :nearest_relative_relationship, label: "Relationship", input_html: { class: "form-control" }, placeholder: "Enter Relationship" %>
-      </div>
+  <div class="row crew_form">
+     <div class="col-md-4">
+         <%= f.input :nearest_relative_name, label: "Nearest Relative", input_html: { class: "form-control" }, placeholder: "Enter Nearest Ralative" %>
+    </div>
+     <div class="col-md-4">
+         <%= f.input :nearest_relative_relationship, label: "Relationship", input_html: { class: "form-control" }, placeholder: "Enter Relationship" %>
+    </div>
 
-       <div class="col-md-4">
-           <%= f.input :nearest_relative_address, label: "Address", input_html: { class: "form-control" }, placeholder: "Enter Address" %>
-      </div>
+     <div class="col-md-4">
+         <%= f.input :nearest_relative_address, label: "Address", input_html: { class: "form-control" }, placeholder: "Enter Address" %>
+    </div>
 
-   </div>
+  </div>
+  <%= render partial: "crews/form_employment_records", locals: { f: f } %>
 
-    <div class="row">
-      <div class="col-md-4 form-file">
-        <label for="exampleInputFile">File input</label>
-        <input type="file" id="exampleInputFile">
-      </div>
+  <div class="row">
+    <div class="col-md-4 form-file">
+      <label for="exampleInputFile">File input</label>
+      <input type="file" id="exampleInputFile">
+    </div>
 
-      <div class="col-md-12">
-          <hr></hr>
-          <button type="submit" class="btn btn-default form-button">Submit</button>
-           <hr></hr>
-       </div>
-       </div>
+    <div class="col-md-12">
+        <hr></hr>
+        <button type="submit" class="btn btn-default form-button">Submit</button>
+         <hr></hr>
+    </div>
+  </div>
+
 <% end %>
 
 <script>
