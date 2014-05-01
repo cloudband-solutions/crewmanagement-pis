@@ -1,0 +1,14 @@
+<h2>Documents</h2>
+<hr>
+<div>
+<%= f.simple_fields_for :documents do |ff| %>
+  <%= ff.input :name %> 
+  <%= ff.input :document_type, as: :select, collection: Document::DOC_TYPES %>
+  <%= ff.input :doc_number %>
+  <%= ff.input :issued_at %>
+  <%= ff.input :expiry_date %>
+  <%= ff.input :issued_by %>
+  <%= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
+<% end %>
+</div>
+<%= f.link_to_add "Add Document", :documents, class: "btn btn-info" %>
