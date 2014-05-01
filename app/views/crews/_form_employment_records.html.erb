@@ -1,14 +1,34 @@
 <h2>Employment Records</h2>
 <hr>
-<div>
+
+<div class="row crew_doc_1">
 <%= f.simple_fields_for :employment_records do |ff| %>
-  <%= ff.input :vessel %> 
-  <%= ff.input :manning_agent %>
-  <%= ff.input :rank %>
-  <%= ff.input :sign_on %>
-  <%= ff.input :sign_off %>
-  <%= ff.input :reason_of_disembarkation %>
-  <%= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
+  <div class="col-md-4">
+    <%= ff.input :vessel, label: "Vessel", input_html: { class: "form-control" }, placeholder: "Enter Vessel" %> 
+  </div>
+  <div class="col-md-4">
+   <%= ff.input :manning_agent, label: "Manning Agent", input_html: { class: "form-control" }, placeholder: "Enter Manning Agent"  %>
+  </div>
+  <div class="col-md-4">
+     <%= ff.input :rank, label: "Rank", input_html: { class: "form-control" }, placeholder: "Enter Rank"  %>
+  </div>
+</div>
+ 
+<div class="row crew_doc">
+  <div class="col-md-3">
+   <%= ff.input :sign_on %>
+  </div>
+
+  <div class="col-md-3">
+   <%= ff.input :sign_off %>
+  </div>
+
+  <div class="col-md-6">
+     <%= ff.input :reason_of_disembarkation, label: "Reason of Disembarkation", input_html: { class: "form-control" }, placeholder: "Enter Reason"  %>
+  </div>
+</div>
+ 
+<%= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
 <% end %>
 </div>
 <%= f.link_to_add "Add Employment Record", :employment_records, class: "btn btn-info" %>
