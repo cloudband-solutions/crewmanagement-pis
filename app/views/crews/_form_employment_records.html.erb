@@ -1,8 +1,9 @@
 <h2>Employment Records</h2>
 <hr>
 
-<div class="row crew_doc_1">
+
 <%= f.simple_fields_for :employment_records do |ff| %>
+<div class="row">
   <div class="col-md-4">
     <%= ff.input :vessel, label: "Vessel", input_html: { class: "form-control" }, placeholder: "Enter Vessel" %> 
   </div>
@@ -30,5 +31,5 @@
  
 <%= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
 <% end %>
-</div>
+
 <%= f.link_to_add "Add Employment Record", :employment_records, class: "btn btn-info" %>
