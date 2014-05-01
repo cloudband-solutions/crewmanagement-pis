@@ -6,6 +6,9 @@ class Crew < ActiveRecord::Base
   has_many :employment_records
   accepts_nested_attributes_for :employment_records
 
+  has_many :documents
+  accepts_nested_attributes_for :documents
+
   def to_s
     "#{firstname} #{lastname}"
   end

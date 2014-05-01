@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  crew_id: 1
+  name: MyString
+  doc_number: MyString
+  issued_at: 2014-05-01
+  expiry_date: 2014-05-01
+  issued_by: MyString
+
+two:
+  crew_id: 1
+  name: MyString
+  doc_number: MyString
+  issued_at: 2014-05-01
+  expiry_date: 2014-05-01
+  issued_by: MyString
