@@ -14,4 +14,6 @@ BaliwagIs::Application.routes.draw do
   resources :crews
 
   resources :vessels
+
+  resources :documents
 end

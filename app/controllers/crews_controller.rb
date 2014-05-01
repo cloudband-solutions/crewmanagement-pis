@@ -1,6 +1,7 @@
 class CrewsController < ApplicationController
 
   def index
+    flash[:success] = "Displaying crew list"
   	@crews = Crew.all
   end
 
