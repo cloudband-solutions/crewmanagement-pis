@@ -147,3 +147,64 @@
 }
 
 
+.nav-tabs li{
+          display: block;
+          font-weight: normal;
+          background: rgba(255,255,255,0.2);
+          cursor: pointer;
+          position: relative;
+          font-weight: bold;
+          display:block;
+          color:white;
+          text-decoration:none;
+          font-weight:bold;
+          background: green;
+          margin:0;
+          padding: 0px;
+          border-left:1px solid #fff;
+          border-top:1px solid #fff;
+          border-right:1px solid #aaa;
+          border-radius: 0px;
+          a {
+            color: white;
+            border-radius: 0px;
+          }
+     .active {
+
+        li {
+            background-color: white;
+            display: block;
+            font-weight: normal;
+            background: rgba(255,255,255,0.2);
+            cursor: pointer;
+            position: relative;
+            font-weight: bold;
+            display:block;
+            text-decoration:none;
+            font-weight:bold;
+            border-radius: 0px;
+
+            a {
+           border-radius: 0px;
+           }
+          }
+          }
+
+          a:hover {
+            background: white;
+            color: black;
+             border-radius: 0px;
+          }
+
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,6 @@
 <%= simple_nested_form_for crew, defaults: { wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control' } }, html: { multipart: true, novalidate: true } do |f| %>
+
+
   <ul class="nav nav-tabs nav-justified">
     <li class="active"><%= link_to "Biodata", "#biodata", "data-toggle" => "tab" %></li>
     <li class=""><%= link_to "Licenses", "#licenses", "data-toggle" => "tab" %></li>
@@ -6,6 +8,7 @@
     <li class=""><%= link_to "Employment Record", "#employment-record", "data-toggle" => "tab" %></li>
     <li class=""><%= link_to "Images", "#images", "data-toggle" => "tab" %></li>
   </li>
+
   <div class="tab-content tab-content-inner">
     <div class="tab-pane active" id="biodata">
       <%= render partial: "crews/form_bio", locals: { f: f } %>
