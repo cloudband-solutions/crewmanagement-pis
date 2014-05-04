@@ -1,3 +1,14 @@
+<div class="row crew_form">
+  <div class="col-md-4">
+    <%= f.input :firstname, label: "First Name", input_html: { class: "form-control" }, placeholder: "Enter Middle Name"%>
+  </div>
+  <div class="col-md-4">
+    <%= f.input :middlename, label: "Middle Name", input_html: { class: "form-control" }, placeholder: "Enter Middle Name" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.input :lastname, label: "Last Name", input_html: { class: "form-control" }, placeholder: "Enter Surname" %>
+  </div>
+</div>
 <div class="row crew_form">       
   <div class="col-md-4">
     <%= f.input :date_employed, label: "Date Employed", as: :string, input_html: { value: (Time.now - 5.years).strftime('%Y-%m-%d'), class: "datepick form-control" } %>
@@ -10,17 +21,6 @@
   </div>
 </div>
 
-<div class="row crew_form">
-  <div class="col-md-4">
-    <%= f.input :firstname, label: "First Name", input_html: { class: "form-control" }, placeholder: "Enter Middle Name"%>
-  </div>
-  <div class="col-md-4">
-    <%= f.input :middlename, label: "Middle Name", input_html: { class: "form-control" }, placeholder: "Enter Middle Name" %>
-  </div>
-  <div class="col-md-4">
-    <%= f.input :lastname, label: "Last Name", input_html: { class: "form-control" }, placeholder: "Enter Surname" %>
-  </div>
-</div>
 
 
 <div class="row crew_form">

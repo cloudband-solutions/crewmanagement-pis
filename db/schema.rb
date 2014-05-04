@@ -11,9 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140504032945) do
+ActiveRecord::Schema.define(version: 20140504112540) do
 
-  create_table "Crews", force: true do |t|
+  create_table "certificates", force: true do |t|
+    t.integer  "crew_id"
+    t.string   "name"
+    t.string   "certificate_number"
+    t.date     "date_issued"
+    t.date     "expiry_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "issued_by"
+  end
+
+  create_table "crews", force: true do |t|
     t.string   "form_number"
     t.string   "code_number"
     t.date     "date_employed"
@@ -27,7 +38,6 @@ ActiveRecord::Schema.define(version: 20140504032945) do
     t.string   "telephone_no"
     t.string   "nationality"
     t.string   "civil_status"
-    t.integer  "age"
     t.decimal  "height"
     t.decimal  "weight"
     t.string   "eye_color"
@@ -51,17 +61,6 @@ ActiveRecord::Schema.define(version: 20140504032945) do
     t.string   "signature_content_type"
     t.integer  "signature_file_size"
     t.datetime "signature_updated_at"
-  end
-
-  create_table "certificates", force: true do |t|
-    t.integer  "crew_id"
-    t.string   "name"
-    t.string   "certificate_number"
-    t.date     "date_issued"
-    t.date     "expiry_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "issued_by"
   end
 
   create_table "documents", force: true do |t|

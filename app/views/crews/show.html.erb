@@ -1,19 +1,24 @@
+<hr>
 <div class="row">
   <div class="col-md-2">
     <div class="box-image">
-    <%= image_tag "haha.jpg" %>
+    <%= image_tag @crew.picture.url(:standard) %>
     </div>
   </div>
-  <div class="col-md-10 name-crew">
-      <h2><%= @crew %></h2>
-      <h4><%= @crew.address %></h4>
+  <div class="col-md-4">
+    <h2><%= @crew %> <small><%= @crew.code_number %></h2>
+    <h4><%= @crew.address %></h4>
+    <div class="">
+      <%= link_to "Edit", edit_crew_path(@crew), class: "" %> |
+      <%= link_to "Back to List", crews_path %>
+    </div>  
   </div>
 </div>
 <div class="row">
   <div class="col-md-12 form-number">
     <tbody>
           <tr>
-            <td>Form Number:</td>
+            <td>General Information</td>
           </tr>
     </tbody>
   </div>
@@ -26,7 +31,7 @@
                 Vessel Assigned:
               </td>
               <td class="label-b">
-                <%= @crew.vessel_id %>
+                <%= @crew.vessel %>
               </td>
                <td class="label-a">
                 Code Number:

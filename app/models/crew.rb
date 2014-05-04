@@ -44,4 +44,16 @@ class Crew < ActiveRecord::Base
   def to_s
     "#{firstname} #{lastname}"
   end
+
+  def age
+    Time.now.year - birthday.year
+  end
+
+  def certificates
+    self.documents.where(document_type: "certificate")
+  end
+
+  def quarantines
+    self.documents.where(document_type: "quarantine")
+  end
 end
