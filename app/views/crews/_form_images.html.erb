@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-md-4">
+    <%= f.input :picture, as: :file %>
+    <%= image_tag f.object.picture.url(:standard) %>
+  </div>
+  <div class="col-md-4">
+    <%= f.input :signature, as: :file %>
+    <%= image_tag f.object.signature.url(:list) %>
+  </div>
+</div>

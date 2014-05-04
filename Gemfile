@@ -10,11 +10,13 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass'
 gem 'bootstrap-datepicker-rails'
+gem 'jquery-ui-sass-rails'
 gem 'simple_form'
 gem 'nested_form'
 gem 'country_select'
 gem 'devise'
 gem 'cancan'
+gem 'paperclip'
 group :doc do
   gem 'sdoc', require: false
 end

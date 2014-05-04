@@ -1,7 +1,6 @@
 class CrewsController < ApplicationController
 
   def index
-    flash[:success] = "Displaying crew list"
   	@crews = Crew.all
   end
 
@@ -17,8 +16,10 @@ class CrewsController < ApplicationController
     @crew = Crew.new(crew_params)
     
     if @crew.save
+      flash[:success] = "Successfully created new crew."
       redirect_to crews_path
     else
+      flash[:error] = "Please check the form for some errors. #{@crew.errors.messages}"
       render :new
     end
   end
@@ -31,6 +32,7 @@ class CrewsController < ApplicationController
     @crew = Crew.find(params[:id])
     
     if @crew.update(crew_params)
+      flash[:success] = "Successfully saved crew record."
       redirect_to crews_path
     else
       render :edit

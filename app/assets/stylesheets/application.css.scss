@@ -15,15 +15,32 @@
  *= require notifications
  */
 
- @import "bootstrap";
+@import "bootstrap";
+@import "bootstrap-datepicker";
 
 
- #header {
-  border: black 1px solid;
+#header {
+  //border: black 1px solid;
   background-color: green;
- }
+}
+
+.form-actions {
+  padding: 19px 20px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #e5e5e5;
+}
+
 
  // Bootstrap overrides
+.well {
+  border-radius: 0px;
+}
+
+.navbar {
+  border-radius: 0px;
+}
 .form-control {
   border-radius: 0px;
 }
@@ -34,4 +51,11 @@
 
 .datepicker {
   border-radius: 0px !important;
+}
+
+.tab-pane {
+  padding: 20px;
+  border-left: 1px solid #e2e2e2;
+  border-right: 1px solid #e2e2e2;
+  border-bottom: 1px solid #e2e2e2;
 }

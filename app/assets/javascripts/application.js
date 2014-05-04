@@ -12,12 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-datepicker
-//= require turbolinks
 //= require bootstrap
+//= require bootstrap-datepicker
 //= require jquery_nested_form
 //= require_tree .
 
 var initDatePicker = function() {
-  $(".datepicker").datepicker({ dateFormat: "dd-mm-yy" });
-}
+  $(".datepick").datepicker({ format: "yyyy-mm-dd" });
+};

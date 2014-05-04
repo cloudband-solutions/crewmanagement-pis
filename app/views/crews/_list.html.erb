@@ -2,14 +2,14 @@
   <thead>
     <tr>
       <th>NAME</th>
-      <th>CODE NUMBER</th>
+      <th>VESSEL</th>
       <th>ACTIONS</th>
     </tr>
   </thead>
   <% crews.each do |crew| %>
     <tr>
-      <td><%= link_to crew, crew_path(crew) %></td>
-      <td><%= crew.code_number %></td>
+      <td><%= link_to "#{crew} (#{crew.code_number})", crew_path(crew) %></td>
+      <td><%= crew.vessel %></td>
       <td>
         <%= link_to "Edit", edit_crew_path(crew.id), class: "btn btn-xs btn-primary" %>
         <%= link_to "Delete", crew_path(crew), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-danger" %>

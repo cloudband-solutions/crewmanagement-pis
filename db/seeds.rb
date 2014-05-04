@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+ManningAgent.create(name: "Sample Manning Agent A", code: "Sample A")
+
+Rank.create(name: "Rank A", code: "Rank A")

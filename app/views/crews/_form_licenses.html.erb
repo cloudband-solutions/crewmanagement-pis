@@ -1,0 +1,33 @@
+<%= f.simple_fields_for :licenses do |ff| %>
+  <div class="well">
+    <div class="row">
+      <div class="col-md-4">
+        <%= ff.input :country %>
+      </div>
+      <div class="col-md-4">
+        <%= ff.input :kind %>
+      </div>
+      <div class="col-md-4">
+        <%= ff.input :license_number %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <%= ff.input :date_issued, as: :string, input_html: { class: "datepick form-control" } %>
+      </div>
+      <div class="col-md-4">
+        <%= ff.input :expiry_date, as: :string, input_html: { class: "datepick form-control" } %>
+      </div>
+      <div class="col-md-4">
+        <%= ff.input :issued_by %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <%= ff.input :attachment, as: :file %>
+      </div>
+    </div>
+    <%= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" }  %>
+  </div>
+<% end %>
+<%= f.link_to_add "Add License", :licenses, class: "btn btn-info" %>

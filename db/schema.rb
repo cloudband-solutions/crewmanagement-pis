@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140501034418) do
+ActiveRecord::Schema.define(version: 20140504032945) do
 
   create_table "Crews", force: true do |t|
     t.string   "form_number"
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(version: 20140501034418) do
     t.datetime "updated_at"
     t.string   "middlename"
     t.string   "cellphone_no"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.string   "signature_file_name"
+    t.string   "signature_content_type"
+    t.integer  "signature_file_size"
+    t.datetime "signature_updated_at"
   end
 
   create_table "certificates", force: true do |t|
@@ -66,6 +74,10 @@ ActiveRecord::Schema.define(version: 20140501034418) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "document_type"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
   end
 
   create_table "educational_attainments", force: true do |t|
@@ -79,14 +91,14 @@ ActiveRecord::Schema.define(version: 20140501034418) do
 
   create_table "employment_records", force: true do |t|
     t.integer  "vessel_id"
-    t.string   "manning_agent"
-    t.string   "rank"
     t.date     "sign_on"
     t.date     "sign_off"
     t.string   "reason_of_disembarkation"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "crew_id"
+    t.integer  "rank_id"
+    t.integer  "manning_agent_id"
   end
 
   create_table "licenses", force: true do |t|
@@ -97,6 +109,17 @@ ActiveRecord::Schema.define(version: 20140501034418) do
     t.date     "date_issued"
     t.date     "expiry_date"
     t.string   "issued_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
+
+  create_table "manning_agents", force: true do |t|
+    t.string   "name"
+    t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
