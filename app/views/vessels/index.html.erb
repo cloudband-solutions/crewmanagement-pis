@@ -9,6 +9,7 @@
         <th> VESSEL TYPE </th>
         <th> HORSE POWER </th>
         <th> ENGINE MAKE </th>
+        <th> Number of Crews </th>
         <th> ACTIONS </th>
       </tr>
       <% @vessels.each do |vessel| %>
@@ -18,7 +19,9 @@
           <td><%= vessel.vessel_type %></td>
           <td><%= vessel.horse_power %></td>
           <td><%= vessel.engine_make %></td>
+          <td><%= vessel.crews.count %></td>
           <td>
+            <%= link_to "Show", vessel_path(vessel), class: "btn btn-primary btn-xs" %>
             <%= link_to "Edit", edit_vessel_path(vessel), class: "btn btn-info btn-xs" %>
             <%= link_to "Delete", edit_vessel_path(vessel), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } %>
           </td>

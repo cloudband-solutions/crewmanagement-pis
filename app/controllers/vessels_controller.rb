@@ -31,6 +31,10 @@ class VesselsController < ApplicationController
     end
   end
 
+  def show
+    @vessel = Vessel.find(params[:id])
+  end
+
   def destroy
     vessel = Vessel.find(params[:id])
     vessel.destroy

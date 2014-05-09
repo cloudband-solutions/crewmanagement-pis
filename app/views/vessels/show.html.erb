@@ -1,0 +1,6 @@
+<h1><%= @vessel %></h1>
+<ul>
+<% @vessel.crews.each do |crew| %>
+  <li><%= crew %></li>
+<% end %>
+</ul>
