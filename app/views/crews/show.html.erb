@@ -181,27 +181,16 @@
 </div>
 
 <div class="row details">
-  <h2>LICENSES</h2>
-   <div class="col-md-12">
-    <table class="table table-bordered table-stripped">
-       <tr>  
-        <th class="label-c">Country</th>
-        <th class="label-c">Kind</th>
-        <th class="label-c">Number</th>
-        <th class="label-c">Date Issued</th>
-        <th class="label-c">Expiry Date</th>
-        <th class="label-c">Issued By</th>
-       </tr>
-       <tr>
-        <td class="label-d-a">Philippines</td>
-        <td class="label-d-a">CH. Engr.</td>
-        <td class="label-d-a">12345</td>
-        <td class="label-d-a">April 1, 2014</td>
-        <td class="label-d-a">April 27, 2014</td>
-         <td class="label-d-a">Raphael Alampay</td>
-       </tr>
-    </table>
-</div>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>LICENSES</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= render partial: "crews/licenses", locals: { licenses: @crew.licenses } %>
+    </div>
+  </div>
 </div>
 
 
@@ -225,6 +214,7 @@
        </tr>
     </table>
 </div>
+
 </div>
 
 <div class="row details">
