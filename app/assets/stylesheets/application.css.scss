@@ -22,6 +22,11 @@
 #header {
   //border: black 1px solid;
   background-color: green;
+  .logo-text {
+    font-weight: bold;
+    color: #fff;
+    font-size: 2em;
+  }
 }
 
 .form-actions {
@@ -33,7 +38,11 @@
 }
 
 
- // Bootstrap overrides
+// Bootstrap overrides
+.container {
+  width: 1336px;
+  padding: 30px;
+}
 .well {
   border-radius: 0px;
 }

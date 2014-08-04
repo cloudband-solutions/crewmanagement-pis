@@ -1,4 +1,5 @@
 class Crew < ActiveRecord::Base
+  REPORT_TYPE = ["plain"]
   has_attached_file :picture,
     styles: { thumb: "80x80#",
               standard: "150x150#" },

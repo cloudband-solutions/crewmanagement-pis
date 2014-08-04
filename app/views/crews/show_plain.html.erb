@@ -1,0 +1,276 @@
+<div class="plain-padding">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="box-image">
+      <%= image_tag @crew.picture.url(:standard) %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h2><%= @crew %> <small><%= @crew.code_number %></h2>
+      <h4><%= @crew.address %></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 form-number">
+      <tbody>
+            <tr>
+              <td>General Information</td>
+            </tr>
+      </tbody>
+    </div>
+  </div>
+  <div class="row details">
+    <div class="col-md-12">
+            <table class="table table-bordered table-stripped">
+              <tr>
+                <td class="label-a">
+                  Vessel Assigned:
+                </td>
+                <td class="label-b">
+                  <%= @crew.vessel %>
+                </td>
+                 <td class="label-a">
+                  Code Number:
+                </td>
+                <td class="label-b">
+                  <%= @crew.code_number %>
+                </td>
+                
+              </tr>
+              <tr>
+               <td class="label-a">
+                  Telephone:
+                </td>
+                <td class="label-b">
+                <%= @crew.telephone_no %>
+                </td>
+                <td class="label-a">
+                 Cellphone:
+                </td>
+                <td class="label-b">
+                  <%= @crew.cellphone_no %>
+                </td>
+              </tr>
+              <tr>
+                <td class="label-a">
+                   Birthday:
+                </td>
+                <td class="label-b">
+                 <%= @crew.birthday %>
+                </td>
+                <td class="label-a">
+                 Birth Place:
+                </td>
+                <td class="label-b">
+                  <%= @crew.birthplace %>
+                </td>
+               
+              </tr>
+               <tr>
+                <td class="label-a">
+                  Age:
+                </td>
+                <td class="label-b">
+                  <%= @crew.age %>
+                </td>
+                <td class="label-a">
+                 Nationality:
+                </td>
+                <td class="label-b">
+                  <%= @crew.nationality %>
+                </td>
+                 
+
+                
+              </tr>
+              <tr>
+                <td class="label-a">
+                    Height:
+                </td>
+                <td class="label-b">
+                  <%= @crew.height %>
+                </td>
+                <td class="label-a">
+                 Weight:
+                </td>
+                <td class="label-b">
+                  <%= @crew.weight%>
+                </td>
+               </tr>
+               <tr>
+              <td class="label-a">
+                  Shoe Size: 
+               </td>
+               <td class="label-b">
+                <%= @crew.shoe_size %>
+                </td>
+
+                <td class="label-a">
+                 Cloth Size:
+                </td>
+                <td class="label-b">
+                  <%= @crew.cloth_size %>
+                </td>   
+              </tr>
+              <tr>
+               <td class="label-a">
+                  Eye Color: 
+                </td>
+                <td class="label-b">
+                  <%= @crew.eye_color %>
+                </td>
+                <td class="label-a">
+                  SSS No: 
+              </td>
+              <td class="label-b">
+                <%= @crew.sss_no %>
+              </td>
+
+              
+              </tr>
+
+              <tr>
+                 <td class="label-a">
+                 TIN #:
+                </td>
+                <td class="label-b">
+                  <%= @crew.tin_no %>
+                </td>
+
+              </tr>
+
+            </table>
+    </div>
+    
+  </div>
+
+  <div class="row details">
+    <div class="col-md-12 nearest-rel">
+      <table class="table table-bordered table-stripped">
+        <tr>  
+          <td class="label-a">
+            Nearest Relative:
+          </td>
+          <td class="label-b">
+          <%= @crew.nearest_relative_name %>
+          </td>
+        </tr>
+        <tr>  
+          <td class="label-a">
+            Relationship:
+          </td>
+          <td class="label-b">
+          <%= @crew.nearest_relative_relationship %>
+          </td>
+        </tr>
+        <tr>  
+          <td class="label-a">
+            Address:
+          </td>
+          <td class="label-b">
+          <%= @crew.nearest_relative_address %>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+
+  <div class="row details">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>LICENSES</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render partial: "crews/licenses", locals: { licenses: @crew.licenses } %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row details">
+    <h2>CERTIFICATES</h2>
+     <div class="col-md-12">
+      <table class="table table-bordered table-stripped">
+         <tr>  
+          <th class="label-c"></th>
+          <th class="label-c">Number</th>
+          <th class="label-c">Date Issued</th>
+          <th class="label-c">Expiry Date</th>
+          <th class="label-c">Issued By</th>
+         </tr>
+         <tr>
+          <td class="label-d-a">Passport</td>
+          <td class="label-d-a">12345</td>
+          <td class="label-d-a">April 1, 2014</td>
+          <td class="label-d-a">April 27, 2014</td>
+           <td class="label-d-a">Raphael Alampay</td>
+         </tr>
+      </table>
+  </div>
+
+  </div>
+
+  <div class="row details">
+    <h2>QUARANTINE RECORDS</h2>
+     <div class="col-md-12">
+      <table class="table table-bordered table-stripped">
+         <tr>  
+          <th class="label-c"></th>
+          <th class="label-c">Number</th>
+          <th class="label-c">Date Issued</th>
+          <th class="label-c">Expiry Date</th>
+          <th class="label-c">Issued By</th>
+         </tr>
+         <tr>
+          <td class="label-d-a">Tetanus</td>
+          <td class="label-d-a">12345</td>
+          <td class="label-d-a">April 1, 2014</td>
+          <td class="label-d-a">April 27, 2014</td>
+           <td class="label-d-a">Raphael Alampay</td>
+         </tr>
+      </table>
+  </div>
+  </div>
+
+  <div class="row details">
+    <h2>EMPLOYMENT RECORD</h2>
+     <div class="col-md-12">
+      <table class="table table-bordered table-stripped">
+         <tr>  
+          <th class="label-d">Vessel Name</th>
+          <th class="label-d">Flag</th>
+          <th class="label-d">Type</th>
+          <th class="label-d">Horse Power</th>
+          <th class="label-d">Engine Make</th>
+          <th class="label-d">Engine Agent</th>
+          <th class="label-d">Rank</th>
+          <th class="label-d">Sign On</th>
+          <th class="label-d">Sign Off</th>
+          <th class="label-d">Reason of Disembarkation</th>
+         </tr>
+         <tr>
+          <td class="label-d-a">Passport</td>
+          <td class="label-d-a">12345</td>
+          <td class="label-d-a">April 1, 2014</td>
+          <td class="label-d-a">April 27, 2014</td>
+          <td class="label-d-a">Raphael Alampay</td>
+          <td class="label-d-a">Raphael Alampay</td>
+          <td class="label-d-a">Raphael Alampay</td>
+          <td class="label-d-a">Raphael Alampay</td>
+          <td class="label-d-a">Raphael Alampay</td>
+           <td class="label-d-a">Raphael Alampay</td>
+         </tr>
+      </table>
+  </div>
+  </div>
+  <div class="row details">
+    <h2>Signature</h2>
+    <div class="col-md-12">
+      <%= image_tag @crew.signature.url(:list) %>
+    </div>
+  </div>
+  <hr>
+</div>

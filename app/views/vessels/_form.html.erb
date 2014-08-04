@@ -1,22 +1,23 @@
 <%= simple_form_for vessel, defaults: { wrapper_html: { class: "form-group" }, input_html: { class: 'form-control' } } do |f| %>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3">
       <%= f.input :name %>
+      <%= f.input :code %>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <%= f.input :vessel_type, as: :select, collection: Vessel::VESSEL_TYPE %>
+    <div class="col-md-3">
+      <%= f.input :owner %>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3">
+      <%= f.association :vessel_type %>
+    </div>
+    <div class="col-md-3">
       <%= f.input :flag %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
       <%= f.input :horse_power %>
+      <%= f.input :off_numb %>
     </div>
   </div>
   <div class="row">

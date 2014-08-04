@@ -1,4 +1,6 @@
 BaliwagIs::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users
   # Syntax for to: symbol
   # --> to: "controller#method"
@@ -11,9 +13,13 @@ BaliwagIs::Application.routes.draw do
   # as: :vessels --> Creates a variable for the URL called vessels_path
   get "/vessels", to: "vessels#index", as: :vessels
   get "/examples/crew_show", to: "examples#crew_show", as: :crew_show
-  resources :crews
+  resources :crews do
+    get "/plain", to: "crews#show_plain", as: :show_plain
+    get "/report", to: "crews#print_report", as: :print_report
+  end
 
   resources :vessels
+  resources :vessel_types
 
   resources :documents
 end

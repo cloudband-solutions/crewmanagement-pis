@@ -1,11 +1,25 @@
 class CrewsController < ApplicationController
+  layout :resolve_layout
 
   def index
   	@crews = Crew.all
   end
 
   def show
-  	@crew = Crew.find_by_id(params[:id])
+  	@crew = Crew.find(params[:id])
+  end
+
+  def show_plain
+  	@crew = Crew.find(params[:crew_id])
+  end
+  
+  def print_report
+    @crew = Crew.find(params[:crew_id])
+    pdf = PDFKit.new(HTTParty.get(crew_show_plain_url(@crew)))
+
+    send_data pdf, filename: "#{@crew}.pdf",
+                  type: "application/pdf",
+                  disposition: "inline"
   end
 
   def new
@@ -43,6 +57,17 @@ class CrewsController < ApplicationController
     crew = Crew.find(params[:id])
     crew.destroy
     redirect_to crews_path
+  end
+
+  private
+
+  def resolve_layout
+    case action_name
+    when "show_plain"
+      "plain"
+    else
+      "application"  
+    end
   end
 
   def crew_params

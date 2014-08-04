@@ -1,22 +1,25 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.1'
 gem 'sqlite3'
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder', '~> 2.0'
+gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'spring',        group: :development
+gem 'devise'
+gem 'devise-encryptable'
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'bootstrap-sass'
 gem 'bootstrap-datepicker-rails'
-gem 'jquery-ui-sass-rails'
 gem 'simple_form'
 gem 'nested_form'
-gem 'country_select'
-gem 'devise'
-gem 'cancan'
 gem 'paperclip'
-group :doc do
-  gem 'sdoc', require: false
-end
+gem 'country_select'
+gem 'openlayers-rails'
+gem 'httparty'
+gem 'momentjs-rails'
+gem 'js-routes'

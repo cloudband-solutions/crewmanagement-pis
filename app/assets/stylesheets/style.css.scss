@@ -1,4 +1,3 @@
-
 .name {
   display: inline;
   float: left;
@@ -9,7 +8,9 @@
   padding-bottom: 10px;
 }
 
-
+.plain-padding {
+  padding: 20px;
+}
 
 .sign_in {
   border: 1px solid #e2e2e2;
@@ -51,12 +52,12 @@
 }
 
 .box-image {
-  border: 1px solid black;
   
 
   img {
     height: 150px;
     width: 163px;
+    border: 1px solid black;
   }
 
 }

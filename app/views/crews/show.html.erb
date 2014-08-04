@@ -10,7 +10,8 @@
     <h4><%= @crew.address %></h4>
     <div class="">
       <%= link_to "Edit", edit_crew_path(@crew), class: "" %> |
-      <%= link_to "Back to List", crews_path %>
+      <%= link_to "Back to List", crews_path %> |
+      <%= link_to "Print Report", crew_print_report_path(@crew) %>
     </div>  
   </div>
 </div>

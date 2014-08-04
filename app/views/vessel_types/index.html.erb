@@ -1,0 +1,23 @@
+<h1>Vessel Types</h1>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered table-stripped">
+      <tr>
+        <th> NAME </th>
+        <th> ACTIONS </th>
+      </tr>
+      <% @vessel_types.each do |vessel_type| %>
+        <tr>  
+          <td><%= vessel_type.name %></td>
+          <td>
+            <%= link_to "Show", vessel_type_path(vessel_type), class: "btn btn-primary btn-xs" %>
+            <%= link_to "Edit", edit_vessel_type_path(vessel_type), class: "btn btn-info btn-xs" %>
+            <%= link_to "Delete", vessel_type_path(vessel_type), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
