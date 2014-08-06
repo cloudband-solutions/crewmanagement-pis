@@ -18,6 +18,8 @@ BaliwagIs::Application.routes.draw do
     get "/report", to: "crews#print_report", as: :print_report
   end
 
+  get "/reports/:crew_id/misuga", to: "reports#misuga", as: :reports_misuga
+
   resources :vessels
   resources :vessel_types
 

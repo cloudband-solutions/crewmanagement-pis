@@ -11,6 +11,7 @@
       <td><%= link_to "#{crew} (#{crew.code_number})", crew_path(crew) %></td>
       <td><%= crew.vessel %></td>
       <td>
+        <%= link_to "Show", crew_path(crew), class: "btn btn-xs btn-info" %>
         <%= link_to "Show Plain", crew_show_plain_path(crew), class: "btn btn-xs btn-info", target: "_blank" %>
         <%= link_to "Edit", edit_crew_path(crew.id), class: "btn btn-xs btn-primary" %>
         <%= link_to "Delete", crew_path(crew), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-danger" %>

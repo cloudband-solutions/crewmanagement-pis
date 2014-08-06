@@ -11,8 +11,13 @@
     <div class="">
       <%= link_to "Edit", edit_crew_path(@crew), class: "" %> |
       <%= link_to "Back to List", crews_path %> |
-      <%= link_to "Print Report", crew_print_report_path(@crew) %>
     </div>  
+    <div class="">
+      <select id="report_type">
+        <option value="misuga">Misuga</option>
+      </select>
+      <button onclick="redirect_to_report();" class="btn btn-xs btn-primary">Report</button>
+    </div>
   </div>
 </div>
 <div class="row">
@@ -278,4 +283,16 @@
   </div>
 </div>
 <hr>
-
+<script>
+function redirect_to_report()
+{
+  var report_type = $("#report_type").val();
+  if(report_type == "misuga")
+  {
+    window.location = "<%= reports_misuga_url(@crew.id) %>";
+  }
+  else if(report_type == "baliwag")
+  {
+  }
+}
+</script>
