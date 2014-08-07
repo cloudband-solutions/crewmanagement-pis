@@ -1,0 +1,19 @@
+<table class="table table-bordered table-stripped">
+   <tr>  
+    <th class="label-c"></th>
+    <th class="label-c">Number</th>
+    <th class="label-c">Date Issued</th>
+    <th class="label-c">Expiry Date</th>
+    <th class="label-c">Issued By</th>
+   </tr>
+  <% certificates.each do |certificate| %>
+    <tr>
+      <td class="label-d-a"><%= certificate.name %></td>
+      <td class="label-d-a"><%= certificate.certificate_number %></td>
+      <td class="label-d-a"><%= certificate.date_ussed %></td>
+      <td class="label-d-a"><%= certificate.expiry_date %></td>
+      <td class="label-d-a"><%= certificate.issued_by %></td>
+    </tr>
+   <% end %>
+</table>
+
