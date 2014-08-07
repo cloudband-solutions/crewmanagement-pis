@@ -25,7 +25,8 @@
         </li>
       </ul> 
       <div class="navbar-form navbar-right">
-        <%= link_to "Logout", "#", class: "btn btn-danger" %> 
+        <span class="login-text">Logged in as: <%= current_user.email %></span>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure you want to log-out?" }, class: "btn btn-danger" %>
       </div>
     </div><!-- /.navbar-collapse -->
     </div>

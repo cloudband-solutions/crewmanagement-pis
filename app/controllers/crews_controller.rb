@@ -1,5 +1,6 @@
 class CrewsController < ApplicationController
   layout :resolve_layout
+  before_filter :authenticate_user!
 
   def index
   	@crews = Crew.all
