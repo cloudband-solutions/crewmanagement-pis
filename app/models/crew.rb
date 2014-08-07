@@ -13,9 +13,13 @@ class Crew < ActiveRecord::Base
   validates_attachment_content_type :picture, content_type: %w(image/jpg image/jpeg image/png)
 
   belongs_to :vessel
+  validates :vessel, presence: true
 
   has_many :employment_records
   accepts_nested_attributes_for :employment_records
+
+  has_many :educational_attainments
+  accepts_nested_attributes_for :educational_attainments
 
   has_many :documents
   accepts_nested_attributes_for :documents

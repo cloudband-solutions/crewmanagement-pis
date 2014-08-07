@@ -1,0 +1,21 @@
+<%= f.simple_fields_for :educational_attainments do |ff| %>
+  <div class="well">
+    <div class="row">
+      <div class="col-md-4">
+        <%= ff.input :year_graduated %>
+      </div>
+      <div class="col-md-4">
+        <%= ff.input :school %>
+      </div>
+      <div class="col-md-4">
+        <%= ff.input :course_finished %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" } %>  
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= f.link_to_add "Add Educational Attainment", :educational_attainments, class: "btn btn-info" %>
