@@ -22,8 +22,6 @@
           <td><%= vessel.crews.count %></td>
           <td>
             <%= link_to "Show", vessel_path(vessel), class: "btn btn-primary btn-xs" %>
-            <%= link_to "Edit", edit_vessel_path(vessel), class: "btn btn-info btn-xs" %>
-            <%= link_to "Delete", vessel_path(vessel), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } %>
           </td>
         </tr>
       <% end %>

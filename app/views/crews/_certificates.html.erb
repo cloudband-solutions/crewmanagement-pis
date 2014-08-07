@@ -9,8 +9,8 @@
   <% certificates.each do |certificate| %>
     <tr>
       <td class="label-d-a"><%= certificate.name %></td>
-      <td class="label-d-a"><%= certificate.certificate_number %></td>
-      <td class="label-d-a"><%= certificate.date_ussed %></td>
+      <td class="label-d-a"><%= certificate.doc_number %></td>
+      <td class="label-d-a"><%= certificate.issued_at %></td>
       <td class="label-d-a"><%= certificate.expiry_date %></td>
       <td class="label-d-a"><%= certificate.issued_by %></td>
     </tr>

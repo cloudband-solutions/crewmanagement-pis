@@ -1,0 +1,20 @@
+<table class="table table-bordered table-stripped">
+  <tr>  
+    <th class="label-c"></th>
+    <th class="label-c">Number</th>
+    <th class="label-c">Date Issued</th>
+    <th class="label-c">Expiry Date</th>
+    <th class="label-c">Issued By</th>
+  </tr>
+  <tr>
+    <% quarantine_records.each do |quarantine_record| %>
+      <tr>
+        <td class="label-d-a"><%= quarantine_record.name %></td>
+        <td class="label-d-a"><%= quarantine_record.doc_number %></td>
+        <td class="label-d-a"><%= quarantine_record.issued_at %></td>
+        <td class="label-d-a"><%= quarantine_record.expiry_date %></td>
+        <td class="label-d-a"><%= quarantine_record.issued_by %></td>
+      </tr>
+     <% end %>
+  </tr>
+</table>
