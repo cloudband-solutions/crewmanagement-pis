@@ -6,7 +6,8 @@
     </div>
   </div>
   <div class="col-md-4">
-    <h2><%= @crew %> <small><%= @crew.code_number %></h2>
+    <h2><%= @crew %> <small><%= @crew.code_number %></small></h2>
+    <h3><%= @crew.rank %></h3>
     <h4><%= @crew.address %></h4>
     <div class="">
       <%= link_to "Edit", edit_crew_path(@crew), class: "" %> |

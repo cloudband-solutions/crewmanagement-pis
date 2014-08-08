@@ -12,6 +12,9 @@ class Crew < ActiveRecord::Base
     default_url: "/assets/:attachment/missing_:style.png"
   validates_attachment_content_type :picture, content_type: %w(image/jpg image/jpeg image/png)
 
+  belongs_to :rank
+  validates :rank, presence: true
+
   belongs_to :vessel
   validates :vessel, presence: true
 
