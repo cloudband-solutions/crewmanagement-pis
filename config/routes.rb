@@ -16,10 +16,11 @@ BaliwagIs::Application.routes.draw do
   resources :crews do
     get "/plain", to: "crews#show_plain", as: :show_plain
     get "/report", to: "crews#print_report", as: :print_report
+
   end
 
   get "/reports/:crew_id/misuga", to: "reports#misuga", as: :reports_misuga
-
+  get "/reports/:crew_id/baliwag_nav_biodata", to: "reports#baliwag_nav_biodata", as: :baliwag_nav_biodata
   resources :vessels
   resources :vessel_types
 

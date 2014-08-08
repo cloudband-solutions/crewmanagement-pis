@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-md-12">
+		<h4>LICENSES</h4>
+		<table class="table table-bordered table-stripped"> 
+			<tr>
+				<th></th>
+				<th>Kind</th>
+				<th>Number</th>
+				<th>Date Issued</th>
+				<th>Expiry Date</th>
+				<th>Issued By</th>
+			</tr>
+			  <% licenses.each do |lics| %>
+			<tr>
+				<td></td>
+				<td><%=lics.kind %></td>
+				<td><%= lics.license_number %></td>
+				<td><%=lics.date_issued %></td>
+				<td><%=lics.expiry_date %></td>
+				< td><%=lics.issued_by %></td>
+			</tr>	
+			<%end %>
+		</table>
+	</div>
+</div>
