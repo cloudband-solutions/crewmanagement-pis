@@ -18,5 +18,5 @@
 //= require_tree .
 
 var initDatePicker = function() {
-  $(".datepick").datepicker({ format: "yyyy-mm-dd" });
+  $(".datepick").datepicker({ dateFormat: "yy-mm-dd" });
 };
