@@ -18,6 +18,29 @@
 @import "bootstrap";
 @import "bootstrap-datepicker";
 
+#login-box {
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  border: 1px solid #e2e2e2;
+  padding: 20px;
+  margin-top: 30px;
+  background: #fff;
+  #banner {
+    padding: 20px;
+    background: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    border-radius: 4px;
+  }
+}
+
+.login-text {
+  color: #fff;
+}
 
 #header {
   //border: black 1px solid;
