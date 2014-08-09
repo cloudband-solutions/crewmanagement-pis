@@ -15,6 +15,7 @@
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require jquery_nested_form
+//= require Chart
 //= require_tree .
 
 var initDatePicker = function() {

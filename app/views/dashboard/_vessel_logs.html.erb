@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-12">
+    <h4>Vessel Locations <small>Click on vessel to view map</small></h4>
+    <div class="well">
+      <table class="table table-bordered">
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Lon</th>
+          <th>Lat</th>
+        </tr>
+        <% Vessel.order("name").each do |vessel| %>
+          <tr>
+            <td><%= link_to vessel, vessel_path(vessel) %></td>
+            <td><%= vessel.vessel_type %></td>
+            <td></td>
+            <td></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

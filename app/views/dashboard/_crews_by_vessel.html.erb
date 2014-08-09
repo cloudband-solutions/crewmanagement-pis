@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <h4>Crew Count By Vessel</h4>
+    <div class="well">
+      <div id="crew-count-by-vessel-chart-wrapper">
+        <canvas id="crew-count-by-vessel-chart">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function() {
+  var url = "<%= api_crew_count_by_vessel_path %>";
+  $.get(url, function(data) {
+    var chartData = {
+      labels: data.labels,
+      datasets: [
+        {
+          fillColor: "rgba(63,206,63,0.5)",
+          strokeColor: "rgba(220,220,220,0.8)",
+          highlightFill: "rgba(220,220,220,0.75)",
+          highlightStroke: "rgba(220,220,220,1)",
+          data: data.data
+        }
+      ]
+    }
+
+    var wrapper = $("#crew-count-by-vessel-chart-wrapper");
+    var c = $("#crew-count-by-vessel-chart");
+    c.attr('width', wrapper.width());
+    c.attr('height', wrapper.height());
+    var ctx = c.get(0).getContext("2d");
+    var myChart = new Chart(ctx).Bar(chartData);
+  });
+});
+</script>

@@ -1,2 +1,16 @@
 <h1>Dashboard</h1>
-<hr>
+
+<div class="row">
+  <div class="col-md-6">
+    <%= render partial: "dashboard/latest_crew", locals: { crew: @crew_added } %>
+  </div>
+  <div class="col-md-6">
+    <%= render partial: "dashboard/latest_updated_crew", locals: { crew: @crew_updated } %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <%= render partial: "dashboard/crews_by_vessel" %>
+    <%= render partial: "dashboard/crews_by_rank" %>
+  </div>
+</div>

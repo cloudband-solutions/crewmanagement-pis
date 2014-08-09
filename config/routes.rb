@@ -25,5 +25,10 @@ BaliwagIs::Application.routes.draw do
   resources :vessels
   resources :vessel_types
 
+  namespace :api do
+    get "/crew_count_by_vessel", to: "dashboard#crew_count_by_vessel", as: :crew_count_by_vessel
+    get "/crew_count_by_rank", to: "dashboard#crew_count_by_rank", as: :crew_count_by_rank
+  end
+
   resources :documents
 end
