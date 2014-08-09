@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804072656) do
+ActiveRecord::Schema.define(version: 20140809105955) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -94,6 +94,9 @@ ActiveRecord::Schema.define(version: 20140804072656) do
     t.string   "signature_content_type"
     t.integer  "signature_file_size"
     t.datetime "signature_updated_at"
+    t.string   "pagibig_number"
+    t.string   "philhealth_number"
+    t.string   "distinguishing_marks"
   end
 
   create_table "documents", force: true do |t|
@@ -133,6 +136,13 @@ ActiveRecord::Schema.define(version: 20140804072656) do
     t.integer  "manning_agent_id"
   end
 
+  create_table "flags", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "licenses", force: true do |t|
     t.integer  "crew_id"
     t.string   "country"
@@ -152,6 +162,34 @@ ActiveRecord::Schema.define(version: 20140804072656) do
   create_table "manning_agents", force: true do |t|
     t.string   "name"
     t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "poea_companies", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "principal_contact_people", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "contact_number"
+    t.string   "email"
+    t.string   "designation"
+    t.integer  "principal_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "principals", force: true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.string   "email"
+    t.string   "telephone_number"
+    t.string   "fax_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -199,6 +237,9 @@ ActiveRecord::Schema.define(version: 20140804072656) do
     t.string   "owner"
     t.string   "off_numb"
     t.string   "code"
+    t.integer  "principal_id"
+    t.integer  "poea_company_id"
+    t.integer  "flag_id"
   end
 
 end

@@ -1,4 +1,4 @@
-ActiveAdmin.register ManningAgent do
+ActiveAdmin.register PoeaCompany do
 
   menu parent: "Vessel Files"
 
@@ -11,17 +11,16 @@ ActiveAdmin.register ManningAgent do
   index do
     selectable_column
     column :name
-    column :code
+    column :num_vessels
     actions
   end
 
   filter :name
-  filter :code
 
   form do |f|
-    f.inputs "Manning Agent" do
+    f.inputs "POEA Company" do
       f.input :name
-      f.input :code
+      f.input :description
     end
     f.actions
   end

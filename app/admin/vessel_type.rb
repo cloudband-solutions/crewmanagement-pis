@@ -1,6 +1,6 @@
 ActiveAdmin.register VesselType do
 
-  menu parent: "Parameters"
+  menu parent: "Vessel Files"
 
   controller do
     def permitted_params

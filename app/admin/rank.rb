@@ -1,5 +1,5 @@
 ActiveAdmin.register Rank do
-  menu parent: "Parameters"
+  menu parent: "Crew Files"
 
   controller do
     def permitted_params

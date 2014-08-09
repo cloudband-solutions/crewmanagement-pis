@@ -1,4 +1,3 @@
-<hr>
 <div class="row">
   <div class="col-md-2">
     <div class="box-image">
@@ -8,17 +7,10 @@
   <div class="col-md-4">
     <h2><%= @crew %> <small><%= @crew.code_number %></small></h2>
     <h3><%= @crew.rank %></h3>
-    <h4><%= @crew.address %></h4>
     <div class="">
       <%= link_to "Edit", edit_crew_path(@crew), class: "" %> |
-      <%= link_to "Back to List", crews_path %> |
+      <%= link_to "Back to List", crews_path %>
     </div>  
-    <div class="">
-      <select id="report_type">
-        <option value="misuga">Misuga</option>
-      </select>
-      <button onclick="redirect_to_report();" class="btn btn-xs btn-primary">Report</button>
-    </div>
   </div>
 </div>
 <div class="row">
@@ -41,10 +33,10 @@
           <%= @crew.vessel %>
         </td>
          <td class="label-a">
-          Code Number:
+          Civil Status
         </td>
         <td class="label-b">
-          <%= @crew.code_number %>
+          <%= @crew.civil_status %>
         </td>
         
       </tr>
@@ -75,7 +67,6 @@
         <td class="label-b">
           <%= @crew.birthplace %>
         </td>
-       
       </tr>
        <tr>
         <td class="label-a">
@@ -90,9 +81,6 @@
         <td class="label-b">
           <%= @crew.nationality %>
         </td>
-         
-
-        
       </tr>
       <tr>
         <td class="label-a">
@@ -131,23 +119,11 @@
           <%= @crew.eye_color %>
         </td>
         <td class="label-a">
-          SSS No: 
-      </td>
-      <td class="label-b">
-        <%= @crew.sss_no %>
-      </td>
-
-      
-      </tr>
-
-      <tr>
-         <td class="label-a">
-         TIN #:
+          Distinguishing Marks
         </td>
         <td class="label-b">
-          <%= @crew.tin_no %>
+          <%= @crew.distinguishing_marks %>
         </td>
-
       </tr>
 
     </table>
@@ -158,12 +134,32 @@
 <div class="row details">
   <div class="col-md-12 nearest-rel">
     <table class="table table-bordered table-stripped">
+      <tr>
+        <td class="label-a">
+          Home Address
+        </td>
+        <td class="label-b">
+          <%= @crew.address %>
+        </td>
+        <td class="label-a">
+          SSS Number
+        </td>
+        <td class="label-b">
+          <%= @crew.sss_no %>
+        </td>
+      </tr>
       <tr>  
         <td class="label-a">
           Nearest Relative:
         </td>
         <td class="label-b">
-        <%= @crew.nearest_relative_name %>
+          <%= @crew.nearest_relative_name %>
+        </td>
+        <td class="label-a">
+          TIN Number
+        </td>
+        <td class="label-b">
+          <%= @crew.tin_no %>
         </td>
       </tr>
       <tr>  
@@ -173,16 +169,27 @@
         <td class="label-b">
         <%= @crew.nearest_relative_relationship %>
         </td>
+        <td class="label-a">
+          Pag-ibig Number
+        </td>
+        <td class="label-b">
+          <%= @crew.pagibig_number %>
+        </td>
       </tr>
       <tr>  
         <td class="label-a">
-          Address:
+          Address of nearest relative:
         </td>
         <td class="label-b">
         <%= @crew.nearest_relative_address %>
         </td>
+        <td class="label-a">
+          Philhealth Number
+        </td>
+        <td class="label-b">
+          <%= @crew.philhealth_number %>
+        </td>
       </tr>
-
     </table>
   </div>
 </div>

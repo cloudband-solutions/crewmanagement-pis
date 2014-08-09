@@ -17,6 +17,7 @@ BaliwagIs::Application.routes.draw do
     get "/plain", to: "crews#show_plain", as: :show_plain
     get "/report", to: "crews#print_report", as: :print_report
   end
+  get "/crews/search", to: "crews#search", as: :crews_search
 
   get "/reports/:crew_id/misuga", to: "reports#misuga", as: :reports_misuga
 

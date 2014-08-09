@@ -39,15 +39,18 @@
 </div>
 
 <div class="row crew_form">
-  <div class="col-md-4">
+  <div class="col-md-3">
    <%= f.input :birthday, label: "Birthday", as: :string, input_html: { class: "form-control datepick" } %>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <%= f.input :birthplace, label: "Birth Place", input_html: { class: "form-control" }, placeholder: "Enter Birth Place" %>
   </div>    
-  <div class="col-md-4">
+  <div class="col-md-3">
     <%= f.input :nationality, label: "Nationality", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Nationality" %>
   </div> 
+  <div class="col-md-3">
+    <%= f.input :civil_status, input_html: { class: "form-control" }, placeholer: "Enter civil status", as: :select, collection: ["single", "married", "widowed"] %>
+  </div>
 </div>
 <div class="row crew_form"> 
   <div class="col-md-4">
@@ -61,20 +64,29 @@
   </div>
 </div>
 <div class="row crew_form">
-  <div class="col-md-4">
+  <div class="col-md-6">
+    <%= f.input :distinguishing_marks, as: :text, input_html: { class: "form-control" } %>
+  </div>
+  <div class="col-md-3">
     <%= f.input :cloth_size, as: :select, input_html: { class: "form-control input-size_age" }, collection: ["XS","S","M","L","XL"] %>
   </div> 
-  <div class="col-md-4">
+  <div class="col-md-3">
        <%= f.input :shoe_size, label: "Shoe Size", input_html: { class: "form-control" }, placeholder: "Enter Shoe Size" %>
   </div>
 </div>
 
 <div class="row crew_form">
-  <div class="col-md-4">
-       <%= f.input :sss_no, label: "SSS No.", input_html: { class: "form-control" }, placeholder: "Enter SSS Number" %>
+  <div class="col-md-3">
+    <%= f.input :sss_no, label: "SSS No.", input_html: { class: "form-control" }, placeholder: "Enter SSS Number" %>
   </div> 
-  <div class="col-md-4">
-       <%= f.input :tin_no, label: "TIN No.", input_html: { class: "form-control" }, placeholder: "Enter TIN Number" %>
+  <div class="col-md-3">
+    <%= f.input :tin_no, label: "TIN No.", input_html: { class: "form-control" }, placeholder: "Enter TIN Number" %>
+  </div>
+  <div class="col-md-3">
+    <%= f.input :pagibig_number, label: "Pag-ibig Number", input_html: { class: "form-control" }, placeholder: "Enter Pag-ibig Number" %>
+  </div>
+  <div class="col-md-3">
+    <%= f.input :philhealth_number, label: "Philhealth Number", input_html: { class: "form-control" }, placeholder: "Enter Pag-ibig Number" %>
   </div>
 </div>
 <div class="well">

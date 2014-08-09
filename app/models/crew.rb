@@ -48,9 +48,17 @@ class Crew < ActiveRecord::Base
   validates :nearest_relative_relationship, presence: true
   validates :nearest_relative_address, presence: true
   validates :address, presence: true
+  validates :civil_status, presence: true
+  validates :nationality, presence: true
+  validates :pagibig_number, presence: true
+  validates :philhealth_number, presence: true
 
   def to_s
     "#{firstname} #{lastname}"
+  end
+
+  def to_s_list
+    "#{lastname.upcase}, #{firstname}"
   end
 
   def age

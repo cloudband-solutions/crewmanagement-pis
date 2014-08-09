@@ -17,5 +17,11 @@ body {
     <div class="form-actions">
       <%= f.button :submit, "Sign in", class: "btn btn-primary btn-lg btn-block btn-success" %>
     </div>
+    <div>
+      Powered by:
+      <%= link_to "#" do %>
+        <%= image_tag "cbs.png", width: "250" %>
+      <% end %>
+    </div>
   <% end %>
 </div>

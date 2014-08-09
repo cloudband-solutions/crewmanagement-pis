@@ -19,6 +19,17 @@
 @import "bootstrap";
 @import "bootstrap-datepicker";
 
+#main {
+  min-height: 300px;
+}
+
+#footer {
+  background: #e2e2e2;
+  border-top: #2e2e2e;
+  font-weight: bold;
+  text-align: center;
+}
+
 #login-box {
   margin-left: auto;
   margin-right: auto;

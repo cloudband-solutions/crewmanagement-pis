@@ -1,4 +1,4 @@
-ActiveAdmin.register ManningAgent do
+ActiveAdmin.register Flag do
 
   menu parent: "Vessel Files"
 
@@ -12,6 +12,7 @@ ActiveAdmin.register ManningAgent do
     selectable_column
     column :name
     column :code
+    column :num_vessels
     actions
   end
 
@@ -19,7 +20,7 @@ ActiveAdmin.register ManningAgent do
   filter :code
 
   form do |f|
-    f.inputs "Manning Agent" do
+    f.inputs "Flag" do
       f.input :name
       f.input :code
     end

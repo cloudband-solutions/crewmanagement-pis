@@ -1,16 +1,15 @@
 <div class="row">
-  <div class="col-md-12">
-    <h1>Crew List</h1>
-    <hr>
+  <div class="col-md-3">
+    <h1>Crew Database</h1>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
+  <div class="col-md-9">
+    <%= render partial: "crews/search_tool" %>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12">
     <%= render partial: "crews/list", locals: { crews: @crews } %>
+    <%= paginate @crews %>
   </div>
 </div>
 

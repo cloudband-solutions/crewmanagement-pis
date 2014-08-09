@@ -1,6 +1,9 @@
 class Vessel < ActiveRecord::Base
   has_many :crews
   belongs_to :vessel_type
+  belongs_to :principal
+  belongs_to :poea_company
+  belongs_to :flag
 
   before_save :load_defaults
 
@@ -8,7 +11,6 @@ class Vessel < ActiveRecord::Base
   validates :vessel_type, presence: true
 
   validates :name, presence: true, uniqueness: true
-  validates :flag, presence: true
   validates :owner, presence: true
 
   def to_s
@@ -17,6 +19,5 @@ class Vessel < ActiveRecord::Base
 
   def load_defaults
     self.owner.upcase
-    self.flag.upcase
   end
 end
