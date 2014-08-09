@@ -20,7 +20,7 @@ class CrewsController < ApplicationController
       @crews = @crews.where("crews.rank_id = ?", @rank.id)
     end
 
-    @crews = @crews.page(params[:page]).per(5)
+    @crews = @crews.page(params[:page]).per(10)
   end
 
   def show
