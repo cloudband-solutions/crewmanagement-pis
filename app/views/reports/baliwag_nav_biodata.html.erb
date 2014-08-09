@@ -1,0 +1,137 @@
+<div class="row">
+	<div class="col-md-4">
+		<div class="unknown_img">
+			<%= image_tag @crew.picture.url(:standard) %>
+		</div>
+	</div>
+
+	<div class="col-md-8 baliwag_nav_title">
+		<h4>BALIWAG NAVIGATION, INC.</h4>
+		<h4>BIODATA</h4>
+	</div>
+
+</div>
+
+<div class="row">
+	<!-- 1st column -->
+	<div class="col-md-4">
+		<div class="row">
+			<div class="col-md-4">
+				Code No.:<br>
+				Name: <br>
+				Address: <br>
+				Birthday: <br>
+				Birth Place: <br>
+				SSS No.: <br>
+				TIN No.: <br>
+				
+			</div>
+			<div class="col-md-8">
+				<%= @crew.code_number %> <br>
+				<%= "#{@crew.firstname} #{@crew.middlename} #{@crew.lastname}" %> <br>
+				<%= @crew.address %> <br>
+				<%= @crew.birthday %> <br>
+				<%= @crew.birthplace %> <br>
+				<%= @crew.sss_no %> <br>
+				<%= @crew.tin_no %> <br>
+				
+			</div>
+		</div>
+	</div>
+
+	<!--2nd column-->
+	<div class="col-md-4">
+		<div class="row">
+			<div class="col-md-4">
+				Rank:<br>
+				Assigned Vessel: <br>
+				Civil Status: <br>
+				Age: <br>
+				Weight: <br>
+				Height: <br>
+				
+			</div>
+			<div class="col-md-8">
+				<%= @crew.rank %> <br>
+				<%= @crew.vessel %> <br>
+				<%= @crew.civil_status %> <br>
+				<%= @crew.age %> <br>
+				<%= @crew.weight %> <br>
+				<%= @crew.height %> <br>
+				
+			</div>
+		</div>
+
+	</div>
+
+	<!-- 3rd column -->
+	<div class="col-md-4">
+		<div class="row">
+			<div class="col-md-4">
+				Date Employed:<br>
+				Tel No.: <br>
+				Nationality: <br>
+				Eye Color: <br>
+				Cloth Size: <br>
+				Shoe Size: <br>
+			</div>
+			<div class="col-md-8">
+				<%= @crew.date_employed %> <br>
+				<%= @crew.telephone_no %> <br>
+				<%= @crew.nationality %> <br>
+				<%= @crew.eye_color %> <br>
+				<%= @crew.cloth_size %> <br>
+				<%= @crew.shoe_size %> <br>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="row">
+			<div class="col-md-4">
+				Nearest Relative: 
+			</div>
+
+			<div class="col-md-8">
+				<%= @crew.nearest_relative_name %> 
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="row">
+			<div class="col-md-4">
+				Relationship: 
+			</div>
+
+			<div class="col-md-8">
+				<%= @crew.nearest_relative_relationship %> <br>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="row">
+			<div class="col-md-4">
+				Address:
+			</div>
+
+			<div class="col-md-8">
+				<%= @crew.nearest_relative_address %> <br>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+</div>
+
+<%= render partial: "reports/educ_attainment", locals: { educational_attainments: @crew.educational_attainments } %>
+
+
+<%= render partial: "reports/licenses", locals: { licenses: @crew.licenses } %>
+<%= render partial: "reports/certificates", locals: { certificates: @crew.certificates } %>
+

@@ -18,6 +18,9 @@ class Crew < ActiveRecord::Base
   belongs_to :vessel
   validates :vessel, presence: true
 
+  belongs_to :rank
+
+
   has_many :employment_records
   accepts_nested_attributes_for :employment_records
 

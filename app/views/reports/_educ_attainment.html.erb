@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="col-md-12">
+		<h4>EDUCATIONAL ATTAINMENT</h4>
+		<table class="table table-bordered table-stripped"> 
+			<tr>
+				<th>Year</th>
+				<th>School</th>
+				<th>Course Finished</th>
+			</tr>
+			  <% educational_attainments.each do |ea| %>
+			<tr>
+				<td><%= ea.year_graduated %></td>
+				<td><%= ea.school %></td>
+				<td><%= ea.course_finished %></td>
+			</tr>	
+			<%end %>
+		</table>
+	</div>
+</div>
