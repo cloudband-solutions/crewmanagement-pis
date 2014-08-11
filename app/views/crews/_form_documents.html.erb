@@ -13,10 +13,10 @@
     </div>
     <div class="row">
       <div class="col-md-4">
-      <%= ff.input :issued_at, as: :string, input_html: { type: "date" } %>
+      <%= ff.input :issued_at, as: :string, input_html: { class: "datepick form-control" } %>
       </div>
       <div class="col-md-4">
-      <%= ff.input :expiry_date, as: :string, input_html: { type: "date" } %>
+      <%= ff.input :expiry_date, as: :string, input_html: { class: "datepick form-control" } %>
       </div>
       <div class="col-md-4">
       <%= ff.input :issued_by, label: "Issued by", input_html: { class: "form-control" } %>
