@@ -1,21 +1,25 @@
 <div id="latest_crew">
+  <% if !crew.nil? %>
   <h4>Latest Updated Crew <small><%= crew.updated_at %></small></h4>
-  <div class="well">
-    <div class="row">
-      <div class="col-md-3">
-        <%= image_tag crew.picture.url(:standard) %>
-      </div>
-      <div class="col-md-1">
-      </div>
-      <div class="col-md-8">
-        <h3><%= crew %> <small><%= crew.code_number %></small></h3>
-        <h4><%= crew.rank %></h4>
-        <div class="">
-          <%= link_to "Edit", edit_crew_path(crew), class: "" %> |
-          <%= link_to "Go to Profile", crew_path(crew), class: "" %> |
-          <%= link_to "Go to Database", crews_path %>
-        </div>  
+    <div class="well">
+      <div class="row">
+        <div class="col-md-3">
+          <%= image_tag crew.picture.url(:standard) %>
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-8">
+          <h3><%= crew %> <small><%= crew.code_number %></small></h3>
+          <h4><%= crew.rank %></h4>
+          <div class="">
+            <%= link_to "Edit", edit_crew_path(crew), class: "" %> |
+            <%= link_to "Go to Profile", crew_path(crew), class: "" %> |
+            <%= link_to "Go to Database", crews_path %>
+          </div>  
+        </div>
       </div>
     </div>
-  </div>
+  <% else %>
+    No crew added. Please <%= link_to "add one first", new_crew_path %>.
+  <% end %>
 </div>

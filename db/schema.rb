@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140809105955) do
+ActiveRecord::Schema.define(version: 20140811003228) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -57,6 +57,37 @@ ActiveRecord::Schema.define(version: 20140809105955) do
     t.string   "issued_by"
   end
 
+  create_table "classification_societies", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "crew_office_evaluations", force: true do |t|
+    t.integer  "vessel_id"
+    t.integer  "crew_id"
+    t.date     "date_of_evaluation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
+
+  create_table "crew_vessel_evaluations", force: true do |t|
+    t.integer  "vessel_id"
+    t.integer  "crew_id"
+    t.date     "date_of_evaluation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+  end
+
   create_table "crews", force: true do |t|
     t.string   "form_number"
     t.string   "code_number"
@@ -97,6 +128,14 @@ ActiveRecord::Schema.define(version: 20140809105955) do
     t.string   "pagibig_number"
     t.string   "philhealth_number"
     t.string   "distinguishing_marks"
+    t.boolean  "is_archived"
+  end
+
+  create_table "document_kinds", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "documents", force: true do |t|
@@ -113,6 +152,7 @@ ActiveRecord::Schema.define(version: 20140809105955) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.integer  "document_kind_id"
   end
 
   create_table "educational_attainments", force: true do |t|
@@ -143,6 +183,13 @@ ActiveRecord::Schema.define(version: 20140809105955) do
     t.datetime "updated_at"
   end
 
+  create_table "license_types", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "licenses", force: true do |t|
     t.integer  "crew_id"
     t.string   "country"
@@ -157,6 +204,7 @@ ActiveRecord::Schema.define(version: 20140809105955) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.integer  "license_type_id"
   end
 
   create_table "manning_agents", force: true do |t|
@@ -201,6 +249,21 @@ ActiveRecord::Schema.define(version: 20140809105955) do
     t.datetime "updated_at"
   end
 
+  create_table "salary_scales", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.decimal  "basic_pay"
+    t.decimal  "seniority_allowance"
+    t.decimal  "command_allowance"
+    t.decimal  "supervisory_allowance"
+    t.decimal  "guaranteed_overtime"
+    t.decimal  "fixed_overtime"
+    t.decimal  "leave_pay"
+    t.decimal  "good_performance_bonus"
+    t.decimal  "subsistence_allowance"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -240,6 +303,21 @@ ActiveRecord::Schema.define(version: 20140809105955) do
     t.integer  "principal_id"
     t.integer  "poea_company_id"
     t.integer  "flag_id"
+    t.integer  "salary_scale_id"
+    t.string   "email"
+    t.string   "inmarsat_id_number"
+    t.string   "tel_number"
+    t.string   "fax_number"
+    t.string   "imo_number"
+    t.string   "callsign"
+    t.integer  "classification_society_id"
+    t.decimal  "grt"
+    t.decimal  "nrt"
+    t.decimal  "dwt"
+    t.decimal  "loa"
+    t.decimal  "breadth"
+    t.decimal  "depth"
+    t.string   "engine_model"
   end
 
 end

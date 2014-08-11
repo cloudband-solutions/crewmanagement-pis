@@ -33,6 +33,12 @@ class Crew < ActiveRecord::Base
   has_many :licenses
   accepts_nested_attributes_for :licenses
 
+  has_many :crew_office_evaluations
+  accepts_nested_attributes_for :crew_office_evaluations
+
+  has_many :crew_vessel_evaluations
+  accepts_nested_attributes_for :crew_vessel_evaluations
+
   validates :date_employed, presence: true
   validates :code_number, presence: true, uniqueness: true
   validates :firstname, presence: true
@@ -55,6 +61,11 @@ class Crew < ActiveRecord::Base
   validates :nationality, presence: true
   validates :pagibig_number, presence: true
   validates :philhealth_number, presence: true
+  validates :is_archived, inclusion: { in: [true, false] }
+
+  before_validation :load_defaults
+
+  scope :active, -> { where("is_archived = ?", false) }
 
   def to_s
     "#{firstname} #{lastname}"
@@ -74,5 +85,19 @@ class Crew < ActiveRecord::Base
 
   def quarantines
     self.documents.where(document_type: "quarantine")
+  end
+
+  def toggle_archive
+    if self.is_archived != true
+      self.is_archived = true
+    else
+      self.is_archived = false
+    end
+  end
+
+  def load_defaults
+    if self.new_record?
+      self.is_archived = 'f'
+    end
   end
 end

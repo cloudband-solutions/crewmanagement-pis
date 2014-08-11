@@ -2,12 +2,13 @@
 
 
   <ul class="nav nav-tabs nav-justified">
-    <li class="active"><%= link_to "Biodata", "#biodata", "data-toggle" => "tab" %></li>
-    <li class=""><%= link_to "Educational Attainment", "#educational-attainments", "data-toggle" => "tab" %></li>
-    <li class=""><%= link_to "Licenses", "#licenses", "data-toggle" => "tab" %></li>
-    <li class=""><%= link_to "Documents", "#documents", "data-toggle" => "tab" %></li>
-    <li class=""><%= link_to "Employment Record", "#employment-record", "data-toggle" => "tab" %></li>
-    <li class=""><%= link_to "Images", "#images", "data-toggle" => "tab" %></li>
+    <li class="active"><%= link_to "General", "#biodata", "data-toggle" => "tab" %></li>
+    <li class=""><%= link_to "Education", "#educational-attainments", "data-toggle" => "tab" %></li>
+    <li class=""><%= link_to "Training Certificates", "#licenses", "data-toggle" => "tab" %></li>
+    <li class=""><%= link_to "Personal Documents", "#documents", "data-toggle" => "tab" %></li>
+    <li class=""><%= link_to "Vessel Evaluations", "#vessel-evaluations", "data-toggle" => "tab" %></li>
+    <li class=""><%= link_to "Office Evaluations", "#office-evaluations", "data-toggle" => "tab" %></li>
+    <li class=""><%= link_to "Employment", "#employment-record", "data-toggle" => "tab" %></li>
   </li>
 
   <div class="tab-content tab-content-inner">
@@ -26,8 +27,11 @@
     <div class="tab-pane" id="documents">
       <%= render partial: "crews/form_documents", locals: { f: f } %>
     </div>
-    <div class="tab-pane" id="images">
-      <%= render partial: "crews/form_images", locals: { f: f } %>
+    <div class="tab-pane" id="vessel-evaluations">
+      <%= render partial: "crews/form_crew_vessel_evaluation", locals: { f: f } %>
+    </div>
+    <div class="tab-pane" id="office-evaluations">
+      <%= render partial: "crews/form_crew_office_evaluation", locals: { f: f } %>
     </div>
   </div>
   <div class="row">

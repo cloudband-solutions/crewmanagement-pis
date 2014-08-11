@@ -1,6 +1,6 @@
 ActiveAdmin.register ManningAgent do
 
-  menu parent: "Vessel Files"
+  menu parent: "Crew Files"
 
   controller do
     def permitted_params

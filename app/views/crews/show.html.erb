@@ -216,27 +216,45 @@
   </div>
 </div>
 
-
 <div class="row details">
-  <h2>CERTIFICATES</h2>
-  <div class="col-md-12">
-    <%= render partial: "crews/certificates", locals: { certificates: @crew.certificates } %>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>PERSONAL DOCUMENTS</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= render partial: "crews/personal_documents", locals: { documents: @crew.documents } %>
+    </div>
   </div>
 </div>
 
 <div class="row details">
-  <h2>QUARANTINE RECORDS</h2>
-  <div class="col-md-12">
-    <%= render partial: "crews/quarantine_records", locals: { quarantine_records: @crew.quarantines } %>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>VESSEL EVALUATIONS</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= render partial: "crews/vessel_evaluations", locals: { evaluations: @crew.crew_vessel_evaluations } %>
+    </div>
   </div>
 </div>
 
 <div class="row details">
-  <h2>EMPLOYMENT RECORD</h2>
-   <div class="col-md-12">
-    <%= render partial: "crews/employment_records", locals: { employment_records: @crew.employment_records } %>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>OFFICE EVALUATIONS</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= render partial: "crews/office_evaluations", locals: { evaluations: @crew.crew_office_evaluations } %>
+    </div>
+  </div>
 </div>
-</div>
+
 <div class="row details">
   <h2>Signature</h2>
   <div class="col-md-12">

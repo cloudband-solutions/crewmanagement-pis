@@ -8,7 +8,7 @@ module Api
       data = []
       Vessel.all.each do |v|
         labels << v.name
-        data << v.crews.count
+        data << v.active_crews.count
       end
 
       render json: { labels: labels, data: data }
@@ -19,7 +19,7 @@ module Api
       data = []
       Rank.all.each do |r|
         labels << r.name
-        data << r.crews.count
+        data << r.active_crews.count
       end
 
       render json: { labels: labels, data: data }

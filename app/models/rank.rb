@@ -4,6 +4,10 @@ class Rank < ActiveRecord::Base
 
   has_many :crews
 
+  def active_crews
+    self.crews.active
+  end
+
   def to_s
     name
   end

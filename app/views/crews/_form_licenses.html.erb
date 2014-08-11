@@ -2,13 +2,10 @@
   <div class="well">
     <div class="row">
       <div class="col-md-4">
-        <%= ff.input :country %>
-      </div>
-      <div class="col-md-4">
-        <%= ff.input :kind %>
-      </div>
-      <div class="col-md-4">
         <%= ff.input :license_number %>
+      </div>
+      <div class="col-md-4">
+        <%= ff.association :license_type %>
       </div>
     </div>
     <div class="row">

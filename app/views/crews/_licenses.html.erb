@@ -1,7 +1,6 @@
 <table class="table table-bordered table-stripped">
   <tr>  
-    <th class="label-c">Country</th>
-    <th class="label-c">Kind</th>
+    <th class="label-c">License Type</th>
     <th class="label-c">Number</th>
     <th class="label-c">Date Issued</th>
     <th class="label-c">Expiry Date</th>
@@ -10,14 +9,13 @@
   </tr>
   <% licenses.each do |license| %>
     <tr>
-      <td class="label-d-a"><%= license.country %></td>
-      <td class="label-d-a"><%= license.kind %></td>
+      <td class="label-d-a"><%= license.license_type %></td>
       <td class="label-d-a"><%= license.license_number %></td>
       <td class="label-d-a"><%= license.date_issued %></td>
       <td class="label-d-a"><%= license.expiry_date %></td>
       <td class="label-d-a"><%= license.issued_by %></td>
       <td class="label-d-a">
-        <%= link_to "Download", license.attachment.url %>
+        <%= link_to "Download", license.attachment.url, target: "_blank" %>
       </td>
     </tr>
   <% end %>

@@ -1,0 +1,19 @@
+<%= f.simple_fields_for :crew_office_evaluations do |ff| %>
+  <div class="well">
+    <div class="row">
+      <div class="col-md-4">
+        <%= ff.association :vessel %>
+      </div>
+      <div class="col-md-4">
+        <%= ff.input :date_of_evaluation, as: :string, input_html: { type: "date" } %>
+      </div>
+      <div class="col-md-4">
+        <%= ff.input :attachment, as: :file %>
+      </div>
+    </div>
+    <%= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
+  </div>
+<% end %>
+<%= f.link_to_add "Add Office Evaluation", :crew_office_evaluations, class: "btn btn-info" %>
+
+

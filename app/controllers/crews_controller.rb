@@ -3,7 +3,7 @@ class CrewsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-  	@crews = Crew.select("*").order("crews.lastname")
+  	@crews = Crew.active.order("crews.lastname")
 
     if params[:q].present?
       @q = params[:q]
@@ -24,20 +24,7 @@ class CrewsController < ApplicationController
   end
 
   def show
-  	@crew = Crew.find(params[:id])
-  end
-
-  def show_plain
-  	@crew = Crew.find(params[:crew_id])
-  end
-  
-  def print_report
-    @crew = Crew.find(params[:crew_id])
-    pdf = PDFKit.new(HTTParty.get(crew_show_plain_url(@crew)))
-
-    send_data pdf, filename: "#{@crew}.pdf",
-                  type: "application/pdf",
-                  disposition: "inline"
+  	@crew = Crew.active.find(params[:id])
   end
 
   def new
@@ -51,7 +38,7 @@ class CrewsController < ApplicationController
       flash[:success] = "Successfully created new crew."
       redirect_to crew_path(@crew)
     else
-      flash[:error] = "Please check the form for some errors. #{@crew.errors.messages}"
+      flash.now[:error] = "Please check the form for some errors. #{@crew.errors.full_messages}"
       render :new
     end
   end
@@ -71,9 +58,13 @@ class CrewsController < ApplicationController
     end
   end
 
+  # NOTE: We only archive a crew deleted via the main application
+  # Admin users can toggle the archived status of a crew via admin
   def destroy
     crew = Crew.find(params[:id])
-    crew.destroy
+    crew.is_archived = true
+    crew.save!
+    flash[:success] = "Successfully archived crew record."
     redirect_to crews_path
   end
 

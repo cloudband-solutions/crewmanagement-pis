@@ -189,51 +189,19 @@
     </div>
   </div>
 
-
   <div class="row details">
-    <h2>CERTIFICATES</h2>
-     <div class="col-md-12">
-      <table class="table table-bordered table-stripped">
-         <tr>  
-          <th class="label-c"></th>
-          <th class="label-c">Number</th>
-          <th class="label-c">Date Issued</th>
-          <th class="label-c">Expiry Date</th>
-          <th class="label-c">Issued By</th>
-         </tr>
-         <tr>
-          <td class="label-d-a">Passport</td>
-          <td class="label-d-a">12345</td>
-          <td class="label-d-a">April 1, 2014</td>
-          <td class="label-d-a">April 27, 2014</td>
-           <td class="label-d-a">Raphael Alampay</td>
-         </tr>
-      </table>
+    <div class="row">
+      <div class="col-md-12">
+        <h2>PERSONAL DOCUMENTS</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render partial: "crews/personal_documents", locals: { documents: @crew.documents } %>
+      </div>
+    </div>
   </div>
 
-  </div>
-
-  <div class="row details">
-    <h2>QUARANTINE RECORDS</h2>
-     <div class="col-md-12">
-      <table class="table table-bordered table-stripped">
-         <tr>  
-          <th class="label-c"></th>
-          <th class="label-c">Number</th>
-          <th class="label-c">Date Issued</th>
-          <th class="label-c">Expiry Date</th>
-          <th class="label-c">Issued By</th>
-         </tr>
-         <tr>
-          <td class="label-d-a">Tetanus</td>
-          <td class="label-d-a">12345</td>
-          <td class="label-d-a">April 1, 2014</td>
-          <td class="label-d-a">April 27, 2014</td>
-           <td class="label-d-a">Raphael Alampay</td>
-         </tr>
-      </table>
-  </div>
-  </div>
 
   <div class="row details">
     <h2>EMPLOYMENT RECORD</h2>
