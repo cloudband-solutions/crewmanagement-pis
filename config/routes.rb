@@ -29,4 +29,5 @@ BaliwagIs::Application.routes.draw do
   end
 
   resources :documents
+  resources :principals, only: [:index, :show]
 end

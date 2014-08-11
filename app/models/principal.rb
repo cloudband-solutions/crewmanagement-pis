@@ -21,4 +21,14 @@ class Principal < ActiveRecord::Base
   def num_vessels
     self.vessels.count
   end
+
+  def crews
+    data = []
+    self.vessels.each do |v|
+      v.crews.each do |c|
+        data << c
+      end
+    end
+    return data
+  end
 end
