@@ -29,4 +29,7 @@ BaliwagIs::Application.routes.draw do
   end
 
   resources :documents
+
+  get "/reports/crews", to: "crews#reports", as: :crews_reports
+  get "/reports/:id/generate_crew_file", to: "crews#generate_crew_file", as: :generate_crew_file
 end

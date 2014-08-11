@@ -1,5 +1,5 @@
 class Crew < ActiveRecord::Base
-  REPORT_TYPE = ["plain"]
+  REPORT_TEMPLATES = ["baliwag", "misuga"]
   has_attached_file :picture,
     styles: { thumb: "80x80#",
               standard: "150x150#" },
@@ -19,7 +19,6 @@ class Crew < ActiveRecord::Base
   validates :vessel, presence: true
 
   belongs_to :rank
-
 
   has_many :employment_records
   accepts_nested_attributes_for :employment_records

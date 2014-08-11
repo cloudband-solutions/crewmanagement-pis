@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Reporting</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <%= render partial: "crews/reporting_tool" %>
+  </div>
+  <div class="col-md-8">
+    <% if @crews.nil? %>
+      <div class="bs-callout bs-callout-error">
+        Please fill in report parameters to the left and hit "Display". To download the reports, select "Download". If no parameters were selected, all will be assumed.
+      </div>
+    <% else %>
+      <%= render partial: "crews/list", locals: { crews: @crews} %>
+    <% end %>
+  </div>
+</div>

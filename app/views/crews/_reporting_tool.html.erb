@@ -1,0 +1,19 @@
+<div class="well">
+  <%= form_tag send("crews_reports_path"), method: :get do |f| %>
+    <div class="row">
+      <div class="col-md-12">
+        <label>Vessel</label>
+        <%= select_tag :vessel_id, options_from_collection_for_select(Vessel.all, :id, :name, @vessel.try(:id)), class: "form-control", prompt: "-- VESSEL --" %>
+        <hr>
+        <label>Rank</label>
+        <%= select_tag :rank_id, options_from_collection_for_select(Rank.all, :id, :name, @rank.try(:id)), prompt: "-- RANK --", class: "form-control" %>
+        <hr>
+        <label>Template</label>
+        <%= select_tag :template, options_from_collection_for_select(Crew::REPORT_TEMPLATES, :to_s, :to_s, @template), prompt: "-- TEMPLATE --", class: "form-control" %>
+        <hr>
+        <%= submit_tag "Display", class: "btn btn-primary btn-block" %>
+        <%= submit_tag "Download", class: "btn btn-info btn-block" %>
+      </div>
+    </div>
+  <% end %>
+</div>
