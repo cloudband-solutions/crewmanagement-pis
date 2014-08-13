@@ -22,6 +22,11 @@ ActiveAdmin.register Crew do
     actions
   end
 
+  form do |f|
+
+  end
+
+
   collection_action :toggle_archived do
   end
 

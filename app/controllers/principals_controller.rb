@@ -7,5 +7,6 @@ class PrincipalsController < ApplicationController
 		@principal = Principal.find(params[:id])
 		
 	end
+	
 
 end
