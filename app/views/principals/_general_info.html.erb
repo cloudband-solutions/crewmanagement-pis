@@ -1,0 +1,69 @@
+
+<table class="table table-bordered table-stripped">
+	<tr>
+		<td class="label-e">Name:</td>
+		<td class="label-f"> <%= principal.name %> </td>
+	</tr>
+	<tr>
+		<td class="label-e">E-mail:</td>
+		<td class="label-f"><%= principal.email %> </td> 	
+	</tr>
+	<tr>
+		<td class="label-e">Address:</td>
+		<td class="label-f"> <%= principal.address %> </td>
+	</tr>
+
+	<tr>
+		<td class="label-e">Telephone Number:</td>
+		<td class="label-f"><%= principal.telephone_number %> </td>
+	</tr>
+	<tr>
+		<td class="label-e"> Fax Number:</td>
+		<td class="label-f"><%= principal.fax_number %> </td>
+	</tr>
+</table> 
+
+<div class="row">
+	
+	<div class="row">
+		<div class="col-md-12">
+			<h4>CONTACT PEOPLE</h4>
+		</div>
+	</div>
+	<% principal.principal_contact_people.each do |principal_contact_person| %>
+	
+	<div class="col-md-12">
+
+		<table>
+		<div class="row">
+			<div class="col-md-9">
+				<tr>
+					<td class="label-g">Name:</td>
+					<td><%= principal_contact_person.first_name %> <%= principal_contact_person.last_name %></td>
+				</tr>
+
+				<tr>
+					<td class="label-g">Contact Number: </td>
+					<td><%= principal_contact_person.contact_number %></td> 
+				</tr>
+
+
+				<tr>
+					<td class="label-g">E-mail:</td>
+					<td><%= principal_contact_person.email %></td>
+				</tr>
+
+				<tr>	
+					<td class="label-g">Designation:</td>
+					<td><%= principal_contact_person.designation %> </td>
+				</tr> 
+			</div>			
+		</div>
+		</table> <br>
+	</div>
+
+	<% end %>
+	
+</div>
+
+

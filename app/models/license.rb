@@ -3,6 +3,8 @@ class License < ActiveRecord::Base
 
   belongs_to :license_type
   validates :license_type, presence: true
+
+  belongs_to :rank
   
   has_attached_file :attachment
   validates_attachment_content_type :attachment, content_type: %w(image/jpg image/jpeg image/png application/pdf)

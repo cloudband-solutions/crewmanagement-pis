@@ -3,6 +3,7 @@ class Rank < ActiveRecord::Base
   validates :code, presence: true, uniqueness: true
 
   has_many :crews
+  has_many :licenses
 
   def active_crews
     self.crews.active

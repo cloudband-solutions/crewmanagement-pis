@@ -1,0 +1,15 @@
+<h1>Principal <%= @principal.name %></h1>
+<ul class="nav nav-tabs nav-justified">
+	<li class="active"><%= link_to "General Info", "#biodata", "data-toggle" => "tab" %></li>
+	<li class=""><%= link_to "Crew List", "#crewlist", "data-toggle" => "tab" %></li>
+</ul>
+
+<div class="tab-content tab-content-inner">
+    <div class="tab-pane active" id="biodata">
+      <%= render partial: "principals/general_info", locals: { principal: @principal } %>
+    </div>
+     <div class="tab-pane" id="crewlist">
+      <%= render partial: "crews/list", locals: { crews: @principal.crews } %>
+    </div>
+
+</div>

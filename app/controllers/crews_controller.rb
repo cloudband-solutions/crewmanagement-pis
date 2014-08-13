@@ -13,7 +13,20 @@ class CrewsController < ApplicationController
 
   def generate_crew_file
     @crew = Crew.find(params[:id])
-    redirect_to crew_path(@crew)
+    
+    if params[:template].present?
+      template = params[:template]
+      if template == "misuga"
+        pdf = MisugaReportPdf.new(@crew, view_context)
+        send_data pdf.render, filename: "crew.pdf", type: "application/pdf"
+      else
+        flash[:error] = "Template #{template} not available"
+        redirect_to crew_path(@crew)
+      end
+    else
+      flash[:error] = "Please select a template"
+      redirect_to crew_path(@crew)
+    end
   end
 
   def generate_crew_list
