@@ -2,29 +2,6 @@
 <hr>
 <div class="row">
   <div class="col-md-12">
-    <table class="table table-bordered table-stripped">
-      <tr>
-        <th> NAME </th>
-        <th> FLAG </th>
-        <th> VESSEL TYPE </th>
-        <th> HORSE POWER </th>
-        <th> ENGINE MAKE </th>
-        <th> Number of Crews </th>
-        <th> ACTIONS </th>
-      </tr>
-      <% @vessels.each do |vessel| %>
-        <tr>  
-          <td><%= vessel.name %></td>
-          <td><%= vessel.flag %></td>
-          <td><%= vessel.vessel_type %></td>
-          <td><%= vessel.horse_power %></td>
-          <td><%= vessel.engine_make %></td>
-          <td><%= vessel.crews.count %></td>
-          <td>
-            <%= link_to "Show", vessel_path(vessel), class: "btn btn-primary btn-xs" %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
+    <%= render partial: "vessels/list", locals: { vessels: @vessels } %>
   </div>
 </div>
