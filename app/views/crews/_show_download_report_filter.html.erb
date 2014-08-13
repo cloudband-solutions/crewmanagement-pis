@@ -1,0 +1,13 @@
+<div class="well">
+  <h4>Download Crew File</h4>
+  <%= form_tag generate_crew_file_path(@crew.id), method: :get do |f| %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= select_tag :template, options_from_collection_for_select(Crew::REPORT_TEMPLATES, :to_s, :to_s, @template), prompt: "-- TEMPLATE --", class: "form-control" %>
+      </div>
+      <div class="col-md-6">
+        <%= submit_tag "Download", class: "btn btn-info btn-block" %> 
+      </div>
+    </div>
+  <% end %>
+</div>

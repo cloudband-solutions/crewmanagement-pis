@@ -1,12 +1,7 @@
 class ReportsController < ApplicationController
-  layout "plain"
+  before_filter :authenticate_user!
 
-  def misuga
-    @crew = Crew.find(params[:crew_id])
-  end
-
-  def baliwag_nav_biodata 
-  	@crew = Crew.find(params[:crew_id])
+  def index
   end
 end
 

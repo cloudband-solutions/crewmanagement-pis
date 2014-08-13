@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811003228) do
+ActiveRecord::Schema.define(version: 20140811100100) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -205,6 +205,7 @@ ActiveRecord::Schema.define(version: 20140811003228) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.integer  "license_type_id"
+    t.integer  "rank_id"
   end
 
   create_table "manning_agents", force: true do |t|
@@ -262,6 +263,13 @@ ActiveRecord::Schema.define(version: 20140811003228) do
     t.decimal  "leave_pay"
     t.decimal  "good_performance_bonus"
     t.decimal  "subsistence_allowance"
+  end
+
+  create_table "training_centers", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
