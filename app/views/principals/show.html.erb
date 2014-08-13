@@ -11,5 +11,8 @@
      <div class="tab-pane" id="crewlist">
       <%= render partial: "crews/list", locals: { crews: @principal.crews } %>
     </div>
+     <div class="tab-pane" id="vessellist">
+      <%= render partial: "vessels/vessel_list", locals: { vessels: @principal.vessels } %>
+    </div>
 
 </div>
