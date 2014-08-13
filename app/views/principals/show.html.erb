@@ -2,6 +2,7 @@
 <ul class="nav nav-tabs nav-justified">
 	<li class="active"><%= link_to "General Info", "#biodata", "data-toggle" => "tab" %></li>
 	<li class=""><%= link_to "Crew List", "#crewlist", "data-toggle" => "tab" %></li>
+	<li class=""><%= link_to "Vessel List", "#vessellist", "data-toggle" => "tab" %></li>
 </ul>
 
 <div class="tab-content tab-content-inner">
@@ -12,7 +13,7 @@
       <%= render partial: "crews/list", locals: { crews: @principal.crews } %>
     </div>
      <div class="tab-pane" id="vessellist">
-      <%= render partial: "vessels/vessel_list", locals: { vessels: @principal.vessels } %>
+      <%= render partial: "vessels/list", locals: { vessels: @principal.vessels } %>
     </div>
 
 </div>
