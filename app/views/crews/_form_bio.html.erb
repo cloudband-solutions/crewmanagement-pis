@@ -18,21 +18,35 @@
     <%= f.input :lastname, label: "Last Name", input_html: { class: "form-control" }, placeholder: "Enter Last Name" %>
   </div>
 </div>
-<div class="row crew_form">       
-  <div class="col-md-3">
-    <%= f.input :code_number, label: "Code Number", input_html: { class: "form-control" }, placeholder: "Enter Code Number" %>
-  </div>
-  <div class="col-md-3">
-    <%= f.input :date_employed, label: "Date Employed", as: :string, input_html: { value: (Time.now - 5.years).strftime('%Y-%m-%d'), class: "datepick form-control" } %>
-  </div>
-  <div class="col-md-3">
-    <%= f.association :rank, label: "Current Rank", input_html: { class: "form-control" } %>
-  </div>
-  <div class="col-md-3">
-    <%= f.association :vessel, label: "Vessel Assigned", input_html: { class: "form-control" } %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="well">
+      <div class="row crew_form">       
+        <div class="col-md-4">
+          <%= f.input :code_number, label: "Code Number", input_html: { class: "form-control" }, placeholder: "Enter Code Number" %>
+        </div>
+        <div class="col-md-4">
+          <%= f.input :date_employed, label: "Date Employed", as: :string, input_html: { value: (Time.now - 5.years).strftime('%Y-%m-%d'), class: "datepick form-control" } %>
+        </div>
+        <div class="col-md-4">
+          <%= f.association :rank, label: "Current Rank", input_html: { class: "form-control" } %>
+        </div>
+      </div>
+
+      <div class="row crew_form">
+        <div class="col-md-4">
+          <%= f.input :date_of_promotion, as: :string, input_html: { class: "datepick form-control" } %>
+        </div>
+        <div class="col-md-4">
+          <%= f.input :sign_on, as: :string, input_html: { class: "datepick form-control" } %>
+        </div>
+        <div class="col-md-4">
+          <%= f.association :vessel, label: "Vessel Assigned", input_html: { class: "form-control" } %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
 
 
 <div class="row crew_form">

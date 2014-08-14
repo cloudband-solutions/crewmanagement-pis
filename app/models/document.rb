@@ -8,7 +8,7 @@ class Document < ActiveRecord::Base
   validates :attachment, presence: true
 
   #validates :crew, presence: true
-  validates :name, presence: true
+  #validates :name, presence: true
   #validates :document_type, presence: true, inclusion: { in: DOC_TYPES }
   validates :doc_number, presence: true, uniqueness: true
   validates :issued_by, presence: true

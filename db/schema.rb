@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811100100) do
+ActiveRecord::Schema.define(version: 20140814043958) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -129,6 +129,8 @@ ActiveRecord::Schema.define(version: 20140811100100) do
     t.string   "philhealth_number"
     t.string   "distinguishing_marks"
     t.boolean  "is_archived"
+    t.date     "sign_on"
+    t.date     "date_of_promotion"
   end
 
   create_table "document_kinds", force: true do |t|
@@ -285,6 +287,7 @@ ActiveRecord::Schema.define(version: 20140811100100) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "user_type"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

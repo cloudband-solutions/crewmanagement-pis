@@ -15,7 +15,9 @@
       <td class="label-d-a"><%= license.expiry_date %></td>
       <td class="label-d-a"><%= license.issued_by %></td>
       <td class="label-d-a">
-        <%= link_to "Download", license.attachment.url, target: "_blank" %>
+        <% if license.attachment.exists? %>
+          <%= link_to "Download", license.attachment.url, target: "_blank" %>
+        <% end %>
       </td>
     </tr>
   <% end %>

@@ -1,6 +1,5 @@
 <table class="table table-bordered table-stripped">
   <tr>  
-    <th class="label-c">Name</th>
     <th class="label-c">Document Kind</th>
     <th class="label-c">Number</th>
     <th class="label-c">Date Issued</th>
@@ -10,7 +9,6 @@
   </tr>
   <% documents.each do |document| %>
     <tr>
-      <td class="label-d-a"><%= document.name %></td>
       <td class="label-d-a"><%= document.document_kind %></td>
       <td class="label-d-a"><%= document.doc_number %></td>
       <td class="label-d-a"><%= document.issued_at %></td>

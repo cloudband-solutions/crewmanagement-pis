@@ -8,7 +8,7 @@ class License < ActiveRecord::Base
   
   has_attached_file :attachment
   validates_attachment_content_type :attachment, content_type: %w(image/jpg image/jpeg image/png application/pdf)
-  validates :attachment, presence: true
+  #validates :attachment, presence: true
 
   #validates :crew, presence: true
   #validates :country, presence: true
