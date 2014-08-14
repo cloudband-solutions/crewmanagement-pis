@@ -40,4 +40,20 @@ ActiveAdmin.register SalaryScale do
     f.actions
   end
 
+  show do |ad|
+    attributes_table do
+      row :name
+      row :basic_pay
+      row :seniority_allowance
+      row :command_allowance
+      row :supervisory_allowance
+      row :guaranteed_overtime
+      row :fixed_overtime
+      row :subsistence_allowance
+      row :leave_pay
+      row :good_performance_bonus
+      
+    end
+  end
+
 end

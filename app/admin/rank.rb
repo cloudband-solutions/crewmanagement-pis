@@ -25,6 +25,13 @@ ActiveAdmin.register Rank do
     f.actions
   end
 
+  show do |ad|
+    attributes_table do 
+      row :name
+      row :code
+    end
+  end 
+
 end
 
 

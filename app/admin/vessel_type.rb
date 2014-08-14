@@ -26,6 +26,13 @@ ActiveAdmin.register VesselType do
     f.actions
   end
 
+    show do |ad|
+    attributes_table do 
+      row :name
+      row :description
+    end
+  end 
+
 end
 
 

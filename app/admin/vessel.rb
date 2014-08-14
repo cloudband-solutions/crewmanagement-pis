@@ -73,5 +73,37 @@ ActiveAdmin.register Vessel do
     f.actions
   end
 
+  show do |ad|
+    attributes_table do 
+      row :name
+      row :code
+      row :principal
+      row :classification_society
+      row :flag
+      row :poea_company
+      row :salary_scale
+      row :vessel_type
+      row :engine_make
+      row :engine_model
+      row :horse_power
+      row :owner
+      row :off_numb
+      row :email
+      row :inmarsat_id_number
+      row :tel_number
+      row :fax_number
+      row :imo_number
+      row :callsign
+      row :grt
+      row :nrt
+      row :dwt
+      row :loa 
+      row :breadth
+      row :depth
+      
+    end
+
+  end
+
 end
 
