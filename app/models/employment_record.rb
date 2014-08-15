@@ -10,5 +10,5 @@ class EmploymentRecord < ActiveRecord::Base
   validates :rank, presence: true
   validates :sign_on, presence: true
   validates :sign_off, presence: true
-  validates :reason_of_disembarkation, presence: true
+  belongs_to :reason_for_disembarkation
 end

@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= f.input :destination %>
+  </div>
+  <div class="col-md-3">
+    <%= f.input :date_of_departure, as: :string, input_html: { class: "datepick form-control" } %>
+  </div>
+  <div class="col-md-3">
+    <%= f.association :vessel %>
+  </div>
+  <div class="col-md-3">
+    <%= f.input :prepared_on, as: :string, input_html: { class: "datepick form-control" } %>
+  </div>
+</div>
+
+<div class="row well">
+  <div class="col-md-4">
+    <h4>Prepared By</h4>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :prepared_by, label: false, placeholder: "Name" %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :prepared_by_position, label: false, placeholder: "Position" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h4>Approved By</h4>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :approved_by, label: false, placeholder: "Name" %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :approved_by_position, label: false, placeholder: "Position" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h4>Noted By</h4>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :noted_by, label: false, placeholder: "Name" %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :noted_by_position, label: false, placeholder: "Position" %>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814043958) do
+ActiveRecord::Schema.define(version: 20140815091748) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -176,6 +176,7 @@ ActiveRecord::Schema.define(version: 20140814043958) do
     t.integer  "crew_id"
     t.integer  "rank_id"
     t.integer  "manning_agent_id"
+    t.integer  "reason_for_disembarkation_id"
   end
 
   create_table "flags", force: true do |t|
@@ -252,6 +253,13 @@ ActiveRecord::Schema.define(version: 20140814043958) do
     t.datetime "updated_at"
   end
 
+  create_table "reason_for_disembarkations", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "salary_scales", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -272,6 +280,50 @@ ActiveRecord::Schema.define(version: 20140814043958) do
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "transmittal_record_crew_promotions", force: true do |t|
+    t.integer  "crew_id"
+    t.integer  "from_rank_id"
+    t.integer  "to_rank_id"
+    t.integer  "transmittal_record_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transmittal_record_disembarking_crews", force: true do |t|
+    t.integer  "transmittal_record_id"
+    t.integer  "crew_id"
+    t.integer  "rank_id"
+    t.integer  "reason_for_disembarkation_id"
+    t.date     "date_embarked"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transmittal_record_embarking_crews", force: true do |t|
+    t.integer  "transmittal_record_id"
+    t.integer  "crew_id"
+    t.integer  "rank_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transmittal_records", force: true do |t|
+    t.string   "prepared_by"
+    t.string   "prepared_by_position"
+    t.string   "approved_by"
+    t.string   "approved_by_position"
+    t.string   "noted_by"
+    t.string   "noted_by_position"
+    t.string   "destination"
+    t.date     "date_of_departure"
+    t.date     "prepared_on"
+    t.integer  "vessel_id"
+    t.string   "transmittal_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "users", force: true do |t|

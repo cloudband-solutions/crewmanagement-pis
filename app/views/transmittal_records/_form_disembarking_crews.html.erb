@@ -1,0 +1,29 @@
+<%= f.simple_fields_for :transmittal_record_disembarking_crews do |ff| %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="well">
+        <div class="row">
+          <div class="col-md-4">
+            <%= ff.association :crew %>
+          </div>
+          <div class="col-md-4">
+            <%= ff.association :reason_for_disembarkation %>
+          </div>
+          <div class="col-md-4">
+            <%= ff.input :date_embarked, as: :string, input_html: { class: "form-control datepick" } %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<div class="row">
+  <div class="col-md-12">
+    <%= f.link_to_add "Add Disembarking Crew", :transmittal_record_disembarking_crews, class: "btn btn-info" %>
+  </div>
+</div>

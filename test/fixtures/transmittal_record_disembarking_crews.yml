@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transmittal_record_id: 1
+  crew_id: 1
+  rank_id: 1
+  reason_for_disembarkation_id: 1
+  date_embarked: 2014-08-14
+
+two:
+  transmittal_record_id: 1
+  crew_id: 1
+  rank_id: 1
+  reason_for_disembarkation_id: 1
+  date_embarked: 2014-08-14

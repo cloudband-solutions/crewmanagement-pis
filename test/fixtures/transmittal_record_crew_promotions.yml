@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  crew_id: 1
+  from_rank_id: 1
+  to_rank_id: 1
+  transmittal_record_id: 1
+
+two:
+  crew_id: 1
+  from_rank_id: 1
+  to_rank_id: 1
+  transmittal_record_id: 1

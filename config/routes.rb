@@ -9,7 +9,6 @@ BaliwagIs::Application.routes.draw do
   get "/vessels", to: "vessels#index", as: :vessels
   resources :crews do
     get "/report", to: "crews#print_report", as: :print_report
-
   end
   get "/crews/search", to: "crews#search", as: :crews_search
 
@@ -28,4 +27,5 @@ BaliwagIs::Application.routes.draw do
   get "/reports/crews", to: "crews#reports", as: :crews_reports
   get "/reports/:id/generate_crew_file", to: "crews#generate_crew_file", as: :generate_crew_file
   resources :principals, only: [:index, :show]
+  resources :transmittal_records
 end

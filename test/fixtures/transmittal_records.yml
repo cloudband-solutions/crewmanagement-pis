@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  prepared_by: MyString
+  prepared_by_position: MyString
+  approved_by: MyString
+  approved_by_position: MyString
+  noted_by: MyString
+  noted_by_position: MyString
+  destination: MyString
+  date_of_departure: 2014-08-14
+  prepared_on: 2014-08-14
+  vessel_id: 1
+  transmittal_code: MyString
+
+two:
+  prepared_by: MyString
+  prepared_by_position: MyString
+  approved_by: MyString
+  approved_by_position: MyString
+  noted_by: MyString
+  noted_by_position: MyString
+  destination: MyString
+  date_of_departure: 2014-08-14
+  prepared_on: 2014-08-14
+  vessel_id: 1
+  transmittal_code: MyString
