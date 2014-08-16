@@ -19,12 +19,13 @@ ActiveAdmin.register Crew do
     column :rank
     column :vessel
     column :is_archived
-    actions
+    actions defaults: true do |crew|
+      link_to "Toggle Archive", toggle_archived_admin_crew_path(crew), method: :put, data: { confirm: "Are you sure?" }
+    end
   end
 
   form do |f|
     f.inputs "Details" do
-    
       f.input :firstname, label: "First Name"
       f.input :middlename, label: "Middle Name"
       f.input :lastname, label: "Last Name"
@@ -58,7 +59,8 @@ ActiveAdmin.register Crew do
       f.input :picture, label: "2x2 Picture"
       f.input :signature, label: "Signature"
     end
-      f.actions
+    
+    f.actions
   end
 
   show do |ad|
@@ -91,33 +93,26 @@ ActiveAdmin.register Crew do
       row :nearest_relative_relationship
     end
 
-    
-     attributes_table do
+    attributes_table do
       row :picture do
         image_tag ad.picture.url(:standard)
       end
     end
 
-      attributes_table do
-        row :signature do
-          image_tag ad.signature.url(:standard)
-        end
+    attributes_table do
+      row :signature do
+        image_tag ad.signature.url(:standard)
+      end
     end
 
-  end
-
-
-
-
-  collection_action :toggle_archived do
   end
 
   member_action :toggle_archived, method: :put do
     crew = Crew.find(params[:id])
     crew.toggle_archive
     crew.save!
-    message = crew.archived ? "Crew #{crew.code_number} is archived" : "Crew #{crew.code_number} is unarchived"
-    redirect_to action: :show, notice: message
+    message = crew.is_archived ? "Crew #{crew.code_number} is archived" : "Crew #{crew.code_number} is unarchived"
+    redirect_to action: :index, notice: message
   end
 
   action_item only: :toggle_archived do

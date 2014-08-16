@@ -1,0 +1,16 @@
+<table class="table table-bordered">
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>From</th>
+    <th>To</th>
+  </tr>
+  <% crews.each_with_index do |crew, index| %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= link_to crew.crew, crew_path(crew.crew), target: "_blank" %></td>
+      <td><%= crew.from_rank %></td>
+      <td><%= crew.to_rank %></td>
+    </tr>
+  <% end %>
+</table>

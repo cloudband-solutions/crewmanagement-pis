@@ -1,0 +1,18 @@
+<h1>Transmittal Record <small><%= @transmittal_record.transmittal_code %></small> <span class="status <%= @transmittal_record.status %>"><%= @transmittal_record.status %></span></h1>
+<% if @transmittal_record.status == "pending" %>
+  <%= link_to "Edit", edit_transmittal_record_path(@transmittal_record) %> |
+<% end %>
+<%= link_to "Back to Database", transmittal_records_path %>
+
+<hr>
+
+<h3>Embarking Crew</h3>
+<%= render partial: "transmittal_records/embarking_crews", locals: { transmittal_record: @transmittal_record } %>
+
+<h3>Disembarking Crew</h3>
+<%= render partial: "transmittal_records/disembarking_crews", locals: { transmittal_record: @transmittal_record } %>
+
+<h3>Crew for Promotion</h3>
+<%= render partial: "transmittal_records/crews_for_promotion", locals: { crews: @transmittal_record.transmittal_record_crew_promotions } %>
+
+<%= render partial: "transmittal_records/signatories", locals: { transmittal_record: @transmittal_record } %>

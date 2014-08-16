@@ -1,7 +1,8 @@
 <h1>Edit Transmittal Record</h1>
+<%= link_to "Back to Database", transmittal_records_path %>
+<hr>
 <div class="row">
   <div class="col-md-12">
     <%= render partial: "transmittal_records/form", locals: { transmittal_record: @transmittal_record } %>
   </div>
 </div>
-

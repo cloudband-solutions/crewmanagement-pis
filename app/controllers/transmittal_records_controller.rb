@@ -41,8 +41,7 @@ class TransmittalRecordsController < ApplicationController
 
   def destroy
     @transmittal_record = TransmittalRecord.find(params[:id])
-    @transmittal_record.status = "archived"
-    @transmittal_record.save!
+    @transmittal_record.archive!
     flash[:success] = "Successfully archived transmittal record"
     redirect_to transmittal_records_path
   end

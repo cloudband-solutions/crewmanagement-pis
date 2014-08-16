@@ -1,0 +1,35 @@
+<table class="table table-bordered">  
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Rank</th>
+    <% transmittal_record.transmittal_record_license_types.each do |trlt| %>
+      <th><%= trlt.license_type %> No.</th>
+      <th>Expiry Date</th>
+    <% end %>
+    <th>Cloth Size</th>
+    <th>Shoe Size</th>
+    <th>Contact Number</th>
+  </tr>
+  <% transmittal_record.transmittal_record_embarking_crews.each_with_index do |transmittal_record_embarking_crew, index| %>
+    <tr>
+      <td><%= index + 1%></td>
+      <td><%= link_to transmittal_record_embarking_crew.crew, crew_path(transmittal_record_embarking_crew.crew), target: "_blank" %></td>
+      <td><%= transmittal_record_embarking_crew.rank %></td>
+      <% transmittal_record.transmittal_record_license_types.each do |trlt| %>
+        <% license = transmittal_record_embarking_crew.crew.license_by_type(trlt.license_type.id) %>
+        <% if !license.nil? %>
+          <td><%= license %></td>
+          <td><%= license.expiry_date %></td>
+        <% else %>
+          <td></td>
+          <td></td>
+        <% end %>
+      <% end %>
+      <td><%= transmittal_record_embarking_crew.crew.cloth_size %></td>
+      <td><%= transmittal_record_embarking_crew.crew.shoe_size %></td>
+      <td><%= transmittal_record_embarking_crew.crew.telephone_no %></td>
+    </tr>
+  <% end %>
+</table>
+

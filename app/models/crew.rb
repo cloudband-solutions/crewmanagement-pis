@@ -21,22 +21,22 @@ class Crew < ActiveRecord::Base
   belongs_to :rank
 
   has_many :employment_records
-  accepts_nested_attributes_for :employment_records
+  accepts_nested_attributes_for :employment_records, allow_destroy: true
 
   has_many :educational_attainments
-  accepts_nested_attributes_for :educational_attainments
+  accepts_nested_attributes_for :educational_attainments, allow_destroy: true
 
   has_many :documents
-  accepts_nested_attributes_for :documents
+  accepts_nested_attributes_for :documents, allow_destroy: true
 
   has_many :licenses
-  accepts_nested_attributes_for :licenses
+  accepts_nested_attributes_for :licenses, allow_destroy: true
 
   has_many :crew_office_evaluations
-  accepts_nested_attributes_for :crew_office_evaluations
+  accepts_nested_attributes_for :crew_office_evaluations, allow_destroy: true
 
   has_many :crew_vessel_evaluations
-  accepts_nested_attributes_for :crew_vessel_evaluations
+  accepts_nested_attributes_for :crew_vessel_evaluations, allow_destroy: true
 
   validates :date_employed, presence: true
   validates :code_number, presence: true, uniqueness: true
@@ -99,5 +99,9 @@ class Crew < ActiveRecord::Base
     if self.new_record?
       self.is_archived = 'f'
     end
+  end
+
+  def license_by_type(id)
+    self.licenses.where(license_type_id: id).first
   end
 end

@@ -1,0 +1,18 @@
+<table class="table table-bordered">
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Rank</th>
+    <th>Date Embarked</th>
+    <th>Reason for Disembarkation</th>
+  </tr>
+  <% transmittal_record.transmittal_record_disembarking_crews.each_with_index do |trdc, index| %> 
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= link_to trdc.crew, crew_path(trdc.crew), target: "_blank" %></td>
+      <td><%= trdc.rank %></td>
+      <td><%= trdc.date_embarked %></td>
+      <td><%= trdc.reason_for_disembarkation %></td>
+    </tr>
+  <% end %>
+</table>

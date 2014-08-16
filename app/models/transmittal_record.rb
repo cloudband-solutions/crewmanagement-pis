@@ -25,6 +25,9 @@ class TransmittalRecord < ActiveRecord::Base
   has_many :transmittal_record_crew_promotions
   accepts_nested_attributes_for :transmittal_record_crew_promotions
 
+  has_many :transmittal_record_license_types
+  has_many :license_types, through: :transmittal_record_license_types
+
   before_validation :load_defaults
 
   def load_defaults
@@ -32,6 +35,11 @@ class TransmittalRecord < ActiveRecord::Base
       self.transmittal_code = SecureRandom.uuid
       self.status = "pending"
     end
+  end
+
+  def archive!
+    self.status = "archived"
+    self.save!
   end
 
   def to_s

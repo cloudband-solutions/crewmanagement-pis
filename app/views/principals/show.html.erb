@@ -1,4 +1,6 @@
 <h1>Principal <%= @principal.name %></h1>
+<%= link_to "Back to Database", principals_path %>
+<hr>
 <ul class="nav nav-tabs nav-justified">
 	<li class="active"><%= link_to "General Info", "#biodata", "data-toggle" => "tab" %></li>
 	<li class=""><%= link_to "Crew List", "#crewlist", "data-toggle" => "tab" %></li>
