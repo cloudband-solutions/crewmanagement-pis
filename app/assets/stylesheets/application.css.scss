@@ -20,6 +20,10 @@
 @import "bootstrap";
 @import "bootstrap-datepicker";
 
+#main {
+  margin-top: 40px;
+}
+
 span.status.pending {
   color: #fff;
   text-transform: uppercase;

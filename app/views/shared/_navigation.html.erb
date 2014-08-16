@@ -1,39 +1,37 @@
-  <div id="navigation">
-    <nav class="navbar-wrapper navbar-inverse" role="navigation">
-      <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-      </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><%= link_to "DASHBOARD", root_path %></li> 
-          <!-- DROPDOWN -->
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle active" data-toggle="dropdown">CREW<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Add Crew", new_crew_path %></li>
-              <li><%= link_to "Database", crews_path %></li>
-              <li><%= link_to "Reports", crews_reports_path %></li>
-            </ul>
-          </li>
-          <li><%= link_to "VESSELS", vessels_path %></li>
-          <li>
-            <%= link_to "PRINCIPALS", principals_path %>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle active" data-toggle="dropdown">TRANSMITTAL RECORDS<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "Add Transmittal Record", new_transmittal_record_path %></li>
-              <li><%= link_to "Database", transmittal_records_path %></li>
-            </ul>
-          </li>
-        </ul> 
-        <div class="navbar-form navbar-right">
-          <span class="login-text">Logged in as: <%= current_user.email %></span>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure you want to log-out?" }, class: "btn btn-danger" %>
-        </div>
-      </div><!-- /.navbar-collapse -->
-      </div>
-    </nav>
+<nav class="navbar-wrapper navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
   </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav">
+      <li><%= link_to "DASHBOARD", root_path %></li> 
+      <!-- DROPDOWN -->
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle active" data-toggle="dropdown">CREW<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Add Crew", new_crew_path %></li>
+          <li><%= link_to "Database", crews_path %></li>
+          <li><%= link_to "Reports", crews_reports_path %></li>
+        </ul>
+      </li>
+      <li><%= link_to "VESSELS", vessels_path %></li>
+      <li>
+        <%= link_to "PRINCIPALS", principals_path %>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle active" data-toggle="dropdown">TRANSMITTAL RECORDS<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Add Transmittal Record", new_transmittal_record_path %></li>
+          <li><%= link_to "Database", transmittal_records_path %></li>
+        </ul>
+      </li>
+    </ul> 
+    <div class="navbar-form navbar-right">
+      <span class="login-text">Logged in as: <%= current_user.email %></span>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure you want to log-out?" }, class: "btn btn-danger" %>
+    </div>
+  </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
