@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140816094740) do
+ActiveRecord::Schema.define(version: 20140817025728) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -299,6 +299,7 @@ ActiveRecord::Schema.define(version: 20140816094740) do
     t.date     "date_embarked"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "manning_agent_id"
   end
 
   create_table "transmittal_record_embarking_crews", force: true do |t|
@@ -307,6 +308,7 @@ ActiveRecord::Schema.define(version: 20140816094740) do
     t.integer  "rank_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "manning_agent_id"
   end
 
   create_table "transmittal_record_license_types", id: false, force: true do |t|

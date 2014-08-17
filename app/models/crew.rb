@@ -68,7 +68,7 @@ class Crew < ActiveRecord::Base
   scope :active, -> { where("is_archived = ?", false) }
 
   def to_s
-    "#{firstname} #{lastname}"
+    "#{firstname.upcase} #{lastname.upcase}"
   end
 
   def to_s_list

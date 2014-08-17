@@ -30,6 +30,15 @@ class TransmittalRecord < ActiveRecord::Base
 
   before_validation :load_defaults
 
+  # TODO: Proper error handling
+  def approve_form!
+    if self.status != "pending"
+      raise "error"
+    else
+
+    end
+  end
+
   def load_defaults
     if self.new_record?
       self.transmittal_code = SecureRandom.uuid

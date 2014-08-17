@@ -3,13 +3,16 @@
     <div class="col-md-12">
       <div class="well">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-3">
             <%= ff.association :crew %>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
+            <%= ff.association :manning_agent %>
+          </div>
+          <div class="col-md-3">
             <%= ff.association :reason_for_disembarkation %>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <%= ff.input :date_embarked, as: :string, input_html: { class: "form-control datepick" } %>
           </div>
         </div>
