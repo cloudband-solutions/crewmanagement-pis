@@ -17,13 +17,13 @@ class TransmittalRecord < ActiveRecord::Base
   validates :vessel, presence: true
 
   has_many :transmittal_record_embarking_crews
-  accepts_nested_attributes_for :transmittal_record_embarking_crews
+  accepts_nested_attributes_for :transmittal_record_embarking_crews, allow_destroy: true
 
   has_many :transmittal_record_disembarking_crews
-  accepts_nested_attributes_for :transmittal_record_disembarking_crews
+  accepts_nested_attributes_for :transmittal_record_disembarking_crews, allow_destroy: true
 
   has_many :transmittal_record_crew_promotions
-  accepts_nested_attributes_for :transmittal_record_crew_promotions
+  accepts_nested_attributes_for :transmittal_record_crew_promotions, allow_destroy: true
 
   has_many :transmittal_record_license_types
   has_many :license_types, through: :transmittal_record_license_types

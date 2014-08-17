@@ -10,6 +10,7 @@ class TransmittalRecordDisembarkingCrew < ActiveRecord::Base
   validates :date_embarked, presence: true
 
   belongs_to :reason_for_disembarkation
+  validates :reason_for_disembarkation
 
   before_validation :load_defaults
 
