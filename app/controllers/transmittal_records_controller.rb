@@ -1,6 +1,6 @@
 class TransmittalRecordsController < ApplicationController
   def index
-    @transmittal_records = TransmittalRecord.where(status: "pending")
+    @transmittal_records = TransmittalRecord.where("status = 'pending' OR status = 'approved'").order("status DESC").page(params[:page]).per(20)
   end
 
   def new
