@@ -3,5 +3,6 @@
 <div class="row">
   <div class="col-md-12">
     <%= render partial: "transmittal_records/list", locals: { transmittal_records: @transmittal_records } %>
+    <%= paginate @transmittal_records %>
   </div>
 </div>

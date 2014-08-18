@@ -31,11 +31,25 @@ class TransmittalRecord < ActiveRecord::Base
   before_validation :load_defaults
 
   # TODO: Proper error handling
-  def approve_form!
+  def approve!
     if self.status != "pending"
       raise "error"
     else
+      # Update employment history of disembarking crew
+      self.transmittal_record_disembarking_crews.each do |trdc|
+        employment_record = EmploymentRecord.new  
+        employment_record.crew_id = trdc.crew.id
+        employment_record.vessel_id = self.vessel.id
+        employment_record.rank_id = trdc.crew.rank.id
+        employment_record.manning_agent_id = trdc.manning_agent.id
+        employment_record.sign_on = trdc.date_embarked
+        employment_record.sign_off = trdc.sign_off
+        employment_record.reason_for_disembarkation_id = trdc.reason_for_disembarkation.id
+        employment_record.save!
+      end
 
+      self.status = "approved"
+      self.save!
     end
   end
 

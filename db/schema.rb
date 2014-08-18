@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140817025728) do
+ActiveRecord::Schema.define(version: 20140818072023) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -170,7 +170,6 @@ ActiveRecord::Schema.define(version: 20140817025728) do
     t.integer  "vessel_id"
     t.date     "sign_on"
     t.date     "sign_off"
-    t.string   "reason_of_disembarkation"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "crew_id"
@@ -300,6 +299,7 @@ ActiveRecord::Schema.define(version: 20140817025728) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "manning_agent_id"
+    t.date     "sign_off"
   end
 
   create_table "transmittal_record_embarking_crews", force: true do |t|

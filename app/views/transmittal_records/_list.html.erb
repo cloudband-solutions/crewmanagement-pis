@@ -18,13 +18,16 @@
         <td><%= tr.vessel %></td>
         <td><%= tr.destination %></td>
         <td><%= tr.transmittal_record_embarking_crews.count %></td>
-        <td><%= tr.transmittal_record_embarking_crews.count %></td>
+        <td><%= tr.transmittal_record_disembarking_crews.count %></td>
         <td><%= tr.transmittal_record_crew_promotions.count %></td>
         <td><span class="status <%= tr.status %>"><%= tr.status %></span></td>
         <td>
           <%= link_to "Show", transmittal_record_path(tr), class: "btn btn-primary btn-xs" %>
           <%= link_to "Edit", edit_transmittal_record_path(tr), class: "btn btn-info btn-xs" %>
           <%= link_to "Delete", transmittal_record_path(tr), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } %>
+          <% if tr.status == "pending" %>
+            <%= link_to "Approve", transmittal_record_approve_path(tr), class: "btn btn-info btn-xs", method: :post, data: { confirm: "Are you sure?" } %>
+          <% end %>
         </td>
       </tr>
     <% end %>

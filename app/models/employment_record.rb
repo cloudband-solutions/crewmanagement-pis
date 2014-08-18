@@ -3,6 +3,7 @@ class EmploymentRecord < ActiveRecord::Base
   belongs_to :vessel
   belongs_to :rank
   belongs_to :manning_agent
+  belongs_to :reason_for_disembarkation
 
   #validates :crew, presence: true
   validates :vessel, presence: true
@@ -10,5 +11,4 @@ class EmploymentRecord < ActiveRecord::Base
   validates :rank, presence: true
   validates :sign_on, presence: true
   validates :sign_off, presence: true
-  belongs_to :reason_for_disembarkation
 end
