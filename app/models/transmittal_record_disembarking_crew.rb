@@ -15,6 +15,8 @@ class TransmittalRecordDisembarkingCrew < ActiveRecord::Base
   belongs_to :manning_agent
   validates :manning_agent, presence: true
 
+  validates :sign_off, presence: true
+
   before_validation :load_defaults
 
   def load_defaults

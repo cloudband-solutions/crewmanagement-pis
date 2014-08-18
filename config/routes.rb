@@ -28,4 +28,5 @@ BaliwagIs::Application.routes.draw do
   get "/reports/:id/generate_crew_file", to: "crews#generate_crew_file", as: :generate_crew_file
   resources :principals, only: [:index, :show]
   resources :transmittal_records
+  post "/transmittal_records/:id/approve", to: "transmittal_records#approve", as: :transmittal_record_approve
 end

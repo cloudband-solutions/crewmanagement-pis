@@ -39,6 +39,13 @@ class TransmittalRecordsController < ApplicationController
     end
   end
 
+  def approve
+    @transmittal_record = TransmittalRecord.find(params[:id])
+    @transmittal_record.approve!
+    flash[:success] = "Successfully approved transmittal record"
+    redirect_to transmittal_records_path
+  end
+
   def destroy
     @transmittal_record = TransmittalRecord.find(params[:id])
     @transmittal_record.archive!
