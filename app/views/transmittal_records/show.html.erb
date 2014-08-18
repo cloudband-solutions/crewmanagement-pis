@@ -15,4 +15,6 @@
 <h3>Crew for Promotion</h3>
 <%= render partial: "transmittal_records/crews_for_promotion", locals: { crews: @transmittal_record.transmittal_record_crew_promotions } %>
 
+<%= render partial: "transmittal_records/destination_view", locals: { transmittal_record: @transmittal_record } %>
+
 <%= render partial: "transmittal_records/signatories", locals: { transmittal_record: @transmittal_record } %>
