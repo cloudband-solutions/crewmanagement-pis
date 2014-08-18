@@ -1,0 +1,12 @@
+<h1>Crew Manifest</h1>
+<div class="row">
+  <div class="col-md-12">
+    <%= render partial: "reports/crew_manifest_form" %>
+  </div>
+</div>
+
+<% if @crews.nil? %>
+  Please fill in vessel and license type details
+<% else %>
+  <%= render partial: "reports/crew_manifest_list", locals: { crews: @crews, license_types: @license_types } %>
+<% end %>

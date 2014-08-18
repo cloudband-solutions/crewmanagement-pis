@@ -13,7 +13,6 @@
         <ul class="dropdown-menu">
           <li><%= link_to "Add Crew", new_crew_path %></li>
           <li><%= link_to "Database", crews_path %></li>
-          <li><%= link_to "Reports", crews_reports_path %></li>
         </ul>
       </li>
       <li><%= link_to "VESSELS", vessels_path %></li>
@@ -25,6 +24,12 @@
         <ul class="dropdown-menu">
           <li><%= link_to "Add Transmittal Record", new_transmittal_record_path %></li>
           <li><%= link_to "Database", transmittal_records_path %></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle active" data-toggle="dropdown">REPORTS<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Crew Manifest", reports_crew_manifest_path %></li>
         </ul>
       </li>
     </ul> 

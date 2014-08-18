@@ -67,6 +67,10 @@ class Crew < ActiveRecord::Base
 
   scope :active, -> { where("is_archived = ?", false) }
 
+  def self.all_by_vessel(v)
+    self.active.where(vessel_id: v.id)
+  end
+
   def to_s
     "#{firstname.upcase} #{lastname.upcase}"
   end
