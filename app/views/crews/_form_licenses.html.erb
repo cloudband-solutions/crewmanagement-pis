@@ -24,6 +24,9 @@
     </div>
     <div class="row">
       <div class="col-md-4">
+        <%= ff.association :license_category %>
+      </div>
+      <div class="col-md-4">
         <%= ff.input :attachment, as: :file %>
       </div>
     </div>
