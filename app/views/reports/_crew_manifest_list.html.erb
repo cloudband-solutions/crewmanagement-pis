@@ -1,0 +1,23 @@
+<table class="table table-bordered">
+  <tr>
+    <th>No.</th>
+    <th>Name</th>
+    <th>Date of Birth</th>
+    <th>Rank</th>
+    <% license_types.each do |lt| %>
+      <th><%= lt %></th>
+    <% end %>
+  </tr>
+  <% crews.each_with_index do |crew, i| %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td><%= crew %></td>
+      <td><%= crew.birthday %></td>
+      <td><%= crew.rank %></td>
+      <% license_types.each do |lt| %>
+        <% l = crew.licenses.where(license_type_id: lt.id).first %>
+        <td><%= "#{l.license_number} - #{l.expiry_date}" if !l.nil? %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

@@ -28,3 +28,6 @@ gem 'chart-js-rails'
 gem 'prawn'
 gem 'pdfkit'
 gem 'select2-rails'
+gem 'axlsx'
+gem 'tzinfo-data', platforms: [:mingw, :mswin]
+gem 'prawn-table'

@@ -5,26 +5,31 @@
   </div>
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav">
-      <li><%= link_to "DASHBOARD", root_path %></li> 
+    <ul class="nav navbar-nav my_nav">
+      <li><%= link_to "DASHBOARD", root_path, class: "#{'active' if params[:controller] == 'pages'}" %></li> 
       <!-- DROPDOWN -->
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle active" data-toggle="dropdown">CREW<b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle <%= 'active' if params[:controller] == 'crews'%>" data-toggle="dropdown">CREW<b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><%= link_to "Add Crew", new_crew_path %></li>
           <li><%= link_to "Database", crews_path %></li>
-          <li><%= link_to "Reports", crews_reports_path %></li>
         </ul>
       </li>
-      <li><%= link_to "VESSELS", vessels_path %></li>
+      <li><%= link_to "VESSELS", vessels_path, class: "#{'active' if params[:controller] == 'vessels'}" %></li>
       <li>
-        <%= link_to "PRINCIPALS", principals_path %>
+        <%= link_to "PRINCIPALS", principals_path, class: "#{'active' if params[:controller] == 'principals'}" %>
       </li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle active" data-toggle="dropdown">TRANSMITTAL RECORDS<b class="caret"></b></a>
+        <a href="#" class="dropdown-toggle <%= 'active' if params[:controller] == 'transmittal_records' %>" data-toggle="dropdown">TRANSMITTAL RECORDS<b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><%= link_to "Add Transmittal Record", new_transmittal_record_path %></li>
           <li><%= link_to "Database", transmittal_records_path %></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle <%= 'active' if params[:controller] == 'reports' %>" data-toggle="dropdown">REPORTS<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Crew Manifest", reports_crew_manifest_path %></li>
         </ul>
       </li>
     </ul> 

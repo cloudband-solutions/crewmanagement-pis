@@ -24,6 +24,16 @@
   margin-top: 40px;
 }
 
+.my_nav {
+  li a {
+    &.active {
+      color: #fff;
+      border-bottom: 5px solid #78AB46;
+      padding-bottom: 10px;
+    }
+  }
+}
+
 span.status.pending {
   color: #fff;
   text-transform: uppercase;
