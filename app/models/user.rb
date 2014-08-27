@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  USER_TYPES = ["principal", "normal", "admin", "encoder"]
+  USER_TYPES = ["principal", "normal", "admin", "encoder", "manager"]
 
   validates :user_type, presence: true, inclusion: { in: USER_TYPES }
 

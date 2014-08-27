@@ -44,7 +44,11 @@ class CrewsController < ApplicationController
   end
 
   def index
-  	@crews = Crew.active.order("crews.lastname")
+    if %w( admin encoder manager ).include? current_user.user_type
+      @crews = Crew.active.order("crews.lastname")
+    elsif current_user.user_type == "principal"
+      @crews = Crew.active.order("crews.lastname")
+    end
 
     if params[:q].present?
       @q = params[:q]
