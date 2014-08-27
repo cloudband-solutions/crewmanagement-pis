@@ -53,12 +53,26 @@ ActiveAdmin.register Crew do
       f.input :nearest_relative_name, label: "Nearest Relative Name"
       f.input :nearest_relative_relationship, label: "Relationship"
       f.input :nearest_relative_address, label: "Relative Address"
+
+      f.has_many :educational_attainments  do |ff|
+       ff.input :year_graduated, label: "Year Graduated"
+       ff.input :school, label: "School"
+       ff.input :course_finished, label: "Course Finished"
+     end
+      f.has_many :licenses do |ff|
+        ff.input :license_number, label: "License Number"
+        ff.input :license_type, label: "License Type"
+       
+
+    end
     end
 
     f.inputs "Images" do 
       f.input :picture, label: "2x2 Picture"
       f.input :signature, label: "Signature"
     end
+
+  
     
     f.actions
   end

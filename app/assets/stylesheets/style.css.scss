@@ -110,6 +110,7 @@
   width: 20%;
   font-size: 15px;
   font-weight: bold;
+
 }
 
  .b {
@@ -121,6 +122,7 @@
    background-color: white;
    color: black;
    font-size: 15px;
+   width: 283px;
 
 }
 
@@ -226,11 +228,11 @@
   background-color: #78AB46;
   color: white;
   font-weight: bold;
-  width: 300px;
+  width: 100px;
 }
 
 .label-f {
-
+width: 283px;
 
 }
 
@@ -241,6 +243,11 @@
 
 .label_title {
   font-weight: bold;
+}
+
+.table td {
+padding: 3px!important;
+padding-left: 5px!important;
 }
 
 
