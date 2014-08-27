@@ -61,7 +61,6 @@ class Crew < ActiveRecord::Base
   validates :pagibig_number, presence: true
   validates :philhealth_number, presence: true
   validates :is_archived, inclusion: { in: [true, false] }
-  validates :sign_on, presence: true
 
   before_validation :load_defaults
 
