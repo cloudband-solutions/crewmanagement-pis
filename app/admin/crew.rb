@@ -58,13 +58,43 @@ ActiveAdmin.register Crew do
        ff.input :year_graduated, label: "Year Graduated"
        ff.input :school, label: "School"
        ff.input :course_finished, label: "Course Finished"
-     end
+      end
       f.has_many :licenses do |ff|
         ff.input :license_number, label: "License Number"
         ff.input :license_type, label: "License Type"
-       
-
-    end
+        ff.input :rank, label: "Rank"
+        ff.input :date_issued, label: "Date Issued", as: :datepicker
+        ff.input :expiry_date, label: "Expiry Date", as: :datepicker
+        ff.input :issued_by, label: "Issued By"
+        ff.input :license_category, label: "License Category"
+        ff.input :attachment, label: "Attachment"
+      end
+      f.has_many :documents do |ff|
+        ff.input :document_kind, label: "Document Kind"
+        ff.input :doc_number, label: "Document Number"
+        ff.input :issued_at, label: "Issued at", as: :datepicker
+        ff.input :expiry_date, label: "Expiry Date", as: :datepicker
+        ff.input :issued_by, label: "Issued by"
+        ff.input :attachment, label: "Attachment"
+      end
+      f.has_many :crew_vessel_evaluations do |ff|
+        ff.input :vessel, label: "Vessel"
+        ff.input :date_of_evaluation, label: "Date of Evaluation", as: :datepicker
+        ff.input :attachment, label: "Attachment"
+      end
+      f.has_many :crew_office_evaluations do |ff|
+        ff.input :vessel, label: "Vessel"
+        ff.input :date_of_evaluation, label: "Date of Evaluation", as: :datepicker
+        ff.input :attachment, label: "Attachment"
+      end
+      f.has_many :employment_records do |ff|
+        ff.input :vessel, label: "Vessel"
+        ff.input :manning_agent, label: "Manning Agent"
+        ff.input :rank, label: "Rank"
+        ff.input :sign_on, label: "Sign on", as: :datepicker
+        ff.input :sign_off, label: "Sign off", as: :datepicker
+        ff.input :reason_for_disembarkation, label: "Reason of Disembarkation"
+      end
     end
 
     f.inputs "Images" do 
