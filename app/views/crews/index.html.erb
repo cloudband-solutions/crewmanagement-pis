@@ -1,6 +1,9 @@
 <div class="row">
   <div class="col-md-3">
-    <h1>Crew Database</h1>
+    <br>
+    <%= link_to new_crew_path, class: "btn btn-primary btn-lg btn-block" do %>
+      <span class="glyphicon glyphicon-user"></span> New Member
+    <% end %>
   </div>
   <div class="col-md-9">
     <%= render partial: "crews/search_tool" %>

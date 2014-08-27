@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820140121) do
+ActiveRecord::Schema.define(version: 20140827085247) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140820140121) do
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "short_description"
   end
 
   create_table "crew_office_evaluations", force: true do |t|
@@ -138,6 +139,7 @@ ActiveRecord::Schema.define(version: 20140820140121) do
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "short_description"
   end
 
   create_table "documents", force: true do |t|
@@ -197,6 +199,7 @@ ActiveRecord::Schema.define(version: 20140820140121) do
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "short_description"
   end
 
   create_table "licenses", force: true do |t|
@@ -223,6 +226,7 @@ ActiveRecord::Schema.define(version: 20140820140121) do
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "short_description"
   end
 
   create_table "poea_companies", force: true do |t|
@@ -258,6 +262,7 @@ ActiveRecord::Schema.define(version: 20140820140121) do
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "short_description"
   end
 
   create_table "reason_for_disembarkations", force: true do |t|

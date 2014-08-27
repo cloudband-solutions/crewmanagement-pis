@@ -2,10 +2,16 @@
   <div class="col-md-12">
     <h4>Crew Count By Rank</h4>
     <div class="well">
-      <div id="crew-count-by-rank-chart-wrapper">
-        <canvas id="crew-count-by-rank-chart">
-        </canvas>
-      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Rank Name</th>
+            <th>Count</th>
+          </tr>
+        </thead>
+        <tbody id="rankTable">
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
@@ -14,25 +20,9 @@
 $(document).ready(function() {
   var url = "<%= api_crew_count_by_rank_path %>";
   $.get(url, function(data) {
-    var chartData = {
-      labels: data.labels,
-      datasets: [
-        {
-          fillColor: "rgba(63,206,63,0.5)",
-          strokeColor: "rgba(220,220,220,0.8)",
-          highlightFill: "rgba(220,220,220,0.75)",
-          highlightStroke: "rgba(220,220,220,1)",
-          data: data.data
-        }
-      ]
-    }
-
-    var wrapper = $("#crew-count-by-rank-chart-wrapper");
-    var c = $("#crew-count-by-rank-chart");
-    c.attr('width', wrapper.width());
-    c.attr('height', wrapper.height());
-    var ctx = c.get(0).getContext("2d");
-    var myChart = new Chart(ctx).Bar(chartData);
+    $.each(data, function(i, d) {
+      $("#rankTable").append('<tr><td>' + d.name + '</td><td>' + d.count + '</td></tr>');
+    });
   });
 });
 </script>

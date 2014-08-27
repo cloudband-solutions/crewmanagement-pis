@@ -4,25 +4,21 @@ module Api
     before_filter :authenticate_api
 
     def crew_count_by_vessel
-      labels = []
       data = []
       Vessel.all.each do |v|
-        labels << v.name
-        data << v.active_crews.count
+        data << { name: v.name, count: v.active_crews.count }
       end
 
-      render json: { labels: labels, data: data }
+      render json: data
     end
 
     def crew_count_by_rank
-      labels = []
       data = []
       Rank.all.each do |r|
-        labels << r.name
-        data << r.active_crews.count
+        data << { name: r.name, count: r.active_crews.count }
       end
 
-      render json: { labels: labels, data: data }
+      render json: data
     end
 
     private
