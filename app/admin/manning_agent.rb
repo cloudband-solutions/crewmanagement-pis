@@ -22,6 +22,7 @@ ActiveAdmin.register ManningAgent do
     f.inputs "Manning Agent" do
       f.input :name
       f.input :code
+      f.input :short_description
     end
     f.actions
   end
@@ -30,6 +31,7 @@ ActiveAdmin.register ManningAgent do
     attributes_table do 
       row :name
       row :code
+      row :short_description
     end
   end 
 

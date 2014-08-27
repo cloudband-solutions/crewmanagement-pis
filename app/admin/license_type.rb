@@ -21,6 +21,7 @@ ActiveAdmin.register LicenseType do
     f.inputs "License Type" do
       f.input :name
       f.input :code
+      f.input :short_description
     end
     f.actions
   end
@@ -29,6 +30,7 @@ ActiveAdmin.register LicenseType do
     attributes_table do 
       row :name
       row :code
+      row :short_description
     end
   end 
 
