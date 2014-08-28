@@ -1,3 +1,7 @@
+<%= debug @crew.licenses %>
+<% @crew.licenses.each do |license| %>
+  <%= license.license_category %>
+<% end %>
 <div class="row">
   <div class="col-md-2">
     <div class="box-image">
