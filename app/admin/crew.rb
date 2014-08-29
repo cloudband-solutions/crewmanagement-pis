@@ -34,10 +34,15 @@ ActiveAdmin.register Crew do
       f.input :rank, label: "Current Rank"
       f.input :vessel, label: "Vessel Assigned"
       f.input :address, label: "Address"
+      f.input :city_address, label: "City Address"
+      f.input :provincial_address, label: "Provincial Address"
+      f.input :zip_code, label: "Zipcode"
       f.input :telephone_no, label: "Telephone Number"
       f.input :cellphone_no, label: "Cellphone Number"
       f.input :birthday, label: "Birthday"
       f.input :birthplace, label: "Birth Place"
+      f.input :blood_type, :label => "Blood Type", :as => :select, :collection => ["A","B","AB", "O"]
+      f.input :blood_pressure, label: "Blood Pressure"
       f.input :nationality, label: "Nationality"
       f.input :civil_status, label: "Civil Status"
       f.input :height, label: "Height"
@@ -50,10 +55,17 @@ ActiveAdmin.register Crew do
       f.input :tin_no, label: "TIN Number"
       f.input :pagibig_number, label: "PAG-IBIG Number"
       f.input :philhealth_number, label: "Philhealth Number"
+      f.input :father_name, label: "Father's Name"
+      f.input :mother_maiden_name, label: "Mother's Maiden Name"
+      f.input :father_name, label: "Father's Name"
+      f.input :mother_maiden_name, label: "Mother's Maiden Name"
+      f.input :spouse_name, label: "Spouse's Name"
+      f.input :number_of_children, label: "Number of Children"
+      f.input :is_smoker, label: "Are you a smoker?"
       f.input :nearest_relative_name, label: "Nearest Relative Name"
       f.input :nearest_relative_relationship, label: "Relationship"
       f.input :nearest_relative_address, label: "Relative Address"
-
+      
       f.has_many :educational_attainments  do |ff|
        ff.input :year_graduated, label: "Year Graduated"
        ff.input :school, label: "School"
@@ -117,6 +129,9 @@ ActiveAdmin.register Crew do
       row :rank
       row :vessel
       row :address
+      row :city_address
+      row :provincial_address
+      row :zip_code
       row :telephone_no
       row :cellphone_no
       row :birthday
@@ -133,8 +148,20 @@ ActiveAdmin.register Crew do
       row :tin_no
       row :pagibig_number
       row :philhealth_number
+      row :father_name
+      row :mother_maiden_name
+      row :spouse_name
+      row :number_of_children
+      row :is_smoker
+      
+
+    end
+
+
+    attributes_table do
       row :nearest_relative_name
       row :nearest_relative_relationship
+      row :nearest_relative_address
     end
 
     attributes_table do

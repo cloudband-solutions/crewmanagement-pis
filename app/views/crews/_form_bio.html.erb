@@ -62,30 +62,59 @@
 </div>
 
 <div class="row crew_form">
-  <div class="col-md-3">
+  <div class="col-md-6">
+     <%= f.input :city_address, label: "City Address", input_html: { class: "form-control" }, placeholder: "Enter City Address" %>
+  </div>
+  <div class="col-md-6">
    <%= f.input :birthday, label: "Birthday", as: :string, input_html: { class: "form-control datepick" } %>
   </div>
-  <div class="col-md-3">
+  
+ 
+</div>
+
+  <div class="row crew_form">
+    <div class="col-md-6">
+     <%= f.input :provincial_address, label: "Provincial Address", input_html: { class: "form-control" }, placeholder: "Enter Provincial Address" %>
+    </div>
+
+    <div class="col-md-6">
     <%= f.input :birthplace, label: "Birth Place", input_html: { class: "form-control" }, placeholder: "Enter Birth Place" %>
-  </div>    
+   </div>   
+   
+  </div>
+
+<div class="row crew_form"> 
   <div class="col-md-3">
-    <%= f.input :nationality, label: "Nationality", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Nationality" %>
+    <%= f.input :zip_code, label: "Zipcode", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Zipcode" %>
   </div> 
   <div class="col-md-3">
-    <%= f.input :civil_status, input_html: { class: "form-control" }, placeholer: "Enter civil status", as: :select, collection: ["single", "married", "widowed"] %>
-  </div>
-</div>
-<div class="row crew_form"> 
-  <div class="col-md-4">
     <%= f.input :height, label: "Height", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Height" %>
   </div> 
-   <div class="col-md-4">
+   <div class="col-md-3">
      <%= f.input :weight, label: "Weight", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Weight" %>
   </div> 
-  <div class="col-md-4">
+  <div class="col-md-3">
      <%= f.input :eye_color, label: "Eye Color", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Eye Color" %>
   </div>
 </div>
+  
+<div class="row crew_form"> 
+ <div class="col-md-3">
+    <%= f.input :blood_type, as: :select, input_html: { class: "form-control input-size_age" }, collection: ["A","B","AB","O"] %>
+  </div> 
+  <div class="col-md-3">
+     <%= f.input :blood_pressure, label: "Blood Pressure", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Blood Pressure" %>
+  </div>
+   <div class="col-md-3"> 
+     <%= f.input :nationality, label: "Nationality", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Nationality" %>
+     </div> 
+   <div class="col-md-3">
+    <%= f.input :civil_status, input_html: { class: "form-control" }, placeholer: "Enter civil status", as: :select, collection: ["single", "married", "widowed"] %>
+    </div>
+
+</div>
+
+
 <div class="row crew_form">
   <div class="col-md-6">
     <%= f.input :distinguishing_marks, as: :text, input_html: { class: "form-control" } %>
@@ -112,6 +141,29 @@
     <%= f.input :philhealth_number, label: "Philhealth Number", input_html: { class: "form-control" }, placeholder: "Enter Pag-ibig Number" %>
   </div>
 </div>
+
+<div class="row crew_form">
+  <div class="col-md-4">
+    <%= f.input :father_name, label: "Father's Name", input_html: { class: "form-control" }, placeholder: "Enter Father's Name" %>
+  </div> 
+  <div class="col-md-4">
+    <%= f.input :mother_maiden_name, label: "Mother's Maiden Name", input_html: { class: "form-control" }, placeholder: "Enter Mother's Maiden Name" %>
+  </div> 
+   <div class="col-md-4">
+    <%= f.input :spouse_name, label: "Spouse's Name", input_html: { class: "form-control" }, placeholder: "Enter Spouse's Name" %>
+  </div> 
+</div>
+<div class="row crew_form">
+  <div class="col-md-4">
+    <%= f.input :number_of_children, label: "Number of Children", input_html: { class: "form-control" }, placeholder: "Enter Father's Name" %>
+  </div> 
+  
+  <div class="col-md-3">
+    <%= f.input :is_smoker, label: "Are you a smoker?", input_html: { class: "form-control" } %>
+  </div> 
+   
+</div>
+
 <div class="well">
   <div class="row crew_form">
      <div class="col-md-4">
