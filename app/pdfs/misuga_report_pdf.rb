@@ -154,7 +154,7 @@ class MisugaReportPdf < Prawn::Document
 	  	license_cat = LicenseCategory.where(:name=>'STCW 1995')
 	  	licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
 	  	licenses.each do |license|
-	  		data << [license.license_type.to_s, license.license_number, license.date_issued.to_s, license.expiry_date.to_s, '']
+	  		data << [license.license_type.to_s, license.license_number, license.date_issued.to_s, license.expiry_date.to_s, '','']
 	  	end
 	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
 
@@ -183,7 +183,34 @@ class MisugaReportPdf < Prawn::Document
 	  	data = [
 	  		['',date_issued,expiry_date,issued_by]
 	  	]
+	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
 
+	  	move_down 20
+
+	  	text "3. ENGLISH ABILITY", :font_style=>:bold, :size=>12
+	  	colspan = make_cell(:content => " ", :colspan => 5);
+	  	data = [
+	  		[' ',colspan],
+	  		['Read and Write','5 Excellent','4 Good','3 Acceptable',' 2 Poor','1 Unsuitable'],
+	  		['Speak and Listen','5 Excellent','4 Good','3 Acceptable',' 2 Poor','1 Unsuitable']
+	  	]
+	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
+
+	  	move_down 20
+	  	text "4. EXPERIENCE AND UNDERSTANDING OF ISM", :font_style=>:bold, :size=>12
+	  	data =[
+	  		['Experience','1 Yes','2 No',make_cell(:content=>'',:colspan=>3)],
+	  		['Evaluation','5 Excellent','4 Good','3 Acceptable',' 2 Poor','1 Unsuitable']
+	  	]
+	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
+
+	  	move_down 20
+	  	text "5. SEAMAN'S HISTORY (WITHIN THE LAST TEN YEARS)", :font_style=>:bold, :size=>12
+	  	text "<b>Note:</b> 1) Indicated whether vessel is M/V (Motor Vessel), S/S or S/T(Steam Turbine) etc.", :size=>8, :inline_format => true
+			move_down 5
+			draw_text "2) Under TYPE Indicate whether Bulk, Log, VLCC, Chemical, LPG, etc.", :size=>8, :at=>[cursor-3, cursor]
+			move_down 10
+			draw_text "3) For Engine Officers and Ratings Indicate Engine Type and KW", :size=>8, :at=>[cursor+6, cursor]
 
     end
 
