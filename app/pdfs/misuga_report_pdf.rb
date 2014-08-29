@@ -120,7 +120,8 @@ class MisugaReportPdf < Prawn::Document
 	  	data = [
 	  		[country, rank, number, date_issued, expiry_date]
 	  	]
-	  	licenses = crew.licenses.where(:license_category_id=>'1')
+	  	license_cat = LicenseCategory.where(:name=>'License of Officer')
+	  	licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
 	  	licenses.each do |license|
 	  		data << [license.license_type.to_s, license.rank.to_s, license.license_number, license.date_issued.to_s, license.expiry_date.to_s]
 	  	end
@@ -133,7 +134,8 @@ class MisugaReportPdf < Prawn::Document
 	  	data =[
 	  		['',number, date_issued, expiry_date, remarks]
 	  	]
-	  	licenses = crew.licenses.where(:license_category_id=>LicenseCategory.where(:name => "License of Officer").first.id)
+	  	license_cat = LicenseCategory.where(:name=>'Passports & Seaman Book')
+	  	licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
 	  	licenses.each do |license|
 	  		data << [license.license_type.to_s, license.license_number, license.date_issued.to_s, license.expiry_date.to_s, '']
 	  	end
@@ -149,6 +151,11 @@ class MisugaReportPdf < Prawn::Document
 	  	data = [
 	  		[kind_of_certificate, certified_as, certificate_number, date_issued, expiry_date, limitation]
 	  	]
+	  	license_cat = LicenseCategory.where(:name=>'STCW 1995')
+	  	licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
+	  	licenses.each do |license|
+	  		data << [license.license_type.to_s, license.license_number, license.date_issued.to_s, license.expiry_date.to_s, '']
+	  	end
 	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
 
 	  	move_down 20
