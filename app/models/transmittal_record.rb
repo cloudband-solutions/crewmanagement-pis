@@ -1,6 +1,6 @@
 class TransmittalRecord < ActiveRecord::Base
 
-  STATUSES = ["pending", "approved", "archived"]
+  STATUSES = ["pending", "on-transit", "approved", "archived"]
 
   validates :transmittal_code, presence: true, uniqueness: true
   validates :prepared_by, presence: true
@@ -30,10 +30,19 @@ class TransmittalRecord < ActiveRecord::Base
 
   before_validation :load_defaults
 
+  def transit!
+    if self.status != "pending"
+      raise "error in transit!"
+    else
+      self.status = "on-transit"
+      self.save!
+    end
+  end
+
   # TODO: Proper error handling
   def approve!
-    if self.status != "pending"
-      raise "error"
+    if self.status != "on-transit"
+      raise "error in approve!"
     else
       # Update employment history of disembarking crew
       self.transmittal_record_disembarking_crews.each do |trdc|

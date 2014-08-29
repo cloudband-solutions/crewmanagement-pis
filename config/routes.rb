@@ -33,4 +33,5 @@ BaliwagIs::Application.routes.draw do
   resources :principals, only: [:index, :show]
   resources :transmittal_records
   post "/transmittal_records/:id/approve", to: "transmittal_records#approve", as: :transmittal_record_approve
+  post "/transmittal_records/:id/transit", to: "transmittal_records#transit", as: :transmittal_record_transit
 end

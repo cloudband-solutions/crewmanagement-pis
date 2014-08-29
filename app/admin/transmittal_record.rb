@@ -23,6 +23,7 @@ ActiveAdmin.register TransmittalRecord do
 	form do |f|
 		f.inputs "Details" do 
 			f.input :vessel
+      f.input :status, as: :select, collection: TransmittalRecord::STATUSES
 			f.input :prepared_by
 			f.input :prepared_by_position
 			f.input :approved_by

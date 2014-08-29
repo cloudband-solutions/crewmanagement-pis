@@ -1,6 +1,6 @@
 class TransmittalRecordsController < ApplicationController
   def index
-    @transmittal_records = TransmittalRecord.where("status = 'pending' OR status = 'approved'").order("status DESC").page(params[:page]).per(20)
+    @transmittal_records = TransmittalRecord.where("status = 'pending' OR status = 'approved' OR status = 'on-transit'").order("status DESC").page(params[:page]).per(20)
   end
 
   def new
@@ -37,6 +37,13 @@ class TransmittalRecordsController < ApplicationController
       flash[:error] = "Error in saving transmittal record."
       render :edit
     end
+  end
+
+  def transit
+    @transmittal_record = TransmittalRecord.find(params[:id])
+    @transmittal_record.transit!
+    flash[:success] = "Successfully set transmittal record to on-transit"
+    redirect_to transmittal_records_path
   end
 
   def approve

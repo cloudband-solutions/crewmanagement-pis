@@ -26,6 +26,9 @@
           <%= link_to "Edit", edit_transmittal_record_path(tr), class: "btn btn-info btn-xs" %>
           <%= link_to "Delete", transmittal_record_path(tr), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } %>
           <% if tr.status == "pending" %>
+            <%= link_to "On-Transit", transmittal_record_transit_path(tr), class: "btn btn-info btn-xs", method: :post, data: { confirm: "Are you sure?" } %>
+          <% end %>
+          <% if tr.status == "on-transit" %>
             <%= link_to "Approve", transmittal_record_approve_path(tr), class: "btn btn-info btn-xs", method: :post, data: { confirm: "Are you sure?" } %>
           <% end %>
         </td>

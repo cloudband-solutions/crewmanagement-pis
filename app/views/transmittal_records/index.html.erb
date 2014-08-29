@@ -1,8 +1,17 @@
-<h1>Transmittal Records</h1>
-<hr>
+<div class="row">
+  <div class="col-md-3">
+    <%= link_to new_transmittal_record_path, class: "btn btn-primary btn-lg btn-block" do %>
+      <span class="glyphicon glyphicon-folder-close"></span> New Transmittal Record
+    <% end %>
+  </div>
+  <div class="col-md-9">
+    <%= render partial: "transmittal_records/search_tool" %>
+  </div>
+</div>
 <div class="row">
   <div class="col-md-12">
     <%= render partial: "transmittal_records/list", locals: { transmittal_records: @transmittal_records } %>
     <%= paginate @transmittal_records %>
   </div>
 </div>
+

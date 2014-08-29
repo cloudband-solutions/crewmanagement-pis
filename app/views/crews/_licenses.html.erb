@@ -5,6 +5,7 @@
     <th class="label-c">Date Issued</th>
     <th class="label-c">Expiry Date</th>
     <th class="label-c">Issued By</th>
+    <th class="label-c">Training Center</th>
     <th class="label-c">Actions</th>
   </tr>
   <% licenses.each do |license| %>
@@ -14,6 +15,7 @@
       <td class="label-d-a"><%= license.date_issued %></td>
       <td class="label-d-a"><%= license.expiry_date %></td>
       <td class="label-d-a"><%= license.issued_by %></td>
+      <td class="label-d-a"><%= license.training_center %></td>
       <td class="label-d-a">
         <% if license.attachment.exists? %>
           <%= link_to "Download", license.attachment.url, target: "_blank" %>
