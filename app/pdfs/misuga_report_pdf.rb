@@ -3,8 +3,8 @@ class MisugaReportPdf < Prawn::Document
     super()
 
     Prawn::Document.generate("app/pdfs/crew.pdf") do
-    	image "#{Prawn::DATADIR}/images/pigs.jpg", :width=>100, :at=>[0,720]
-		text "MISUGA KAIUN CO., LTD.", :align=>:center, :size=>12, :style=>:bold_italic
+    	image "#{Rails.root}/app/assets/images/pictures/missing_standard.png", :width=>80, :height=>80, :at=>[0,720]
+    	text "MISUGA KAIUN CO., LTD.", :align=>:center, :size=>12, :style=>:bold_italic
 	    text "1692-2 Nakanosho-cho, Shikokuchuo-shi", :align=>:center, :size=>10
 	    text "Ehime 799-0422, Japan", :align=>:center, :size=>10
 	    move_down 10
@@ -162,10 +162,15 @@ class MisugaReportPdf < Prawn::Document
 
 	  	text "5. TRAINING CERTIFICATES", :font_style=>:bold, :size=>12
 	  	training_course = make_cell(:content => "Training Course", :font_style=>:bold)
-	  	training_center = make_cell(:content => "Training Course", :font_style=>:bold)
+	  	training_center = make_cell(:content => "Training Center", :font_style=>:bold)
 	  	data = [
 	  		[training_course, number, date_issued, training_center]
 	  	]
+	  	license_cat = LicenseCategory.where(:name=>'Training Certificates')
+	  	licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
+	  	licenses.each do |license|
+	  		data << [license.license_type.to_s, license.license_number, license.date_issued.to_s, license.training_center.to_s]
+	  	end
 	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
 
 	  	move_down 20
@@ -183,6 +188,12 @@ class MisugaReportPdf < Prawn::Document
 	  	data = [
 	  		['',date_issued,expiry_date,issued_by]
 	  	]
+
+	  	license_cat = LicenseCategory.where(:name=>'Physical Inspection, Yellow Card')
+	  	licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
+	  	licenses.each do |license|
+	  		data << [license.license_type.to_s, license.date_issued.to_s, license.expiry_date.to_s, license.issued_by]
+	  	end
 	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
 
 	  	move_down 20
@@ -206,11 +217,28 @@ class MisugaReportPdf < Prawn::Document
 
 	  	move_down 20
 	  	text "5. SEAMAN'S HISTORY (WITHIN THE LAST TEN YEARS)", :font_style=>:bold, :size=>12
-	  	text "<b>Note:</b> 1) Indicated whether vessel is M/V (Motor Vessel), S/S or S/T(Steam Turbine) etc.", :size=>8, :inline_format => true
+	  	text "<b>Note:</b>", :inline_format=>:true, :size=>8
+	  	text "1) Indicated whether vessel is M/V (Motor Vessel), S/S or S/T(Steam Turbine) etc.", :size=>8
+			text "2) Under TYPE Indicate whether Bulk, Log, VLCC, Chemical, LPG, etc.", :size=>8
+			text "3) For Engine Officers and Ratings Indicate Engine Type and KW", :size=>8
 			move_down 5
-			draw_text "2) Under TYPE Indicate whether Bulk, Log, VLCC, Chemical, LPG, etc.", :size=>8, :at=>[cursor-3, cursor]
-			move_down 10
-			draw_text "3) For Engine Officers and Ratings Indicate Engine Type and KW", :size=>8, :at=>[cursor+6, cursor]
+			ships_name = make_cell(:content=>"Ship's Name / Flag", :font_style=>:bold, :height=>30)
+			vessel_type = make_cell(:content=>"Vessel Type / Rank", :font_style=>:bold, :height=>30)
+			gross_tonnage = make_cell(:content=>"Gross Tonnage / KW Engine Type", :font_style=>:bold, :height=>30)
+			manning_agent = make_cell(:content=>"Manning Agent", :font_style=>:bold, :height=>30)
+			sign_on_off = make_cell(:content=>"Sign On\nSign Off", :font_style=>:bold, :height=>30)
+			reason = make_cell(:content=>"Reason / Sign Off Period", :font_style=>:bold, :height=>30)
+
+			data =[
+				[ships_name, vessel_type, gross_tonnage, manning_agent, sign_on_off, reason]
+			]
+
+			crew.employment_records.each do |employment|
+				data << ['',employment.vessel.to_s,'', employment.manning_agent.to_s, employment.sign_on.to_s+ "\n" +employment.sign_off.to_s ,employment.reason_for_disembarkation.to_s]
+			end
+			table data, :column_widths => [150,75,100,75,75,75], :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0], :valign=>:center, :height=>25}
+
+
 
     end
 

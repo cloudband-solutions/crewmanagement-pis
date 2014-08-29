@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140828105044) do
+ActiveRecord::Schema.define(version: 20140829122231) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -87,8 +87,6 @@ ActiveRecord::Schema.define(version: 20140828105044) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
-<<<<<<< HEAD
-=======
     t.string   "recommendation_letter_file_name"
     t.string   "recommendation_letter_content_type"
     t.integer  "recommendation_letter_file_size"
@@ -97,7 +95,6 @@ ActiveRecord::Schema.define(version: 20140828105044) do
     t.string   "training_record_content_type"
     t.integer  "training_record_file_size"
     t.datetime "training_record_updated_at"
->>>>>>> origin/HEAD
   end
 
   create_table "crews", force: true do |t|
@@ -240,10 +237,7 @@ ActiveRecord::Schema.define(version: 20140828105044) do
     t.integer  "license_type_id"
     t.integer  "rank_id"
     t.integer  "license_category_id"
-<<<<<<< HEAD
-=======
     t.integer  "training_center_id"
->>>>>>> origin/HEAD
   end
 
   create_table "manning_agents", force: true do |t|
@@ -428,11 +422,8 @@ ActiveRecord::Schema.define(version: 20140828105044) do
     t.decimal  "breadth"
     t.decimal  "depth"
     t.string   "engine_model"
-<<<<<<< HEAD
-=======
     t.string   "ecdis"
     t.string   "type_of_lifeboat"
->>>>>>> origin/HEAD
   end
 
 end
