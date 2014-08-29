@@ -7,6 +7,8 @@ class License < ActiveRecord::Base
   belongs_to :rank
 
   belongs_to :license_category
+
+  belongs_to :training_center
   
   has_attached_file :attachment
   validates_attachment_content_type :attachment, content_type: %w(image/jpg image/jpeg image/png application/pdf)

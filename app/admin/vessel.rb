@@ -41,6 +41,7 @@ ActiveAdmin.register Vessel do
   filter :loa
   filter :breadth
   filter :depth
+  filter :type_of_lifeboat, as: :select, collection: Vessel::LIFEBOAT_TYPES
 
   form do |f|
     f.inputs "Vessel Record" do
@@ -69,6 +70,8 @@ ActiveAdmin.register Vessel do
       f.input :loa
       f.input :breadth
       f.input :depth
+      f.input :ecdis, label: "ECDIS"
+      f.input :type_of_lifeboat, as: :select, collection: Vessel::LIFEBOAT_TYPES
     end
     f.actions
   end
@@ -100,7 +103,8 @@ ActiveAdmin.register Vessel do
       row :loa 
       row :breadth
       row :depth
-      
+      row :ecdis
+      row :type_of_lifeboat
     end
 
   end
