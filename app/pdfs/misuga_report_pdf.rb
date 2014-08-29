@@ -168,6 +168,21 @@ class MisugaReportPdf < Prawn::Document
 	  	]
 	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
 
+	  	move_down 20
+
+	  	text "1. OTHER TRAINING CERTIFICATES", :font_style=>:bold, :size=>12
+	  	data =[
+	  		[training_course,number,date_issued,training_center]
+	  	]
+	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
+
+	  	move_down 20
+
+	  	text "2. PHYSICAL INSPECTION, YELLOW CARD", :font_style=>:bold, :size=>12
+	  	issued_by = make_cell(:content => "Issued By", :font_style=>:bold)
+	  	data = [
+	  		['',date_issued,expiry_date,issued_by]
+	  	]
 
 
     end
