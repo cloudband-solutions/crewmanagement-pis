@@ -1,4 +1,5 @@
 class Vessel < ActiveRecord::Base
+  LIFEBOAT_TYPES = ["davit", "freefall"]
   has_many :crews
 
   belongs_to :vessel_type

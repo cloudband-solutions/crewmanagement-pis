@@ -11,6 +11,14 @@
         <%= ff.input :attachment, as: :file %>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-4">
+        <%= ff.input :recommendation_letter, as: :file %>
+      </div>
+      <div class="col-md-4">
+        <%= ff.input :training_record, as: :file %>
+      </div>
+    </div>
     <%= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
   </div>
 <% end %>

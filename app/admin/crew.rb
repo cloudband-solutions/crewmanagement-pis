@@ -93,6 +93,8 @@ ActiveAdmin.register Crew do
         ff.input :vessel, label: "Vessel"
         ff.input :date_of_evaluation, label: "Date of Evaluation", as: :datepicker
         ff.input :attachment, label: "Attachment"
+        ff.input :recommendation_letter
+        ff.input :training_record
       end
       f.has_many :crew_office_evaluations do |ff|
         ff.input :vessel, label: "Vessel"

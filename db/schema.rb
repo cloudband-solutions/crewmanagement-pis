@@ -87,6 +87,17 @@ ActiveRecord::Schema.define(version: 20140828105044) do
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+<<<<<<< HEAD
+=======
+    t.string   "recommendation_letter_file_name"
+    t.string   "recommendation_letter_content_type"
+    t.integer  "recommendation_letter_file_size"
+    t.datetime "recommendation_letter_updated_at"
+    t.string   "training_record_file_name"
+    t.string   "training_record_content_type"
+    t.integer  "training_record_file_size"
+    t.datetime "training_record_updated_at"
+>>>>>>> origin/HEAD
   end
 
   create_table "crews", force: true do |t|
@@ -229,6 +240,10 @@ ActiveRecord::Schema.define(version: 20140828105044) do
     t.integer  "license_type_id"
     t.integer  "rank_id"
     t.integer  "license_category_id"
+<<<<<<< HEAD
+=======
+    t.integer  "training_center_id"
+>>>>>>> origin/HEAD
   end
 
   create_table "manning_agents", force: true do |t|
@@ -413,6 +428,11 @@ ActiveRecord::Schema.define(version: 20140828105044) do
     t.decimal  "breadth"
     t.decimal  "depth"
     t.string   "engine_model"
+<<<<<<< HEAD
+=======
+    t.string   "ecdis"
+    t.string   "type_of_lifeboat"
+>>>>>>> origin/HEAD
   end
 
 end
