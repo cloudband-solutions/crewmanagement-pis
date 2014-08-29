@@ -3,7 +3,8 @@ class MisugaReportPdf < Prawn::Document
     super()
 
     Prawn::Document.generate("app/pdfs/crew.pdf") do
-    	image "#{Rails.root}/app/assets/images/pictures/missing_standard.png", :width=>80, :height=>80, :at=>[0,720]
+    	pic_url = crew.picture.path(:standard).nil? ? "#{Rails.root}/app/assets/images/pictures/missing_standard.png" : crew.picture.path(:standard)
+    	image pic_url, :width=>80, :height=>80, :at=>[0,720]
     	text "MISUGA KAIUN CO., LTD.", :align=>:center, :size=>12, :style=>:bold_italic
 	    text "1692-2 Nakanosho-cho, Shikokuchuo-shi", :align=>:center, :size=>10
 	    text "Ehime 799-0422, Japan", :align=>:center, :size=>10
@@ -234,7 +235,9 @@ class MisugaReportPdf < Prawn::Document
 			]
 
 			crew.employment_records.each do |employment|
-				data << ['',employment.vessel.to_s,'', employment.manning_agent.to_s, employment.sign_on.to_s+ "\n" +employment.sign_off.to_s ,employment.reason_for_disembarkation.to_s]
+				#raise employment.vessel.inspect
+				ship_name = "#{employment.vessel.name.upcase} / #{employment.vessel.flag.name.upcase}"
+				data << [ship_name,employment.vessel.to_s, "#{employment.vessel.grt} GT", employment.manning_agent.to_s, employment.sign_on.to_s+ "\n" +employment.sign_off.to_s ,employment.reason_for_disembarkation.to_s]
 			end
 			table data, :column_widths => [150,75,100,75,75,75], :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0], :valign=>:center, :height=>25}
 
