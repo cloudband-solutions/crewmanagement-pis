@@ -22,11 +22,11 @@ class MisugaReportPdf < Prawn::Document
 	  	code_num = make_cell(:content => "<b>Code No.:</b>", :border_width => 0)
 	  	code_num_value = make_cell(:content => crew.code_number, :border_width => 1 , :borders => [:bottom])
 	  	rank = make_cell(:content => "<b>Rank:</b>", :border_width => 0)
-	  	rank_value = make_cell(:content => crew.rank.name, :border_width => 1 , :borders => [:bottom])
+	  	rank_value = make_cell(:content => crew.rank_id.to_s, :border_width => 1 , :borders => [:bottom])
 	  	date_employed = make_cell(:content => "<b>Date Employed:</b>", :border_width => 0)
 	  	date_employed_value = make_cell(:content => crew.date_employed.to_s, :border_width => 1 , :borders => [:bottom])
 	  	vessel = make_cell(:content => "<b>Vessel:</b>", :border_width => 0)
-	  	vessel_value = make_cell(:content => crew.vessel.name, :border_width => 1 , :borders => [:bottom])
+	  	vessel_value = make_cell(:content => crew.vessel_id.to_s, :border_width => 1 , :borders => [:bottom])
 	  	data = [   
 	  		[code_num, code_num_value , rank ,rank_value,date_employed, date_employed_value, vessel ,vessel_value]
 	  	]
@@ -63,12 +63,6 @@ class MisugaReportPdf < Prawn::Document
 
 	  	move_down 5
 
-	  	birthdate = make_cell(:content => "<b>Birthdate:</b>", :border_width => 0)
-	  	birthplace = make_cell(:content => "<b>Birthplace:</b>", :border_width => 0)
-	  	age = make_cell(:content => "<b>Address:</b>", :border_width => 0)
-	  	
-
-
 	  	#Fourth Row
 	  	height = make_cell(:content => "<b>Height(cm):</b>", :border_width => 0)
 	  	weight = make_cell(:content => "<b>Weight(kg):</b>", :border_width => 0)
@@ -98,70 +92,11 @@ class MisugaReportPdf < Prawn::Document
 
 	  	move_down 20
 
-	  	text "1. EDUCATIONAL ATTAINMENT", :font_style=>:bold, :size=>12
+	  	text "1. EDUCATIONAL ATTAINMENT"
 	  	data = [
-	  		[make_cell(:content => "Year Graduated", :font_style=>:bold), make_cell(:content => "School", :font_style=>:bold), make_cell(:content => "Course", :font_style=>:bold)]
-	  	]
-	  	index = 1;
-	  	crew.educational_attainments.each do |educational_attainment|
-	  		data << [educational_attainment.year_graduated, educational_attainment.school, educational_attainment.course_finished]
-
-			end
-	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
-
-	  	move_down 20
-
-	  	text "2. LICENSE OF OFFICER", :font_style=>:bold, :size=>12
-	  	country = make_cell(:content => "Country", :font_style=>:bold)
-	  	rank = make_cell(:content => "Rank", :font_style=>:bold)
-	  	number = make_cell(:content => "Number", :font_style=>:bold)
-	  	date_issued = make_cell(:content => "Date Issued", :font_style=>:bold)
-	  	expiry_date = make_cell(:content => "Expiry Date", :font_style=>:bold)
-	  	data = [
-	  		[country, rank, number, date_issued, expiry_date]
-	  	]
-	  	licenses = crew.licenses.where(:license_category_id=>'1')
-	  	licenses.each do |license|
-	  		data << [license.license_type.to_s, license.rank.to_s, license.license_number, license.date_issued.to_s, license.expiry_date.to_s]
-	  	end
-	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
-
-	  	move_down 20
-
-	  	text "3. PASSPORTS & SEAMAN BOOK", :font_style=>:bold, :size=>12
-	  	remarks = make_cell(:content => "Remarks", :font_style=>:bold)
-	  	data =[
-	  		['',number, date_issued, expiry_date, remarks]
-	  	]
-	  	licenses = crew.licenses.where(:license_category_id=>LicenseCategory.where(:name => "License of Officer").first.id)
-	  	licenses.each do |license|
-	  		data << [license.license_type.to_s, license.license_number, license.date_issued.to_s, license.expiry_date.to_s, '']
-	  	end
-	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
-
-	  	move_down 20
-
-	  	text "4. STCW 1985", :font_style=>:bold, :size=>12
-	  	kind_of_certificate = make_cell(:content => "Kind of Certificate", :font_style=>:bold)
-	  	certified_as = make_cell(:content => "Certified As", :font_style=>:bold)
-	  	certificate_number = make_cell(:content => "Certificate Number", :font_style=>:bold)
-	  	limitation = make_cell(:content => "Any Limitation", :font_style=>:bold)
-	  	data = [
-	  		[kind_of_certificate, certified_as, certificate_number, date_issued, expiry_date, limitation]
+	  		["Year Graduated","School","Course"]
 	  	]
 	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
-
-	  	move_down 20
-
-	  	text "5. TRAINING CERTIFICATES", :font_style=>:bold, :size=>12
-	  	training_course = make_cell(:content => "Training Course", :font_style=>:bold)
-	  	training_center = make_cell(:content => "Training Course", :font_style=>:bold)
-	  	data = [
-	  		[training_course, number, date_issued, training_center]
-	  	]
-	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
-
-
 
     end
 

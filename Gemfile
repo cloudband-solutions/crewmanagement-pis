@@ -32,3 +32,4 @@ gem 'axlsx'
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'prawn-table'
 gem 'seed_dump'
+gem 'pundit'
