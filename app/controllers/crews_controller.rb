@@ -19,7 +19,8 @@ class CrewsController < ApplicationController
       template = params[:template]
       if template == "misuga"
         pdf = MisugaReportPdf.new(@crew, view_context)
-        send_data pdf.render, filename: "crew.pdf", type: "application/pdf"
+        #send_data pdf.render, filename: "crew.pdf", type: "application/pdf"
+        send_file "#{Rails.root}/app/pdfs/crew.pdf", :type =>'application/pdf', :disposition => 'attachment'
       else
         flash[:error] = "Template #{template} not available"
         redirect_to crew_path(@crew)
