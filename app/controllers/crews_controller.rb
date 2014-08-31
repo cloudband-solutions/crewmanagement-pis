@@ -13,6 +13,7 @@ class CrewsController < ApplicationController
 
   def generate_crew_file
     @crew = Crew.find(params[:id])
+    @root_url = request.env['HTTP_HOST']
     
     if params[:template].present?
       template = params[:template]
