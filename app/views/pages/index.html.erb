@@ -8,9 +8,24 @@
     <%= render partial: "dashboard/latest_updated_crew", locals: { crew: @crew_updated } %>
   </div>
 </div>
+<div class="transmittal_record_status">
+    <div class="row">
+      <div class="col-md-12">
+        <%= render partial: "dashboard/transmittal_records_pending", locals: { transmittal_records: @transmittal_pending_records } %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+      <%= render partial: "dashboard/transmittal_records_ontransit", locals: { transmittal_records: @transmittal_ontransit_records } %>
+      </div>
+    </div>
+</div>
+
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <%= render partial: "dashboard/crews_by_vessel" %>
+  </div>
+  <div class="col-md-6">
     <%= render partial: "dashboard/crews_by_rank" %>
   </div>
 </div>

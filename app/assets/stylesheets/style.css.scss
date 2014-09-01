@@ -251,6 +251,27 @@ padding-left: 5px!important;
 }
 
 
+.tdash tr:nth-child(even) {
+    background: #CFDBC5;
+  }
+
+.tdash tr:nth-child(odd) {
+    background: #e2e2e2;
+}
+
+.tdash th{
+  padding: 10px;
+}
+
+.table .ttd {
+  padding-left: 40px!important;
+}
+.table .ttd1 {
+  padding-left: 130px!important;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+  
 
 
 

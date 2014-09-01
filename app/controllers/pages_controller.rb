@@ -4,6 +4,8 @@ class PagesController < ApplicationController
   def index
     @crew_added = Crew.active.order("created_at").last
     @crew_updated = Crew.active.order("updated_at").last
+    @transmittal_pending_records = TransmittalRecord.where(status: "pending").order(:prepared_on).limit(5)
+    @transmittal_ontransit_records = TransmittalRecord.where(status: "on-transit").order(:prepared_on).limit(5)
   end
   
 end
