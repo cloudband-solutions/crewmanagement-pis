@@ -15,5 +15,6 @@
 /log/*.log
 /tmp
 /public/system/
+/app/pdfs/crew.pdf
 
 *.swp
