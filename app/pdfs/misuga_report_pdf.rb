@@ -2,7 +2,7 @@ class MisugaReportPdf < Prawn::Document
   def initialize(crew, view)
     super()
 
-    Prawn::Document.generate("app/pdfs/crew.pdf") do
+    Prawn::Document.generate("app/pdfs/MisugaReport.pdf") do
     	pic_url = crew.picture.path(:standard).nil? ? "#{Rails.root}/app/assets/images/pictures/missing_standard.png" : crew.picture.path(:standard)
     	image pic_url, :width=>80, :height=>80, :at=>[0,720]
     	text "MISUGA KAIUN CO., LTD.", :align=>:center, :size=>12, :style=>:bold_italic
