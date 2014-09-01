@@ -6,8 +6,10 @@
     <li class=""><%= link_to "Education", "#educational-attainments", "data-toggle" => "tab" %></li>
     <li class=""><%= link_to "Training Certificates", "#licenses", "data-toggle" => "tab" %></li>
     <li class=""><%= link_to "Personal Documents", "#documents", "data-toggle" => "tab" %></li>
-    <li class=""><%= link_to "Vessel Evaluations", "#vessel-evaluations", "data-toggle" => "tab" %></li>
-    <li class=""><%= link_to "Office Evaluations", "#office-evaluations", "data-toggle" => "tab" %></li>
+    <% if current_user.user_type == "manager" %>
+      <li class=""><%= link_to "Vessel Evaluations", "#vessel-evaluations", "data-toggle" => "tab" %></li>
+      <li class=""><%= link_to "Office Evaluations", "#office-evaluations", "data-toggle" => "tab" %></li>
+    <% end %>
     <li class=""><%= link_to "Employment", "#employment-record", "data-toggle" => "tab" %></li>
   </li>
 
@@ -27,12 +29,14 @@
     <div class="tab-pane" id="documents">
       <%= render partial: "crews/form_documents", locals: { f: f } %>
     </div>
-    <div class="tab-pane" id="vessel-evaluations">
-      <%= render partial: "crews/form_crew_vessel_evaluation", locals: { f: f } %>
-    </div>
-    <div class="tab-pane" id="office-evaluations">
-      <%= render partial: "crews/form_crew_office_evaluation", locals: { f: f } %>
-    </div>
+    <% if current_user.user_type == "manager" %>
+      <div class="tab-pane" id="vessel-evaluations">
+        <%= render partial: "crews/form_crew_vessel_evaluation", locals: { f: f } %>
+      </div>
+      <div class="tab-pane" id="office-evaluations">
+        <%= render partial: "crews/form_crew_office_evaluation", locals: { f: f } %>
+      </div>
+    <% end %>
   </div>
   <div class="row">
     <div class="col-md-12 form-actions">
