@@ -8,7 +8,11 @@
     <tr>
       <td class="label-d-a"><%= evaluation.vessel %></td>
       <td class="label-d-a"><%= evaluation.date_of_evaluation %></td>
-      <td class="label-d-a"><%= link_to "Download", evaluation.attachment.url, target: "_blank" %></td>
+      <td class="label-d-a">
+        <%= link_to "Download Evaluation", evaluation.attachment.url, target: "_blank", class: "btn btn-xs btn-info" %>
+        <%= link_to "Download Recommendation Letter", evaluation.recommendation_letter.url, target: "_blank", class: "btn btn-xs btn-info" %>
+        <%= link_to "Download Training Record", evaluation.training_record.url, target: "_blank", class: "btn btn-xs btn-info" %>
+      </td>
     </tr>
   <% end %>
 </table>
