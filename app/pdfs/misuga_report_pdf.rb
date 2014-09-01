@@ -66,9 +66,22 @@ class MisugaReportPdf < Prawn::Document
 
 	  	birthdate = make_cell(:content => "<b>Birthdate:</b>", :border_width => 0)
 	  	birthplace = make_cell(:content => "<b>Birthplace:</b>", :border_width => 0)
-	  	age = make_cell(:content => "<b>Address:</b>", :border_width => 0)
-	  	
+	  	age_text = make_cell(:content => "<b>Age:</b>", :border_width => 0)
+	  	nationality = make_cell(:content => "<b>Nationality:</b>", :border_width => 0)
 
+	  	age = Date.today.year - crew.birthday.year 
+    	age -= 1 if crew.birthday > Date.today.years_ago( age )
+
+	  	birthdate_value = make_cell(:content => crew.birthday.to_s, :border_width => 1 , :borders => [:bottom])
+	  	birthplace_value = make_cell(:content => crew.birthplace, :border_width => 1 , :borders => [:bottom])
+	  	age_value = make_cell(:content => age.to_s, :border_width => 1 , :borders => [:bottom])
+	  	nationality_value = make_cell(:content => crew.nationality, :border_width => 1 , :borders => [:bottom])
+	  	data=[
+	  		[birthdate, birthdate_value, age_text, age_value, birthplace, birthplace_value, nationality, nationality_value]
+	  	]
+	  	table data, :column_widths=>[45,40,25,25,40,190,45,100], :position=>:left, :cell_style=>{:inline_format => true, :size=>7,:align=>:left, :padding=>[2,0,2,0]}
+	  	
+	  	move_down 5
 
 	  	#Fourth Row
 	  	height = make_cell(:content => "<b>Height(cm):</b>", :border_width => 0)
@@ -255,6 +268,16 @@ class MisugaReportPdf < Prawn::Document
 			end
 			table data, :column_widths => [150,75,100,75,75,75], :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0], :valign=>:center, :height=>25}
 
+			move_down 5
+
+			rank = make_cell(:content => "<b>Rank:</b>", :border_width => 0)
+			name = make_cell(:content => "<b>Name:</b>", :border_width => 0)
+			rank_value = make_cell(:content => crew.rank.name, :border_width => 1 , :borders => [:bottom])
+			name_value = make_cell(:content => crew.to_s, :border_width => 1 , :borders => [:bottom])
+			data = [
+				[rank, rank_value, name, name_value]
+			]
+			table data, :position=>:left, :cell_style=>{:inline_format => true, :size=>7,:align=>:left, :padding=>[2,0,2,0]}
 
 
     end
