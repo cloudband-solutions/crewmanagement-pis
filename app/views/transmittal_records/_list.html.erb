@@ -23,8 +23,8 @@
         <td><span class="status <%= tr.status %>"><%= tr.status %></span></td>
         <td>
           <%= link_to "Show", transmittal_record_path(tr), class: "btn btn-primary btn-xs" %>
-          <%= link_to "Edit", edit_transmittal_record_path(tr), class: "btn btn-info btn-xs" %>
-          <%= link_to "Delete", transmittal_record_path(tr), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } %>
+          <%= link_to "Edit", edit_transmittal_record_path(tr), class: "btn btn-info btn-xs" if tr.status != "approved" %>
+          <%= link_to "Delete", transmittal_record_path(tr), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } if tr.status != "approved" %>
           <% if tr.status == "pending" %>
             <%= link_to "On-Transit", transmittal_record_transit_path(tr), class: "btn btn-info btn-xs", method: :post, data: { confirm: "Are you sure?" } %>
           <% end %>
