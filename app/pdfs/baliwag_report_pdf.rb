@@ -12,7 +12,16 @@ class BaliwagReportPdf < Prawn::Document
     	draw_text "BALIWAG NAVIGATION, INC.", :size=>13, :style=>:bold, :at=>[220,700], :character_spacing=>10
     	draw_text "B I O D A T A", :size=>13, :style=>:bold, :at=>[265,680], :character_spacing=>10
 
-    	spacer = make_cell(:content=>"", :border_width => 0)
+    	font("Helvetica", :size => 7)
+
+    	bounding_box([410,680],:width => 160) do
+    		date = make_cell(:content=>"Date:", :border_width => 0)
+    		date_value = make_cell(:content=>Date.today.to_s, :border_width => 1, :borders=>[:bottom])
+    		data = [
+    			[date, date_value]
+    		]
+    		table data, :column_widths=>[55,105], :cell_style=>{:align=>:left, :padding=>[2,0,2,0]}
+    	end
 
     	code_no = make_cell(:content=>"Code No:", :border_width => 0)
     	rank = make_cell(:content=>"Rank:", :border_width => 0)
@@ -26,7 +35,7 @@ class BaliwagReportPdf < Prawn::Document
 				[code_no, code_no_value, rank, rank_value, date_employed, date_employed_value]
     	]
     	bounding_box([150, 670], :width => 800) do
-    		table data, :column_widths=>[30,105,20,105,55,105], :cell_style=>{:size=>7,:align=>:left, :padding=>[2,0,2,0]}
+    		table data, :column_widths=>[30,105,20,105,55,105], :cell_style=>{:align=>:left, :padding=>[2,0,2,0]}
     	end
     #End Header
 
@@ -37,7 +46,7 @@ class BaliwagReportPdf < Prawn::Document
     	data = [
     		[name, name_value, assigned_vessel, assigned_vessel_value]
     	]
-    	table data, :column_widths=>[55, 360, 55, 100], :cell_style=>{:size=>7,:align=>:left, :padding=>[2,0,2,0]}
+    	table data, :column_widths=>[55, 360, 55, 100], :cell_style=>{:align=>:left, :padding=>[2,0,2,0]}
 
     	address = make_cell(:content=>"Address:", :border_width => 0)
     	telephone = make_cell(:content=>"Telephone:", :border_width => 0)
@@ -46,7 +55,7 @@ class BaliwagReportPdf < Prawn::Document
     	data = [
     		[address, address_value, telephone, telephone_value]
     	]
-    	table data, :column_widths=>[55,360, 55, 100], :cell_style=>{:size=>7,:align=>:left, :padding=>[2,0,2,0]}
+    	table data, :column_widths=>[55,360, 55, 100], :cell_style=>{:align=>:left, :padding=>[2,0,2,0]}
 
     	birthdate = make_cell(:content=>"Birthdate:", :border_width => 0)
     	age_text = make_cell(:content=>"Age:", :border_width => 0)
@@ -62,7 +71,7 @@ class BaliwagReportPdf < Prawn::Document
     	data =[
     		[birthdate, birthdate_value, age_text, age_value, birthplace, birthplace_value, nationality, nationality_value]
     	]
-    	table data, :column_widths=>[55, 100, 50, 60, 50, 100, 55, 100], :cell_style=>{:size=>7,:align=>:left, :padding=>[2,0,2,0]}
+    	table data, :column_widths=>[55, 100, 50, 60, 50, 100, 55, 100], :cell_style=>{:align=>:left, :padding=>[2,0,2,0]}
 
     	civil_status = make_cell(:content => "Civil Status:", :border_width => 0)
     	weight = make_cell(:content => "Weight:", :border_width => 0)
@@ -77,7 +86,7 @@ class BaliwagReportPdf < Prawn::Document
 	  	data = [
 	  		[civil_status, status_value, weight, weight_value, height, height_value, eye, eye_value]
 	  	]
-	  	table data, :column_widths=>[55, 100, 50, 60, 50, 100, 55, 100], :cell_style=>{:size=>7,:align=>:left, :padding=>[2,0,2,0]}
+	  	table data, :column_widths=>[55, 100, 50, 60, 50, 100, 55, 100], :cell_style=>{:align=>:left, :padding=>[2,0,2,0]}
 
 	  	sss = make_cell(:content => "SSS No.:", :border_width => 0)
 	  	tin = make_cell(:content => "TIN:", :border_width => 0)
@@ -93,7 +102,7 @@ class BaliwagReportPdf < Prawn::Document
 	  	data =[
 	  		[relative_name, relative_name_value, relative_rel, relative_rel_value, relative_address, relative_address_value]
 	  	]
-	  	table data, :column_widths=>[55, 100, 50, 60, 50, 255], :cell_style=>{:size=>7,:align=>:left, :padding=>[2,0,2,0]}
+	  	table data, :column_widths=>[55, 100, 50, 60, 50, 255], :cell_style=>{:align=>:left, :padding=>[2,0,2,0]}
 
 	  	
 	  #Start Educational Attainment
@@ -108,7 +117,7 @@ class BaliwagReportPdf < Prawn::Document
 	  	crew.educational_attainments.each do |educational_attainment|
 	  		data << [educational_attainment.year_graduated, educational_attainment.school, educational_attainment.course_finished]
 			end
-	  	table data, :column_widths=>[70, 250, 250], :position=>:left, :width=>570, :cell_style=>{:size=>7,:padding=>[1,0,2,2]}
+	  	table data, :column_widths=>[70, 250, 250], :position=>:left, :width=>570, :cell_style=>{:padding=>[1,0,2,2]}
 	  #End Educational Attainment
 
 	  #Start Licenses & Certificates
@@ -126,7 +135,7 @@ class BaliwagReportPdf < Prawn::Document
 	  		data << [license.license_type.name, license.license_number.to_s, license.date_issued, license.expiry_date, license.issued_by]
 	  	end
 
-	  	table data, :column_widths=>[250, 100, 60, 60, 100], :position=>:left, :width=>570, :cell_style=>{:size=>7, :padding=>[1,0,2,2]}
+	  	table data, :column_widths=>[250, 100, 60, 60, 100], :position=>:left, :width=>570, :cell_style=>{:padding=>[1,0,2,2]}
 	  #End Licenses & Certificates
 
 	  #Start Employment Record
@@ -149,9 +158,123 @@ class BaliwagReportPdf < Prawn::Document
 	  	crew.employment_records.each do |employment|
 	  		data << [employment.vessel.name, employment.vessel.flag.name, '', employment.vessel.grt, employment.manning_agent.to_s,'',employment.sign_on.to_s, employment.sign_off.to_s, employment.reason_for_disembarkation.to_s]
 	  	end
-	  	table data, :column_widths=>[70, 70, 60, 70, 60, 60, 60, 60, 60], :position=>:left, :width=>570, :cell_style=>{:size=>7, :padding=>[1,0,2,2], :valign=>:center}
+	  	table data, :column_widths=>[70, 70, 60, 70, 60, 60, 60, 60, 60], :position=>:left, :width=>570, :cell_style=>{:padding=>[1,0,2,2], :valign=>:center}
 	  #End Employment Record
 
+	  	start_new_page
+
+	  	text "BALIWAG NAVIGATION, INC.", :align=>:center, :size=>10, :style=>:bold
+	  	text "Crew Data", :align=>:center, :size=>10
+
+	  	move_down 10
+
+	  	font("Helvetica", :size => 10)
+
+	  	data = [
+	  		["Name: #{crew.to_s}", "Position:","Vsl Name: #{crew.vessel.name}"]
+	  	]
+	  	table data, :column_widths => [270,150,150], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center}
+
+	  	data = [
+	  		["Address / Tel. #{crew.address} / #{crew.telephone_no}", "Nationality: #{crew.nationality}"]
+	  	]
+	  	table data, :column_widths => [450,120], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center}
+
+	  	data = [
+	  		["Date of Birth/Place: #{crew.birthday}/#{crew.birthplace}", "Age: #{age.to_s}", "Height: #{crew.height.to_s}", "Weight: #{crew.weight}"]
+	  	]
+	  	table data, :column_widths => [250,100,100,120], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center}
+
+	  	data =[
+	  		["Civil Status: #{crew.civil_status}","Next of Kin: ", "Name: ", "Eye Color: #{crew.eye_color}"]
+	  	]
+	  	table data, :column_widths => [125, 125, 200, 120], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center}
+
+	  	data = [
+	  		["Children: ","Addess: ", "Shoe Size: #{crew.shoe_size}"]
+	  	]
+	  	table data, :column_widths => [125,325,120], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center}
+
+	  	data = [
+	  		["<b>LICENSE & CERTIFICATE</b>",make_cell(:content=>"NO.", :align=>:center),make_cell(:content=>"ISSUED DATE", :align=>:center),make_cell(:content=>"VALIDITY", :align=>:center), make_cell(:content=>" ", :border_width=>1, :borders=>[:right])]
+	  	]
+	  	crew.licenses.each do |license|
+	  		data << [license.license_type.name, license.license_number.to_s, license.date_issued, license.expiry_date, make_cell(:content=>" ", :border_width=>1, :borders=>[:right])]
+	  	end
+
+	  	table data, :column_widths => [125,100,100,100,145], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center, :inline_format=>true}
+
+	  	data =[
+	  		["<b>EDUCATION: </b> School Name ",make_cell(:content=>"Course Finished", :align=>:center), "Graduated Year"]
+	  	]
+	  	crew.educational_attainments.each do |educational_attainment|
+	  		data << [educational_attainment.school, educational_attainment.course_finished, educational_attainment.year_graduated]
+			end
+			table data, :column_widths => [225, 200, 145], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center, :inline_format=>true}
+
+			move_down 5
+
+			data = [
+				[make_cell(:content=>'LANGUAGE: To be inserted round marks: ex. "O" in applicable column and name of other laguage will be put in column', :colspan=>4)],
+				["English", "Well:\s\s\s\s\s\s\s\s Average:'O'\s\s\s\s\s\s\s\s A Little:\s\s\s\s\s\s\s\s No:", "(others)", "Well:\s\s\s\s Average:\s\s\s\s A Little:\s\s\s\s No:"]
+			]
+			table data, :column_widths => [70, 255, 50, 195], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center, :inline_format=>true}
+			move_down 5
+			text "SEAMAN'S SERVICE RECORD", :align=>:center, :style=>:bold
+			move_down 3
+			data = [
+				["<b>VSL NAME</b>", "<b>Rank</b>", "<b>Flag</b>","<b>Main Eng. Maker</b>", "<b>Grade</b>", "<b>Sign On/Off</b>"],
+				[make_cell(:content=>"<b>MANG. COMPANY/PRINCIPAL</b>",:colspan=>2),"<b>Vsl Type / GRT</b>", "<b>ENG. TYPE / BHP</b>", "<b>Evaluation</b>", "<b>Reason for Sign Off</b>"]
+			]
+			table data, :column_widths => [125,100,100,100,50,95], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center, :align=>:center, :inline_format=>true, :size=>9}
+
+			data = []
+			crew.employment_records.each do |er|
+				data << [er.vessel.name, er.rank.name, "#{er.vessel.flag.name}\n#{er.vessel.grt}", "\s","\s","#{er.sign_on.to_s} / #{er.sign_off.to_s}\n#{er.reason_for_disembarkation.to_s}"]
+			end
+			table data, :column_widths => [125,100,100,100,50,95], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center, :inline_format=>true}
+
+			data = [
+				["<b>Grade of Evaluation:</b> (1): Excellent\s\s\s\s\s\s\s\s(2): Very Good\s\s\s\s\s\s\s\s(3): Good\s\s\s\s\s\s\s\s(4): Fair\s\s\s\s\s\s\s\s(5): Poor"]
+			]
+			table data, :width => 570, :cell_style=>{:padding=>[0,0,2,2], :valign=>:center, :inline_format=>true}
+
+			move_down 5
+			text "First Marine Services Co. Ltd.", :align=>:center, :style=>:bold, :size=>10
+
+			font("Helvetica", :size => 10)
+
+			move_down 10
+			text "I certify that the above entries are true and correct", :align=>:center
+
+			text "Prepared by:"
+
+			move_down 20
+			
+			signature = make_cell(:content=>"Signature")
+			agm = make_cell(:content=>"AGM/Superintendent")
+			seafarer = make_cell(:content=>"Signature of Seafarer")
+
+			bounding_box([0,cursor],:width => 180) do
+				text "(SGD) JOHN B. DELA ROSA", :align=>:center
+			end
+			data = [
+				[signature,make_cell(:content=>"\s", :border_width=>0),agm,make_cell(:content=>"\s", :border_width=>0),seafarer]
+			]
+			table data, :column_widths=>[180,45,150,45,150], :width=>570, :cell_style=>{:align=>:center,:borders=>[:top]}
+
+			move_down 20
+			bounding_box([0,cursor],:width => 180) do
+				text "(SGD) CAPT. VICMAR C. CALIBJO", :align=>:center
+			end
+
+			fleet = make_cell(:content=>"Fleet Manager")
+			general = make_cell(:content=>"General Manager")
+			principal = make_cell(:content=>"Principal's Representative")
+			data = [
+				[fleet,make_cell(:content=>"\s", :border_width=>0),general,make_cell(:content=>"\s", :border_width=>0),principal]
+			]
+			table data, :column_widths=>[180,45,150,45,150], :width=>570, :cell_style=>{:align=>:center,:borders=>[:top]}
     end #end prawn
   end
 end #end class
