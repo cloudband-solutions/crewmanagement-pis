@@ -67,6 +67,7 @@ class TransmittalRecord < ActiveRecord::Base
       self.transmittal_code = SecureRandom.uuid
       self.status = "pending"
     end
+    self.destination = self.destination.upcase
   end
 
   def archive!

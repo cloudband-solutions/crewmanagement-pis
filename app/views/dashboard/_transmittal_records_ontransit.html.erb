@@ -18,7 +18,7 @@
     <td class="ttd1"> <%= transmittal_ontransit_record.transmittal_record_embarking_crews.count %></td>
     <td class="ttd1"> <%= transmittal_ontransit_record.transmittal_record_disembarking_crews.count %> </td>
     <td class="ttd1"> <%= transmittal_ontransit_record.transmittal_record_crew_promotions.count %> </td>
-    <td class="ttd"><div class="btn btn-primary btn-xs">SHOW</div></td>
+    <td class="ttd"><%= link_to "Show", transmittal_record_path(transmittal_ontransit_record), class: "btn btn-xs btn-primary" %></td>
   </tr>
   <% end %>
 </table>

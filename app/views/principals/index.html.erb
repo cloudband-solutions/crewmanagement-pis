@@ -1,5 +1,8 @@
-<h1>PRINCIPALS</h1>
-<hr>
+<div class="row">
+  <div class="col-md-12">
+    <%= render partial: "principals/search_tool" %>
+  </div>
+</div>
 <table class="table table-bordered table-stripped">
 	<tr>
 		<th>Name</th>
@@ -13,5 +16,5 @@
 		<td><%= link_to "Show", principal_path(principal.id), class: "btn btn-info btn-xs" %></td>
 	</tr>
 	<% end %> 
-
 </table>
+<%= paginate @principals %>

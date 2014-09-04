@@ -30,6 +30,8 @@ class Vessel < ActiveRecord::Base
   validates :depth, presence: true, numericality: true
   validates :engine_model, presence: true
 
+  before_validation :load_defaults
+
   def active_crews
     self.crews.active
   end
@@ -39,6 +41,12 @@ class Vessel < ActiveRecord::Base
   end
 
   def load_defaults
-    self.owner.upcase
+    if !self.name.nil?
+      self.name = self.name.upcase
+    end
+
+    if !self.code.nil?
+      self.code = self.code.upcase
+    end
   end
 end

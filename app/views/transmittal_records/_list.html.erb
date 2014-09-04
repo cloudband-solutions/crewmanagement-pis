@@ -1,7 +1,7 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>Date Prepared</th>
+      <th>Date of Departure</th>
       <th>Vessel</th>
       <th>Destination</th>
       <th># Embarking Crews</th>
@@ -14,7 +14,7 @@
   <tbody>
     <% transmittal_records.each do |tr| %>  
       <tr>
-        <td><%= tr.prepared_on %></td>
+        <td><%= tr.date_of_departure %></td>
         <td><%= tr.vessel %></td>
         <td><%= tr.destination %></td>
         <td><%= tr.transmittal_record_embarking_crews.count %></td>

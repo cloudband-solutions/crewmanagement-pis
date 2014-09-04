@@ -21,8 +21,21 @@
 @import "bootstrap";
 @import "bootstrap-datepicker";
 
+h1 {
+}
+
+.basicBox {
+  border: 1px solid #e2e2e2;
+  padding: 20px;
+}
+
+.add_links {
+  text-align: right;
+}
+
 #main {
   margin-top: 40px;
+  min-height: 410px;
 }
 
 .my_nav {
@@ -73,9 +86,6 @@ span.status.on-transit {
   line-height: 38px;
 }
 
-#main {
-  min-height: 300px;
-}
 
 #footer {
   background: #e2e2e2;

@@ -1,6 +1,23 @@
 class TransmittalRecordsController < ApplicationController
   def index
     @transmittal_records = TransmittalRecord.where("status = 'pending' OR status = 'approved' OR status = 'on-transit'").order("status DESC").page(params[:page]).per(20)
+
+    if params[:vessel_id].present?
+      @vessel = Vessel.find(params[:vessel_id])
+      @transmittal_records = @transmittal_records.where(vessel_id: @vessel.id)
+    end
+
+    if params[:status].present?
+      @status = params[:status]
+      @transmittal_records = @transmittal_records.where(status: @status)
+    end
+
+    if params[:destination].present?
+      @destination = params[:destination]
+      @transmittal_records = @transmittal_records.where(destination: @destination)
+    end
+
+    @transmittal_records = @transmittal_records.page(params[:page]).per(20)
   end
 
   def new

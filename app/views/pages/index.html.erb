@@ -1,31 +1,4 @@
-<h1>Dashboard</h1>
-<hr>
-<div class="row">
-  <div class="col-md-6">
-    <%= render partial: "dashboard/latest_crew", locals: { crew: @crew_added } %>
-  </div>
-  <div class="col-md-6">
-    <%= render partial: "dashboard/latest_updated_crew", locals: { crew: @crew_updated } %>
-  </div>
-</div>
-<div class="transmittal_record_status">
-    <div class="row">
-      <div class="col-md-12">
-        <%= render partial: "dashboard/transmittal_records_pending", locals: { transmittal_records: @transmittal_pending_records } %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-      <%= render partial: "dashboard/transmittal_records_ontransit", locals: { transmittal_records: @transmittal_ontransit_records } %>
-      </div>
-    </div>
-</div>
-
-<div class="row">
-  <div class="col-md-6">
-    <%= render partial: "dashboard/crews_by_vessel" %>
-  </div>
-  <div class="col-md-6">
-    <%= render partial: "dashboard/crews_by_rank" %>
-  </div>
-</div>
+<% if current_user.user_type == 'principal' %>
+<% else %>
+  <%= render partial: "dashboard/user_dashboard" %>
+<% end %>

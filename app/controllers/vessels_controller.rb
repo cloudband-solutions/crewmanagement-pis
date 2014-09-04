@@ -1,7 +1,29 @@
 class VesselsController < ApplicationController
+  before_filter :authenticate_user!
 
   def index
     @vessels = Vessel.all
+
+    if current_user.user_type == 'principal'
+      @vessels = @vessels.where(user_id: current_user.id)
+    end
+
+    if params[:q].present?
+      @q = params[:q].upcase
+      @vessels = @vessels.where("name LIKE :q OR code LIKE :q", q: "%#{@q}%")
+    end
+
+    if params[:flag_id].present?
+      @flag = Flag.find(params[:flag_id])
+      @vessels = @vessels.where(flag_id: @flag.id)
+    end
+
+    if params[:vessel_type_id].present?
+      @vessel_type = VesselType.find(params[:vessel_type_id])
+      @vessels = @vessels.where(vessel_type_id: @vessel_type.id)
+    end
+
+    @vessels = @vessels.page(params[:page]).per(10)
   end
 
   def new

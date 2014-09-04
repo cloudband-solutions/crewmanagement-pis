@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
 
   validates :user_type, presence: true, inclusion: { in: USER_TYPES }
 
+  def baliwag_user?
+    user_type != 'principal' ? true : false
+  end
+
 end

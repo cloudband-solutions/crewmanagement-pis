@@ -1,0 +1,18 @@
+<div class="well">
+  <%= form_tag send("vessels_path"), method: :get do |f| %>
+    <div class="row">
+      <div class="col-md-4">
+        <%= text_field_tag :q, @q, class: "form-control", placeholder: "Search by Name" %>
+      </div>
+      <div class="col-md-3">
+        <%= select_tag :vessel_type_id, options_from_collection_for_select(VesselType.all, :id, :name, @vessel_type.try(:id)), class: "form-control", prompt: "By Type" %>
+      </div>
+      <div class="col-md-3">
+        <%= select_tag :flag_id, options_from_collection_for_select(Flag.all, :id, :name, @flag.try(:id)), class: "form-control", prompt: "By Flag" %>
+      </div>
+      <div class="col-md-2">
+        <%= submit_tag "Search", class: "btn btn-info btn-block" %>
+      </div>
+    </div>
+  <% end %>
+</div>

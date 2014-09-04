@@ -1,4 +1,3 @@
-<%= debug @crew.employment_records %>
 <div class="row">
   <div class="col-md-2">
     <div class="box-image">
@@ -9,8 +8,12 @@
     <h2><%= @crew %> <small><%= @crew.code_number %></small></h2>
     <h3><%= @crew.rank %></h3>
     <div class="">
-      <%= link_to "Edit", edit_crew_path(@crew), class: "" %> |
-      <%= link_to "Back to Crew Database", crews_path %>
+      <%= link_to edit_crew_path(@crew), class: "btn btn-xs btn-default" do %>
+        <i class="glyphicon glyphicon-pencil"></i> Edit
+      <% end %>
+      <%= link_to crews_path, class: "btn btn-xs btn-default" do %>
+        <i class="glyphicon glyphicon-folder-open"></i> Back to Crew List
+      <% end %>
     </div>  
   </div>
   <div class="col-md-6">
