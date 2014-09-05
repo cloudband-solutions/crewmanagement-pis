@@ -232,7 +232,10 @@ class BaliwagReportPdf < Prawn::Document
 			crew.employment_records.each do |er|
 				data << [er.vessel.name, er.rank.name, "#{er.vessel.flag.name}\n#{er.vessel.grt}", "\s","\s","#{er.sign_on.to_s} / #{er.sign_off.to_s}\n#{er.reason_for_disembarkation.to_s}"]
 			end
-			table data, :column_widths => [125,100,100,100,50,95], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center, :inline_format=>true}
+
+      if data.count > 0
+        table data, :column_widths => [125,100,100,100,50,95], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center, :inline_format=>true}
+      end
 
 			data = [
 				["<b>Grade of Evaluation:</b> (1): Excellent\s\s\s\s\s\s\s\s(2): Very Good\s\s\s\s\s\s\s\s(3): Good\s\s\s\s\s\s\s\s(4): Fair\s\s\s\s\s\s\s\s(5): Poor"]
