@@ -28,5 +28,5 @@ $(document).ready(function() {
 });
 
 var initDatePicker = function() {
-  $(".datepick").datepicker({ dateFormat: "yy-mm-dd" });
+  $(".datepick").datepicker({ dateFormat: "dd-MM-yyy" });
 };
