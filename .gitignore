@@ -15,8 +15,6 @@
 /log/*.log
 /tmp
 /public/system/
-/app/pdfs/crew.pdf
-
-Misuga.pdf
+/app/pdfs/*.pdf
 
 *.swp
