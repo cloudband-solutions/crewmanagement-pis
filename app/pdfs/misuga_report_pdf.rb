@@ -136,7 +136,7 @@ class MisugaReportPdf < Prawn::Document
 	  	]
 	  	license_cat = LicenseCategory.where(:name=>'License of Officer')
       licenses = []
-      if !license_cat
+      if license_cat!=nil
         licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
       end
 	  	licenses.each do |license|
@@ -152,7 +152,7 @@ class MisugaReportPdf < Prawn::Document
 	  		['',number, date_issued, expiry_date, remarks]
 	  	]
 	  	license_cat = LicenseCategory.where(:name=>'Passports & Seaman Book')
-      if !license_cat
+      if license_cat!=nil
         licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
       end
 	  	licenses.each do |license|
@@ -172,7 +172,7 @@ class MisugaReportPdf < Prawn::Document
 	  	]
 	  	license_cat = LicenseCategory.where(:name=>'STCW 1995')
       licenses = []
-      if !license_cat
+      if license_cat!=nil
         licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
       end
 	  	licenses.each do |license|
@@ -190,11 +190,11 @@ class MisugaReportPdf < Prawn::Document
 	  	]
 	  	license_cat = LicenseCategory.where(:name=>'Training Certificates')
       licenses = []
-      if !license_cat
+      if license_cat!=nil
         licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
       end
 	  	licenses.each do |license|
-	  		data << [license.license_type.to_s, license.license_number, license.date_issued.to_s, license.training_center.to_s]
+	  		data << [license.license_type.to_s, license.license_number.to_s, license.date_issued.to_s, license.training_center.to_s]
 	  	end
 	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
 
@@ -216,11 +216,11 @@ class MisugaReportPdf < Prawn::Document
 
 	  	license_cat = LicenseCategory.where(:name=>'Physical Inspection, Yellow Card')
       licenses = []
-      if !license_cat
+      if license_cat!=nil
         licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
       end
 	  	licenses.each do |license|
-	  		data << [license.license_type.to_s, license.date_issued.to_s, license.expiry_date.to_s, license.issued_by]
+	  		data << [license.license_type.to_s, license.date_issued.to_s, license.expiry_date.to_s, license.training_center.to_s]
 	  	end
 	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
 
@@ -264,7 +264,7 @@ class MisugaReportPdf < Prawn::Document
 			crew.employment_records.each do |employment|
 				#raise employment.vessel.inspect
 				ship_name = "#{employment.vessel.name.upcase} / #{employment.vessel.flag.name.upcase}"
-				data << [ship_name,employment.vessel.to_s, "#{employment.vessel.grt} GT", employment.manning_agent.to_s, employment.sign_on.to_s+ "\n" +employment.sign_off.to_s ,employment.reason_for_disembarkation.to_s]
+				data << [ship_name,"#{employment.vessel.to_s} / #{employment.rank.name}", "#{employment.vessel.grt} GT / #{employment.vessel.engine_model}", employment.manning_agent.to_s, employment.sign_on.to_s+ "\n" +employment.sign_off.to_s ,employment.reason_for_disembarkation.to_s]
 			end
 			table data, :column_widths => [150,75,100,75,75,75], :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0], :valign=>:center, :height=>25}
 

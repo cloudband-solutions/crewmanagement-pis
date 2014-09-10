@@ -132,7 +132,7 @@ class BaliwagReportPdf < Prawn::Document
 	  	]
 
 	  	crew.licenses.each do |license|
-	  		data << [license.license_type.name, license.license_number.to_s, license.date_issued, license.expiry_date, license.issued_by]
+	  		data << [license.license_type.name, license.license_number.to_s, license.date_issued.to_s, license.expiry_date.to_s, license.training_center.to_s]
 	  	end
 
 	  	table data, :column_widths=>[250, 100, 60, 60, 100], :position=>:left, :width=>570, :cell_style=>{:padding=>[1,0,2,2]}
