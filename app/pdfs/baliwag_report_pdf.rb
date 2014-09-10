@@ -27,7 +27,7 @@ class BaliwagReportPdf < Prawn::Document
     	rank = make_cell(:content=>"Rank:", :border_width => 0)
     	date = make_cell(:content=>"Date:", :border_width => 0)
     	date_employed = make_cell(:content=>"Date Employed:", :border_width => 0)
-    	code_no_value = make_cell(:content=>'', :border_width => 1, :borders=>[:bottom])
+    	code_no_value = make_cell(:content=>crew.code_number, :border_width => 1, :borders=>[:bottom])
     	rank_value = make_cell(:content=>crew.rank.name, :border_width => 1, :borders=>[:bottom])
     	date_value = make_cell(:content=>Date.today.to_s, :border_width => 1, :borders=>[:bottom])
     	date_employed_value = make_cell(:content=>crew.date_employed.to_s, :border_width => 1, :borders=>[:bottom])
@@ -156,7 +156,7 @@ class BaliwagReportPdf < Prawn::Document
 	  	]
 
 	  	crew.employment_records.each do |employment|
-	  		data << [employment.vessel.name, employment.vessel.flag.name, '', employment.vessel.grt, employment.manning_agent.to_s,'',employment.sign_on.to_s, employment.sign_off.to_s, employment.reason_for_disembarkation.to_s]
+	  		data << [employment.vessel.name, employment.vessel.flag.name, "#{employment.vessel.vessel_type}", employment.vessel.grt, employment.manning_agent.to_s,employment.rank.name,employment.sign_on.to_s, employment.sign_off.to_s, employment.reason_for_disembarkation.to_s]
 	  	end
 	  	table data, :column_widths=>[70, 70, 60, 70, 60, 60, 60, 60, 60], :position=>:left, :width=>570, :cell_style=>{:padding=>[1,0,2,2], :valign=>:center}
 	  #End Employment Record
@@ -171,7 +171,7 @@ class BaliwagReportPdf < Prawn::Document
 	  	font("Helvetica", :size => 10)
 
 	  	data = [
-	  		["Name: #{crew.to_s}", "Position:","Vsl Name: #{crew.vessel.name}"]
+	  		["Name: #{crew.to_s}", "Position: #{crew.rank.name}","Vsl Name: #{crew.vessel.name}"]
 	  	]
 	  	table data, :column_widths => [270,150,150], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center}
 
@@ -186,12 +186,12 @@ class BaliwagReportPdf < Prawn::Document
 	  	table data, :column_widths => [250,100,100,120], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center}
 
 	  	data =[
-	  		["Civil Status: #{crew.civil_status}","Next of Kin: ", "Name: ", "Eye Color: #{crew.eye_color}"]
+	  		["Civil Status: #{crew.civil_status}","Next of Kin: #{crew.nearest_relative_relationship}", "Name: #{crew.nearest_relative_name}", "Eye Color: #{crew.eye_color}"]
 	  	]
 	  	table data, :column_widths => [125, 125, 200, 120], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center}
 
 	  	data = [
-	  		["Children: ","Addess: ", "Shoe Size: #{crew.shoe_size}"]
+	  		["Children: #{crew.number_of_children}","Addess: #{crew.nearest_relative_address}", "Shoe Size: #{crew.shoe_size}"]
 	  	]
 	  	table data, :column_widths => [125,325,120], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center}
 
@@ -203,6 +203,16 @@ class BaliwagReportPdf < Prawn::Document
 	  	end
 
 	  	table data, :column_widths => [125,100,100,100,145], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center, :inline_format=>true}
+
+	  	data = [
+	  		["History of this company:","Date of Employment\n#{crew.date_employed}","Years of Sea Service\n___years\s\s___months"]
+	  	]
+	  	table data, :column_widths => [370, 100, 100], :cell_style=>{:padding=>[0,0,2,2], :valign=>:top, :inline_format=>true}
+
+	  	data =  [
+	  		["Sea service of this position (vessel)","Blood Type: #{crew.blood_type}","Blood Pressure: #{crew.blood_pressure}"]
+	  	]
+	  	table data , :column_widths => [300, 135, 135], :cell_style=>{:padding=>[0,0,2,2], :valign=>:top, :inline_format=>true}
 
 	  	data =[
 	  		["<b>EDUCATION: </b> School Name ",make_cell(:content=>"Course Finished", :align=>:center), "Graduated Year"]
@@ -216,7 +226,7 @@ class BaliwagReportPdf < Prawn::Document
 
 			data = [
 				[make_cell(:content=>'LANGUAGE: To be inserted round marks: ex. "O" in applicable column and name of other laguage will be put in column', :colspan=>4)],
-				["English", "Well:\s\s\s\s\s\s\s\s Average:'O'\s\s\s\s\s\s\s\s A Little:\s\s\s\s\s\s\s\s No:", "(others)", "Well:\s\s\s\s Average:\s\s\s\s A Little:\s\s\s\s No:"]
+				["English", "Well:\s\s\s\s\s\s\s\s Average:\s\s\s\s\s\s\s\s A Little:\s\s\s\s\s\s\s\s No:", "(others)", "Well:\s\s\s\s Average:\s\s\s\s A Little:\s\s\s\s No:"]
 			]
 			table data, :column_widths => [70, 255, 50, 195], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center, :inline_format=>true}
 			move_down 5
@@ -230,7 +240,7 @@ class BaliwagReportPdf < Prawn::Document
 
 			data = []
 			crew.employment_records.each do |er|
-				data << [er.vessel.name, er.rank.name, "#{er.vessel.flag.name}\n#{er.vessel.grt}", "\s","\s","#{er.sign_on.to_s} / #{er.sign_off.to_s}\n#{er.reason_for_disembarkation.to_s}"]
+				data << [er.vessel.name, er.rank.name, "#{er.vessel.flag.name}\n#{er.vessel.vessel_type}/#{er.vessel.grt}", "#{er.vessel.engine_make}\n#{er.vessel.engine_model}/#{er.vessel.horse_power}","\s","#{er.sign_on.to_s} / #{er.sign_off.to_s}\n#{er.reason_for_disembarkation.to_s}"]
 			end
 
       if data.count > 0
