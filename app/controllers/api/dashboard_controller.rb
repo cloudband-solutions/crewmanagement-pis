@@ -5,7 +5,7 @@ module Api
 
     def crew_count_by_vessel
       data = []
-      Vessel.all.each do |v|
+      Vessel.select("*").order(:name).each do |v|
         data << { name: v.name, count: v.active_crews.count }
       end
 
