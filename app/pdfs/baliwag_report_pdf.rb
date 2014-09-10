@@ -171,7 +171,7 @@ class BaliwagReportPdf < Prawn::Document
 	  	font("Helvetica", :size => 10)
 
 	  	data = [
-	  		["Name: #{crew.to_s}", "Position:","Vsl Name: #{crew.vessel.name}"]
+	  		["Name: #{crew.to_s}", "Position: #{crew.rank.name}","Vsl Name: #{crew.vessel.name}"]
 	  	]
 	  	table data, :column_widths => [270,150,150], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center}
 
@@ -191,7 +191,7 @@ class BaliwagReportPdf < Prawn::Document
 	  	table data, :column_widths => [125, 125, 200, 120], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center}
 
 	  	data = [
-	  		["Children: ","Addess: #{crew.nearest_relative_address}", "Shoe Size: #{crew.shoe_size}"]
+	  		["Children: #{crew.number_of_children}","Addess: #{crew.nearest_relative_address}", "Shoe Size: #{crew.shoe_size}"]
 	  	]
 	  	table data, :column_widths => [125,325,120], :cell_style=>{:padding=>[0,0,2,2], :valign=>:center}
 
