@@ -2,8 +2,27 @@
   <div class="col-md-2">
     <%= image_tag f.object.picture.url(:standard) %>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <%= f.input :picture, as: :file %>
+  </div>
+  <div class="col-md-7">
+    <div class="well">
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.association :rank, label: "Current Rank", input_html: { class: "form-control" } %>
+        </div>
+        <div class="col-md-4">
+          <%= f.association :vessel, label: "Vessel Assigned", input_html: { class: "form-control" }, as: :select, collection: Vessel.select("*").order(:name) %>
+        </div>
+        <div class="col-md-4">
+          <% if f.object.sign_on.nil? %>
+            <%= f.input :sign_on, as: :string, input_html: { class: "datepick form-control" } %>
+          <% else %>
+            <%= f.input :sign_on, as: :string, input_html: { value: f.object.sign_on.strftime('%d-%B-%Y'), class: "datepick form-control" } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <hr>
@@ -26,28 +45,15 @@
           <%= f.input :code_number, label: "Code Number", input_html: { class: "form-control" }, placeholder: "Enter Code Number" %>
         </div>
         <div class="col-md-4">
-          <%= f.input :date_employed, label: "Date Employed", as: :string, input_html: { value: (Time.now - 5.years).strftime('%Y-%m-%d'), class: "datepick form-control" } %>
-        </div>
-        <div class="col-md-4">
-          <%= f.association :rank, label: "Current Rank", input_html: { class: "form-control" } %>
+          <%= f.input :date_employed, label: "Date Employed", as: :string, input_html: { value: (Time.now - 5.years).strftime('%d-%B-%Y'), class: "datepick form-control" } %>
         </div>
       </div>
 
       <div class="row crew_form">
-        <div class="col-md-4">
-          <%= f.input :date_of_promotion, as: :string, input_html: { class: "datepick form-control" } %>
-        </div>
-        <div class="col-md-4">
-          <%= f.input :sign_on, as: :string, input_html: { class: "datepick form-control" } %>
-        </div>
-        <div class="col-md-4">
-          <%= f.association :vessel, label: "Vessel Assigned", input_html: { class: "form-control" } %>
-        </div>
       </div>
     </div>
   </div>
 </div>
-
 
 <div class="row crew_form">
    <div class="col-md-6">
@@ -66,32 +72,34 @@
      <%= f.input :city_address, label: "City Address", input_html: { class: "form-control" }, placeholder: "Enter City Address" %>
   </div>
   <div class="col-md-6">
-   <%= f.input :birthday, label: "Birthday", as: :string, input_html: { class: "form-control datepick" } %>
+    <% if f.object.birthday.nil? %>
+      <%= f.input :birthday, label: "Birthday", as: :string, input_html: { class: "form-control datepick" } %>
+    <% else %>
+      <%= f.input :birthday, label: "Birthday", as: :string, input_html: { value: f.object.birthday.strftime('%d-%B-%Y'), class: "form-control datepick" } %>
+    <% end %>
   </div>
-  
- 
 </div>
 
-  <div class="row crew_form">
-    <div class="col-md-6">
-     <%= f.input :provincial_address, label: "Provincial Address", input_html: { class: "form-control" }, placeholder: "Enter Provincial Address" %>
-    </div>
-
-    <div class="col-md-6">
-    <%= f.input :birthplace, label: "Birth Place", input_html: { class: "form-control" }, placeholder: "Enter Birth Place" %>
-   </div>   
-   
+<div class="row crew_form">
+  <div class="col-md-6">
+   <%= f.input :provincial_address, label: "Provincial Address", input_html: { class: "form-control" }, placeholder: "Enter Provincial Address" %>
   </div>
+
+  <div class="col-md-6">
+  <%= f.input :birthplace, label: "Birth Place", input_html: { class: "form-control" }, placeholder: "Enter Birth Place" %>
+ </div>   
+ 
+</div>
 
 <div class="row crew_form"> 
   <div class="col-md-3">
     <%= f.input :zip_code, label: "Zipcode", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Zipcode" %>
   </div> 
   <div class="col-md-3">
-    <%= f.input :height, label: "Height", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Height" %>
+    <%= f.input :height, label: "Height (cm)", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Height" %>
   </div> 
    <div class="col-md-3">
-     <%= f.input :weight, label: "Weight", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Weight" %>
+     <%= f.input :weight, label: "Weight (kg)", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Weight" %>
   </div> 
   <div class="col-md-3">
      <%= f.input :eye_color, label: "Eye Color", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Eye Color" %>
@@ -109,7 +117,7 @@
      <%= f.input :nationality, label: "Nationality", input_html: { class: "form-control input-size_age" }, placeholder: "Enter Nationality" %>
      </div> 
    <div class="col-md-3">
-    <%= f.input :civil_status, input_html: { class: "form-control" }, placeholer: "Enter civil status", as: :select, collection: ["single", "married", "widowed"] %>
+    <%= f.input :civil_status, input_html: { class: "form-control" }, placeholer: "Enter civil status", as: :select, collection: Crew::CIVIL_STATUSES %>
     </div>
 
 </div>
@@ -120,7 +128,7 @@
     <%= f.input :distinguishing_marks, as: :text, input_html: { class: "form-control" } %>
   </div>
   <div class="col-md-3">
-    <%= f.input :cloth_size, as: :select, input_html: { class: "form-control input-size_age" }, collection: ["XS","S","M","L","XL"] %>
+    <%= f.input :cloth_size, as: :select, input_html: { class: "form-control input-size_age" }, collection: Crew::UNIFORM_SIZES %>
   </div> 
   <div class="col-md-3">
        <%= f.input :shoe_size, label: "Shoe Size", input_html: { class: "form-control" }, placeholder: "Enter Shoe Size" %>
@@ -157,11 +165,9 @@
   <div class="col-md-4">
     <%= f.input :number_of_children, label: "Number of Children", input_html: { class: "form-control" }, placeholder: "Enter Father's Name" %>
   </div> 
-  
   <div class="col-md-3">
     <%= f.input :is_smoker, as: :radio_buttons, item_wrapper_class: "inline", label: "Are you a smoker?", input_html: { class: "form-inline" } %>
   </div> 
-   
 </div>
 
 <div class="well">
@@ -177,6 +183,9 @@
     </div>
   </div>
 </div>
+<h3>Educational Attainment</h3>
+<%= render partial: "crews/form_educational_attainments", locals: { f: f } %>
+<hr>
 <div class="row">
   <div class="col-md-4">
     <%= f.input :signature, as: :file %>

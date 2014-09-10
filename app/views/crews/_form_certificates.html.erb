@@ -1,20 +1,20 @@
-<%= f.link_to_add "<i class='glyphicon glyphicon-plus'></i> Add License".html_safe, :licenses, class: "btn btn-info" %>
+<%= f.link_to_add "<i class='glyphicon glyphicon-plus'></i> Add Certificate".html_safe, :certificates, class: "btn btn-info" %>
 <br><br>
-<div id="license_records">
-  <%= f.simple_fields_for :licenses do |ff| %>
+<div id="certificate_records">
+  <%= f.simple_fields_for :certificates do |ff| %>
     <div class="well">
       <div class="row">
         <div class="col-md-3">
-          <%= ff.association :license_type %>
+          <%= ff.association :certificate_type %>
         </div>
         <div class="col-md-3">
-          <%= ff.association :license_category %>
+          <%= ff.association :certificate_category %>
         </div>
         <div class="col-md-3">
-          <%= ff.input :license_number %>
+          <%= ff.input :certificate_number %>
         </div>
         <div class="col-md-3">
-          <%= ff.association :rank %>
+          <%= ff.association :flag, as: :select, collection: Flag.select("*").order(:name) %>
         </div>
       </div>
       <div class="row">
@@ -33,13 +33,14 @@
           <% end %>
         </div>
         <div class="col-md-3">
-          <%= ff.association :training_center %>
+          <%= ff.input :issued_by %>
         </div>
         <div class="col-md-3">
           <%= ff.input :attachment, as: :file %>
         </div>
       </div>
-      <%= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" }  %>
+      <%= ff.link_to_remove "<i class='glyphicon glyphicon-minus'></i> Remove Record".html_safe, class: "btn btn-danger", data: { confirm: "Are you sure?" }  %>
     </div>
   <% end %>
 </div>
+

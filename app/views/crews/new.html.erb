@@ -1,3 +1,17 @@
-<h1>New Crew Record</h1>
-<hr>
+<div class="row">
+  <div class="col-md-6">
+    <h1>New Crew Record 
+    </h1>
+  </div>
+  <div class="col-md-6 add_links">
+    <%= button_tag class: "btn btn-primary btn-lg", id: "submitButton" do %>
+      <i class="glyphicon glyphicon-ok"></i> Save Record
+    <% end %>
+  </div>
+</div>
 <%= render partial: "crews/form", locals: { crew: @crew } %>
+<script>
+$("#submitButton").click(function() {
+  $(".simple_form").submit();
+});
+</script>

@@ -1,5 +1,7 @@
 class Crew < ActiveRecord::Base
   REPORT_TEMPLATES = ["baliwag", "misuga"]
+  CIVIL_STATUSES = ["MARRIED", "SINGLE", "WIDOWED"]
+  UNIFORM_SIZES = ["EXTRA SMALL", "SMALL", "MEDIUM" "LARGE", "EXTRA LARGE"]
   has_attached_file :picture,
     styles: { thumb: "80x80#",
               standard: "150x150#" },
@@ -16,7 +18,7 @@ class Crew < ActiveRecord::Base
   validates :rank, presence: true
 
   belongs_to :vessel
-  validates :vessel, presence: true
+  #validates :vessel, presence: true
 
   belongs_to :rank
 
@@ -31,6 +33,9 @@ class Crew < ActiveRecord::Base
 
   has_many :licenses
   accepts_nested_attributes_for :licenses, allow_destroy: true
+
+  has_many :certificates
+  accepts_nested_attributes_for :certificates, allow_destroy: true
 
   has_many :crew_office_evaluations
   accepts_nested_attributes_for :crew_office_evaluations, allow_destroy: true
@@ -48,18 +53,14 @@ class Crew < ActiveRecord::Base
   validates :height, presence: true, numericality: true
   validates :weight, presence: true, numericality: true
   validates :eye_color, presence: true
-  validates :sss_no, presence: true, uniqueness: true
-  validates :tin_no, presence: true, uniqueness: true
   validates :shoe_size, presence: true
   validates :cloth_size, presence: true
   validates :nearest_relative_name, presence: true
   validates :nearest_relative_relationship, presence: true
   validates :nearest_relative_address, presence: true
   validates :address, presence: true
-  validates :civil_status, presence: true
+  validates :civil_status, presence: true, inclusion: { in: Crew::CIVIL_STATUSES }
   validates :nationality, presence: true
-  validates :pagibig_number, presence: true
-  validates :philhealth_number, presence: true
   validates :is_archived, inclusion: { in: [true, false] }
 
   before_validation :load_defaults
@@ -80,14 +81,6 @@ class Crew < ActiveRecord::Base
 
   def age
     Time.now.year - birthday.year
-  end
-
-  def certificates
-    self.documents.where(document_type: "certificate")
-  end
-
-  def quarantines
-    self.documents.where(document_type: "quarantine")
   end
 
   def toggle_archive

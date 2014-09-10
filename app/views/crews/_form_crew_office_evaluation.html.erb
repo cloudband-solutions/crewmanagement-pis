@@ -1,19 +1,23 @@
+<%= f.link_to_add "<i class='glyphicon glyphicon-plus'></i> Add Office Evaluation".html_safe, :crew_office_evaluations, class: "btn btn-info" %>
+<br>
+<br>
 <%= f.simple_fields_for :crew_office_evaluations do |ff| %>
   <div class="well">
     <div class="row">
       <div class="col-md-4">
-        <%= ff.association :vessel %>
+        <%= ff.association :vessel, as: :select, collection: Vessel.select("*").order(:name) %>
       </div>
       <div class="col-md-4">
-        <%= ff.input :date_of_evaluation, as: :string, input_html: { class: "datepick form-control" } %>
+        <% if ff.object.date_of_evaluation.nil? %>
+          <%= ff.input :date_of_evaluation, as: :string, input_html: { class: "datepick form-control" } %>
+        <% else %>
+          <%= ff.input :date_of_evaluation, as: :string, input_html: { value: ff.object.date_of_evaluation.strftime('%d-%B-%Y'), class: "datepick form-control" } %>
+        <% end %>
       </div>
       <div class="col-md-4">
         <%= ff.input :attachment, as: :file %>
       </div>
     </div>
-    <%= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
+    <%= ff.link_to_remove "<i class='glyphicon glyphicon-minus'></i> Remove Record".html_safe, class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
   </div>
 <% end %>
-<%= f.link_to_add "Add Office Evaluation", :crew_office_evaluations, class: "btn btn-info" %>
-
-

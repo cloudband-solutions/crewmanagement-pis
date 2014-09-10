@@ -1,4 +1,4 @@
-ActiveAdmin.register LicenseType do
+ActiveAdmin.register CertificateType do
   menu parent: "Crew Files"
 
   controller do
@@ -18,7 +18,7 @@ ActiveAdmin.register LicenseType do
   filter :code
 
   form do |f|
-    f.inputs "License Type" do
+    f.inputs "Certificate Type" do
       f.input :name
       f.input :code
       f.input :priority
@@ -35,6 +35,4 @@ ActiveAdmin.register LicenseType do
       row :short_description
     end
   end 
-
 end
-

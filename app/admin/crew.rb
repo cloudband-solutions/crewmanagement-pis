@@ -71,14 +71,22 @@ ActiveAdmin.register Crew do
        ff.input :school, label: "School"
        ff.input :course_finished, label: "Course Finished"
       end
+
       f.has_many :licenses do |ff|
         ff.input :license_number, label: "License Number"
         ff.input :license_type, label: "License Type"
+        ff.input :license_category, label: "License Category"
         ff.input :rank, label: "Rank"
         ff.input :date_issued, label: "Date Issued", as: :datepicker
         ff.input :expiry_date, label: "Expiry Date", as: :datepicker
-        ff.input :issued_by, label: "Issued By"
-        ff.input :license_category, label: "License Category"
+        ff.input :attachment, label: "Attachment"
+      end
+      f.has_many :certificates do |ff|
+        ff.input :certificate_number, label: "Certificate Number"
+        ff.input :certificate_type, label: "Certificate Type"
+        ff.input :certificate_category, label: "Certificate Category"
+        ff.input :date_issued, label: "Date Issued", as: :datepicker
+        ff.input :expiry_date, label: "Expiry Date", as: :datepicker
         ff.input :attachment, label: "Attachment"
       end
       f.has_many :documents do |ff|

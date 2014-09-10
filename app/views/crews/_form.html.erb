@@ -1,10 +1,10 @@
-<%= simple_nested_form_for crew, defaults: { wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control' } }, html: { multipart: true, novalidate: true } do |f| %>
+<%= simple_nested_form_for crew, defaults: { wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control'} }, html: { multipart: true, novalidate: true } do |f| %>
 
 
   <ul class="nav nav-tabs nav-justified">
     <li class="active"><%= link_to "General", "#biodata", "data-toggle" => "tab" %></li>
-    <li class=""><%= link_to "Education", "#educational-attainments", "data-toggle" => "tab" %></li>
-    <li class=""><%= link_to "Training Certificates", "#licenses", "data-toggle" => "tab" %></li>
+    <li class=""><%= link_to "Licenses", "#licenses", "data-toggle" => "tab" %></li>
+    <li class=""><%= link_to "Certificates", "#certificates", "data-toggle" => "tab" %></li>
     <li class=""><%= link_to "Personal Documents", "#documents", "data-toggle" => "tab" %></li>
     <% if current_user.user_type == "manager" %>
       <li class=""><%= link_to "Vessel Evaluations", "#vessel-evaluations", "data-toggle" => "tab" %></li>
@@ -17,11 +17,11 @@
     <div class="tab-pane active" id="biodata">
       <%= render partial: "crews/form_bio", locals: { f: f } %>
     </div>
-    <div class="tab-pane" id="educational-attainments">
-      <%= render partial: "crews/form_educational_attainments", locals: { f: f } %>
-    </div>
     <div class="tab-pane" id="licenses">
       <%= render partial: "crews/form_licenses", locals: { f: f } %>
+    </div>
+    <div class="tab-pane" id="certificates">
+      <%= render partial: "crews/form_certificates", locals: { f: f } %>
     </div>
     <div class="tab-pane" id="employment-record">
       <%= render partial: "crews/form_employment_records", locals: { f: f } %>
@@ -38,11 +38,6 @@
       </div>
     <% end %>
   </div>
-  <div class="row">
-    <div class="col-md-12 form-actions">
-      <%= f.submit "Save Record", class: "btn btn-primary" %>
-    </div>
-  </div>
 <% end %>
 
 <script type="text/javascript">
@@ -52,4 +47,23 @@ $(document).ready(function() {
     initDatePicker();
   });
 });
+
+window.nestedFormEvents.insertFields = function(content, assoc, link) {
+  var $div = $(link).closest('a');
+  return $(content).insertAfter($div);
+  /*
+  if(assoc == "educational_attainments") {
+    return $("#educational_attainments_records").prepend($(content).fadeIn("slow"));
+  }
+  else if(assoc == "licenses") {
+    return $("#license_records").prepend($(content).fadeIn("slow"));
+  }
+  else if(assoc == "certificates") {
+    return $("#certificate_records").prepend($(content).fadeIn("slow"));
+  }
+  else if(assoc == "documents") {
+    return $("#document_records").prepend($(content).fadeIn("slow"));
+  }
+  */
+}
 </script>

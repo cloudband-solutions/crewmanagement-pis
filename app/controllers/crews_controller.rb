@@ -88,7 +88,7 @@ class CrewsController < ApplicationController
       flash[:success] = "Successfully created new crew."
       redirect_to crew_path(@crew)
     else
-      flash.now[:error] = "Please check the form for some errors. #{@crew.errors.full_messages}"
+      flash.now[:error] = "Please check the form for some errors."
       render :new
     end
   end
@@ -104,6 +104,7 @@ class CrewsController < ApplicationController
       flash[:success] = "Successfully saved crew record."
       redirect_to crew_path(@crew)
     else
+      flash.now[:error] = "Please check the form for some errors. #{@crew.errors.full_messages.to_sentence}"
       render :edit
     end
   end
@@ -132,5 +133,4 @@ class CrewsController < ApplicationController
   def crew_params
     params.require(:crew).permit!
   end
-
 end

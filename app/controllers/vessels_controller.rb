@@ -2,7 +2,7 @@ class VesselsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @vessels = Vessel.all
+    @vessels = Vessel.select("*").order(:name)
 
     if current_user.user_type == 'principal'
       @vessels = @vessels.where(user_id: current_user.id)

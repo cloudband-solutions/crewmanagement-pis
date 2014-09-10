@@ -1,8 +1,10 @@
+<%= f.link_to_add "<i class='glyphicon glyphicon-plus'></i> Add Employment Record".html_safe, :employment_records, class: "btn btn-info" %>
+<br><br>
 <%= f.simple_fields_for :employment_records do |ff| %>
   <div class="well">
     <div class="row">
       <div class="col-md-4">
-        <%= ff.association :vessel, label: "Vessel" %> 
+        <%= ff.association :vessel, label: "Vessel", as: :select, collection: Vessel.select("*").order(:name) %> 
       </div>
       <div class="col-md-4">
         <%= ff.association :manning_agent %>
@@ -13,17 +15,23 @@
     </div> 
     <div class="row crew_doc">
       <div class="col-md-4">
-       <%= ff.input :sign_on, as: :string, input_html: { class: "datepick form-control" } %>
+        <% if ff.object.sign_on.nil? %>
+          <%= ff.input :sign_on, as: :string, input_html: { class: "datepick form-control" } %>
+        <% else %>
+          <%= ff.input :sign_on, as: :string, input_html: { value: ff.object.sign_on.strftime('%d-%B-%Y'),class: "datepick form-control" } %>
+        <% end %>
       </div>
       <div class="col-md-4">
-       <%= ff.input :sign_off, as: :string, input_html: { class: "datepick form-control" } %>
+        <% if ff.object.sign_off.nil? %>
+          <%= ff.input :sign_off, as: :string, input_html: { class: "datepick form-control" } %>
+        <% else %>
+          <%= ff.input :sign_off, as: :string, input_html: { value: ff.object.sign_off.strftime('%d-%B-%Y'), class: "datepick form-control" } %>
+        <% end %>
       </div>
       <div class="col-md-4">
          <%= ff.association :reason_for_disembarkation, label: "Reason of Disembarkation", input_html: { class: "form-control" }, placeholder: "Enter Reason"  %>
       </div>
     </div> 
-    <%= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
+    <%= ff.link_to_remove "<i class='glyphicon glyphicon-minus'></i> Remove Record".html_safe, class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
   </div>
 <% end %>
-
-<%= f.link_to_add "Add Employment Record", :employment_records, class: "btn btn-info" %>

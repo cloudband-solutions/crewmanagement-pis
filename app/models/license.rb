@@ -7,6 +7,7 @@ class License < ActiveRecord::Base
   belongs_to :rank
 
   belongs_to :license_category
+  validates :license_category, presence: true
 
   belongs_to :training_center
   
@@ -20,7 +21,6 @@ class License < ActiveRecord::Base
   validates :license_number, presence: true, uniqueness: true
   validates :date_issued, presence: true
   validates :expiry_date, presence: true
-  validates :issued_by, presence: true
 
   def to_s
     "#{license_number}"

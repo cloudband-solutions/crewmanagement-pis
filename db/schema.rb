@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140829122231) do
+ActiveRecord::Schema.define(version: 20140910133618) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -46,6 +46,23 @@ ActiveRecord::Schema.define(version: 20140829122231) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
+  create_table "certificate_categories", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.integer  "priority"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "certificate_types", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.integer  "priority"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "short_description"
+  end
+
   create_table "certificates", force: true do |t|
     t.integer  "crew_id"
     t.string   "name"
@@ -55,6 +72,13 @@ ActiveRecord::Schema.define(version: 20140829122231) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "issued_by"
+    t.integer  "certificate_type_id"
+    t.integer  "certificate_category_id"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.integer  "flag_id"
   end
 
   create_table "classification_societies", force: true do |t|
@@ -210,6 +234,7 @@ ActiveRecord::Schema.define(version: 20140829122231) do
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "priority"
   end
 
   create_table "license_types", force: true do |t|
@@ -218,6 +243,7 @@ ActiveRecord::Schema.define(version: 20140829122231) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "short_description"
+    t.integer  "priority"
   end
 
   create_table "licenses", force: true do |t|
@@ -227,7 +253,6 @@ ActiveRecord::Schema.define(version: 20140829122231) do
     t.string   "license_number"
     t.date     "date_issued"
     t.date     "expiry_date"
-    t.string   "issued_by"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "attachment_file_name"
@@ -238,6 +263,7 @@ ActiveRecord::Schema.define(version: 20140829122231) do
     t.integer  "rank_id"
     t.integer  "license_category_id"
     t.integer  "training_center_id"
+    t.integer  "priority"
   end
 
   create_table "manning_agents", force: true do |t|

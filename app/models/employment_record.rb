@@ -10,5 +10,5 @@ class EmploymentRecord < ActiveRecord::Base
   validates :manning_agent, presence: true
   validates :rank, presence: true
   validates :sign_on, presence: true
-  validates :sign_off, presence: true
+  #validates :sign_off, presence: true
 end

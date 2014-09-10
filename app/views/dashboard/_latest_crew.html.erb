@@ -12,9 +12,15 @@
           <h3><%= crew %> <small><%= crew.code_number %></small></h3>
           <h4><%= crew.rank %></h4>
           <div class="">
-            <%= link_to "Edit", edit_crew_path(crew), class: "" %> |
-            <%= link_to "Go to Profile", crew_path(crew), class: "" %> |
-            <%= link_to "Go to Database", crews_path %>
+            <%= link_to edit_crew_path(crew), class: "btn btn-xs btn-default" do %>
+              <i class="glyphicon glyphicon-pencil"></i> Edit
+            <% end %>
+            <%= link_to crew_path(crew), class: "btn btn-xs btn-default" do %>
+              <i class="glyphicon glyphicon-user"></i> Profile
+            <% end %>
+            <%= link_to crews_path, class: "btn btn-xs btn-default" do %>
+              <i class="glyphicon glyphicon-folder-close"></i> Go to Database
+            <% end %>
           </div>  
         </div>
       </div>

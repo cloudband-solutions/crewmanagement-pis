@@ -21,6 +21,7 @@ ActiveAdmin.register LicenseCategory do
     f.inputs "License Category" do
       f.input :name
       f.input :code
+      f.input :priority
     end
     f.actions
   end
@@ -29,6 +30,7 @@ ActiveAdmin.register LicenseCategory do
     attributes_table do 
       row :name
       row :code
+      row :priority
     end
   end 
 
