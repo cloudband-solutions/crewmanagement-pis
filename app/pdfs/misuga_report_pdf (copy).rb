@@ -112,7 +112,7 @@ class MisugaReportPdf < Prawn::Document
 
 	  	move_down 20
 
-	  	text "EDUCATIONAL ATTAINMENT", :font_style=>:bold, :size=>12
+	  	text "1. EDUCATIONAL ATTAINMENT", :font_style=>:bold, :size=>12
 	  	data = [
 	  		[make_cell(:content => "Year Graduated", :font_style=>:bold), make_cell(:content => "School", :font_style=>:bold), make_cell(:content => "Course", :font_style=>:bold)]
 	  	]
@@ -125,29 +125,108 @@ class MisugaReportPdf < Prawn::Document
 
 	  	move_down 20
 
-	  	license_type = make_cell(:content => "License Type", :font_style=>:bold)
-	  	license_number = make_cell(:content => "License Type", :font_style=>:bold)
+	  	text "2. LICENSE OF OFFICER", :font_style=>:bold, :size=>12
+	  	country = make_cell(:content => "Country", :font_style=>:bold)
+	  	rank = make_cell(:content => "Rank", :font_style=>:bold)
+	  	number = make_cell(:content => "Number", :font_style=>:bold)
 	  	date_issued = make_cell(:content => "Date Issued", :font_style=>:bold)
 	  	expiry_date = make_cell(:content => "Expiry Date", :font_style=>:bold)
-	  	issued_by = make_cell(:content => "Issued By", :font_style=>:bold)
-	  	LicenseCategory.all.each do |license|
-	  		data = [
-	  			[license_type, license_number, date_issued, expiry_date, issued_by]
-	  		]
-	  		text "#{license.name}", :font_style=>:bold, :size=>12
-	  		license_cat = LicenseCategory.where(:name=>"#{license.name}")
-	      licenses = []
-	      if license_cat!=nil
-	        licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
-	      end
-		  	licenses.each do |license|
-		  		data << [license.license_type.to_s, license.license_number.to_s, license.date_issued.to_s, license.expiry_date.to_s, license.training_center.to_s]
-		  	end
-		  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,3,0], :valign=>:center}
-		  	move_down 20
+	  	data = [
+	  		[country, rank, number, date_issued, expiry_date]
+	  	]
+	  	license_cat = LicenseCategory.where(:name=>'License of Officer')
+      licenses = []
+      if license_cat!=nil
+        licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
+      end
+	  	licenses.each do |license|
+	  		data << [license.license_type.to_s, license.rank.to_s, license.license_number, license.date_issued.to_s, license.expiry_date.to_s]
 	  	end
+	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
 
-	  	text "ENGLISH ABILITY", :font_style=>:bold, :size=>12
+	  	move_down 20
+
+	  	text "3. PASSPORTS & SEAMAN BOOK", :font_style=>:bold, :size=>12
+	  	remarks = make_cell(:content => "Remarks", :font_style=>:bold)
+	  	data =[
+	  		['',number, date_issued, expiry_date, remarks]
+	  	]
+	  	license_cat = LicenseCategory.where(:name=>'Passports & Seaman Book')
+      if license_cat!=nil
+        licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
+      end
+	  	licenses.each do |license|
+	  		data << [license.license_type.to_s, license.license_number, license.date_issued.to_s, license.expiry_date.to_s, '']
+	  	end
+	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
+
+	  	move_down 20
+
+	  	text "4. STCW 1985", :font_style=>:bold, :size=>12
+	  	kind_of_certificate = make_cell(:content => "Kind of Certificate", :font_style=>:bold)
+	  	certified_as = make_cell(:content => "Certified As", :font_style=>:bold)
+	  	certificate_number = make_cell(:content => "Certificate Number", :font_style=>:bold)
+	  	limitation = make_cell(:content => "Any Limitation", :font_style=>:bold)
+	  	data = [
+	  		[kind_of_certificate, certified_as, certificate_number, date_issued, expiry_date, limitation]
+	  	]
+	  	license_cat = LicenseCategory.where(:name=>'STCW 1995')
+      licenses = []
+      if license_cat!=nil
+        licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
+      end
+	  	licenses.each do |license|
+	  		data << [license.license_type.to_s, license.license_number, license.date_issued.to_s, license.expiry_date.to_s, '','']
+	  	end
+	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
+
+	  	move_down 20
+
+	  	text "5. TRAINING CERTIFICATES", :font_style=>:bold, :size=>12
+	  	training_course = make_cell(:content => "Training Course", :font_style=>:bold)
+	  	training_center = make_cell(:content => "Training Center", :font_style=>:bold)
+	  	data = [
+	  		[training_course, number, date_issued, training_center]
+	  	]
+	  	license_cat = LicenseCategory.where(:name=>'Training Certificates')
+      licenses = []
+      if license_cat!=nil
+        licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
+      end
+	  	licenses.each do |license|
+	  		data << [license.license_type.to_s, license.license_number.to_s, license.date_issued.to_s, license.training_center.to_s]
+	  	end
+	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
+
+	  	move_down 20
+
+	  	text "1. OTHER TRAINING CERTIFICATES", :font_style=>:bold, :size=>12
+	  	data =[
+	  		[training_course,number,date_issued,training_center]
+	  	]
+	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
+
+	  	move_down 20
+
+	  	text "2. PHYSICAL INSPECTION, YELLOW CARD", :font_style=>:bold, :size=>12
+	  	issued_by = make_cell(:content => "Issued By", :font_style=>:bold)
+	  	data = [
+	  		['',date_issued,expiry_date,issued_by]
+	  	]
+
+	  	license_cat = LicenseCategory.where(:name=>'Physical Inspection, Yellow Card')
+      licenses = []
+      if license_cat!=nil
+        licenses = crew.licenses.where(:license_category_id=>license_cat[0].id)
+      end
+	  	licenses.each do |license|
+	  		data << [license.license_type.to_s, license.date_issued.to_s, license.expiry_date.to_s, license.training_center.to_s]
+	  	end
+	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
+
+	  	move_down 20
+
+	  	text "3. ENGLISH ABILITY", :font_style=>:bold, :size=>12
 	  	colspan = make_cell(:content => " ", :colspan => 5);
 	  	data = [
 	  		[' ',colspan],
@@ -157,7 +236,7 @@ class MisugaReportPdf < Prawn::Document
 	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
 
 	  	move_down 20
-	  	text "EXPERIENCE AND UNDERSTANDING OF ISM", :font_style=>:bold, :size=>12
+	  	text "4. EXPERIENCE AND UNDERSTANDING OF ISM", :font_style=>:bold, :size=>12
 	  	data =[
 	  		['Experience','1 Yes','2 No',make_cell(:content=>'',:colspan=>3)],
 	  		['Evaluation','5 Excellent','4 Good','3 Acceptable',' 2 Poor','1 Unsuitable']
@@ -165,7 +244,7 @@ class MisugaReportPdf < Prawn::Document
 	  	table data, :position=>:left, :width=>550, :cell_style=>{:size=>7,:align=>:center, :padding=>[1,0,2,0]}
 
 	  	move_down 20
-	  	text "SEAMAN'S HISTORY (WITHIN THE LAST TEN YEARS)", :font_style=>:bold, :size=>12
+	  	text "5. SEAMAN'S HISTORY (WITHIN THE LAST TEN YEARS)", :font_style=>:bold, :size=>12
 	  	text "<b>Note:</b>", :inline_format=>:true, :size=>8
 	  	text "1) Indicated whether vessel is M/V (Motor Vessel), S/S or S/T(Steam Turbine) etc.", :size=>8
 			text "2) Under TYPE Indicate whether Bulk, Log, VLCC, Chemical, LPG, etc.", :size=>8
