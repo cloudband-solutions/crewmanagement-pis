@@ -29,6 +29,7 @@ BaliwagIs::Application.routes.draw do
 
   get "/reports/crew_manifest", to: "reports#crew_manifest", as: :reports_crew_manifest
   post "/reports/crew_manifest", to: "reports#crew_manifest", as: :reports_crew_manifest_generate
+  post "/reports/download_crew_manifest", to: "reports#download_crew_manifest", as: :reports_download_crew_manifest
 
   resources :principals, only: [:index, :show]
   resources :transmittal_records
