@@ -22,8 +22,8 @@ class ReportsController < ApplicationController
     license_types = LicenseType.where("license_types.id IN (?)", params[:license_type_ids].split(" "))
     package = generate_crew_manifest(vessel, crews, license_types)
     filename = "#{Time.now.to_i}_report.xlsx"
-    package.serialize filename
-    send_file "#{Rails.root}/#{filename}", filename: filename, type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    package.serialize "#{Rails.root}/tmp/#{filename}"
+    send_file "#{Rails.root}/tmp/#{filename}", filename: filename, type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
   end
 
   private 
