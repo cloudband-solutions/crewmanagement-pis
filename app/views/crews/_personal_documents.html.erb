@@ -1,23 +1,34 @@
-<table class="table table-bordered table-stripped">
-  <tr>  
-    <th class="label-c">Document Kind</th>
-    <th class="label-c">Number</th>
-    <th class="label-c">Date Issued</th>
-    <th class="label-c">Expiry Date</th>
-    <th class="label-c">Issued By</th>
-    <th class="label-c">Actions</th>
-  </tr>
-  <% documents.each do |document| %>
-    <tr>
-      <td class="label-d-a"><%= document.document_kind %></td>
-      <td class="label-d-a"><%= document.doc_number %></td>
-      <td class="label-d-a"><%= document.issued_at %></td>
-      <td class="label-d-a"><%= document.expiry_date %></td>
-      <td class="label-d-a"><%= document.issued_by %></td>
-      <td class="label-d-a">
-        <%= link_to "Download", document.attachment.url, target: "_blank" %>
-      </td>
-    </tr>
-  <% end %>
-</table>
-
+<div class="row details">
+  <div class="col-md-12">
+    <table class="table table-bordered table-stripped">
+      <tr>  
+        <th class="label-c">Document Kind</th>
+        <th class="label-c">Number</th>
+        <th class="label-c">Date Issued</th>
+        <th class="label-c">Expiry Date</th>
+        <th class="label-c">Issued By</th>
+        <th class="label-c">Actions</th>
+      </tr>
+      <% documents.each do |document| %>
+        <tr>
+          <td class="label-d-a"><%= document.document_kind %></td>
+          <td class="label-d-a"><%= document.doc_number %></td>
+          <td class="label-d-a">
+            <% if !document.issued_at.nil? %>
+              <%= document.issued_at.strftime('%d-%B-%Y') %>
+            <% end %>
+          </td>
+          <td class="label-d-a">
+            <% if !document.expiry_date.nil? %>
+              <%= document.expiry_date.strftime('%d-%B-%Y') %>
+            <% end %>
+          </td>
+          <td class="label-d-a"><%= document.issued_by %></td>
+          <td class="label-d-a">
+            <%= link_to "Download", document.attachment.url, target: "_blank" %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

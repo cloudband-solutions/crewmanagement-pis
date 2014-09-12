@@ -2,7 +2,7 @@
   <%= form_tag send("transmittal_records_path"), method: :get do |f| %>
     <div class="row">
       <div class="col-md-3">
-        <%= select_tag :vessel_id, options_from_collection_for_select(Vessel.all, :id, :name, @vessel.try(:id)), class: "form-control", prompt: "By Vessel" %>
+        <%= select_tag :vessel_id, options_from_collection_for_select(Vessel.select("*").order(:name), :id, :name, @vessel.try(:id)), class: "form-control", prompt: "By Vessel" %>
       </div>
       <div class="col-md-3">
         <%= select_tag :status, options_for_select(TransmittalRecord::STATUSES, @status),  prompt: "By Status", class: "form-control" %>

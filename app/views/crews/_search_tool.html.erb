@@ -5,7 +5,7 @@
         <%= text_field_tag :q, @q, class: "form-control", placeholder: "Quick Search by Name" %>
       </div>
       <div class="col-md-2">
-        <%= select_tag :vessel_id, options_from_collection_for_select(Vessel.all, :id, :name, @vessel.try(:id)), class: "form-control", prompt: "By Vessel" %>
+        <%= select_tag :vessel_id, options_from_collection_for_select(Vessel.select("*").order(:name), :id, :name, @vessel.try(:id)), class: "form-control", prompt: "By Vessel" %>
       </div>
       <div class="col-md-2">
         <%= select_tag :rank_id, options_from_collection_for_select(Rank.all, :id, :name, @rank.try(:id)), prompt: "By Rank", class: "form-control" %>
