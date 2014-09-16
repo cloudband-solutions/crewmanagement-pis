@@ -1,7 +1,7 @@
 <div id="latest_crew">
   <% if !crew.nil? %>
-  <h4>Latest Updated Crew <small><%= crew.updated_at %></small></h4>
-    <div class="well">
+  <h4>Latest Updated Crew <small><%= crew.updated_at.strftime('%B %e, %Y') %></small></h4>
+    <div class="well latest_updated_crew">
       <div class="row">
         <div class="col-md-3">
           <%= image_tag crew.picture.url(:standard) %>

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row details_crew">
   <div class="col-md-2">
     <div class="box-image">
     <%= image_tag @crew.picture.url(:standard) %>
@@ -21,7 +21,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row info">
   <div class="col-md-12 form-number">
     <tbody>
       <tr>
@@ -33,7 +33,7 @@
 
 <%= render partial: "crews/general_information", locals: { crew: @crew } %>
 
-<div class="row">
+<div class="row info">
   <div class="col-md-12 form-number">
     <tbody>
       <tr>
@@ -45,7 +45,7 @@
 
 <%= render partial: "crews/educational_attainments", locals: { educational_attainments: @crew.educational_attainments } %>
 
-<div class="row">
+<div class="row info">
   <div class="col-md-12 form-number">
     <tbody>
       <tr>
@@ -57,7 +57,7 @@
 
 <%= render partial: "crews/licenses", locals: { licenses: @crew.licenses } %>
 
-<div class="row">
+<div class="row info">
   <div class="col-md-12 form-number">
     <tbody>
       <tr>
