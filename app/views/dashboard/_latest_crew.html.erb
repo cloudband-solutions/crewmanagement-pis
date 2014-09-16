@@ -1,6 +1,6 @@
 <div id="latest_crew">
   <% if !crew.nil? %>
-  <h4>Latest Added Crew <small><%= crew.created_at %></small></h4>
+  <h4>Latest Added Crew <small><%= crew.created_at.strftime('%B %e, %Y') %></small></h4>
     <div class="well">
       <div class="row">
         <div class="col-md-3">

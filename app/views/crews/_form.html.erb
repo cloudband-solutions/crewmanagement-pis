@@ -1,7 +1,7 @@
 <%= simple_nested_form_for crew, defaults: { wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control'} }, html: { multipart: true, novalidate: true } do |f| %>
 
 
-  <ul class="nav nav-tabs nav-justified">
+  <ul class="nav nav-tabs nav-justified forw">
     <li class="active"><%= link_to "General", "#biodata", "data-toggle" => "tab" %></li>
     <li class=""><%= link_to "Licenses", "#licenses", "data-toggle" => "tab" %></li>
     <li class=""><%= link_to "Certificates", "#certificates", "data-toggle" => "tab" %></li>
