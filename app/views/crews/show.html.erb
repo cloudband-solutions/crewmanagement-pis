@@ -69,18 +69,16 @@
 
 <%= render partial: "crews/certificates", locals: { certificates: @crew.certificates } %>
 
-<div class="row details">
-  <div class="row">
-    <div class="col-md-12">
-      <h2>PERSONAL DOCUMENTS</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <%= render partial: "crews/personal_documents", locals: { documents: @crew.documents } %>
-    </div>
+<div class="row">
+  <div class="col-md-12 form-number">
+    <tbody>
+      <tr>
+        <td>Personal Documents</td>
+      </tr>
+    </tbody>
   </div>
 </div>
+<%= render partial: "crews/personal_documents", locals: { documents: @crew.documents } %>
 
 <div class="row details">
   <div class="row">
