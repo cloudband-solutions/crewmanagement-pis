@@ -10,7 +10,7 @@ class Certificate < ActiveRecord::Base
   validates :certificate_category, presence: true
 
   validates :date_issued, presence: true
-  validates :expiry_date, presence: true
+  #validates :expiry_date, presence: true
 
   belongs_to :flag
 
