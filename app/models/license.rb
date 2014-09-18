@@ -20,7 +20,7 @@ class License < ActiveRecord::Base
   #validates :kind, presence: true
   validates :license_number, presence: true, uniqueness: true
   validates :date_issued, presence: true
-  validates :expiry_date, presence: true
+  #validates :expiry_date, presence: true
 
   def to_s
     "#{license_number}"
