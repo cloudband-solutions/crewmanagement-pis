@@ -13,6 +13,7 @@
  *= require shared
  *= require style
  *= require notifications
+ *= require mediaqueries
  *= require jquery-ui
  *= require select2
  *= require iphone
@@ -182,8 +183,46 @@ th {
   text-align: center;
 }
 
+@media only screen 
+and (min-device-width : 1200px) 
+and (max-device-width : 1280px) {
+ 
+  .add_links {
+    margin-right: 50px;
+  }
 
-@media screen and (max-width : 1024px)  {
+  .well {
+    width: 91.5%;
+  }
+
+
+
+ .transmittal_record_status {
+  .col-md-12 {
+    width: 96%;
+  }
+ }
+
+
+ .crew_count {
+  .col-md-12 {
+    width: 96%;
+
+  }
+ }
+
+ .by_rank {
+   .col-md-12 {
+    width: 96%;
+    margin-left: -4%;
+  }
+ }
+}
+
+@media only screen 
+and (min-device-width : 1000px) 
+and (max-device-width : 1024px) {
+
   #login-box {
   margin-left: auto;
   margin-right: auto;
@@ -297,14 +336,25 @@ th {
   text-align: left;
 
   img {
-    margin-left: 25%;
+    margin-left: 28%;
   }
 
   .csc {
-    margin-left: 13%;
+    margin-left: 15%;
   }
 }
 
 
 }
+
+@media only screen 
+and (min-device-width : 975px) 
+and (max-device-width : 980px)  {
+
+
+
+
+
+}
+
 

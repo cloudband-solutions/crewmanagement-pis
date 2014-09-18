@@ -1,0 +1,337 @@
+// Mediaqueries for 1280px
+@media only screen 
+and (min-device-width : 1200px) 
+and (max-device-width : 1280px) {
+
+//CREWS
+
+  .clists {
+    width: 96%; 
+  }
+
+ .col-md-3 {
+    .btn {
+      margin-left: 5%;
+    }
+  }
+
+  .nav-justified .nav-tabs.nav-justified li {
+    width: 96%;
+  }
+
+
+  .nav {
+    font-size: 0.9em;
+   .forw li {
+    width: 96%; 
+   }
+  }
+
+  .tab-content-inner {
+    width: 96%;
+    padding-right: 10px;
+  }
+
+ .d {
+    margin-top: -4%;
+    margin-left: 45.3%;
+  }
+
+.details_crew {
+  .col-md-4 {
+    margin-left: -26px;
+    width: 23%;
+    h2 {
+    font-size: 1.5em;
+     }
+
+    h3 {
+      font-size: 1.2em;
+    }
+    }
+  }
+
+  .info {
+    .col-md-12 {
+      width: 93.8%;
+    }
+  }
+
+  .details_ {
+    .col-md-12 {
+    width: 96%;
+  }
+  }
+
+  .details {
+    width: 96%;
+  }
+
+  .nav-tabs {
+  width: 95.3%!important;
+
+  li a {
+   padding: 10px;
+  }
+  }
+
+//VESSELS
+  
+  .vessel_table {
+    width: 96%;
+  }
+
+ 
+  .tlists {
+    width: 97%;
+    margin-left: -10px;
+  }
+
+  .vshow {
+    width: 96%;
+  }
+
+  .vessel_show {
+       .nav-justified .nav-tabs.nav-justified li {
+      width: 96%;
+    }
+  }
+
+  .wells {
+  width: 96%;
+  .form-actions {
+    margin-top: 10px;
+  }
+}
+
+  .vessell {
+    width: 98%;
+  }
+
+  .well {
+    margin-left: 20px;
+  }
+
+// PRINCIPALS
+
+  .principallist {
+     width: 96%;
+  }
+//TRANSMITTAL RECORDS
+
+  .new_transmittal {
+    .col-md-3 {
+      width: 25%;
+      margin-left: -10px;
+    }
+    .btn {
+      width: 83%;
+    }
+  }
+
+  .btns {
+    .btn {
+    font-size: 0.9em;
+    margin-left: -2px;
+    padding: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  }
+
+  .trans {
+    .col-md-9 {
+      h1 {
+    font-size: 1.9em;
+  }
+  }
+   .col-md-3 {
+    margin-top: -15px;
+    }
+  }
+
+  .basicBox {
+    width: 96%;
+  }
+
+}
+
+
+
+// Mediaqueries for 1024px
+
+@media only screen 
+and (min-device-width : 1000px) 
+and (max-device-width : 1024px) {
+// CREWS 
+  .col-md-3 {
+    .btn {
+    width: 60%;
+    }
+  }
+
+  .search_tools {
+    margin-left: -10%;
+  }
+
+  .clists {
+    width: 77%; 
+
+  }
+
+  .nav-justified .nav-tabs.nav-justified li {
+    width: 77%;
+  }
+
+
+  .nav {
+    font-size: 0.9em;
+   .forw li and{
+    width: 77%; 
+    
+   }
+  }
+
+  .tab-content-inner {
+    width: 77%;
+    padding-right: 10px;
+
+  }
+
+ .d {
+    margin-top: -4%;
+    margin-left: 45%;
+  }
+
+  .details_crew {
+    .col-md-4 {
+      margin-left: -26px;
+      width: 23%;
+      h2 {
+      font-size: 1.5em;
+    }
+
+    h3 {
+      font-size: 1.2em;
+    }
+    }
+  }
+
+  .info {
+    .col-md-12 {
+      width: 75.3%;
+    }
+  }
+
+  .details_ {
+    .col-md-12 {
+    width: 77%;
+  }
+  }
+
+  .details {
+    width: 77%;
+
+  }
+
+ 
+ .nav-tabs {
+  width: 76.2%!important;
+ 
+  li a {
+     padding: 5px;
+  }
+ }
+  
+ .c {
+   width:110%;
+   font-size: 0.9em;
+ }
+
+ .e {
+  height: 40px;
+ }
+
+//VESSELS
+
+  .vessel_table {
+    width: 77%;
+  }
+
+  .search_tool {
+    margin-left: -5.5%;
+  }
+
+  .tlists {
+    width: 78%;
+    margin-left: -10px;
+  }
+
+  .vshow {
+    width: 77%;
+  }
+
+  .vessel_show {
+       .nav-justified .nav-tabs.nav-justified li {
+      width: 77%;
+    }
+  }
+// PRINCIPALS
+
+  .principallist {
+     width: 77%;
+  }
+//TRANSMITTAL RECORDS
+
+  .new_transmittal {
+    .col-md-3 {
+      width: 25%;
+      margin-left: -10px;
+    }
+    .btn {
+      width: 83%;
+    }
+  }
+
+  .btns {
+    .btn {
+    font-size: 0.6em;
+    margin: 0;
+    margin-left: -2px;
+    padding: 0;
+  }
+  }
+
+  .trans {
+    .col-md-9 {
+      h1 {
+    font-size: 1.9em;
+  }
+
+  }
+   .col-md-3 {
+    margin-top: -15px;
+
+    }
+}
+
+  .wells {
+    width: 77%;
+    .form-actions {
+      margin-top: 10px;
+    }
+  }
+
+  .vessell {
+    width: 79%;
+  }
+
+  .basicBox {
+    width: 77%;
+  }
+}
+
+
+
+
+  
