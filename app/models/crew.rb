@@ -2,6 +2,8 @@ class Crew < ActiveRecord::Base
   REPORT_TEMPLATES = ["baliwag", "misuga"]
   CIVIL_STATUSES = ["MARRIED", "SINGLE", "WIDOWED"]
   UNIFORM_SIZES = ["EXTRA SMALL", "SMALL", "MEDIUM" "LARGE", "EXTRA LARGE"]
+  STATUSES = ["ACTIVE", "INACTIVE", "DECEASED"]
+
   has_attached_file :picture,
     styles: { thumb: "80x80#",
               standard: "150x150#" },
@@ -62,10 +64,11 @@ class Crew < ActiveRecord::Base
   validates :civil_status, presence: true, inclusion: { in: Crew::CIVIL_STATUSES }
   validates :nationality, presence: true
   validates :is_archived, inclusion: { in: [true, false] }
+  validates :status, presence: true, inclusion: { in: Crew::STATUSES }
 
   before_validation :load_defaults
 
-  scope :active, -> { where("is_archived = ?", false) }
+  scope :active, -> { where("is_archived = ? AND status = ?", false, 'ACTIVE') }
 
   def self.all_by_vessel(v)
     self.active.where(vessel_id: v.id)

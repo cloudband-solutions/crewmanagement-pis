@@ -1,0 +1,13 @@
+<% crews.each do |crew| %>
+  <div class="basicBox">
+    <div class="row">
+      <div class="col-md-3">
+          <%= image_tag crew.picture.url(:standard) %>
+      </div>
+      <div class="col-md-9">
+        <h3><%= crew.lastname %></h3>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= paginate crews %>

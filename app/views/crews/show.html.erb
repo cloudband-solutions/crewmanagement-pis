@@ -5,8 +5,8 @@
     </div>
   </div>
   <div class="col-md-4">
-    <h2><%= @crew %> <small><%= @crew.code_number %></small></h2>
-    <h3><%= @crew.rank %></h3>
+    <h3><%= @crew %> <small><%= @crew.code_number %></small></h3>
+    <h4><%= @crew.rank %> <small><%= @crew.status %></small></h4>
     <div class="">
       <%= link_to edit_crew_path(@crew), class: "btn btn-xs btn-default" do %>
         <i class="glyphicon glyphicon-pencil"></i> Edit
@@ -80,49 +80,52 @@
 </div>
 <%= render partial: "crews/personal_documents", locals: { documents: @crew.documents } %>
 
-<div class="row details">
-  <div class="row">
-    <div class="col-md-12">
-      <h2>EMPLOYMENT RECORDS</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <%= render partial: "crews/employment_records", locals: { employment_records: @crew.employment_records } %>
-    </div>
+<div class="row">
+  <div class="col-md-12 form-number">
+    <tbody>
+      <tr>
+        <td>Employment Records</td>
+      </tr>
+    </tbody>
   </div>
 </div>
+<%= render partial: "crews/employment_records", locals: { employment_records: @crew.employment_records } %>
 
 <% if current_user.user_type == "manager" %>
-  <div class="row details">
-    <div class="row">
-      <div class="col-md-12">
-        <h2>VESSEL EVALUATIONS</h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <%= render partial: "crews/vessel_evaluations", locals: { evaluations: @crew.crew_vessel_evaluations } %>
-      </div>
+  <div class="row">
+    <div class="col-md-12 form-number">
+      <tbody>
+        <tr>
+          <td>Vessel Evaluations</td>
+        </tr>
+      </tbody>
     </div>
   </div>
+  <%= render partial: "crews/vessel_evaluations", locals: { evaluations: @crew.crew_vessel_evaluations } %>
 
-  <div class="row details">
-    <div class="row">
-      <div class="col-md-12">
-        <h2>OFFICE EVALUATIONS</h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <%= render partial: "crews/office_evaluations", locals: { evaluations: @crew.crew_office_evaluations } %>
-      </div>
+  <div class="row">
+    <div class="col-md-12 form-number">
+      <tbody>
+        <tr>
+          <td>Office Evaluations</td>
+        </tr>
+      </tbody>
     </div>
   </div>
+  <%= render partial: "crews/office_evaluations", locals: { evaluations: @crew.crew_office_evaluations } %>
 <% end %>
 
+
+<div class="row">
+  <div class="col-md-12 form-number">
+    <tbody>
+      <tr>
+        <td>Signature</td>
+      </tr>
+    </tbody>
+  </div>
+</div>
 <div class="row details">
-  <h2>Signature</h2>
   <div class="col-md-12">
     <%= image_tag @crew.signature.url(:list) %>
   </div>
