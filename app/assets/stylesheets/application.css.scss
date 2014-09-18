@@ -189,10 +189,6 @@ and (max-device-width : 1280px) {
     margin-right: 50px;
   }
 
-  .well {
-    width: 91.5%;
-  }
-
 
 
  .transmittal_record_status {
@@ -303,9 +299,7 @@ and (max-device-width : 1024px) {
   }
  }
 
- .well {
-  width: 77%;
- }
+
 
   .latest_updated_crew {
   margin-left: -25%;
@@ -349,7 +343,45 @@ and (max-device-width : 1024px) {
 and (min-device-width : 975px) 
 and (max-device-width : 980px)  {
 
+  #login-box {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    border: 1px solid #e2e2e2;
+    padding: 20px;
+    margin-top: 30px;
+    background: #fff;
+  #banner {
+    padding: 20px;
+    background: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    border-radius: 4px;
+  }
+}
 
+.my_nav {
+  li a {
+    font-size: 0.8em;
+    &.active {
+      color: #fff;
+      border-bottom: 5px solid #78AB46;
+      padding-bottom: 10px;
+    }
+  }
+
+  .btn-danger {
+    padding: 0;
+  }
+}
+
+
+.logged-in{
+  display: none;
+}
 
 
 
