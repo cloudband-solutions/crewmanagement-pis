@@ -86,4 +86,49 @@
 		width: 100%;
 	}
 
+	img{
+		max-width: 100%;
+		height: auto;
+	}
+	.row{
+		margin: 0px;
+	}
+
+	table, table tbody, table tr, table thead, table td, table th{
+		display: block;
+		width: 100% !important;
+		max-width: 100%;
+		text-align: left;
+	}
+	table tr td:before{
+		font-weight: bold !important;
+		margin-right: 5px;
+	}
+	table tr{
+		border-bottom:3px solid #ddd;
+	}
+
+	.clists table tr td:nth-of-type(1):before{ content:"Name: "	; }
+	.clists table tr td:nth-of-type(2):before{ content:"Number: "	; }
+	.clists table tr td:nth-of-type(3):before{ content:"Vessel: "	; }
+	.clists table tr td:nth-of-type(4):before{ content:"Rank: "	; }
+	.clists table tr td:nth-of-type(5):before{ content:"Actions: "	; }
+
+	.vessell table tr td:nth-of-type(1):before{ content:"Name: "	; }
+	.vessell table tr td:nth-of-type(2):before{ content:"Flag: "	; }
+	.vessell table tr td:nth-of-type(3):before{ content:"Vessel Type: "	; }
+	.vessell table tr td:nth-of-type(4):before{ content:"Horse Power: "	; }
+	.vessell table tr td:nth-of-type(5):before{ content:"Engine Make: "	; }
+	.vessell table tr td:nth-of-type(6):before{ content:"Number of Crews: "	; }
+	.vessell table tr td:nth-of-type(7):before{ content:"Actions: "	; }
+
+	.tlists table tr td:nth-of-type(1):before{ content:"Date of Departure: "	; }
+	.tlists table tr td:nth-of-type(2):before{ content:"Vessel: "	; }
+	.tlists table tr td:nth-of-type(3):before{ content:"Destination: "	; }
+	.tlists table tr td:nth-of-type(4):before{ content:"Embarking Crews: "	; }
+	.tlists table tr td:nth-of-type(5):before{ content:"Disembarking Crews: "	; }
+	.tlists table tr td:nth-of-type(6):before{ content:"umber of Promotions: "	; }
+	.tlists table tr td:nth-of-type(7):before{ content:"Status: "	; }
+	.tlists table tr td:nth-of-type(8):before{ content:"Actions: "	; }
+
 }
