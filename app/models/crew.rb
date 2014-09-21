@@ -68,7 +68,7 @@ class Crew < ActiveRecord::Base
 
   before_validation :load_defaults
 
-  scope :active, -> { where("is_archived = ? AND status = ?", false, 'ACTIVE') }
+  scope :active, -> { where("is_archived = ?", false) }
 
   def self.all_by_vessel(v)
     self.active.where(vessel_id: v.id)
