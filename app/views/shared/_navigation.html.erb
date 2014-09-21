@@ -36,7 +36,7 @@
       </li>
     </ul> 
     <div class="navbar-form navbar-right">
-      <b class="logged-in" style="color:white;">Logged in as:</b> <span class="login-text"><%= current_user.email %></span>
+      <!--<b class="logged-in" style="color:white;">Logged in as:</b> <span class="login-text"><%= current_user.email %></span>-->
       <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure you want to log-out?" }, class: "btn btn-danger" %>
     </div>
   </div><!-- /.navbar-collapse -->
