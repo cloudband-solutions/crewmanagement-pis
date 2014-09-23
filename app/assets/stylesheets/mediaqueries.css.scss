@@ -170,6 +170,14 @@ and (max-device-width : 1280px) {
     width: 96%;
   }
 
+  .cmanifest {
+    width: 93%;
+  }
+
+  .dlreport {
+    width: 93%;
+  }
+
 }
 
 
@@ -353,6 +361,15 @@ and (max-device-width : 1024px) {
   .basicBox {
     width: 77%;
   }
+
+  .cmanifest {
+    width: 77%;
+  }
+
+  .dlreport {
+    width: 77%;
+  }
+
 }
 
 // Mediaqueries for 980 
@@ -467,27 +484,20 @@ and (max-device-width : 980px) {
     margin-left: 60%;
     margin-top: -10.1%;
   }
- 
-
-
 }
-
 .tab-content .tab-content-inner {
   width: 100%;
-
-
 }
 
  .crew_form {
   width: 75%;
  }
 
-
  .cform {
   width: 72.5%;
  }
   
-.details_crew {
+  .details_crew {
   .col-md-4 {
     margin-left: 20%;
     margin-top: -10%;
@@ -496,12 +506,10 @@ and (max-device-width : 980px) {
     h2 {
     font-size: 1.5em;
      }
-
     h3 {
       font-size: 1.2em;
     }
     }
-
   .cdl {
    width: 26%;
    margin-left: 45%;
@@ -509,8 +517,8 @@ and (max-device-width : 980px) {
   }
   }
 
-   .info {
-    .col-md-12 {
+  .info {
+   .col-md-12 {
       width: 73%;
     }
   }
@@ -534,6 +542,114 @@ and (max-device-width : 980px) {
   }
   }
 
+//PRINCIPAL
+
+  .search_principal {
+    width: 72%;
+    margin-left: 1%;
+    .sbyname {
+      width: 84%;
+    }
+
+  .sb {
+      width: 15%;
+      margin-left: 84%;
+      margin-top: -34px;
+    }
+
+
+  .vsl {
+    width: 22%;
+  }
+
+  .lcs {
+    width: 60%;
+    margin-left: 20%;
+    margin-top: -6.5%;
+  }
+
+  .actions {
+    margin-left: 80%;
+    margin-top: -6.5%;
+  }
+  }
+
+  .principallist {
+   width: 73%;
+ } 
+
+
+ .pinner {
+   width: 75%;
+ }
+
+// TRANSMITTAL 
+
+
+  .new_transmittal {
+    .col-md-3 {
+      width: 25%;
+      margin-left: -10px;
+    }
+    .btn {
+      width: 60%;
+      font-size: 0.9em;
+      margin-top: 3%;
+    }
+
+    .search_trans {
+      width: 60%;
+      margin-left: 14%;
+      margin-top: -5%;
+    }
+
+    .bystat{
+    margin-left: 22%;
+    margin-top: -34px;
+   }
+
+    .bydestination {
+      margin-left: 45%;
+      margin-top: -34px;
+    }
+
+    .sb {
+      margin-left: 68%;
+      margin-top: -34px;
+    }
+
+  }
+
+   .tlists {
+    width: 75%;
+    margin-left: -10px;
+
+  }
+
+  .trans {
+    width: 74%;
+  .col-md-9 {
+    h1 {
+  font-size: 1.4em;
+  }
+  }
+   .col-md-3 {
+    margin-top: -63px;
+    margin-left: 15%;
+    }
+  }
+
+  .basicBox {
+    width: 72%;
+  }
+
+  .cmanifest {
+    width: 73.7%;
+  }
+
+  .dlreport {
+    width: 73.7%;
+  }
 
 
 }
