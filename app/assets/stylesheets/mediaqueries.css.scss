@@ -75,8 +75,17 @@ and (max-device-width : 1280px) {
   }
   }
 
+  .search_tools {
+    width: 70%;
+  }
+
+
+
+
 //VESSELS
-  
+  .search_vessel {
+    width: 94%;
+  }
   .vessel_table {
     width: 96%;
   }
@@ -117,7 +126,14 @@ and (max-device-width : 1280px) {
   .principallist {
      width: 96%;
   }
+
+  .search_principal {
+    width: 93%; 
+  }
 //TRANSMITTAL RECORDS
+  .search_trans {
+    width: 70%;
+  }
 
   .new_transmittal {
     .col-md-3 {
@@ -157,7 +173,6 @@ and (max-device-width : 1280px) {
 }
 
 
-
 // Mediaqueries for 1024px
 
 @media only screen 
@@ -168,10 +183,6 @@ and (max-device-width : 1024px) {
     .btn {
     width: 60%;
     }
-  }
-
-  .search_tools {
-    margin-left: -10%;
   }
 
   .clists {
@@ -252,15 +263,20 @@ and (max-device-width : 1024px) {
   height: 40px;
  }
 
-//VESSELS
+ .search_tools {
+  width: 61%;
+  margin-left: -10%;
+}
 
+//VESSELS
+  .search_vessel {
+    width: 75%;
+    margin-left: 1%;
+  }
   .vessel_table {
     width: 77%;
   }
 
-  .search_tool {
-    margin-left: -5.5%;
-  }
 
   .tlists {
     width: 78%;
@@ -281,8 +297,16 @@ and (max-device-width : 1024px) {
   .principallist {
      width: 77%;
   }
-//TRANSMITTAL RECORDS
 
+  .search_principal{
+    width: 75%;
+    margin-left: 1%;
+  }
+//TRANSMITTAL RECORDS
+  .search_trans{
+    width: 56%;
+    margin-left: -4%;
+  }
   .new_transmittal {
     .col-md-3 {
       width: 25%;
@@ -331,7 +355,185 @@ and (max-device-width : 1024px) {
   }
 }
 
+// Mediaqueries for 980 
 
+@media only screen 
+and (min-device-width : 975px) 
+and (max-device-width : 980px) {
 
+  .new_member {
+    .btn {
+      width: 10%;
+      font-size: 1em;
+    }
+  }
 
+  .search_tools {
+    margin-top: -5%;
+    margin-left: 10.57%;
+    font-size: 0.9em;
+    width: 63%; 
+    .sfield {
+      width: 40%;
+    }
+
+    .sbyvessel {
+      width: 18%;
+      margin-left: 40%;
+      margin-top: -4.2%;
+    }
+
+    .sbyrank {
+      width: 18%;
+      margin-left: 57%;
+      margin-top: -4.4%;
+    }
+
+    .sbtn {
+      width: 25%;
+      margin-left: 76%;
+      margin-top: -4.3%;
+    }
+  }
+
+  .search_vessel {
+    margin-top:-1%;
+    margin-left: 1%;
+    font-size: 0.9em;
+    width: 70%; 
+    .sfield {
+      width: 40%;
+    }
+
+    .sbyvessel {
+      width: 18%;
+      margin-left: 40%;
+      margin-top: -4.2%;
+    }
+
+    .sbyrank {
+      width: 18%;
+      margin-left: 57%;
+      margin-top: -4.4%;
+    }
+
+    .sbtn {
+      width: 25%;
+      margin-left: 76%;
+      margin-top: -4.3%;
+    }
+  }
+
+  .clists {
+    width: 74%;
+  }
+
+  .nav-tabs {
+  width: 73.5%!important;
   
+  li a {
+     padding: 5px;
+     border-bottom: 0px!important;
+  }
+ }
+
+ .e {
+  width: 30%;
+ }
+
+ .d {
+  margin-top: -5%;
+  margin-left: 33.5%;
+  font-size: 0.9em;
+ }
+
+ .addcrewell {
+  width: 60%;
+  margin-top: -17%;
+  margin-left: 13%;
+  margin-bottom: 10%;
+  .crank {
+    width: 30%;
+  }
+
+  .cvessel {
+    width: 30%;
+    margin-left: 30%;
+    margin-top: -10.1%;
+  }
+
+  .csignon {
+    width: 30%;
+    margin-left: 60%;
+    margin-top: -10.1%;
+  }
+ 
+
+
+}
+
+.tab-content .tab-content-inner {
+  width: 100%;
+
+
+}
+
+ .crew_form {
+  width: 75%;
+ }
+
+
+ .cform {
+  width: 72.5%;
+ }
+  
+.details_crew {
+  .col-md-4 {
+    margin-left: 20%;
+    margin-top: -10%;
+    margin-bottom: 5%;
+    width: 26%;
+    h2 {
+    font-size: 1.5em;
+     }
+
+    h3 {
+      font-size: 1.2em;
+    }
+    }
+
+  .cdl {
+   width: 26%;
+   margin-left: 45%;
+   margin-top: -15%;
+  }
+  }
+
+   .info {
+    .col-md-12 {
+      width: 73%;
+    }
+  }
+
+  .details {
+    width: 74.5%;
+  }
+
+  .vessell {
+    width: 75%;
+  }
+
+  .vessel_show {
+     .nav-justified .nav-tabs.nav-justified li {
+    width: 77%;
+  }
+
+  .tab-content-inner {
+    width: 75%;
+    font-size: 0.9em;
+  }
+  }
+
+
+
+}

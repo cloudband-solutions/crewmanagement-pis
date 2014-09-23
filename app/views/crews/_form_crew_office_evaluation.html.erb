@@ -2,7 +2,7 @@
 <br>
 <br>
 <%= f.simple_fields_for :crew_office_evaluations do |ff| %>
-  <div class="well">
+  <div class="well cform">
     <div class="row">
       <div class="col-md-4">
         <%= ff.association :vessel, as: :select, collection: Vessel.select("*").order(:name) %>

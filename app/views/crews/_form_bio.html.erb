@@ -2,19 +2,19 @@
   <div class="col-md-2">
     <%= image_tag f.object.picture.url(:standard) %>
   </div>
-  <div class="col-md-3">
-    <%= f.input :picture, as: :file, class: "e" %>
+  <div class="col-md-3 e">
+    <%= f.input :picture, as: :file %>
   </div>
   <div class="col-md-7">
-    <div class="well">
+    <div class="well addcrewell">
       <div class="row c">
-        <div class="col-md-4">
+        <div class="col-md-4 crank">
           <%= f.association :rank, label: "Current Rank", input_html: { class: "form-control" } %>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 cvessel">
           <%= f.association :vessel, label: "Vessel Assigned", input_html: { class: "form-control" }, as: :select, collection: Vessel.select("*").order(:name) %>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 csignon">
           <% if f.object.sign_on.nil? %>
             <%= f.input :sign_on, as: :string, input_html: { class: "datepick form-control" } %>
           <% else %>
@@ -39,7 +39,7 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <div class="well">
+    <div class="well cform">
       <div class="row crew_form">       
         <div class="col-md-4">
           <%= f.input :code_number, label: "Code Number", input_html: { class: "form-control" }, placeholder: "Enter Code Number" %>
@@ -170,7 +170,7 @@
   </div> 
 </div>
 
-<div class="well">
+<div class="well cform">
   <div class="row crew_form">
      <div class="col-md-4">
          <%= f.input :nearest_relative_name, label: "Nearest Relative", input_html: { class: "form-control" }, placeholder: "Enter Nearest Ralative" %>
