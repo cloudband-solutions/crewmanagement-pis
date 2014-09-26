@@ -1,20 +1,21 @@
 <div class="row">
   <div class="col-md-2">
     <%= image_tag f.object.picture.url(:standard) %>
+    <%= f.input :picture, as: :file, label: false %>
   </div>
-  <div class="col-md-3 e">
-    <%= f.input :picture, as: :file %>
-  </div>
-  <div class="col-md-7">
-    <div class="well addcrewell">
-      <div class="row c">
-        <div class="col-md-4 crank">
-          <%= f.association :rank, label: "Current Rank", input_html: { class: "form-control" } %>
+  <div class="col-md-10">
+    <div class="well">
+      <div class="row">
+        <div class="col-md-3">
+          <%= f.association :rank, label: "Current Rank", input_html: { class: "form-control select-select2" } %>
         </div>
-        <div class="col-md-4 cvessel">
-          <%= f.association :vessel, label: "Vessel Assigned", input_html: { class: "form-control" }, as: :select, collection: Vessel.select("*").order(:name) %>
+        <div class="col-md-3">
+          <%= f.association :vessel, label: "Vessel Assigned", input_html: { class: "form-control select-select2" }, as: :select, collection: Vessel.select("*").order(:name) %>
         </div>
-        <div class="col-md-4 csignon">
+        <div class="col-md-3">
+          <%= f.input :status, as: :select, collection: Crew::STATUSES %>
+        </div>
+        <div class="col-md-3">
           <% if f.object.sign_on.nil? %>
             <%= f.input :sign_on, as: :string, input_html: { class: "datepick form-control" } %>
           <% else %>

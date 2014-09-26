@@ -2,14 +2,24 @@
   <div class="container-fluid">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
+    <button data-toggle="collapse" class="navbar-toggle collapsed" type="button" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
   </div>
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav my_nav">
       <li><%= link_to "DASHBOARD", root_path, class: "#{'active' if params[:controller] == 'pages'}" %></li> 
       <!-- DROPDOWN -->
-      <li class="">
-        <a href="<%= crews_path %>" class="<%= 'active' if params[:controller] == 'crews'%>">CREW LIST</a>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle <%= 'active' if params[:controller] == 'crews' %>" data-toggle="dropdown">CREW LIST<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Active Crew", crews_path %></li>
+          <li><%= link_to "Advanced Search", crews_advanced_search_path %></li>
+        </ul>
       </li>
       <li><%= link_to "VESSELS", vessels_path, class: "#{'active' if params[:controller] == 'vessels'}" %></li>
       <li>
@@ -26,7 +36,7 @@
       </li>
     </ul> 
     <div class="navbar-form navbar-right">
-      <b class="logged-in" style="color:white;">Logged in as:</b> <span class="login-text"><%= current_user.email %></span>
+      <!--<b class="logged-in" style="color:white;">Logged in as:</b> <span class="login-text"><%= current_user.email %></span>-->
       <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure you want to log-out?" }, class: "btn btn-danger" %>
     </div>
   </div><!-- /.navbar-collapse -->

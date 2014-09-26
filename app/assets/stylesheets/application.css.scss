@@ -23,7 +23,8 @@
 @import "bootstrap";
 @import "bootstrap-datepicker";
 
-h1 {
+h1,h2,h3,h4 {
+  font-weight: bolder;
 }
 
 .basicBox {
@@ -148,6 +149,7 @@ th {
   width: 1336px;
   padding: 30px;
 }
+
 .well {
   border-radius: 0px;
 
