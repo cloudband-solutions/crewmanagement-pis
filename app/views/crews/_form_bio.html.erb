@@ -10,7 +10,7 @@
           <%= f.association :rank, label: "Current Rank", input_html: { class: "form-control select-select2" } %>
         </div>
         <div class="col-md-3">
-          <%= f.association :vessel, label: "Vessel Assigned", input_html: { class: "form-control select-select2" }, as: :select, collection: Vessel.select("*").order(:name) %>
+          <%= f.association :vessel, label: "Vessel Assigned", input_html: { class: "form-control select-select2" }, as: :select, collection: Vessel.select("*").order(:name), include_blank: "NONE" %>
         </div>
         <div class="col-md-3">
           <%= f.input :status, as: :select, collection: Crew::STATUSES %>
@@ -23,6 +23,10 @@
           <% end %>
         </div>
       </div>
+    </div>
+    <div class="well">
+      **Please input a new vessel name if vessel is not included in the list.
+      <input name="new_vessel"/>
     </div>
   </div>
 </div>

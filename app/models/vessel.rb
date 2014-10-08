@@ -11,8 +11,8 @@ class Vessel < ActiveRecord::Base
 
   before_save :load_defaults
 
-  validates :code, presence: true
-  validates :vessel_type, presence: true 
+  validates :code, presence: true, uniqueness: true
+  #validates :vessel_type, presence: true 
   validates :name, presence: true, uniqueness: true
   #validates :owner, presence: true
 

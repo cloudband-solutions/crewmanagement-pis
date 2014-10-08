@@ -49,6 +49,7 @@ class Crew < ActiveRecord::Base
   validates :code_number, presence: true, uniqueness: true
   validates :firstname, presence: true
   validates :lastname, presence: true
+  validates :middlename, presence: true
   validates :birthday, presence: true
   validates :birthplace, presence: true
   validates :telephone_no, presence: true
@@ -75,11 +76,11 @@ class Crew < ActiveRecord::Base
   end
 
   def to_s
-    "#{firstname.upcase} #{lastname.upcase}"
+    "#{firstname.upcase} #{middlename.upcase} #{lastname.upcase}"
   end
 
   def to_s_list
-    "#{lastname.upcase}, #{firstname}"
+    "#{lastname.upcase}, #{firstname.upcase} #{middlename.upcase}"
   end
 
   def age

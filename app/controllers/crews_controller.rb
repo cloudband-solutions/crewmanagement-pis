@@ -108,13 +108,22 @@ class CrewsController < ApplicationController
   
   def create
     @crew = Crew.new(crew_params)
-    
-    if @crew.save
-      flash[:success] = "Successfully created new crew."
-      redirect_to crew_path(@crew)
-    else
-      flash.now[:error] = "Please check the form for some errors."
-      render :new
+    if params[:new_vessel].present?
+      vessel = Vessel.new(name: params[:new_vessel].upcase, code: params[:new_vessel].upcase)
+      
+      if vessel.save
+        params[:crew][:vessel_id] = vessel.id
+        if @crew.save
+          flash[:success] = "Successfully saved crew record."
+          redirect_to crew_path(@crew)
+        else
+          flash.now[:error] = "Please check the form for some errors. #{@crew.errors.full_messages.to_sentence}"
+          render :new
+        end
+      else
+        flash[:error] = "Invalid vessel name"
+        render :new
+      end
     end
   end
 
@@ -124,13 +133,23 @@ class CrewsController < ApplicationController
 
   def update
     @crew = Crew.find(params[:id])
-    
-    if @crew.update(crew_params)
-      flash[:success] = "Successfully saved crew record."
-      redirect_to crew_path(@crew)
-    else
-      flash.now[:error] = "Please check the form for some errors. #{@crew.errors.full_messages.to_sentence}"
-      render :edit
+
+    if params[:new_vessel].present?
+      vessel = Vessel.new(name: params[:new_vessel].upcase, code: params[:new_vessel].upcase)
+      
+      if vessel.save
+        params[:crew][:vessel_id] = vessel.id
+        if @crew.update(crew_params)
+          flash[:success] = "Successfully saved crew record."
+          redirect_to crew_path(@crew)
+        else
+          flash.now[:error] = "Please check the form for some errors. #{@crew.errors.full_messages.to_sentence}"
+          render :edit
+        end
+      else
+        flash[:error] = "Invalid vessel name"
+        render :edit
+      end
     end
   end
 
@@ -156,6 +175,7 @@ class CrewsController < ApplicationController
   end
 
   def crew_params
+    
     params.require(:crew).permit!
   end
 end
