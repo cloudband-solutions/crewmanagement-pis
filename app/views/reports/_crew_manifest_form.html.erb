@@ -1,15 +1,15 @@
-<div class="well">
+<div class="well search_principal">
   <%= form_tag reports_crew_manifest_path, method: :post do |f| %>
     <div class="row">    
-      <div class="col-md-3">
+      <div class="col-md-3 vsl">
         <label>Vessel</label><br>
         <%= select_tag :vessel_id, options_from_collection_for_select(Vessel.select("*").order(:name), :id, :name, @vessel.try(:id)), class: "form-control", prompt: "-- Select Vessel --" %>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 lcs">
         <label>Licenses</label><br>
         <%= select_tag :license_types, options_for_select(LicenseType.all.map { |lt| [lt.name, lt.id]}, @license_types.try(:map) { |lt| lt.id }), class: "form-control select-select2", multiple: true %>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 actions">
         <label>Actions</label><br>
         <%= submit_tag "Display", class: "btn btn-primary" %>
       </div>

@@ -191,7 +191,11 @@ and (max-device-width : 1280px) {
     margin-right: 50px;
   }
 
-
+  .latest_crew {
+  .col-md-6 {
+    width: 48%;
+  }
+}
 
  .transmittal_record_status {
   .col-md-12 {
@@ -206,6 +210,11 @@ and (max-device-width : 1280px) {
 
   }
  }
+
+ .latest_updated_crew {
+  margin-left: -3%;
+ }
+
 
  .by_rank {
    .col-md-12 {
@@ -268,10 +277,15 @@ and (max-device-width : 1024px) {
 }
 
 .latest_crew {
-  col-md-6 {
-    width: 77%;
+  .col-md-6 {
+    width: 38.3%;
   }
 }
+
+.latest_updated_crew {
+  margin-left: -3%;
+ }
+
 
 
 .add_links {
@@ -303,9 +317,6 @@ and (max-device-width : 1024px) {
 
 
 
-  .latest_updated_crew {
-  margin-left: -25%;
- }
 
  .crew_count {
   .col-md-12 {
@@ -384,6 +395,79 @@ and (max-device-width : 980px)  {
 .logged-in{
   display: none;
 }
+
+.latest_crew {
+    width: 74.3%;
+    .col-md-8 {
+      margin-left: 30%;
+      margin-top: -15%;
+      margin-bottom: 2%;
+    }
+}
+
+.add_links {
+  text-align: center;
+  margin-left: 30%;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.transmittal_pending {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.transmittal_p_table {
+  font-size: 0.9em;
+
+  tr th {
+  text-align: left;
+ }
+
+}
+
+.transmittal_record_status {
+  .col-md-12 {
+    width: 73%;
+  }
+ }
+
+ .add_links {
+  margin-left: 20%;
+ }
+
+
+ .crew_count {
+  .col-md-12 {
+    width: 73%;
+    font-size: 0.9em;
+  }
+ }
+
+ .by_rank {
+   .col-md-12 {
+    width: 73%;
+    font-size: 0.9em;
+ 
+  }
+ }
+
+
+#footer {
+  background: #e2e2e2;
+  border-top: #2e2e2e;
+  font-weight: bold;
+  text-align: left;
+
+  img {
+    margin-left: 25%;
+  }
+
+  .csc {
+    margin-left: 15%;
+  }
+}
+
 
 
 

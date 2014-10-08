@@ -4,10 +4,49 @@
       <div class="col-md-3">
           <%= image_tag crew.picture.url(:standard) %>
       </div>
-      <div class="col-md-9">
-        <h3><%= crew.lastname %></h3>
+      <div class="col-md-6">
+        <h4><%= link_to "#{crew.to_s_list}", crew_path(crew) %></h4>
+        <%= crew.rank %>
+      </div>
+      <div class="col-md-3">
+        <div class="panel-heading">
+          <h5 class="panel-title">
+            <%= link_to "#collapse-#{crew.id}", "data-toggle" => "collapse", "data-parent" => "#accordion" do %>
+              SHOW DETAILS
+              <i class="indicator glyphicon glyphicon-chevron-down pull-right"></i>
+            <% end %>
+          </h5>
+        </div>
       </div>
     </div>
-  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div id="collapse-<%= crew.id %>" class="panel-collapse collapse">
+        <div class="panel-body">
+        <table class="table table-bordered">
+          <tr> 
+            <th>Vessel Name</th>
+            <th>Principal</th>
+            <th>Sign On</th>
+            <th>Sign Off</th>
+            <th>Reason for Disembarkation</th>
+          </tr>
+          <% crew.employment_records.each do |er| %>
+          <tr>
+            <td><%= er.vessel %> </td>
+            <td><%= er.vessel.principal %></td>
+            <td><%= er.sign_on.strftime('%d-%B-%Y')%> </td>
+            <td><%= er.sign_off.strftime('%d-%B-%Y') %> </td>
+            <td><%= er.reason_for_disembarkation %></td>
+          </tr>
+          <% end %>
+          </table>
+        </div>
+     </div>
+    </div>
+    </div>
+    </div> 
 <% end %>
+
+
 <%= paginate crews %>

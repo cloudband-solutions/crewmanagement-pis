@@ -1,7 +1,7 @@
 <%= f.link_to_add "<i class='glyphicon glyphicon-plus'></i> Add Employment Record".html_safe, :employment_records, class: "btn btn-info" %>
 <br><br>
 <%= f.simple_fields_for :employment_records do |ff| %>
-  <div class="well">
+  <div class="well cform">
     <div class="row">
       <div class="col-md-4">
         <%= ff.association :vessel, label: "Vessel", as: :select, collection: Vessel.select("*").order(:name) %> 
