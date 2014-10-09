@@ -35,8 +35,8 @@
           <tr>
             <td><%= er.vessel %> </td>
             <td><%= er.vessel.principal %></td>
-            <td><%= er.sign_on.strftime('%d-%B-%Y')%> </td>
-            <td><%= er.sign_off.strftime('%d-%B-%Y') %> </td>
+            <td><%= er.sign_on.strftime('%d-%B-%Y') if !er.sign_on.nil? %> </td>
+            <td><%= er.sign_off.strftime('%d-%B-%Y') if !er.sign_off.nil? %> </td>
             <td><%= er.reason_for_disembarkation %></td>
           </tr>
           <% end %>
