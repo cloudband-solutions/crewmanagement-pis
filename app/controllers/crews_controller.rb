@@ -150,6 +150,14 @@ class CrewsController < ApplicationController
         flash[:error] = "Invalid vessel name"
         render :edit
       end
+    else
+      if @crew.update(crew_params)
+        flash[:success] = "Successfully saved crew record."
+        redirect_to crew_path(@crew)
+      else
+        flash.now[:error] = "Please check the form for some errors. #{@crew.errors.full_messages.to_sentence}"
+        render :edit
+      end
     end
   end
 
