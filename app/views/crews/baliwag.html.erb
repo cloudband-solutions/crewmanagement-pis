@@ -1,0 +1,411 @@
+<!doctype html>
+<html>
+  <head>
+  	<meta charset='utf-8' />
+  	<style>
+    	body, html{
+    		font-family: "Arial";
+    	}
+    	h1{
+    		font-size: 14px;
+    		text-align: center;
+    	}
+    	.table-wrapper h1{
+    		text-align: left;
+    	}
+    	table{
+    		width: 100%;
+    		border-collapse: collapse;
+    	}
+    	table td, table th{
+    		border: 1px solid #000;
+    		font-size: 12px;
+    		padding: 0px 3px;
+    		box-sizing: border-box;
+    		vertical-align: top;
+    	}
+    	td.blank_data, th.blank_data{
+    		border-bottom: none !important;
+    	}
+    	#license tr th, tr th{
+    		text-align: center;
+    		font-size: 12px;
+    		font-weight: normal;
+    		border:1px solid #000;
+    	}
+    	#service-record tr.col-title th{
+    		font-weight: bold;
+    	}
+    	.footer td{
+    		text-align: center;
+    		border: none;
+    	}
+    	.footer td.bottom-border{
+    		border-bottom: 1px solid #000;
+    	}
+    	.page-break {
+			  display: block;
+			  clear: both;
+			  page-break-after: always;
+			}
+			.flotlef{
+				float: left;
+			}
+			.flotryt{
+				float: right;
+			}
+			.clr{
+				clear: both;
+			}
+			#img_wrapper{
+				width: 150px;
+				height: 150px;
+			}
+			#img_wrapper{
+				max-width: 100%;
+				max-height: 100%;
+				width: auto;
+				height: auto;
+			}
+			#page1 table{
+				table-layout: fixed;
+			}
+			table .label{
+				font-weight: bold;
+				font-size: 12px;
+				border:none;
+			}
+			table .first{
+				width: 80px !important;
+			}
+			table .data{
+				border:none;
+				border-bottom:1px solid #000;
+			}
+			table td.bot-label{
+				font-size: 11px;
+				font-weight: normal;
+			}
+			.table-wrapper th{
+				font-weight: bold;
+			}
+    </style>
+  </head>
+
+  <body>
+  	<div id="page1" class="page-break">
+  		<p style="font-size:10px;">Form OFC-03<br />Reviced 05 March 2014</p>
+  		<div id="img_wrapper" class="flotlef">
+  			<% pic_url = crew.picture.path(:standard).nil? ? "#{Rails.root}/app/assets/images/pictures/missing_standard.png" : crew.picture.path(:standard) %>
+  			<img src="<%= pic_url %>" />
+  		</div>
+
+  		<h1 align="center" style="font-size:20px; margin-left:-150px;">BALIWAG NAVIGATION, INC. <br />BIODATA</h1>
+  		<div class="clr"></div>
+  		<table>
+  			<tr>
+  				<td class="label" colspan="6"></td>
+  				<td class="label">Date:</td>
+  				<td class="data">&nbsp;</td>
+  			</tr>
+  			<tr>
+  				<td colspan="2" class="label">&nbsp;</td>
+  				<td class="label">Code No.:</td>
+  				<td class="data"><%= crew.code_number %></td>
+  				<td class="label">Rank: </td>
+  				<td class="data"><%= crew.rank.name %></td>
+  				<td class="label">Date Employed: </td>
+  				<td class="data"><%= crew.date_employed %></td>
+  			</tr>
+  			<tr>
+  				<td class="label">Name:</td>
+  				<td class="data" colspan="2" align="center"><%= crew.lastname %></td>
+  				<td class="data" align="center"><%= crew.firstname %></td>
+  				<td class="data" colspan="2" align="center"><%= crew.middlename %></td>
+  				<td class="label">Assigned Vessel:</td>
+  				<td class="data"><%= crew.vessel.name %></td>
+  			</tr>
+  			<tr>
+  				<td class="label">&nbsp;</td>
+  				<td class="label bot-label" colspan="2" align="center">(Surname)</td>
+  				<td class="label bot-label" align="center">(Given Name)</td>
+  				<td class="label bot-label" align="center" colspan="2">(Middle Name)</td>
+  				<td class="label" ></td>
+  			</tr>
+  			<tr>
+  				<td class="label">Birth Date:</td>
+  				<td class="data"><%= crew.birthday %></td>
+  				<% age = Date.today.year - crew.birthday.year %>
+    			<% age -= 1 if crew.birthday > Date.today.years_ago( age ) %>
+  				<td class="label">Age:</td>
+  				<td class="data"><%= age %></td>
+  				<td class="label">Birthplace:</td>
+  				<td class="data"><%= crew.birthplace %></td>
+  				<td class="label">Nationality:</td>
+  				<td class="data"><%= crew.nationality %></td>
+  			</tr>
+  			<tr>
+  				<td class="label">Civil Status:</td>
+  				<td class="data"><%= crew.civil_status %></td>
+  				<td class="label">Weight:</td>
+  				<td class="data"><%= crew.weight %></td>
+  				<td class="label">Height:</td>
+  				<td class="data"><%= crew.height %></td>
+  				<td class="label">Eye Color:</td>
+  				<td class="data"><%= crew.eye_color %></td>
+  			</tr>
+  			<tr>
+  				<td class="label">SSS No.:</td>
+  				<td class="data"><%= crew.sss_no %></td>
+  				<td class="label">TIN:</td>
+  				<td class="data"><%= crew.tin_no %></td>
+  				<td class="label">Shoe Size:</td>
+  				<td class="data"><%= crew.shoe_size %></td>
+  				<td class="label">Cloth Size:</td>
+  				<td class="data"><%= crew.cloth_size %></td>
+  			</tr>
+  			<tr>
+  				<td class="label">Nearest Relative:</td>
+  				<td class="data"><%= crew.nearest_relative_name %></td>
+  				<td class="label">Relationship:</td>
+  				<td class="data"><%= crew.nearest_relative_relationship %></td>
+  				<td class="label">Address:</td>
+  				<td class="data" colspan="3"><%= crew.nearest_relative_address %></td>
+  			</tr>
+  		</table>
+
+  		<div class="table-wrapper">
+				<h1>EDUCATIONAL ATTAINMENT</h1>
+				<table>
+					<tr>
+						<th width="20%">Year Graduated</th>
+						<th>School</th>
+						<th>Course</th>
+					</tr>
+					<% crew.educational_attainments.each do |educational_attainment| %>
+						<tr>
+							<td><%= educational_attainment.year_graduated %></td>
+							<td><%= educational_attainment.school %></td>
+							<td><%= educational_attainment.course_finished %></td>
+						</tr>
+					<% end %>
+				</table>
+			</div>
+
+			<div class="table-wrapper">
+				<h1>LICENCES AND CERTIFICATES</h1>
+				<table>
+					<tr>
+						<th width="40%">&nbsp;</th>
+						<th>Number</th>
+						<th>Date Issued</th>
+						<th>Expiry Date</th>
+						<th>Issued by</th>
+					</tr>
+					<% crew.licenses.each do |license| %>
+						<tr>
+							<td><%= license.license_type.name %></td>
+							<td><%= license.license_number %></td>
+							<td><%= license.date_issued %></td>
+							<td><%= license.expiry_date %></td>
+							<td><%= license.training_center %></td>
+						</tr>
+					<% end %>
+				</table>
+			</div>
+
+			<div class="table-wrapper">
+				<h1>EMPLOYMENT RECORD</h1>
+				<table>
+					<tr>
+						<th>Vessel Name</th>
+						<th>Flag</th>
+						<th>Type</th>
+						<th>Gross Tonnage</th>
+						<th>Manning Agent</th>
+						<th>Rank</th>
+						<th>Sign On</th>
+						<th>Sign Off</th>
+						<th>Reason of Disembarkation</th>
+					</tr>
+					<% crew.employment_records.each do |employment| %>
+						<tr>
+							<td><%= employment.vessel.name %></td>
+							<td><%= employment.vessel.flag.name %></td>
+							<td><%= employment.vessel.vessel_type %></td>
+							<td><%= employment.vessel.grt %></td>
+							<td><%= employment.manning_agent.to_s %></td>
+							<td><%= employment.rank.name %></td>
+							<td><%= employment.sign_on.to_s %></td>
+							<td><%= employment.sign_off.to_s %></td>
+							<td><%= employment.reason_for_disembarkation.to_s %></td>
+						</tr>
+					<% end %>
+				</table>
+			</div>
+  		
+  	</div>
+
+		<h1 style="margin:0;">BALIWAG NAVIGATION, INC</h1>
+		<p align="center" style="font-size: 12px; margin: 0px;">Crew Data</p>
+
+		<table>
+			<tr>
+				<td colspan="2" style="border:none;">&nbsp;</td>
+				<td width="300">Date of Issue: </td>
+			</tr>
+			<tr>
+				<td>Name: <%= crew %></td>
+				<td width="300">Position: <%= crew.rank.name %></td>
+				<td width="300">Vsl Name: <%= crew.vessel.name %> </td>
+			</tr>
+			<tr>
+				<td colspan="2">Address/Tel: <%= "#{crew.address}/#{crew.telephone_no}" %></td>
+				<td width="200px">Nationality: <%= crew.nationality %></td>
+			</tr>
+		</table>
+		<table style="margin-top:-1px;">
+			<tr>
+				<td colspan="2" width="40%">Date of Birth/Place: <%= "#{crew.birthday}/#{crew.birthplace}" %></td>
+				<% age = Date.today.year - crew.birthday.year  %>
+				<% age -= 1 if crew.birthday > Date.today.years_ago( age ) %>
+				<td width="20%">Age: <%= age.to_s %></td>
+				<td width="20%">Height: <%= crew.height %></td>
+				<td width="20%">Weight: <%= crew.weight %> </td>
+			</tr>
+			<tr>
+				<td>Civil Status: <%= crew.civil_status %></td>
+				<td>Next of Kin: <%= crew.nearest_relative_relationship %> </td>
+				<td colspan="2">Name: <%= crew.nearest_relative_name %></td>
+				<td>Eye Color: <%= crew.eye_color %></td>
+			</tr>
+			<tr>
+				<td>Children: <%= crew.number_of_children %></td>
+				<td colspan="3">Address: <%= crew.nearest_relative_address %></td>
+				<td>Shoe Size: <%= crew.shoe_size %></td>
+			</tr>
+		</table>
+
+		<table id="license" style="margin-top:-1px;">
+			<tr>
+				<th width="20%"><strong>LICENCE AND CERTIFICATE</strong></th>
+				<th width="20%">NO</th>
+				<th width="20%">Issued Date</th>
+				<th width="20%">Validity</th>
+				<th width="20%" class="blank_data">&nbsp;</th>
+			</tr>
+			<% crew.licenses.each do |license| %>
+			<tr>
+				<td><%= license.license_type.name %></td>
+				<td><%= license.license_number.to_s %></td>
+				<td><%= license.date_issued %></td>
+				<td><%= license.expiry_date %></td>
+				<td>&nbsp;</td>
+			</tr>
+			<% end %>
+			<tr>
+				<td colspan="2">History of this company: </td>
+				<td colspan="2">Date of Employment: <%= crew.date_employed %></td>
+				<td>
+					Years of Sea Service<br />
+					____ years ____months
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">Sea service of this position vessel: </td>
+				<td colspan="2">Blood Type: <%= crew.blood_type %></td>
+				<td>Blood Pressure: <%= crew.blood_pressure %></td>
+			</tr>
+		</table>
+
+		<table style="margin-top:-1px;">
+			<tr>
+				<th width="33.33%"><strong>EDUCATION:</strong> School Name</th>
+				<th width="33.33%">Course Finished</th>
+				<th width="33.33%">Graduated Year</th>
+			</tr>
+			<tr>
+			<% crew.educational_attainments.each do |educational_attainment| %>
+					<td><%= educational_attainment.school %></td>
+					<td><%= educational_attainment.course_finished %></td>
+					<td><%= educational_attainment.year_graduated %></td>
+				<% end %>
+			</tr>
+		</table>
+
+		<table style="margin-top:10px;">
+			<tr>
+				<td colspan="4">LANGUAGE: To be inserted round marks: ex: "O" in applicable column and name of other language will be put in column</td>
+			</tr>
+			<tr>
+				<td width="5%">English</td>
+				<td width="45%">Well:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Average:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A Little:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No:</td>
+				<td width="5%">(others)</td>
+				<td width="45%">
+					Well:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Average:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A Little:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No:
+				</td>
+			</tr>
+		</table>
+
+		<h1 style="font-size:14px; text-align:center; margin:10px 0;">SEAMAN'S SERVICE RECORD</h1>
+		<table id="service-record">
+			<tr class="col-title">
+				<th style="text-align:left;">VSL NAME</th>
+				<th>Rank</th>
+				<th>Flag</th>
+				<th>MAIN ENG. MAKER</th>
+				<th>GRADE</th>
+				<th>Sign On/Off</th>
+			</tr>
+			<tr class="col-title">
+				<th colspan="2" style="text-align:left;">MANG. COMAPANY/PRINCIPAL</th>
+				<th>Vsl Type / GRT</th>
+				<th>ENG. TYPE/BHP</th>
+				<th>Evalutation</th>
+				<th >Reason for Sign Off</th>
+			</tr>
+			<% data = [] %>
+			<% crew.employment_records.each do |er| %>
+				<tr>
+					<td><%= er.vessel.name %></td>
+					<td><%= er.rank.name %></td>
+					<td><%= "#{er.vessel.flag.name}" %><br /><%= "#{er.vessel.vessel_type}/#{er.vessel.grt}" %></td>
+					<td><%= "#{er.vessel.engine_make}" %><br /><%= "#{er.vessel.engine_model}/#{er.vessel.horse_power}" %></td>
+					<td><%= "\s" %></td>
+					<td><%= "#{er.sign_on.to_s} / #{er.sign_off.to_s}" %><br /><%= "#{er.reason_for_disembarkation.to_s}" %></td>
+				</tr>
+			<% end %>
+		</table>
+		<h1 style="margin:0; font-size:15px; text-align:center;">First Marine Services Co. Ltd</h1>
+		<div>
+			<p style="float:left; width:20%;">Prepared by:</p>
+			<p align="center" style="width:80%; float:right;">I certify that the above entries are true and correct</p>
+			<div style="clear:both"></div>
+		</div>
+
+		<table class="footer">
+			<tr>
+				<td class="bottom-border" width="33%">(SGD) JOHN B. DELA ROSA</td>
+				<td class="bottom-border" width="33%">&nbsp;</td>
+				<td class="bottom-border" width="33%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td>Signature</td>
+				<td>AGM/Superintendent</td>
+				<td>Signature of Seafarer</td>
+			</tr>
+		</table>
+		<table class="footer" style="margin-top:20px;">
+			<tr>
+				<td width="33%" class="bottom-border">(SGD) CAPT. VICMAR C. CALIBJO</td>
+				<td width="33%"class="bottom-border">&nbsp;</td>
+				<td width="33%" class="bottom-border">&nbsp;</td>
+			</tr>
+			<tr>
+				<td>Fleet Manager</td>
+				<td>General Manager</td>
+				<td>Principal' Representative</td>
+			</tr>
+		</table>
+	</body>
+</html>

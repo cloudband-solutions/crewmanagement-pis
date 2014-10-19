@@ -33,3 +33,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'prawn-table'
 gem 'seed_dump'
 gem 'pundit'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
