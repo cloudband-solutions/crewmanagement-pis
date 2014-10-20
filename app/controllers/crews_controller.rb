@@ -150,7 +150,15 @@ class CrewsController < ApplicationController
         flash[:error] = "Invalid vessel name"
         render :edit
       end
+    
+    else 
+      if @crew.update_attributes(crew_params)
+        redirect_to crew_path(@crew)
+      else
+        render :edit
+      end
     end
+
   end
 
   # NOTE: We only archive a crew deleted via the main application
