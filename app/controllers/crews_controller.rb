@@ -43,11 +43,28 @@ class CrewsController < ApplicationController
     if params[:template].present?
       template = params[:template]
       if template == "misuga"
-        pdf = MisugaReportPdf.new(@crew, view_context)
-        #send_data pdf.render, filename: "crew.pdf", type: "application/pdf"
+        pdf_str = render_to_string(
+         :pdf => 'MisugaReport',
+         :template => "crews/misuga",
+         :layout => false,
+         :locals => { :crew => @crew } )
+        
+        save_path = Rails.root.join('app/pdfs','MisugaReport.pdf')
+        File.open(save_path, 'wb') do |file|
+          file << pdf_str
+        end
         send_file "#{Rails.root}/app/pdfs/MisugaReport.pdf", :type =>'application/pdf', :disposition => 'attachment'
       elsif template == "baliwag"
-        pdf = BaliwagReportPdf.new(@crew, view_context)
+        pdf_str = render_to_string(
+         :pdf => 'BaliwagReport',
+         :template => "crews/baliwag",
+         :layout => false,
+         :locals => { :crew => @crew } )
+        
+        save_path = Rails.root.join('app/pdfs','BaliwagReport.pdf')
+        File.open(save_path, 'wb') do |file|
+          file << pdf_str
+        end
         send_file "#{Rails.root}/app/pdfs/BaliwagReport.pdf", :type =>'application/pdf', :disposition => 'attachment'
       else
         flash[:error] = "Template #{template} not available"
@@ -57,6 +74,7 @@ class CrewsController < ApplicationController
       flash[:error] = "Please select a template"
       redirect_to crew_path(@crew)
     end
+
   end
 
   def generate_crew_list
@@ -108,22 +126,13 @@ class CrewsController < ApplicationController
   
   def create
     @crew = Crew.new(crew_params)
-    if params[:new_vessel].present?
-      vessel = Vessel.new(name: params[:new_vessel].upcase, code: params[:new_vessel].upcase)
-      
-      if vessel.save
-        params[:crew][:vessel_id] = vessel.id
-        if @crew.save
-          flash[:success] = "Successfully saved crew record."
-          redirect_to crew_path(@crew)
-        else
-          flash.now[:error] = "Please check the form for some errors. #{@crew.errors.full_messages.to_sentence}"
-          render :new
-        end
-      else
-        flash[:error] = "Invalid vessel name"
-        render :new
-      end
+
+    if @crew.save
+      flash[:success] = "Successfully saved crew record."
+      redirect_to crew_path(@crew)
+    else
+      flash.now[:error] = "Please check the form for some errors. #{@crew.errors.full_messages.to_sentence}"
+      render :new
     end
   end
 
@@ -133,30 +142,12 @@ class CrewsController < ApplicationController
 
   def update
     @crew = Crew.find(params[:id])
-
-    if params[:new_vessel].present?
-      vessel = Vessel.new(name: params[:new_vessel].upcase, code: params[:new_vessel].upcase)
-      
-      if vessel.save
-        params[:crew][:vessel_id] = vessel.id
-        if @crew.update(crew_params)
-          flash[:success] = "Successfully saved crew record."
-          redirect_to crew_path(@crew)
-        else
-          flash.now[:error] = "Please check the form for some errors. #{@crew.errors.full_messages.to_sentence}"
-          render :edit
-        end
-      else
-        flash[:error] = "Invalid vessel name"
-        render :edit
-      end
-    
-    else 
-      if @crew.update_attributes(crew_params)
-        redirect_to crew_path(@crew)
-      else
-        render :edit
-      end
+    if @crew.update(crew_params)
+      flash[:success] = "Successfully saved crew record."
+      redirect_to crew_path(@crew)
+    else
+      flash.now[:error] = "Please check the form for some errors. #{@crew.errors.full_messages.to_sentence}"
+      render :edit
     end
 
   end
