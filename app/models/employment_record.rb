@@ -15,7 +15,7 @@ class EmploymentRecord < ActiveRecord::Base
   before_save :load_defaults
 
   def load_defaults
-    if !self.other_vessel.nil?
+    if !self.other_vessel.blank?
       v = Vessel.new(name: self.other_vessel.upcase, code: self.other_vessel.upcase)
       if v.save
         self.vessel_id = v.id
