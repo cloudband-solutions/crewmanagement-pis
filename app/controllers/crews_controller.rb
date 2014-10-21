@@ -92,6 +92,8 @@ class CrewsController < ApplicationController
   end
 
   def index
+    
+
     if %w( admin encoder manager ).include? current_user.user_type
       @crews = Crew.active.order("crews.lastname")
     elsif current_user.user_type == "principal"
@@ -142,7 +144,6 @@ class CrewsController < ApplicationController
 
   def update
     @crew = Crew.find(params[:id])
-
     if @crew.update(crew_params)
       flash[:success] = "Successfully saved crew record."
       redirect_to crew_path(@crew)
@@ -150,6 +151,7 @@ class CrewsController < ApplicationController
       flash.now[:error] = "Please check the form for some errors. #{@crew.errors.full_messages.to_sentence}"
       render :edit
     end
+
   end
 
   # NOTE: We only archive a crew deleted via the main application
