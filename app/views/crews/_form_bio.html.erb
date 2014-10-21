@@ -70,7 +70,8 @@
 
 <div class="row crew_form">
   <div class="col-md-6">
-     <%= f.input :city_address, label: "City Address", input_html: { class: "form-control" }, placeholder: "Enter City Address" %>
+     <%= f.input :city_address, label: "City Address", input_html: { class: "form-control" },placeholder: "Enter City Address", :id => "other_address" %> 
+     <input type="button" class="btn address" value="Copy Address" onclick="showText()">
   </div>
   <div class="col-md-6">
     <% if f.object.birthday.nil? %>
@@ -81,9 +82,11 @@
   </div>
 </div>
 
+
 <div class="row crew_form">
   <div class="col-md-6">
    <%= f.input :provincial_address, label: "Provincial Address", input_html: { class: "form-control" }, placeholder: "Enter Provincial Address" %>
+    <input type="button" class="btn address" value="Copy Address" onclick="showTextAddress()">
   </div>
 
   <div class="col-md-6">
@@ -193,3 +196,20 @@
     <%= image_tag f.object.signature.url(:list) %>
   </div>
 </div>
+
+
+<script>
+function showText() 
+{
+    var other_address = document.getElementById("crew_address").value;
+   
+    document.getElementById("crew_city_address").value = other_address;
+    
+}
+
+function showTextAddress() 
+{
+    var other_address_p = document.getElementById("crew_address").value;
+    document.getElementById("crew_provincial_address").value = other_address_p;
+}
+</script>

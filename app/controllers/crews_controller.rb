@@ -92,6 +92,8 @@ class CrewsController < ApplicationController
   end
 
   def index
+    
+
     if %w( admin encoder manager ).include? current_user.user_type
       @crews = Crew.active.order("crews.lastname")
     elsif current_user.user_type == "principal"
