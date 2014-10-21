@@ -1,8 +1,8 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>NAME</th>
       <th>NUMBER</th>
+      <th>NAME</th>
       <th>VESSEL</th>
       <th>RANK</th>
       <th>ACTIONS</th>
@@ -10,8 +10,8 @@
   </thead>
   <% crews.each do |crew| %>
     <tr>
-      <td><%= link_to "#{crew.to_s_list}", crew_path(crew) %></td>
       <td><%= crew.code_number %></td>
+      <td><%= link_to "#{crew.to_s_list}", crew_path(crew) %></td>
       <td><%= crew.vessel %></td>
       <td><%= crew.rank %></td>
       <td>

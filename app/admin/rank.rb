@@ -11,6 +11,7 @@ ActiveAdmin.register Rank do
     selectable_column
     column :name
     column :code
+    column :priority
     actions
   end
 
@@ -21,6 +22,7 @@ ActiveAdmin.register Rank do
     f.inputs "Rank" do
       f.input :name
       f.input :code
+      f.input :priority
       f.input :short_description
     end
     f.actions
@@ -30,6 +32,7 @@ ActiveAdmin.register Rank do
     attributes_table do 
       row :name
       row :code
+      row :priority
       row :short_description
     end
   end 
