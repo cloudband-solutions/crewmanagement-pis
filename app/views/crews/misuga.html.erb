@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+  <head>
+  	<meta charset='utf-8' />
+  	<style>
+    	body, html{
+    		font-family: "Arial";
+    	}
+    	h1{
+    		font-size: 16px;
+    		margin: 0;
+    	}
+    	h2{
+    		font-size: 20px;
+    		margin: 0;
+    	}
+    	p, ol, li{
+    		font-size:12px;
+    		margin: 0;
+    		line-height: normal;
+    	}
+    	table{
+    		table-layout: fixed;
+    	}
+    	table, .table, table td{
+    		border-collapse: collapse;
+    		border: 1px solid #000;
+    		width: 100%;
+    	}
+    	.flotlef{
+    		float: left;
+    	}
+    	.flotryt{
+    		float: right;
+    	}
+    	.clear{
+    		clear: both;
+    	}
+    	#header{
+    		width: 100%;
+    	}
+    	#profile_pic{
+    		width: 200px;
+    	}
+    	#header_text{
+    		width: 450px;
+    		text-align: center;
+    		position: absolute;
+    		left: 50%;
+    		margin-left: -225px;
+    	}
+    	#header_text h2{
+    		font-style: italic;
+    	}
+    	#header_text h1{
+    		font-style: italic;
+    		font-size: 25px;
+    		text-align: center;
+    		margin-top: 20px;
+    	}
+    	#verified_by{
+    		width: 230px;
+    	}
+    	#verified_by td{
+    		width: 50%;
+    		font-size: 14px;
+    		text-align: center;
+    	}
+    	#verified_by td.big{
+    		height: 50px;
+    	}
+    	#personal_info table, #personal_info td{
+    		border: none;
+    	}
+    	#personal_info td{
+    		padding: 5px 0;
+    		text-align: right;
+    		font-size: 12px;
+    	}
+    	#personal_info td.label{
+    		font-size: 12px;
+    		font-weight: bold;
+    	}
+    	#personal_info td.data{
+    		text-align: left;
+    	}
+    	table td.first{
+    		text-align: left !important;
+    		width: 70px !important;
+    	}
+    	#personal_info td.data{
+    		border-bottom: 1px solid #000;
+    	}
+    	.table-wrapper{
+    		margin: 20px auto 20px;
+    	}
+    	.table-wrapper td, .table-wrapper th{
+    		border: 1px solid #000;
+    		padding: 0px 5px;
+    		font-size: 13px;
+    	}
+    </style>
+  </head>
+
+  <body>
+		<div id="header">
+			<div id="profile_pic" class="flotlef">
+				<% pic_url = crew.picture.path(:standard).nil? ? "#{Rails.root}/app/assets/images/pictures/missing_standard.png" : crew.picture.path(:standard) %>
+				<img src="<%= pic_url %>" width="150" height="150">
+			</div>
+
+			<div id="header_text" class="flotlef">
+				<h2>MISUGA KAIUN CO., LTD.</h2>
+				<p>1692-2 Nakanosho-cho, Shikokuchuo-shi <br />Ehime 799-0422, Japan</p>
+				<h1>B I O - D A T A</h1>
+			</div>
+
+			<div id="verified_by" class="flotryt">
+				<table>
+					<tr>
+						<td valign="center" colspan="2">VERIFIED BY CMD</td>
+					</tr>
+					<tr>
+						<td valign="top" class="big">GM</td>
+						<td valign="top" class="big">MANAGER</td>
+					</tr>
+				</table>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+		<div id="personal_info">
+			<table>
+				<tr>
+					<td class="first label">Code No.:</td>
+					<td class="data"><%= @crew.code_number %></td>
+					<td class="label" style="width:70px">Rank:</td>
+					<td class="data"><%= crew.rank.name %></td>
+					<td class="label" style="width:100px">Date Employed:</td>
+					<td class="data"><%= crew.date_employed.to_s %></td>
+					<td class="label" style="width:90px">Vessel:</td>
+					<td class="data"><%= crew.vessel.name %></td>
+				</tr>
+				<tr>
+					<td class="first label">Name:</td>
+					<td class="data" colspan="2"><%= crew.firstname %></td>
+					<td class="data" colspan="2"><%= crew.middlename %></td>
+					<td class="data" colspan="3"><%= crew.lastname %></td>
+				</tr>
+				<tr>
+					<td class="first label"></td>
+					<td class="label" colspan="2" style="text-align:left;">(Given Name)</td>
+					<td class="label" colspan="2" style="text-align:left;">(Middle Name)</td>
+					<td class="label" colspan="3" style="text-align:left;">(Last Name)</td>
+				</tr>
+				<tr>
+					<td class="first label">Address:</td>
+					<td class="data" colspan="3"><%= crew.address %></td>
+					<td class="label" style="width:70px;" align="right">Telephone:</td>
+					<td class="data" colspan="3"><%= crew.telephone_no %></td>
+				</tr>
+				<tr>
+					<% age = Date.today.year - crew.birthday.year %>
+    			<% age -= 1 if crew.birthday > Date.today.years_ago( age ) %>
+					<td class="first label">Birthdate:</td>
+					<td class="data"><%= crew.birthday.to_s %></td>
+					<td class="label" style="width:40px">Age:</td>
+					<td class="data"><%= age.to_s %></td>
+					<td class="label" align="right">Birthplace:</td>
+					<td class="data"><%= crew.birthplace %></td>
+					<td class="label" style="width:110px">Nationality:</td>
+					<td class="data"><%= crew.nationality %></td>
+				</tr>
+				<tr>
+					<td class="first label">Height(cm):</td>
+					<td class="data"><%= crew.height %></td>
+					<td class="label">Weight(kg):</td>
+					<td class="data"><%= crew.weight %></td>
+					<td class="label">Shoe Size:</td>
+					<td class="data"><%= crew.shoe_size %></td>
+					<td class="label">Civil Status:</td>
+					<td class="data"><%= crew.civil_status %></td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<td class="label" style="text-align:left; width:200px;">Name of Wife or Nearest Relative: </td>
+					<td class="data" colspan="5" width=""><%= crew.nearest_relative_name %></td>
+					<td class="label" style="width:90px;">Relationship:</td>
+					<td class="data"><%= crew.nearest_relative_relationship %></td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="table-wrapper">
+			<h1>EDUCATIONAL ATTAINMENT</h1>
+			<table>
+				<tr>
+					<th>Year Graduated</th>
+					<th>School</th>
+					<th>Course</th>
+				</tr>
+				<% crew.educational_attainments.each do |educational_attainment| %>
+					<tr>
+						<td><%= educational_attainment.year_graduated %></td>
+						<td><%= educational_attainment.school %></td>
+						<td><%= educational_attainment.course_finished %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+
+		<% LicenseCategory.all.each do |license| %>
+			<div class="table-wrapper">
+				<h1 style="text-transform:uppercase;"><%= license.name %></h1>
+				<table>
+					<tr>
+						<th>License Type</th>
+						<th>License Number</th>
+						<th>Date Issued</th>
+						<th>Expiry Date</th>
+						<th>Issued by</th>
+					</tr>
+					<% license_cat = LicenseCategory.where(:name=>"#{license.name}") %>
+					<% licenses = [] %>
+		      <% if license_cat!=nil %>
+		        <% licenses = crew.licenses.where(:license_category_id=>license_cat[0].id) %>
+		      <% end %>
+			  	<% licenses.each do |license| %>
+			  		<tr>
+			  			<td><%= license.license_type %></td>
+			  			<td><%= license.license_number %></td>
+			  			<td><%= license.date_issued %></td>
+			  			<td><%= license.expiry_date %></td>
+			  			<td><%= license.training_center %></td>
+			  		</tr>
+			  	<% end %>
+				</table>
+			</div>
+		<% end %>
+
+		<div class="table-wrapper">
+			<h1>ENGLISH ABILITY</h1>
+			<table>
+				<tr>
+					<td>Read and Write</td>
+					<td>5 Excellent</td>
+					<td>4 Good</td>
+					<td>3 Acceptable</td>
+					<td>2 Poor</td>
+					<td>1 Unsuitable</td>
+				</tr>
+				<tr>
+					<td>Speak and Listen</td>
+					<td>5 Excellent</td>
+					<td>4 Good</td>
+					<td>3 Acceptable</td>
+					<td>2 Poor</td>
+					<td>1 Unsuitable</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="table-wrapper">
+			<h1>EXPERIENCE AND UNDERSTANDING OF ISM</h1>
+			<table>
+				<tr>
+					<td>Experience</td>
+					<td>1 Yes</td>
+					<td>2 No</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>Evaluation</td>
+					<td>5 Excellent</td>
+					<td>4 Good</td>
+					<td>3 Acceptable</td>
+					<td>2 Poor</td>
+					<td>1 Unsuitable</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="table-wrapper">
+			<h1>SEAMAN'S HISTORY (WITHIN THE LAST 10 YEARS)</h1>
+			<p><strong>Note:</strong></p>
+			<ol>
+				<li>Indicate whether vessel is M/V (Motor Vessel), SS, ST(Steam Turbine), etc.</li>
+				<li>Under TYPE, indicate whether Bulk, Log, VLCC, Chemical, LPG, etc.</li>
+				<li>For Engine Officers and Ratings, indicate Engine Type and KW</li>
+			</ol>
+			<table style="margin-top:20px">
+				<tr>
+					<th>Ship's Name / Flag</th>					
+					<th>Vessel Type / Rank</th>
+					<th>Gross Tonnage / KW Engine Type</th>
+					<th>Manning Agent</th>
+					<th>Sign On <br />Sign Off</th>
+					<th>Reason / Sign Off Period</th>
+				</tr>
+				<% crew.employment_records.each do |employment| %>
+					<% ship_name = "#{employment.vessel.name.upcase} / #{employment.vessel.flag.name.upcase}" %>
+					<tr>
+						<td><%= ship_name %></td>
+						<td><%= "#{employment.vessel.to_s} / #{employment.rank.name}" %></td>
+						<td><%= "#{employment.vessel.grt} GT / #{employment.vessel.engine_model}" %></td>
+						<td><%= employment.manning_agent.to_s %></td>
+						<td><%= employment.sign_on.to_s %><br /><%=employment.sign_off.to_s %></td>
+						<td><%= employment.reason_for_disembarkation.to_s %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+
+	</body>
+</html>

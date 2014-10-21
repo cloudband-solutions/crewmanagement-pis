@@ -43,11 +43,28 @@ class CrewsController < ApplicationController
     if params[:template].present?
       template = params[:template]
       if template == "misuga"
-        pdf = MisugaReportPdf.new(@crew, view_context)
-        #send_data pdf.render, filename: "crew.pdf", type: "application/pdf"
+        pdf_str = render_to_string(
+         :pdf => 'MisugaReport',
+         :template => "crews/misuga",
+         :layout => false,
+         :locals => { :crew => @crew } )
+        
+        save_path = Rails.root.join('app/pdfs','MisugaReport.pdf')
+        File.open(save_path, 'wb') do |file|
+          file << pdf_str
+        end
         send_file "#{Rails.root}/app/pdfs/MisugaReport.pdf", :type =>'application/pdf', :disposition => 'attachment'
       elsif template == "baliwag"
-        pdf = BaliwagReportPdf.new(@crew, view_context)
+        pdf_str = render_to_string(
+         :pdf => 'BaliwagReport',
+         :template => "crews/baliwag",
+         :layout => false,
+         :locals => { :crew => @crew } )
+        
+        save_path = Rails.root.join('app/pdfs','BaliwagReport.pdf')
+        File.open(save_path, 'wb') do |file|
+          file << pdf_str
+        end
         send_file "#{Rails.root}/app/pdfs/BaliwagReport.pdf", :type =>'application/pdf', :disposition => 'attachment'
       else
         flash[:error] = "Template #{template} not available"
@@ -57,6 +74,7 @@ class CrewsController < ApplicationController
       flash[:error] = "Please select a template"
       redirect_to crew_path(@crew)
     end
+
   end
 
   def generate_crew_list
