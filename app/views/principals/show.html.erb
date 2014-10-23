@@ -12,7 +12,7 @@
       <%= render partial: "principals/general_info", locals: { principal: @principal } %>
     </div>
      <div class="tab-pane" id="crewlist">
-      <%= render partial: "crews/list", locals: { crews: @principal.crews } %>
+      <%= render partial: "vessels/crew_list", locals: { crews: @principal.crews } %>
     </div>
      <div class="tab-pane" id="vessellist">
       <%= render partial: "vessels/list", locals: { vessels: @principal.vessels } %>

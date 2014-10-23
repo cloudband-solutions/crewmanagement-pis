@@ -25,7 +25,7 @@ class Principal < ActiveRecord::Base
   def crews
     data = []
     self.vessels.each do |v|
-      v.crews.each do |c|
+      Crew.all_by_vessel(v).each do |c|
         data << c
       end
     end

@@ -1,11 +1,8 @@
-<span class="tccounts">Total Crew Count: <%= Crew.count %></span>
-
 <table class="table table-bordered">
   <thead>
     <tr>
       <th>NUMBER</th>
       <th>NAME</th>
-      <th>VESSEL</th>
       <th>RANK</th>
       <th>ACTIONS</th>
     </tr>
@@ -14,7 +11,6 @@
     <tr>
       <td><%= crew.code_number %></td>
       <td><%= link_to "#{crew.to_s_list}", crew_path(crew) %></td>
-      <td><%= crew.vessel %></td>
       <td><%= crew.rank %></td>
       <td>
         <%= link_to "Show", crew_path(crew), class: "btn btn-xs btn-info" %>

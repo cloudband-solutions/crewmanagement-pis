@@ -7,6 +7,9 @@
     <% license_types.each do |lt| %>
       <th><%= lt %></th>
     <% end %>
+    <% certificate_types.each do |ct| %>
+      <th><%= ct %></th>
+    <% end %>
   </tr>
   <% crews.each_with_index do |crew, i| %>
     <tr>
@@ -17,6 +20,10 @@
       <% license_types.each do |lt| %>
         <% l = crew.licenses.where(license_type_id: lt.id).first %>
         <td><%= "#{l.license_number} - #{l.expiry_date}" if !l.nil? %></td>
+      <% end %>
+      <% certificate_types.each do |ct| %>
+        <% c = crew.certificates.where(certificate_type_id: ct.id).first %>
+        <td><%= "#{c.license_number} - #{c.expiry_date}" if !c.nil? %></td>
       <% end %>
     </tr>
   <% end %>
