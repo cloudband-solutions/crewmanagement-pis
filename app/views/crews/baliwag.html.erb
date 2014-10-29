@@ -252,7 +252,7 @@
 		<table>
 			<tr>
 				<td colspan="2" style="border:none;">&nbsp;</td>
-				<td width="300">Date of Issue: </td>
+				<td width="300">Date of Issue: <%= Time.now().strftime("%Y-%m-%d") %></td>
 			</tr>
 			<tr>
 				<td>Name: <%= crew %></td>
@@ -366,7 +366,6 @@
 			</tr>
 			<% data = [] %>
 			<% crew.employment_records.each do |er| %>
-			<%= debug crew.employment_records %>
 				<tr>
 					<td><strong><em><%= er.vessel.name %></em></strong><br /><%= er.manning_agent %></td>
 					<td><%= er.rank.name %></td>
