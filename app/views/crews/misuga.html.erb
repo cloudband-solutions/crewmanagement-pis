@@ -139,7 +139,11 @@
 					<td class="label" style="width:100px">Date Employed:</td>
 					<td class="data"><%= crew.date_employed.to_s %></td>
 					<td class="label" style="width:90px">Vessel:</td>
-					<td class="data"><%= crew.vessel.name %></td>
+					<td class="data">
+						<% if crew.vessel.name!=nil %>
+							<%= crew.vessel.name %>
+						<% end %>
+					</td>
 				</tr>
 				<tr>
 					<td class="first label">Name:</td>
@@ -210,7 +214,7 @@
 			</table>
 		</div>
 
-		<% LicenseCategory.all.each do |license| %>
+		<% LicenseCategory.all.each do |license_cat| %>
 			<div class="table-wrapper">
 				<h1 style="text-transform:uppercase;"><%= license.name %></h1>
 				<table>
@@ -221,11 +225,10 @@
 						<th>Expiry Date</th>
 						<th>Issued by</th>
 					</tr>
-					<% license_cat = LicenseCategory.where(:name=>"#{license.name}") %>
-					<% licenses = [] %>
-		      <% if license_cat!=nil %>
-		        <% licenses = crew.licenses.where(:license_category_id=>license_cat[0].id) %>
-		      <% end %>
+
+					
+		      <% licenses = crew.licenses.where(:license_category_id=>license_cat.id) %>
+		      
 			  	<% licenses.each do |license| %>
 			  		<tr>
 			  			<td><%= license.license_type %></td>

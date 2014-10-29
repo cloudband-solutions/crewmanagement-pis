@@ -106,7 +106,7 @@
   			<tr>
   				<td class="label" colspan="6"></td>
   				<td class="label">Date:</td>
-  				<td class="data">&nbsp;</td>
+  				<td class="data"><%= Time.now() %></td>
   			</tr>
   			<tr>
   				<td colspan="2" class="label">&nbsp;</td>
@@ -366,8 +366,9 @@
 			</tr>
 			<% data = [] %>
 			<% crew.employment_records.each do |er| %>
+			<%= debug crew.employment_records %>
 				<tr>
-					<td><%= er.vessel.name %></td>
+					<td><strong><em><%= er.vessel.name %></em></strong><br /><%= er.manning_agent %></td>
 					<td><%= er.rank.name %></td>
 					<td><%= "#{er.vessel.flag.name}" %><br /><%= "#{er.vessel.vessel_type}/#{er.vessel.grt}" %></td>
 					<td><%= "#{er.vessel.engine_make}" %><br /><%= "#{er.vessel.engine_model}/#{er.vessel.horse_power}" %></td>
@@ -385,7 +386,7 @@
 
 		<table class="footer">
 			<tr>
-				<td class="bottom-border" width="33%">(SGD) JOHN B. DELA ROSA</td>
+				<td class="bottom-border" width="33%"></td>
 				<td class="bottom-border" width="33%">&nbsp;</td>
 				<td class="bottom-border" width="33%">&nbsp;</td>
 			</tr>
@@ -397,7 +398,7 @@
 		</table>
 		<table class="footer" style="margin-top:20px;">
 			<tr>
-				<td width="33%" class="bottom-border">(SGD) CAPT. VICMAR C. CALIBJO</td>
+				<td width="33%" class="bottom-border"></td>
 				<td width="33%"class="bottom-border">&nbsp;</td>
 				<td width="33%" class="bottom-border">&nbsp;</td>
 			</tr>
