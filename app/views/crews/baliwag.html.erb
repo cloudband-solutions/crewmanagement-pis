@@ -374,9 +374,9 @@
 			<% data = [] %>
 			<% crew.employment_records.each do |er| %>
 				<tr>
-					<td><strong><em><%= er.vessel.name %></em></strong><br /><%= er.manning_agent %></td>
+					<td><strong><em><%= er.vessel.try(:name) %></em></strong><br /><%= er.manning_agent %></td>
 					<td><%= er.rank.name %></td>
-					<td><%= "#{er.vessel.flag.name}" %><br /><%= "#{er.vessel.vessel_type}/#{er.vessel.grt}" %></td>
+					<td><%= "#{er.vessel.flag.try(:name)}" %><br /><%= "#{er.vessel.vessel_type}/#{er.vessel.grt}" %></td>
 					<td><%= "#{er.vessel.engine_make}" %><br /><%= "#{er.vessel.engine_model}/#{er.vessel.horse_power}" %></td>
 					<td><%= "\s" %></td>
 					<td><%= "#{er.sign_on.to_s} / #{er.sign_off.to_s}" %><br /><%= "#{er.reason_for_disembarkation.to_s}" %></td>
