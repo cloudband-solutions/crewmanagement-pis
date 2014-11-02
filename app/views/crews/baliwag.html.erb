@@ -113,7 +113,7 @@
   				<td class="label">Code No.:</td>
   				<td class="data"><%= crew.code_number %></td>
   				<td class="label">Rank: </td>
-  				<td class="data"><%= crew.rank.name %></td>
+  				<td class="data"><%= crew.rank.try(:name) %></td>
   				<td class="label">Date Employed: </td>
   				<td class="data"><%= crew.date_employed %></td>
   			</tr>
@@ -123,7 +123,7 @@
   				<td class="data" align="center"><%= crew.firstname %></td>
   				<td class="data" colspan="2" align="center"><%= crew.middlename %></td>
   				<td class="label">Assigned Vessel:</td>
-  				<td class="data"><%= crew.vessel.name %></td>
+  				<td class="data"><%= crew.vessel.try(:name) %></td>
   			</tr>
   			<tr>
   				<td class="label">&nbsp;</td>
@@ -204,7 +204,7 @@
 					</tr>
 					<% crew.licenses.each do |license| %>
 						<tr>
-							<td><%= license.license_type.name %></td>
+							<td><%= license.license_type.try(:name) %></td>
 							<td><%= license.license_number %></td>
 							<td><%= license.date_issued %></td>
 							<td><%= license.expiry_date %></td>
@@ -263,8 +263,8 @@
 			</tr>
 			<tr>
 				<td>Name: <%= crew %></td>
-				<td width="300">Position: <%= crew.rank.name %></td>
-				<td width="300">Vsl Name: <%= crew.vessel.name %> </td>
+				<td width="300">Position: <%= crew.rank.try(:name) %></td>
+				<td width="300">Vsl Name: <%= crew.vessel.try(:name) %> </td>
 			</tr>
 			<tr>
 				<td colspan="2">Address/Tel: <%= "#{crew.address}/#{crew.telephone_no}" %></td>
