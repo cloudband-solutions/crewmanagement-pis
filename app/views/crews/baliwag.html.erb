@@ -230,11 +230,18 @@
 					</tr>
 					<% crew.employment_records.each do |employment| %>
 						<tr>
-							<td><%= employment.vessel.name %></td>
-							<td><%= employment.vessel.flag.name %></td>
-							<td><%= employment.vessel.vessel_type %></td>
-							<td><%= employment.vessel.grt %></td>
-							<td><%= employment.manning_agent.to_s %></td>
+              <% if employment.vessel.nil? %>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              <% else %>
+                <td><%= employment.vessel.name %></td>
+                <td><%= employment.vessel.flag.name %></td>
+                <td><%= employment.vessel.vessel_type %></td>
+                <td><%= employment.vessel.grt %></td>
+              <% end %>
+              <td><%= employment.manning_agent.to_s %></td>
 							<td><%= employment.rank.name %></td>
 							<td><%= employment.sign_on.to_s %></td>
 							<td><%= employment.sign_off.to_s %></td>
