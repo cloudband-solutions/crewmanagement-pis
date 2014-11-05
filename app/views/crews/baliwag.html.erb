@@ -3,7 +3,7 @@
   <head>
   	<meta charset='utf-8' />
   	<style>
-    	body, html{
+    	*{
     		font-family: "Arial";
     	}
     	h1{
@@ -19,10 +19,12 @@
     	}
     	table td, table th{
     		border: 1px solid #000;
-    		font-size: 12px;
-    		padding: 0px 3px;
-    		box-sizing: border-box;
-    		vertical-align: top;
+		    box-sizing: border-box;
+		    font-size: 12px;
+		    overflow: hidden;
+		    padding: 0 3px;
+		    vertical-align: middle;
+		    word-wrap: break-word;
     	}
     	td.blank_data, th.blank_data{
     		border-bottom: none !important;
