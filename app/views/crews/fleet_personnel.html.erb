@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+  <head>
+  	<meta charset='utf-8' />
+  	<style type="text/css">
+  	*{
+  		font-family: "Arial", sans-serif;
+  		box-sizing: border-box;
+  		-moz-box-sizing: border-box;
+  		-webkit-box-sizing: border-box;
+  		font-size: 14px;
+  	}
+  	table{
+  		table-layout: fixed;
+  		border-collapse: collapse;
+  		width: 100%;
+  	}
+  	table td{
+  		overflow: hidden;
+  		word-wrap: break-word;
+  		vertical-align: middle;
+  		padding: 2px;
+  	}
+  	#header h2{
+  		font-size: 15px;
+  		font-weight: normal;
+  	}
+  	#header h1{
+  		font-weight: bold;
+  		font-size: 20px;
+  	}
+  	#header td{
+  		border:2px solid #000;
+  		border-collapse: collapse;
+  	}
+  	#header table td{
+  		border: none;
+  	}
+  	#header td.text-center{
+  		text-align: center;
+  	}
+  	#header td.text-small, #header td.text-small *{
+  		font-size: 13px;
+  	}
+  	#first-table td.first{
+  		width: 200px;
+  	}
+
+  	#second-table td, #third-table td, #third-table th{
+  		text-align: center;
+  		border:1px solid #000;
+  	}
+  	</style>
+  </head>
+
+  <body>
+  	<table id="header">
+  		<tr>
+  			<td style="width:20%"></td>
+  			<td style="width:60%" class="text-center">
+  				<h2>SAFETY AND QUALITY MANAGEMENT</h2>
+  				<h1>FLEET PERSONNEL OFFICE MANUAL</h1>
+  				<h2>EXECUTIVE SHIP MANAGEMENT PTE. LTD</h2>
+  			</td>
+  			<td style="width:20%" class="text-small">
+  				<table>
+  					<tr>
+  						<td>Date</td>
+  						<td>: <%= Time.now().strftime("%Y-%m-%d") %></td>
+  					</tr>
+  					<tr>
+  						<td>Prepared</td>
+  						<td>:</td>
+  					</tr>
+  					<tr>
+  						<td>Approved</td>
+  						<td>:</td>
+  					</tr>
+  					<tr>
+  						<td>Section</td>
+  						<td>:</td>
+  					</tr>
+  					<tr>
+  						<td>Page No.</td>
+  						<td>:</td>
+  					</tr>
+  					<tr>
+  						<td>Rev.</td>
+  						<td>:</td>
+  					</tr>
+  				</table>
+  			</td>
+  		</tr>
+  	</table>
+
+  	<table>
+  		<tr>
+  			<td style="width:33%">PD NBR :</td>
+  			<td style="width:33%">VESSEL : <%= crew.vessel.name %></td>
+  			<td style="width:34%">DATE : <%= Time.now().strftime("%Y-%m-%d") %></td>
+  		</tr>
+  	</table>
+
+  	<table id="first-table">
+  		<tr>
+  			<td class="first">NAME/RANK</td>
+  			<td colspan="3">: <%= "#{crew} / #{crew.rank.name}" %></td>
+  		</tr>
+  		<tr>
+  			<td class="first">DOB/POB</td>
+  			<td colspan="3">: <%= "#{crew.birthday} / #{crew.birthplace}" %></td>
+  		</tr>
+  		<tr>
+  			<td class="first">Height</td>
+  			<td colspan="3">: <%= crew.height %></td>
+  		</tr>
+  		<tr>
+  			<td class="first">TRAINING(pre-sea details)</td>
+  			<td colspan="3">:</td>
+  		</tr>
+  		<tr>
+  			<td class="first">PPT NBR.</td>
+  			<td>: NR :</td>
+  			<td>DOI/DOE/POI:</td>
+  			<td>MANILA</td>
+  		</tr>
+  		<tr>
+  			<td class="first">US VISA</td>
+  			<td>: NR :</td>
+  			<td>DOI/DOE/POI:</td>
+  			<td>MANILA</td>
+  		</tr>
+  		<tr>
+  			<td class="first">CDC Number</td>
+  			<td>: NR :</td>
+  			<td>DOI/DOE/POI:</td>
+  			<td>MANILA</td>
+  		</tr>
+  		<tr>
+  			<td class="first">GMDSS</td>
+  			<td>: NR :</td>
+  			<td>DOI/DOE/POI:</td>
+  			<td>MANILA</td>
+  		</tr>
+  		<tr>
+  			<td class="first">COC GRADE</td>
+  			<td>: MASTER</td>
+  			<td colspan="2"></td>
+  		</tr>
+  		<tr>
+  			<td class="first">COC Number</td>
+  			<td>: NR :</td>
+  			<td>DOI/DOE/POI:</td>
+  			<td>MANILA</td>
+  		</tr>
+  		<tr>
+  			<td class="first">COURSES :</td>
+  			<td colspan="3">&nbsp;</td>
+  		</tr>
+  	</table>
+
+  	<table id="second-table">
+  		<tr>
+  			<td>MAN</td>
+  			<td>SSO</td>
+  			<td>RO<br>C</td>
+  			<td>ARP<br>A</td>
+  			<td>RANSC<br>O</td>
+  			<td>BTM</td>
+  			<td>GMDSS</td>
+  			<td>OIL</td>
+  			<td>CHM</td>
+  			<td>LPG</td>
+  			<td>DCE<br>(O)</td>
+  			<td>DCE<br>(C)</td>
+  			<td>DCE<br>(G)</td>
+  			<td>ERS<br>C</td>
+  		</tr>
+  		<tr>
+  			<td>&nbsp;</td>
+  			<td></td>
+  			<td></td>
+  			<td></td>
+  			<td></td>
+  			<td></td>
+  			<td></td>
+  			<td></td>
+  			<td></td>
+  			<td></td>
+  			<td></td>
+  			<td></td>
+  			<td></td>
+  			<td></td>
+  		</tr>
+  	</table>
+
+  	<p>SERVICE DETAILS:</p>
+  	<table id="third-table">
+  		<tr>
+  			<th>MANNING<br>COMP</th>
+  			<th>VSL</th>
+  			<th>TYPE</th>
+  			<th>GRT</th>
+  			<th>K.W.</th>
+  			<th>ENG.</th>
+  			<th>RANK</th>
+  			<th>FROM</th>
+  			<th>TO</th>
+  			<th>MM/<br>DD</th>
+  			<th>REM</th>
+  		</tr>
+  		<% crew.employment_records.each do |er| %>
+  			<tr>
+	  			<td><%= er.manning_agent %></td>
+	  			<td><%= er.vessel.name %></td>
+	  			<td><%= er.vessel.vessel_type %></td>
+	  			<td><%= er.vessel.grt %></td>
+	  			<td><%=  %></td>
+	  			<td><%= er.vessel.engine_make %></td>
+	  			<td><%= er.rank.name %></td>
+	  			<td><%= er.sign_on.to_s %></td>
+	  			<td><%= er.sign_off.to_s %></td>
+	  			<td><%= %></td>
+	  			<td><%= er.reason_for_disembarkation %></td>
+	  		</tr>
+  		<% end %>
+  	</table>
+  </body>
+</html>
+

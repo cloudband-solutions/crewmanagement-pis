@@ -66,6 +66,18 @@ class CrewsController < ApplicationController
           file << pdf_str
         end
         send_file "#{Rails.root}/app/pdfs/BaliwagReport.pdf", :type =>'application/pdf', :disposition => 'attachment'
+      elsif template == "fleet_personnel"
+        pdf_str = render_to_string(
+         :pdf => 'FleetPersonnelReport',
+         :template => "crews/fleet_personnel",
+         :layout => false,
+         :locals => { :crew => @crew } )
+        
+        save_path = Rails.root.join('app/pdfs','FleetPersonnelReport.pdf')
+        File.open(save_path, 'wb') do |file|
+          file << pdf_str
+        end
+        send_file "#{Rails.root}/app/pdfs/FleetPersonnelReport.pdf", :type =>'application/pdf', :disposition => 'attachment'
       else
         flash[:error] = "Template #{template} not available"
         redirect_to crew_path(@crew)

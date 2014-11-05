@@ -226,10 +226,9 @@
 						<th>Issued by</th>
 					</tr>
 
-					
-		      <% licenses = crew.licenses.where(:license_category_id=>license_cat.id) %>
-		      
-			  	<% licenses.each do |license| %>
+					<% licenses = [] %>
+					<% licenses = crew.licenses.where(:license_category_id=>license_cat.id) %>
+		      <% licenses.each do |license| %>
 			  		<tr>
 			  			<td><%= license.license_type %></td>
 			  			<td><%= license.license_number %></td>
