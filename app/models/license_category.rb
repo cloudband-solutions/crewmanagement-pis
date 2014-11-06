@@ -4,6 +4,8 @@ class LicenseCategory < ActiveRecord::Base
 
   has_many :licenses
 
+  has_many :license_types
+
   def to_s
     name
   end
