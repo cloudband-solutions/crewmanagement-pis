@@ -227,14 +227,22 @@
 					</tr>
 
 					<% licenses = [] %>
-					<% licenses = crew.licenses.where(:license_category_id=>license_cat.id) %>
-		      <% licenses.each do |license| %>
+					<% licenses_types = LicenseType.where(:license_category_id=>license_cat.id) %>
+		      <% licenses_types.each do |license_type| %>
 			  		<tr>
-			  			<td><%= license.license_type %></td>
-			  			<td><%= license.license_number %></td>
-			  			<td><%= license.date_issued %></td>
-			  			<td><%= license.expiry_date %></td>
-			  			<td><%= license.training_center %></td>
+			  			<td><%= license_type.name %></td>
+			  			<% c_license = crew.licenses.where(:license_type_id=>license_type.id) %>
+			  			<% if(c_license != nil) %>
+				  			<td><%= c_license.license_number %></td>
+				  			<td><%= c_license.date_issued %></td>
+				  			<td><%= c_license.expiry_date %></td>
+				  			<td><%= c_license.training_center %></td>
+				  		<% else %>
+				  			<td>&nbsp;</td>
+				  			<td>&nbsp;</td>
+				  			<td>&nbsp;</td>
+				  			<td>&nbsp;</td>
+				  		<% end %>
 			  		</tr>
 			  	<% end %>
 				</table>
