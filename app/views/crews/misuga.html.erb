@@ -226,12 +226,12 @@
 						<th>Issued by</th>
 					</tr>
 
-					<% licenses = [] %>
+					<% licenses_types = [] %>
 					<% licenses_types = LicenseType.where(:license_category_id=>license_cat.id) %>
 		      <% licenses_types.each do |license_type| %>
 			  		<tr>
 			  			<td><%= license_type.name %></td>
-			  			<% c_license = crew.licenses.where(:license_type_id=>license_type.id) %>
+			  			<% c_license = crew.licenses.where(:license_type_id=>license_type.id).first %>
 			  			<% if(c_license != nil) %>
 				  			<td><%= c_license.license_number %></td>
 				  			<td><%= c_license.date_issued %></td>
