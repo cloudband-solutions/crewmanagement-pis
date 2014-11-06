@@ -23,6 +23,7 @@ ActiveAdmin.register LicenseType do
       f.input :code
       f.input :priority
       f.input :short_description
+      f.input :license_category
     end
     f.actions
   end
@@ -33,6 +34,7 @@ ActiveAdmin.register LicenseType do
       row :code
       row :priority
       row :short_description
+      row :license_category
     end
   end 
 
