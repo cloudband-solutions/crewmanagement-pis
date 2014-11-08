@@ -69,10 +69,12 @@ class Crew < ActiveRecord::Base
 
   before_validation :load_defaults
 
-  scope :active, -> { includes(:rank).where("is_archived = ?", false).order("ranks.priority ASC") }
+  scope :active_by_rank, -> { includes(:rank).where("is_archived = ?", false).order("ranks.priority ASC") }
+
+  scope :active, -> { where("is_archived = ?", false) }
 
   def self.all_by_vessel(v)
-    self.active.where(vessel_id: v.id)
+    self.active_by_rank.where(vessel_id: v.id)
   end
 
   def to_s
