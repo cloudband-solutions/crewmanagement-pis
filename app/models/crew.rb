@@ -1,7 +1,7 @@
 class Crew < ActiveRecord::Base
   REPORT_TEMPLATES = ["baliwag", "misuga", "fleet_personnel"]
   CIVIL_STATUSES = ["MARRIED", "SINGLE", "WIDOWED"]
-  UNIFORM_SIZES = ["EXTRA SMALL", "SMALL", "MEDIUM" "LARGE", "EXTRA LARGE"]
+  UNIFORM_SIZES = ["EXTRA SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA LARGE", "DOUBLE XL"]
   STATUSES = ["ACTIVE", "INACTIVE", "DECEASED"]
 
   has_attached_file :picture,
