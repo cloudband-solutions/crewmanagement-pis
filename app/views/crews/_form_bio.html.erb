@@ -46,7 +46,11 @@
           <%= f.input :code_number, label: "Code Number", input_html: { class: "form-control" }, placeholder: "Enter Code Number" %>
         </div>
         <div class="col-md-4">
-          <%= f.input :date_employed, label: "Date Employed", as: :string, input_html: { value: (Time.now - 5.years).strftime('%d-%B-%Y'), class: "datepick form-control" } %>
+          <% if f.object.new_record? %>
+            <%= f.input :date_employed, label: "Date Employed", as: :string, input_html: { value: (Time.now - 5.years).strftime('%d-%B-%Y'), class: "datepick form-control" } %>
+          <% else %>
+            <%= f.input :date_employed, label: "Date Employed", as: :string, input_html: { value: f.object.date_employed.strftime('%d-%B-%Y'), class: "datepick form-control" } %>
+          <% end %>
         </div>
       </div>
 
