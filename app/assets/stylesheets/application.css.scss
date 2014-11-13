@@ -186,42 +186,42 @@ th {
 @media only screen 
 and (min-device-width : 1200px) 
 and (max-device-width : 1280px) {
- 
+
   .add_links {
     margin-right: 50px;
   }
 
   .latest_crew {
-  .col-md-6 {
-    width: 48%;
+    .col-md-6 {
+      width: 48%;
+    }
   }
-}
 
- .transmittal_record_status {
-  .col-md-12 {
-    width: 96%;
+  .transmittal_record_status {
+    .col-md-12 {
+      width: 96%;
+    }
   }
- }
 
 
- .crew_count {
-  .col-md-12 {
-    width: 96%;
+  .crew_count {
+    .col-md-12 {
+      width: 96%;
 
+    }
   }
- }
 
- .latest_updated_crew {
-  margin-left: -3%;
- }
-
-
- .by_rank {
-   .col-md-12 {
-    width: 96%;
-    margin-left: -4%;
+  .latest_updated_crew {
+    margin-left: -3%;
   }
- }
+
+
+  .by_rank {
+    .col-md-12 {
+      width: 96%;
+      margin-left: -4%;
+    }
+  }
 }
 
 @media only screen 
@@ -229,127 +229,125 @@ and (min-device-width : 1000px)
 and (max-device-width : 1024px) {
 
   #login-box {
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  border: 1px solid #e2e2e2;
-  padding: 20px;
-  margin-top: 30px;
-  background: #fff;
-  #banner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border: 1px solid #e2e2e2;
     padding: 20px;
-    background: rgba(0,0,0,0.8);
-    font-size: 0.9em;
-    margin-bottom: 20px;
-    font-weight: bold;
-    text-align: center;
-    color: #fff;
-    border-radius: 4px;
-  }
-}
-
-.login-text {
-  color: #fff;
-}
-
-.my_nav {
-  li a {
-    font-size: 0.9em;
-    &.active {
+    margin-top: 30px;
+    background: #fff;
+    #banner {
+      padding: 20px;
+      background: rgba(0,0,0,0.8);
+      font-size: 0.9em;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-align: center;
       color: #fff;
-      border-bottom: 5px solid #78AB46;
-      padding-bottom: 10px;
+      border-radius: 4px;
     }
   }
 
-  .btn-danger {
-    padding: 0;
+  .login-text {
+    color: #fff;
   }
-}
 
-.logged-in{
-  display: none;
-}
+  .my_nav {
+    li a {
+      font-size: 0.9em;
+      &.active {
+        color: #fff;
+        border-bottom: 5px solid #78AB46;
+        padding-bottom: 10px;
+      }
+    }
 
-#latest_crew {
-  font-size: 0.9em;
-
-}
-
-.latest_crew {
-  .col-md-6 {
-    width: 38.3%;
+    .btn-danger {
+      padding: 0;
+    }
   }
-}
 
-.latest_updated_crew {
-  margin-left: -3%;
- }
-
-
-
-.add_links {
-  text-align: center;
-  margin-left: 30%;
-  padding-left: 10px;
-  padding-bottom: 10px;
-}
-
-.transmittal_pending {
-  font-size: 1em;
-  font-weight: bold;
-}
-
-.transmittal_p_table {
-  font-size: 0.9em;
-
-  tr th {
-  text-align: left;
- }
-
-}
-
- .transmittal_record_status {
-  .col-md-12 {
-    width: 77%;
+  .logged-in{
+    display: none;
   }
- }
 
-
-
-
- .crew_count {
-  .col-md-12 {
-    width: 77%;
+  #latest_crew {
     font-size: 0.9em;
-  }
- }
 
- .by_rank {
-   .col-md-12 {
-    width: 77%;
+  }
+
+  .latest_crew {
+    .col-md-6 {
+      width: 38.3%;
+    }
+  }
+
+  .latest_updated_crew {
+    margin-left: -3%;
+  }
+
+
+
+  .add_links {
+    text-align: center;
+    margin-left: 30%;
+    padding-left: 10px;
+    padding-bottom: 10px;
+  }
+
+  .transmittal_pending {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .transmittal_p_table {
     font-size: 0.9em;
-    margin-left: -23%;
-  }
- }
 
+    tr th {
+      text-align: left;
+    }
 
-#footer {
-  background: #e2e2e2;
-  border-top: #2e2e2e;
-  font-weight: bold;
-  text-align: left;
-
-  img {
-    margin-left: 28%;
   }
 
-  .csc {
-    margin-left: 15%;
+  .transmittal_record_status {
+    .col-md-12 {
+      width: 77%;
+    }
   }
-}
 
 
+
+
+  .crew_count {
+    .col-md-12 {
+      width: 77%;
+      font-size: 0.9em;
+    }
+  }
+
+  .by_rank {
+    .col-md-12 {
+      width: 77%;
+      font-size: 0.9em;
+      margin-left: -23%;
+    }
+  }
+
+
+  #footer {
+    background: #e2e2e2;
+    border-top: #2e2e2e;
+    font-weight: bold;
+    text-align: left;
+
+    img {
+      margin-left: 28%;
+    }
+
+    .csc {
+      margin-left: 15%;
+    }
+  }
 }
 
 @media only screen 
@@ -364,113 +362,107 @@ and (max-device-width : 980px)  {
     padding: 20px;
     margin-top: 30px;
     background: #fff;
-  #banner {
-    padding: 20px;
-    background: rgba(0,0,0,0.8);
-    font-size: 0.9em;
-    margin-bottom: 20px;
-    font-weight: bold;
-    text-align: center;
-    color: #fff;
-    border-radius: 4px;
-  }
-}
-
-.my_nav {
-  li a {
-    font-size: 0.8em;
-    &.active {
+    #banner {
+      padding: 20px;
+      background: rgba(0,0,0,0.8);
+      font-size: 0.9em;
+      margin-bottom: 20px;
+      font-weight: bold;
+      text-align: center;
       color: #fff;
-      border-bottom: 5px solid #78AB46;
-      padding-bottom: 10px;
+      border-radius: 4px;
     }
   }
 
-  .btn-danger {
-    padding: 0;
+  .my_nav {
+    li a {
+      font-size: 0.8em;
+      &.active {
+        color: #fff;
+        border-bottom: 5px solid #78AB46;
+        padding-bottom: 10px;
+      }
+    }
+
+    .btn-danger {
+      padding: 0;
+    }
   }
-}
 
 
-.logged-in{
-  display: none;
-}
+  .logged-in{
+    display: none;
+  }
 
-.latest_crew {
+  .latest_crew {
     width: 74.3%;
     .col-md-8 {
       margin-left: 30%;
       margin-top: -15%;
       margin-bottom: 2%;
     }
-}
-
-.add_links {
-  text-align: center;
-  margin-left: 30%;
-  padding-left: 10px;
-  padding-bottom: 10px;
-}
-
-.transmittal_pending {
-  font-size: 1em;
-  font-weight: bold;
-}
-
-.transmittal_p_table {
-  font-size: 0.9em;
-
-  tr th {
-  text-align: left;
- }
-
-}
-
-.transmittal_record_status {
-  .col-md-12 {
-    width: 73%;
   }
- }
 
- .add_links {
-  margin-left: 20%;
- }
+  .add_links {
+    text-align: center;
+    margin-left: 30%;
+    padding-left: 10px;
+    padding-bottom: 10px;
+  }
 
+  .transmittal_pending {
+    font-size: 1em;
+    font-weight: bold;
+  }
 
- .crew_count {
-  .col-md-12 {
-    width: 73%;
+  .transmittal_p_table {
     font-size: 0.9em;
-  }
- }
 
- .by_rank {
-   .col-md-12 {
-    width: 73%;
-    font-size: 0.9em;
- 
-  }
- }
+    tr th {
+      text-align: left;
+    }
 
-
-#footer {
-  background: #e2e2e2;
-  border-top: #2e2e2e;
-  font-weight: bold;
-  text-align: left;
-
-  img {
-    margin-left: 25%;
   }
 
-  .csc {
-    margin-left: 15%;
+  .transmittal_record_status {
+    .col-md-12 {
+      width: 73%;
+    }
   }
-}
+
+  .add_links {
+    margin-left: 20%;
+  }
 
 
+  .crew_count {
+    .col-md-12 {
+      width: 73%;
+      font-size: 0.9em;
+    }
+  }
+
+  .by_rank {
+    .col-md-12 {
+      width: 73%;
+      font-size: 0.9em;
+
+    }
+  }
 
 
-}
+  #footer {
+    background: #e2e2e2;
+    border-top: #2e2e2e;
+    font-weight: bold;
+    text-align: left;
 
+    img {
+      margin-left: 25%;
+    }
 
+    .csc {
+      margin-left: 15%;
+    }
+  }
+} 

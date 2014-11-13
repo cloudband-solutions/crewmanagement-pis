@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+  	<meta charset='utf-8' />
+    <%= wicked_pdf_stylesheet_link_tag "manifest" %>
+  </head>
+  <body style="">
+    <center class="reportHeader">
+      <div>
+        BALIWAG NAVIGATION, INC.  
+      </div>
+      <div>
+        Manila, Philippines
+      </div>
+      <div class="reportTitle">
+        Crew Manifest
+      </div>
+    </center>
+    <div class="vesselInformation">
+      <%= vessel.name %>
+    </div>
+    <table>
+      <tr>
+        <th>No.</th>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Rank</th>
+        <th>Date of Embarkation</th>
+        <% license_types.each do |lt| %>
+          <th><%= lt %></th>
+        <% end %>
+        <% certificate_types.each do |ct| %>
+          <th><%= ct %></th>
+        <% end %>
+      </tr>
+      <% crews.each_with_index do |crew, i| %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <td><%= crew %></td>
+          <td><%= crew.birthday %></td>
+          <td><%= crew.rank %></td>
+          <td><%= crew.sign_on %></td>
+          <% license_types.each do |lt| %>
+            <% l = crew.licenses.where(license_type_id: lt.id).first %>
+            <td><%= "#{l.license_number} - #{l.expiry_date}" if !l.nil? %></td>
+          <% end %>
+          <% certificate_types.each do |ct| %>
+            <% c = crew.certificates.where(certificate_type_id: ct.id).first %>
+            <td><%= "#{c.certificate_number} - #{c.expiry_date}" if !c.nil? %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </body>
+</html>
