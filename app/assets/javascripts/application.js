@@ -21,10 +21,6 @@
 
 $(document).ready(function() {
   $(".select-select2").select2();
-  $(".select-select2").on("change", function() {
-    $container = $(this).prev(".select2-container");
-    $container.height($container.children(".select2-choices").height());
-  });
 });
 
 var initDatePicker = function() {

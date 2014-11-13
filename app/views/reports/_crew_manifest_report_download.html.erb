@@ -3,6 +3,23 @@
     <%= hidden_field_tag :vessel_id, @vessel.id %>
     <%= hidden_field_tag :crews, @crews.map{|c| c.id} %>
     <%= hidden_field_tag :license_type_ids, @license_types.map{|l| l.id} %>
-    <%= submit_tag "Download", class: "btn btn-primary" %>
+    <div class="row">
+      <div class="col-md-3">
+        <label>Prepared By:</label>
+        <%= text_field_tag :prepared_by, nil, class: "form-control" %>
+      </div>
+      <div class="col-md-3">
+        <label>Certified By:</label>
+        <%= text_field_tag :certified_by, nil, class: "form-control" %>
+      </div>
+      <div class="col-md-3">
+        <label>Noted By:</label>
+        <%= text_field_tag :noted_by, nil, class: "form-control" %>
+      </div>
+      <div class="col-md-3">
+        <label>Actions:</label><br/>
+        <%= submit_tag "Download", class: "btn btn-primary" %>
+      </div>
+    </div>
   <% end %>
 </div>
