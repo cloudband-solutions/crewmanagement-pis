@@ -17,6 +17,7 @@
  *= require jquery-ui
  *= require select2
  *= require iphone
+ *= require reports
  */
 
 @import "bootstrap-sprockets";
@@ -145,6 +146,10 @@ th {
 
 
 // Bootstrap overrides
+.form-control {
+  height: auto !important;
+}
+
 .container {
   width: 1336px;
   padding: 30px;

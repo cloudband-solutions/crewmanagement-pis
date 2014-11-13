@@ -22,6 +22,9 @@ class ReportsController < ApplicationController
     vessel = Vessel.find(params[:vessel_id])
     license_types = LicenseType.where("license_types.id IN (?)", params[:license_type_ids].split(" "))
     certificate_types = CertificateType.where("certificate_types.id IN (?)", params[:certificate_types])
+    prepared_by = params[:prepared_by]
+    certified_by = params[:certified_by]
+    noted_by = params[:noted_by]
 
     render(
       pdf: "sample",
@@ -29,7 +32,7 @@ class ReportsController < ApplicationController
       layout: false,
       orientation: 'Landscape',
       page_size: 'Legal',
-      locals: { crews: crews, vessel: vessel, license_types: license_types, certificate_types: certificate_types }
+      locals: { crews: crews, vessel: vessel, license_types: license_types, certificate_types: certificate_types, prepared_by: prepared_by, certified_by: certified_by, noted_by: noted_by }
     )
   end
 
