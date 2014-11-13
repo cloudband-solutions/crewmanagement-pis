@@ -6,20 +6,65 @@
   </head>
   <body style="">
     <center class="reportHeader">
-      <div>
+      <div style="font-weight: bold;">
         BALIWAG NAVIGATION, INC.  
       </div>
-      <div>
-        Manila, Philippines
+      <div style="font-size: 9px;">
+        3rd Flr. Victoria Bldg., 429 U.N. Ave., Ermita, Manila, Philippines P.OBox 913 <br>
+        Tel. No.:(632)5216076; 521-6672; 522-3056 to 58 Fax. No.:(632)521-90-23 <br>
+        Email: balnav@bni.com.ph Website: www.bni.com.ph
       </div>
-      <div class="reportTitle">
-        Crew Manifest
+      <hr style="color: black;">
+      <div class="reportTitle" style="font-weight: bold;">
+        CREW MANIFEST
       </div>
     </center>
-    <div class="vesselInformation">
-      <%= vessel.name %>
-    </div>
-    <table>
+   
+    <table style="width: 30%;">
+      <tr>
+       <th style="text-align: left; width: 10%;">Vessel Name:</th> 
+       <td style="text-align: left; border-bottom: 1px solid black; width: 20%;"><%= vessel.name %></td>
+      </tr><br>
+      <tr>
+       <th style="text-align: left; width: 30%;">Registry:</th>
+       <td style="text-align: left; border-bottom: 1px solid black; width: 20%;"><%= vessel.flag %></td>
+      </tr>
+    </table>
+
+    <table style="width: 30%; margin-left: 28%; margin-top: -5%;">
+      <tr>
+       <th style="text-align: left; width: 30%;">Principal</th> 
+       <td style="text-align: left; border-bottom: 1px solid black; width: 20%;"><%= vessel.principal %></td>
+      </tr><br>
+      <tr>
+       <th style="text-align: left; width: 30%;">Salary Scale:</th>
+       <td style="text-align: left; border-bottom: 1px solid black; width: 20%;"><%= vessel.salary_scale %></td>
+      </tr>
+    </table>
+
+    <table style="width: 30%; margin-left: 55%; margin-top: -5%;">
+      <tr>
+       <th style="text-align: left; width: 20%;">GRT:</th> 
+       <td style="text-align: left; border-bottom: 1px solid black; width: 20%; "><%= vessel.grt %></td>
+      </tr><br>
+      <tr>
+       <th style="text-align: left; width: 20%;">NRT:</th>
+       <td style="text-align: left; border-bottom: 1px solid black; width: 20%;"><%= vessel.nrt %></td>
+      </tr>
+    </table>
+
+    <table style="width: 30%; margin-left: 70%; margin-top: -5%;">
+      <tr>
+       <th style="text-align: left;width: 20%;" >DWT:</th> 
+       <td style="text-align: left; border-bottom: 1px solid black; width: 20%; "><%= vessel.dwt %></td>
+      </tr><br>
+      <tr>
+       <th style="text-align: left;width: 20%;">LOA:</th>
+       <td style="text-align: left; border-bottom: 1px solid black; width: 20%;"><%= vessel.loa %></td>
+      </tr>
+    </table>
+   
+    <table style="margin-top: 2%;">
       <tr>
         <th>No.</th>
         <th>Name</th>
@@ -35,18 +80,18 @@
       </tr>
       <% crews.each_with_index do |crew, i| %>
         <tr>
-          <td><%= i + 1 %></td>
-          <td><%= crew %></td>
-          <td><%= crew.birthday %></td>
-          <td><%= crew.rank %></td>
-          <td><%= crew.sign_on %></td>
+          <td class="td"><%= i + 1 %></td>
+          <td class="td"><%= crew %></td>
+          <td class="td"><%= crew.birthday %></td>
+          <td class="td"><%= crew.rank %></td>
+          <td class="td"><%= crew.sign_on %></td>
           <% license_types.each do |lt| %>
             <% l = crew.licenses.where(license_type_id: lt.id).first %>
-            <td><%= "#{l.license_number} - #{l.expiry_date}" if !l.nil? %></td>
+            <td class="td"><%= "#{l.license_number} - #{l.expiry_date}" if !l.nil? %></td>
           <% end %>
           <% certificate_types.each do |ct| %>
             <% c = crew.certificates.where(certificate_type_id: ct.id).first %>
-            <td><%= "#{c.certificate_number} - #{c.expiry_date}" if !c.nil? %></td>
+            <td class="td"><%= "#{c.certificate_number} - #{c.expiry_date}" if !c.nil? %></td>
           <% end %>
         </tr>
       <% end %>
