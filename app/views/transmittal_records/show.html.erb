@@ -7,6 +7,7 @@
       <% if @transmittal_record.status == "pending" %>
         <%= link_to "Edit", edit_transmittal_record_path(@transmittal_record), class: "btn btn-xs btn-default edit" %>
       <% end %>
+      <%= link_to "Download", generate_transmittal_record_path(@transmittal_record), class: "btn btn-xs btn-default" %>
       <%= link_to "Back to Database", transmittal_records_path, class: "btn btn-default btn-xs" %>
     </div>
   </div>

@@ -27,12 +27,25 @@ class ReportsController < ApplicationController
     noted_by = params[:noted_by]
 
     render(
-      pdf: "sample",
+      pdf: "crew_manifest",
       template: "reports/manifest_template",
       layout: false,
       orientation: 'Landscape',
       page_size: 'Legal',
       locals: { crews: crews, vessel: vessel, license_types: license_types, certificate_types: certificate_types, prepared_by: prepared_by, certified_by: certified_by, noted_by: noted_by }
+    )
+  end
+
+  def transmittal_record
+    transmittal_record = TransmittalRecord.find(params[:id])
+
+    render(
+      pdf: "transmittal_record",
+      template: "reports/transmittal_template",
+      layout: false,
+      orientation: 'Landscape',
+      page_size: 'Legal',
+      locals: { transmittal_record: transmittal_record }
     )
   end
 
