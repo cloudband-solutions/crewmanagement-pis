@@ -34,23 +34,22 @@ class CrewsController < ApplicationController
          :layout => false,
          :locals => { :crew => @crew } )
         
-        save_path = Rails.root.join('app/pdfs','MisugaReport.pdf')
-        File.open(save_path, 'wb') do |file|
-          file << pdf_str
-        end
-        send_file "#{Rails.root}/app/pdfs/MisugaReport.pdf", :type =>'application/pdf', :disposition => 'attachment'
+        send_data(pdf_str, :filename => 'Misuga Report.pdf',  :type=>"application/pdf")
+
+        #save_path = Rails.root.join('app/pdfs','MisugaReport.pdf')
+        #File.open(save_path, 'wb') do |file|
+        #  file << pdf_str
+        #end
+        #send_file "#{Rails.root}/app/pdfs/MisugaReport.pdf", :type =>'application/pdf', :disposition => 'attachment'
       elsif template == "baliwag"
         pdf_str = render_to_string(
          :pdf => 'BaliwagReport',
          :template => "crews/baliwag",
          :layout => false,
          :locals => { :crew => @crew } )
+
+        send_data(pdf_str, :filename => 'Baliwag Report.pdf',  :type=>"application/pdf")
         
-        save_path = Rails.root.join('app/pdfs','BaliwagReport.pdf')
-        File.open(save_path, 'wb') do |file|
-          file << pdf_str
-        end
-        send_file "#{Rails.root}/app/pdfs/BaliwagReport.pdf", :type =>'application/pdf', :disposition => 'attachment'
       elsif template == "fleet_personnel"
         pdf_str = render_to_string(
          :pdf => 'FleetPersonnelReport',
@@ -58,11 +57,17 @@ class CrewsController < ApplicationController
          :layout => false,
          :locals => { :crew => @crew } )
         
-        save_path = Rails.root.join('app/pdfs','FleetPersonnelReport.pdf')
-        File.open(save_path, 'wb') do |file|
-          file << pdf_str
-        end
-        send_file "#{Rails.root}/app/pdfs/FleetPersonnelReport.pdf", :type =>'application/pdf', :disposition => 'attachment'
+        send_data(pdf_str, :filename => 'Fleet Personnel Report.pdf',  :type=>"application/pdf")
+
+      elsif template == "dcm"
+        pdf_str = render_to_string(
+         :pdf => 'DCMReport',
+         :template => "crews/dcm",
+         :layout => false,
+         :locals => { :crew => @crew } )
+        
+        send_data(pdf_str, :filename => 'DCM Report.pdf',  :type=>"application/pdf")
+        
       else
         flash[:error] = "Template #{template} not available"
         redirect_to crew_path(@crew)
