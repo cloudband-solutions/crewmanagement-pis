@@ -1,8 +1,26 @@
 <div class="well dlreport">
-  <%= form_tag reports_download_crew_manifest_path, method: :post do |f| %>
+  <%= form_tag reports_download_crew_manifest_path, method: :get do |f| %>
     <%= hidden_field_tag :vessel_id, @vessel.id %>
     <%= hidden_field_tag :crews, @crews.map{|c| c.id} %>
     <%= hidden_field_tag :license_type_ids, @license_types.map{|l| l.id} %>
-    <%= submit_tag "Download", class: "btn btn-primary" %>
+    <%= hidden_field_tag :certificate_type_ids, @certificate_types.map{|c| c.id} %>
+    <div class="row">
+      <div class="col-md-3">
+        <label>Prepared By:</label>
+        <%= text_field_tag :prepared_by, nil, class: "form-control" %>
+      </div>
+      <div class="col-md-3">
+        <label>Certified By:</label>
+        <%= text_field_tag :certified_by, nil, class: "form-control" %>
+      </div>
+      <div class="col-md-3">
+        <label>Noted By:</label>
+        <%= text_field_tag :noted_by, nil, class: "form-control" %>
+      </div>
+      <div class="col-md-3">
+        <label>Actions:</label><br/>
+        <%= submit_tag "Download", class: "btn btn-primary" %>
+      </div>
+    </div>
   <% end %>
 </div>

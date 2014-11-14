@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+  <head>
+  	<meta charset='utf-8' />
+    <%= wicked_pdf_stylesheet_link_tag "manifest" %>
+  </head>
+  <body style="">
+    <center class="reportHeader">
+      <div style="font-weight: bold;">
+        BALIWAG NAVIGATION, INC.  
+      </div>
+      <div style="font-size: 9px;">
+        3rd Flr. Victoria Bldg., 429 U.N. Ave., Ermita, Manila, Philippines P.OBox 913 <br>
+        Tel. No.:(632)5216076; 521-6672; 522-3056 to 58 Fax. No.:(632)521-90-23 <br>
+        Email: balnav@bni.com.ph Website: www.bni.com.ph
+      </div>
+      <hr style="color: black;">
+      <div class="reportTitle" style="font-weight: bold;">
+        CREW MANIFEST
+      </div>
+    </center>
+   
+    <table style="width: 25%; font-size: 12px;">
+      <tr>
+       <th style="text-align: left; width: 35%;">Vessel Name:</th> 
+       <td style="text-align: left; border-bottom: 1px solid black; "><%= vessel.name %></td>
+      </tr><br>
+      <tr>
+       <th style="text-align: left; width: 35%;">Registry:</th>
+       <td style="text-align: left; border-bottom: 1px solid black;"><%= vessel.flag %></td>
+      </tr>
+    </table>
+    <table style="width: 25%; margin-left: 28%; margin-top: -4.4%;  font-size: 12px;">
+      <tr>
+       <th style="text-align: left;">Principal:</th> 
+       <td style="text-align: left; border-bottom: 1px solid black; width:50%;"><%= vessel.principal %></td>
+      </tr><br>
+      <tr>
+       <th style="text-align: left; width: 30%;">Salary Scale:</th>
+       <td style="text-align: left; border-bottom: 1px solid black; width:50%;"><%= vessel.salary_scale %></td>
+      </tr>
+    </table>
+
+    <table style="width: 13%; margin-left: 55%; margin-top: -4.4%;  font-size: 12px;">
+      <tr>
+       <th style="text-align: left; width: 10%;">GRT:</th> 
+       <td style="text-align: left; border-bottom: 1px solid black;"><%= vessel.grt %></td>
+      </tr><br>
+      <tr>
+       <th style="text-align: left; width: 5%;">NRT:</th>
+       <td style="text-align: left;border-bottom: 1px solid black;"><%= vessel.nrt %></td>
+      </tr>
+    </table>
+
+    <table style="width: 15%; margin-left: 70%; margin-top: -4.5%; font-size: 12px;">
+      <tr>
+       <th style="text-align: left;width: 20%;" >DWT:</th> 
+       <td style="text-align: left; border-bottom: 1px solid black; "><%= vessel.dwt %></td>
+      </tr><br>
+      <tr>
+       <th style="text-align: left;width: 20%;">LOA:</th>
+       <td style="text-align: left;border-bottom: 1px solid black;"><%= vessel.loa %></td>
+      </tr>
+    </table>
+   
+    <table class="table_report" style="margin-top: 2%; font-size: 13px; ">
+      <tr>
+    <th>No.</th>
+    <th style="width: 20%;">Name</th>
+    <th>Date of Birth</th>
+    <th>Rank</th>
+    <th>Date of Embarkation</th>
+    <% license_types.each do |lt| %>
+      <th><%= lt %></th>
+    <% end %>
+    <% certificate_types.each do |ct| %>
+      <th><%= ct %></th>
+    <% end %>
+  </tr>
+  <% crews.each_with_index do |crew, i| %>
+    <tr>
+      <td><%= i + 1 %></td>
+      <td><%= crew %></td>
+      <td><%= crew.birthday %></td>
+      <td><%= crew.rank %></td>
+      <td><%= crew.sign_on %></td>
+      <% license_types.each do |lt| %>
+        <% l = crew.licenses.where(license_type_id: lt.id).first %>
+        <td><%= "#{l.license_number} - #{l.expiry_date}" if !l.nil? %></td>
+      <% end %>
+      <% certificate_types.each do |ct| %>
+        <% c = crew.certificates.where(certificate_type_id: ct.id).first %>
+        <td><%= "#{c.certificate_number} - #{c.expiry_date}" if !c.nil? %></td>
+      <% end %>
+    </tr>
+  <% end %>
+    
+    </table>
+
+    <table style="margin-top: 2%; font-size: 13px;">
+      <tr style="text-align: left;">
+      <th>Preapred By:</th>
+      <th>Certified Correct By:</th>
+      <th>Noted By:</th>
+      </tr>
+      <tr style="padding-top: 20px; font-weight: bold;">
+        <td style="text align: center; padding-left: 20px; padding-top: 20px;"><span style="border-bottom: 1px solid black; width: 30%; padding-left: 40px; padding-right: 40px;"><%= prepared_by %></span></td>
+        <td style="text align: center; padding-left: 20px; padding-top: 20px;"><span style="border-bottom: 1px solid black; width: 30%; padding-left: 40px; padding-right: 40px;"><%= certified_by %></span></td>
+        <td style="text align: center; padding-left: 20px; padding-top: 20px;"><span style="border-bottom: 1px solid black; width: 30%; padding-left: 40px; padding-right: 40px;"><%= noted_by %></span></td>
+      </tr>
+
+    </table>
+
+  </body>
+</html>

@@ -1,5 +1,5 @@
 <div class="well search_principal">
-  <%= form_tag reports_crew_manifest_path, method: :post do |f| %>
+  <%= form_for :report, url: reports_crew_manifest_path, method: :post do |f| %>
     <div class="row">    
       <div class="col-md-2 vsl">
         <label>Vessel</label><br>

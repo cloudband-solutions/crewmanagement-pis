@@ -30,10 +30,11 @@ BaliwagIs::Application.routes.draw do
 
   get "/reports/crews", to: "crews#reports", as: :crews_reports
   get "/reports/:id/generate_crew_file", to: "crews#generate_crew_file", as: :generate_crew_file
+  get "/reports/:id/generate_transmittal_record", to: "reports#transmittal_record", as: :generate_transmittal_record
 
   get "/reports/crew_manifest", to: "reports#crew_manifest", as: :reports_crew_manifest
   post "/reports/crew_manifest", to: "reports#crew_manifest", as: :reports_crew_manifest_generate
-  post "/reports/download_crew_manifest", to: "reports#download_crew_manifest", as: :reports_download_crew_manifest
+  get "/reports/download_crew_manifest", to: "reports#download_crew_manifest", as: :reports_download_crew_manifest
 
   resources :principals, only: [:index, :show]
   resources :transmittal_records

@@ -1,0 +1,44 @@
+table {
+  font-size: 15px;
+  width: 100%;
+}
+
+.td {
+  text-align: center;
+}
+
+.underline {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.PrincipalSalary {
+  margin-left: 30%;
+  margin-top: -3%;
+}
+
+.GrtNrt {
+  margin-left: 60%;
+  margin-top: -3%;
+}
+
+.DwtLoa {
+  margin-left: 80%;
+  margin-top: -3%;
+}
+
+.table_report {
+  border: 1px solid black;
+  th, td {
+    border: 1px solid black;
+  }
+}
+
+.lcc {
+  border: 1px solid black;
+  width: 50%;
+  margin-left: 50%;
+  margin-top: -5.5%;
+  text-align: center;
+}
+

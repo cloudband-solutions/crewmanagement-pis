@@ -21,10 +21,32 @@ class ReportsController < ApplicationController
     crews = Crew.where("crews.id IN (?)", params[:crews].split(" "))
     vessel = Vessel.find(params[:vessel_id])
     license_types = LicenseType.where("license_types.id IN (?)", params[:license_type_ids].split(" "))
-    package = generate_crew_manifest(vessel, crews, license_types)
-    filename = "#{Time.now.to_i}_report.xlsx"
-    package.serialize "#{Rails.root}/tmp/#{filename}"
-    send_file "#{Rails.root}/tmp/#{filename}", filename: filename, type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    certificate_types = CertificateType.where("certificate_types.id IN (?)", params[:certificate_type_ids])
+    prepared_by = params[:prepared_by]
+    certified_by = params[:certified_by]
+    noted_by = params[:noted_by]
+
+    render(
+      pdf: "crew_manifest",
+      template: "reports/manifest_template",
+      layout: false,
+      orientation: 'Landscape',
+      page_size: 'Legal',
+      locals: { crews: crews, vessel: vessel, license_types: license_types, certificate_types: certificate_types, prepared_by: prepared_by, certified_by: certified_by, noted_by: noted_by }
+    )
+  end
+
+  def transmittal_record
+    transmittal_record = TransmittalRecord.find(params[:id])
+
+    render(
+      pdf: "transmittal_record",
+      template: "reports/transmittal_template",
+      layout: false,
+      orientation: 'Landscape',
+      page_size: 'Legal',
+      locals: { transmittal_record: transmittal_record }
+    )
   end
 
   private 
