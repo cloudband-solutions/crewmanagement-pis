@@ -4,10 +4,10 @@
     <div class="row">
       <div class="col-md-12">
         <%= f.input :name, input_html: { value: params[:search].nil? ? '' : params[:search][:name] } %>
-        <%= f.input :vessel, as: :select, collection: Vessel.all, selected: params[:search].nil? ? '' : params[:search][:vessel] %>
-        <%= f.input :rank, collection: Rank.all, as: :select, selected: params[:search].nil? ? '' : params[:search][:rank] %>
-        <%= f.input :principal, collection: Principal.all, as: :select, selected: params[:search].nil? ? '' : params[:search][:principal] %>
-        <%= f.input :school, collection: UtilityService.unique_schools, as: :select, selected: params[:search].nil? ? '' : params[:search][:school] %>
+        <%= f.input :vessel, as: :select, collection: Vessel.all.order(:name), selected: params[:search].nil? ? '' : params[:search][:vessel], include_blank: "-- SELECT --" %>
+        <%= f.input :rank, collection: Rank.all.order(:priority), as: :select, selected: params[:search].nil? ? '' : params[:search][:rank], include_blank: "-- SELECT --" %>
+        <%= f.input :principal, collection: Principal.all, as: :select, selected: params[:search].nil? ? '' : params[:search][:principal], include_blank: "-- SELECT --" %>
+        <%= f.input :school, collection: UtilityService.unique_schools, as: :select, selected: params[:search].nil? ? '' : params[:search][:school], include_blank: "-- SELECT --" %>
         <hr>
         <%= f.submit "Search", class: "btn btn-primary btn-block" %>
       </div>

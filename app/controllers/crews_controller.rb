@@ -3,25 +3,10 @@ class CrewsController < ApplicationController
   before_filter :authenticate_user!
 
   def advanced_search
-    if %w( admin encoder manager ).include? current_user.user_type
-      @crews = Crew.order("crews.lastname")
-    elsif current_user.user_type == "principal"
-      @crews = Crew.order("crews.lastname")
-    end
-
-    if params[:q].present?
-      @q = params[:q]
-      @crews = @crews.where("crews.firstname LIKE :q OR crews.middlename LIKE :q OR crews.lastname LIKE :q", q: "%#{@q}%")
-    end
-
-    if params[:vessel_id].present?
-      @vessel = Vessel.find(params[:vessel_id])
-      @crews = @crews.where("crews.vessel_id = ?", @vessel.id)
-    end
-
-    if params[:rank_id].present?
-      @rank = Rank.find(params[:rank_id])
-      @crews = @crews.where("crews.rank_id = ?", @rank.id)
+    if params[:search].nil?
+      @crews = Crew.active
+    else
+      @crews = SearchService.advanced_search(params[:search])
     end
 
     @crews = @crews.page(params[:page]).per(10)
