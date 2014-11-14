@@ -26,3 +26,19 @@ table {
   margin-left: 80%;
   margin-top: -3%;
 }
+
+.table_report {
+  border: 1px solid black;
+  th, td {
+    border: 1px solid black;
+  }
+}
+
+.lcc {
+  border: 1px solid black;
+  width: 50%;
+  margin-left: 50%;
+  margin-top: -5.5%;
+  text-align: center;
+}
+
