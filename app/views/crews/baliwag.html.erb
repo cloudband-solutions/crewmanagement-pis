@@ -213,6 +213,15 @@
 							<td><%= license.training_center %></td>
 						</tr>
 					<% end %>
+					<% crew.certificates.each do |certificate| %>
+						<tr>
+							<td><%= certificate.certificate_type.try(:name) %></td>
+							<td><%= certificate.certificate_number %></td>
+							<td><%= certificate.date_issued %></td>
+							<td><%= certificate.expiry_date %></td>
+							<td><%= certificate.issued_by %></td>
+						</tr>
+					<% end %>
 				</table>
 			</div>
 
@@ -305,12 +314,21 @@
 			</tr>
 			<% crew.licenses.each do |license| %>
 			<tr>
-				<td><%= license.license_type.name %></td>
+				<td><%= license.license_type.try(:name) %></td>
 				<td><%= license.license_number.to_s %></td>
 				<td><%= license.date_issued %></td>
 				<td><%= license.expiry_date %></td>
 				<td>&nbsp;</td>
 			</tr>
+			<% end %>
+			<% crew.certificates.each do |certificate| %>
+				<tr>
+					<td><%= certificate.certificate_type.try(:name) %></td>
+					<td><%= certificate.certificate_number %></td>
+					<td><%= certificate.date_issued %></td>
+					<td><%= certificate.expiry_date %></td>
+					<td>&nbsp;</td>
+				</tr>
 			<% end %>
 			<tr>
 				<td colspan="2">History of this company: </td>
