@@ -6,7 +6,13 @@ class CrewsController < ApplicationController
     if params[:search].nil?
       @crews = Crew.active
     else
-      @crews = SearchService.advanced_search(params[:search])
+      if !params[:search][:name].nil?
+        params[:search][:name] = params[:search][:name].upcase
+      end
+
+      query = params[:search]
+
+      @crews = SearchService.advanced_search(query)
     end
 
     @crews = @crews.page(params[:page]).per(10)
