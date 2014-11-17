@@ -3,10 +3,11 @@
   <%= simple_form_for :search, defaults: { wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control'} }, html: { novalidate: true }, method: :get, url: crews_advanced_search_path do |f| %>
     <div class="row">
       <div class="col-md-12">
-        <%= f.input :name %>
-        <%= f.input :vessel, as: :select, collection: Vessel.all %>
-        <%= f.input :rank, collection: Rank.all %>
-        <%= f.input :principal, collection: Principal.all %>
+        <%= f.input :name, input_html: { value: params[:search].nil? ? '' : params[:search][:name] } %>
+        <%= f.input :vessel, as: :select, collection: Vessel.all.order(:name), selected: params[:search].nil? ? '' : params[:search][:vessel], include_blank: "-- SELECT --" %>
+        <%= f.input :rank, collection: Rank.all.order(:priority), as: :select, selected: params[:search].nil? ? '' : params[:search][:rank], include_blank: "-- SELECT --" %>
+        <%= f.input :principal, collection: Principal.all, as: :select, selected: params[:search].nil? ? '' : params[:search][:principal], include_blank: "-- SELECT --" %>
+        <%= f.input :school, collection: UtilityService.unique_schools, as: :select, selected: params[:search].nil? ? '' : params[:search][:school], include_blank: "-- SELECT --" %>
         <hr>
         <%= f.submit "Search", class: "btn btn-primary btn-block" %>
       </div>

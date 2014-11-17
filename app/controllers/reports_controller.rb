@@ -18,10 +18,10 @@ class ReportsController < ApplicationController
   end
 
   def download_crew_manifest
-    crews = Crew.where("crews.id IN (?)", params[:crews].split(" "))
+    crews = Crew.active_by_rank.where("crews.id IN (?)", params[:crews].split(" "))
     vessel = Vessel.find(params[:vessel_id])
     license_types = LicenseType.where("license_types.id IN (?)", params[:license_type_ids].split(" "))
-    certificate_types = CertificateType.where("certificate_types.id IN (?)", params[:certificate_type_ids])
+    certificate_types = CertificateType.where("certificate_types.id IN (?)", params[:certificate_type_ids].split(" "))
     prepared_by = params[:prepared_by]
     certified_by = params[:certified_by]
     noted_by = params[:noted_by]

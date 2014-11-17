@@ -276,7 +276,7 @@
 					<td><%= "#{er.vessel.flag.try(:name)}" %><br /><%= "#{er.vessel.vessel_type}/#{er.vessel.grt}" %></td>
 					<td><%= "#{er.vessel.engine_make}" %><br /><%= "#{er.vessel.engine_model}/#{er.vessel.horse_power}" %></td>
 					<td><%= "\s" %></td>
-					<td><%= "#{er.sign_on.strftime("%m/%d/%Y")} / #{er.sign_off.strftime("%m/%d/%Y")}" %><br /><%= "#{er.reason_for_disembarkation.to_s}" %></td>
+					<td><%= "#{er.sign_on.strftime("%m/%d/%Y") if !er.sign_on.nil?} / #{er.sign_off.strftime("%m/%d/%Y") if !er.sign_off.nil?}" %><br /><%= "#{er.reason_for_disembarkation.to_s}" %></td>
 				</tr>
 			<% end %>
 		</table>
