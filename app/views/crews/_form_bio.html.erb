@@ -1,14 +1,4 @@
-<div class="row crew_form">
-  <div class="col-md-4">
-    <%= f.input :firstname, label: "First Name", input_html: { class: "form-control" }, placeholder: "Enter First Name"%>
-  </div>
-  <div class="col-md-4">
-    <%= f.input :middlename, label: "Middle Name", input_html: { class: "form-control" }, placeholder: "Enter Middle Name" %>
-  </div>
-  <div class="col-md-4">
-    <%= f.input :lastname, label: "Last Name", input_html: { class: "form-control" }, placeholder: "Enter Last Name" %>
-  </div>
-</div>
+
 
 <div class="row">
   <div class="col-md-2">
@@ -39,9 +29,21 @@
   </div>
 </div>
 <hr>
+
+<div class="row well crew_form fixing">
+  <div class="col-md-4">
+    <%= f.input :firstname, label: "First Name", input_html: { class: "form-control" }, placeholder: "Enter First Name"%>
+  </div>
+  <div class="col-md-4">
+    <%= f.input :middlename, label: "Middle Name", input_html: { class: "form-control" }, placeholder: "Enter Middle Name" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.input :lastname, label: "Last Name", input_html: { class: "form-control" }, placeholder: "Enter Last Name" %>
+  </div>
+</div>
 <div class="row">
   <div class="col-md-12">
-    <div class="well cform">
+    <div class=" well cform">
       <div class="row crew_form">       
         <div class="col-md-4">
           <%= f.input :code_number, label: "Code Number", input_html: { class: "form-control" }, placeholder: "Enter Code Number" %>
@@ -60,6 +62,8 @@
     </div>
   </div>
 </div>
+  
+
 
 <div class="row crew_form">
    <div class="col-md-6">
