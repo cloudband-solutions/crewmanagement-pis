@@ -3,7 +3,9 @@ class SearchService
     crews = Crew.active
 
     if !query[:name].blank?
-      crews = crews.where("crews.firstname LIKE :q OR crews.middlename LIKE :q OR crews.lastname LIKE :q", q: "%#{query[:name]}%")
+      query[:name].split(" ").each do |n|
+        crews = crews.where("crews.firstname LIKE :q OR crews.middlename LIKE :q OR crews.lastname LIKE :q", q: "%#{n}%")
+      end
     end
 
     if !query[:vessel].blank?

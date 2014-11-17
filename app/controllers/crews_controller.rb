@@ -108,7 +108,9 @@ class CrewsController < ApplicationController
 
     if params[:q].present?
       @q = params[:q]
-      @crews = @crews.where("crews.firstname LIKE :q OR crews.middlename LIKE :q OR crews.lastname LIKE :q", q: "%#{@q}%")
+      @q.split(" ").each do |n|
+        @crews = @crews.where("crews.firstname LIKE :q OR crews.middlename LIKE :q OR crews.lastname LIKE :q", q: "%#{n}%")
+      end
     end
 
     if params[:vessel_id].present?
