@@ -19,49 +19,101 @@
     </center>
 
     <div style="margin-top: 1%; font-size: 13px;">
-      TO: BALIWAG TOURS AND TRAVEL/ACCOUNTING DEPARTMENT <br />
-      CC: CREWING DEPARTMENT <br />
-      RE: LIST OF NAMES AND PARTICULARS OF SEAFARERS SCHEDULED TO EMBARK/DISEMBARK
+      <b>TO:</b> BALIWAG TOURS AND TRAVEL/ACCOUNTING DEPARTMENT <br />
+      <b>CC:</b> CREWING DEPARTMENT <br />
+      <b>RE:</b> LIST OF NAMES AND PARTICULARS OF SEAFARERS SCHEDULED TO EMBARK/DISEMBARK
     </div>
 
     <div style="margin-top: 1%; font-size: 13px;">
       <table style="width: 100%;">
         <tr style="text-align: left;">  
-          <th>Destination: China</th>
-          <th>Date of Departure:  M/V MEDI YOKOHAMA</th>
-          <th>Assigned Vessel: TO BE ADVISED</th>
+          <th>Destination: <%= transmittal_record.destination %></th>
+          <th>Date of Departure:  <%= transmittal_record.date_of_departure %></th>
+          <th>Assigned Vessel: <%= transmittal_record.vessel %></th>
           
         </tr>
-       
-      
       </table>
-      
     </div>
+
      <table class="trans_table" style="font-size: 11px;">
       <tr>
-        <th colspan="2"> </th>
-        <th colspan="6">Embarking</th>
-        <th colspan="4">Disembarking</th>
+        <th colspan="20">Embarking</th>
+      </tr>
+    <tr>
+      <th>No</th>
+      <th>Name</th>
+      <th>Rank</th>
+      <% transmittal_record.transmittal_record_license_types.each do |trlt| %>
+        <th><%= trlt.license_type %> No.</th>
+        <th>Expiry Date</th>
+      <% end %>
+      <th>Cloth Size</th>
+      <th>Shoe Size</th>
+      <th>Contact Number</th>
+    </tr>
+    <% transmittal_record.transmittal_record_embarking_crews.each_with_index do |transmittal_record_embarking_crew, index| %>
+      <tr>
+        <td><%= index + 1%></td>
+        <td><%= transmittal_record_embarking_crew.crew %></td>
+        <td><%= transmittal_record_embarking_crew.rank %></td>
+        <% transmittal_record.transmittal_record_license_types.each do |trlt| %>
+          <% license = transmittal_record_embarking_crew.crew.license_by_type(trlt.license_type.id) %>
+          <% if !license.nil? %>
+            <td><%= license %></td>
+            <td><%= license.expiry_date %></td>
+          <% else %>
+            <td></td>
+            <td></td>
+          <% end %>
+        <% end %>
+        <td><%= transmittal_record_embarking_crew.crew.cloth_size %></td>
+        <td><%= transmittal_record_embarking_crew.crew.shoe_size %></td>
+        <td><%= transmittal_record_embarking_crew.crew.telephone_no %></td>
+    </tr>
+  <% end %>
+    </table>
+
+    <table class="trans_table" style="font-size: 11px;">
+      <tr>
+        <th colspan="20">Disembarking</th>
       </tr>
       <tr>
         <th>No</th>
         <th>Name</th>
         <th>Rank</th>
-        <th>SCBD/SIRB NO.</th>
-        <th>EXPIRY DATE</th>
-        <th>PASSPORT NO.</th>
-        <th>EXPIRY DATE</th>
-        <th>BIRTH DATE</th>
-        <th>NAME</th>
-        <th>RANK</th>
-        <th>DATE EMBARKED</th>
+        <th>Date Embarked</th>
+        <th>Reason for Disembarkation</th>
       </tr>
-
+    <% transmittal_record.transmittal_record_disembarking_crews.each_with_index do |trdc, index| %> 
       <tr>
-       <td>1</td>
-       <td>Raphael Alampay</td>
-       <td></td>
+        <td><%= index + 1 %></td>
+        <td><%= trdc.crew %></td>
+        <td><%= trdc.rank %></td>
+        <td><%= trdc.date_embarked %></td>
+        <td><%= trdc.reason_for_disembarkation %></td>
       </tr>
+    <% end %>
+    </table>
+
+    <table class="trans_table" style="font-size: 11px;">
+      <tr>
+        <th colspan="20">Promotion</th>
+      </tr>
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>From</th>
+        <th>To</th>
+      </tr>
+      <% transmittal_record.transmittal_record_crew_promotions.each_with_index do |crew, index| %>
+    <tr>
+        <td><%= index + 1 %></td>
+        <td><%= crew.crew %></td>
+        <td><%= crew.from_rank %></td>
+        <td><%= crew.to_rank %></td>
+   </tr>
+  <% end %>
+
     </table>
 
      <table style="margin-top: 2%; font-size: 13px; width: 100%; ">
@@ -75,15 +127,15 @@
 
     <table style="margin-top: 2%; font-size: 13px; width: 100%; ">
       <tr>
-        <th>ALEJANDRA A. QUENTERO</th>
-        <th>ALEJANDRA A. QUENTERO</th>
-        <th>ALEJANDRA A. QUENTERO</th>
+        <th><%= transmittal_record.prepared_by.upcase %></th>
+        <th><%= transmittal_record.approved_by.upcase %></th>
+        <th><%= transmittal_record.noted_by.upcase %></th>
       </tr>
 
       <tr>
-       <th>Position: CEO</th>
-       <th>Position: CEO</th>
-       <th>Position: CEO</th>
+       <th>Position: <%= transmittal_record.prepared_by_position %></th>
+       <th>Position: <%= transmittal_record.approved_by_position %></th>
+       <th>Position: <%= transmittal_record.noted_by_position %></th>
       </tr>
 
     </table>
