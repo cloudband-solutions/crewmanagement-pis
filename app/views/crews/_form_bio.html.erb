@@ -1,6 +1,8 @@
+<div class="" style="height: 100%;">
 
+</div>
 
-<div class="row">
+<div class="row fix">
   <div class="col-md-2">
     <%= image_tag f.object.picture.url(:standard) %>
     <%= f.input :picture, as: :file, label: false %>
@@ -30,17 +32,7 @@
 </div>
 <hr>
 
-<div class="row well crew_form fixing">
-  <div class="col-md-4">
-    <%= f.input :firstname, label: "First Name", input_html: { class: "form-control" }, placeholder: "Enter First Name"%>
-  </div>
-  <div class="col-md-4">
-    <%= f.input :middlename, label: "Middle Name", input_html: { class: "form-control" }, placeholder: "Enter Middle Name" %>
-  </div>
-  <div class="col-md-4">
-    <%= f.input :lastname, label: "Last Name", input_html: { class: "form-control" }, placeholder: "Enter Last Name" %>
-  </div>
-</div>
+
 <div class="row">
   <div class="col-md-12">
     <div class=" well cform">
