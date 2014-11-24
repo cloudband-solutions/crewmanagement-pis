@@ -5,7 +5,8 @@
     </div>
   </div>
   <div class="col-md-4">
-    <h3><%= @crew %> <small><%= @crew.code_number %></small></h3>
+    <h3 style="position:fixed; z-index:9999; background: #fff;"><%= @crew %> <small><%= @crew.code_number %></small></h3>
+    <h3 style="visibility:hidden;"><%= @crew %> <small><%= @crew.code_number %></small></h3>
     <h4><%= @crew.rank %> <small><%= @crew.status %></small></h4>
     <div class="">
       <%= link_to edit_crew_path(@crew), class: "btn btn-xs btn-default" do %>
