@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106033834) do
+ActiveRecord::Schema.define(version: 20141125031340) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -223,6 +223,16 @@ ActiveRecord::Schema.define(version: 20141106033834) do
     t.integer  "reason_for_disembarkation_id"
     t.string   "other_vessel"
     t.boolean  "is_other_vessel"
+    t.integer  "horse_power"
+    t.string   "engine_make"
+    t.string   "engine_model"
+    t.string   "off_numb"
+    t.decimal  "grt"
+    t.decimal  "nrt"
+    t.decimal  "dwt"
+    t.decimal  "loa"
+    t.decimal  "breadth"
+    t.decimal  "depth"
   end
 
   create_table "flags", force: true do |t|
