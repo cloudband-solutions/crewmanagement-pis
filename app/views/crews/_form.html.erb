@@ -26,31 +26,33 @@
   </li>
   </ul>
 
-  <div class="tab-content tab-content-inner">
-    <div class="tab-pane active" id="biodata">
-      <%= render partial: "crews/form_bio", locals: { f: f } %>
-    </div>
-    <div class="tab-pane" id="licenses">
-      <%= render partial: "crews/form_licenses", locals: { f: f } %>
-    </div>
-    <div class="tab-pane" id="certificates">
-      <%= render partial: "crews/form_certificates", locals: { f: f } %>
-    </div>
-    <div class="tab-pane" id="employment-record">
-      <%= render partial: "crews/form_employment_records", locals: { f: f } %>
-    </div>
-    <div class="tab-pane" id="documents">
-      <%= render partial: "crews/form_documents", locals: { f: f } %>
-    </div>
-    <% if current_user.user_type == "manager" %>
-      <div class="tab-pane" id="vessel-evaluations">
-        <%= render partial: "crews/form_crew_vessel_evaluation", locals: { f: f } %>
+  
+    <div class="tab-content tab-content-inner infiniscroll">
+      <div class="tab-pane active" id="biodata">
+        <%= render partial: "crews/form_bio", locals: { f: f } %>
       </div>
-      <div class="tab-pane" id="office-evaluations">
-        <%= render partial: "crews/form_crew_office_evaluation", locals: { f: f } %>
+      <div class="tab-pane" id="licenses">
+        <%= render partial: "crews/form_licenses", locals: { f: f } %>
       </div>
-    <% end %>
-  </div>
+      <div class="tab-pane" id="certificates">
+        <%= render partial: "crews/form_certificates", locals: { f: f } %>
+      </div>
+      <div class="tab-pane" id="employment-record">
+        <%= render partial: "crews/form_employment_records", locals: { f: f } %>
+      </div>
+      <div class="tab-pane" id="documents">
+        <%= render partial: "crews/form_documents", locals: { f: f } %>
+      </div>
+      <% if current_user.user_type == "manager" %>
+        <div class="tab-pane" id="vessel-evaluations">
+          <%= render partial: "crews/form_crew_vessel_evaluation", locals: { f: f } %>
+        </div>
+        <div class="tab-pane" id="office-evaluations">
+          <%= render partial: "crews/form_crew_office_evaluation", locals: { f: f } %>
+        </div>
+      <% end %>
+    </div>
+  
 <% end %>
 
 <script type="text/javascript">
