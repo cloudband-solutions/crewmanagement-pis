@@ -1,4 +1,4 @@
-<%= f.link_to_add "<i class='glyphicon glyphicon-plus'></i> Add Certificate".html_safe, :certificates, class: "btn btn-info form-control" %>
+<%= f.link_to_add "<i class='glyphicon glyphicon-plus'></i> Add Certificate".html_safe, :certificates, class: "btn btn-info" %>
 <br><br>
 <div id="certificate_records">
   <%= f.simple_fields_for :certificates do |ff| %>
@@ -14,7 +14,7 @@
           <%= ff.input :certificate_number %>
         </div>
         <div class="col-md-3">
-          <%= ff.association :flag, as: :select, collection: Flag.select("*").order(:name), input_html: { class: "select-select2" } %>
+          <%= ff.association :flag, as: :select, collection: Flag.select("*").order(:name), input_html: { class: "select-select2 form-control" } %>
         </div>
       </div>
       <div class="row">
