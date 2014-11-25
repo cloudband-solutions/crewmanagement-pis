@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125060344) do
+ActiveRecord::Schema.define(version: 20141125062408) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -200,6 +200,7 @@ ActiveRecord::Schema.define(version: 20141125060344) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.integer  "document_kind_id"
+    t.boolean  "is_reverting"
   end
 
   create_table "educational_attainments", force: true do |t|

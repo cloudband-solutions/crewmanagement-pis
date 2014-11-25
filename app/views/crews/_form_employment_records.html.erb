@@ -44,7 +44,7 @@
         <%= ff.input :off_numb, label: "Official Number" %>
       </div>
       <div class="col-md-4">
-        <%= ff.input :principal, as: :select, collection: Principal.select("*").order(:name) %>
+        <%= ff.association :principal, as: :select, collection: Principal.select("*").order(:name), input_html: { class: "form-control" }, placeholder: "Principal" %>
       </div>
       <div class="col-md-4">
         <%= ff.input :horse_power, label: "Horse Power" %>
