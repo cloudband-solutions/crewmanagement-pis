@@ -23,18 +23,20 @@
     <div class="col-md-12">
       <div id="collapse-<%= crew.id %>" class="panel-collapse collapse">
         <div class="panel-body">
-        <table class="table table-bordered">
+        <table class="table table-bordered advanced-search-table">
           <tr> 
             <th>Vessel Name</th>
+            <th>Rank</th>
             <th>Principal</th>
             <th>Sign On</th>
             <th>Sign Off</th>
             <th>Reason for Disembarkation</th>
           </tr>
           <% crew.employment_records.each do |er| %>
-          <tr>
+          <tr class="<%= advanced_search_highlight_employment_record(er, params[:search]) %>">
             <td><%= er.vessel %> </td>
-            <td><%= er.vessel.principal %></td>
+            <td><%= er.rank %></td>
+            <td><%= er.principal %></td>
             <td><%= er.sign_on.strftime('%d-%B-%Y') if !er.sign_on.nil? %> </td>
             <td><%= er.sign_off.strftime('%d-%B-%Y') if !er.sign_off.nil? %> </td>
             <td><%= er.reason_for_disembarkation %></td>

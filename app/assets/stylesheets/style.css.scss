@@ -1,3 +1,12 @@
+.advanced-search-table {
+  font-size: 0.8em;
+
+  tr.highlight {
+    background-color: yellow;
+    font-weight: bold;
+  }
+}
+
 .name {
   display: inline;
   float: left;
