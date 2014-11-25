@@ -33,7 +33,7 @@
             <th>Reason for Disembarkation</th>
           </tr>
           <% crew.employment_records.each do |er| %>
-          <tr class="<%= advanced_search_highlight_employment_record(er, params[:search]) %>">
+          <tr class="<%= advanced_search_highlight_employment_record(er, params[:search]) if !params[:search].blank? %>">
             <td><%= er.vessel %> </td>
             <td><%= er.rank %></td>
             <td><%= er.principal %></td>
