@@ -40,10 +40,13 @@
 
     <h3>Other Vessel Information</h3>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <%= ff.input :off_numb, label: "Official Number" %>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-4">
+        <%= ff.input :principal, as: :select, collection: Principal.select("*").order(:name) %>
+      </div>
+      <div class="col-md-4">
         <%= ff.input :horse_power, label: "Horse Power" %>
       </div>
     </div>

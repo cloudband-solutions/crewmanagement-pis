@@ -1,5 +1,6 @@
 class Vessel < ActiveRecord::Base
   LIFEBOAT_TYPES = ["davit", "freefall"]
+  STATUSES = ["active", "inactive"]
   has_many :crews
 
   belongs_to :vessel_type
@@ -30,7 +31,11 @@ class Vessel < ActiveRecord::Base
   #validates :depth, presence: true, numericality: true
   #validates :engine_model, presence: true
 
+  validates :status, presence: true, inclusion: { in: STATUSES }
+
   before_validation :load_defaults
+
+  scope :active, -> { where("status = ?", "active").order(:name) }
 
   def active_crews
     self.crews.active
@@ -41,6 +46,10 @@ class Vessel < ActiveRecord::Base
   end
 
   def load_defaults
+    if self.new_record?
+      self.status = "inactive"
+    end
+
     if !self.name.nil?
       self.name = self.name.upcase
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125031340) do
+ActiveRecord::Schema.define(version: 20141125060344) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -233,6 +233,7 @@ ActiveRecord::Schema.define(version: 20141125031340) do
     t.decimal  "loa"
     t.decimal  "breadth"
     t.decimal  "depth"
+    t.integer  "principal_id"
   end
 
   create_table "flags", force: true do |t|
@@ -465,6 +466,7 @@ ActiveRecord::Schema.define(version: 20141125031340) do
     t.string   "engine_model"
     t.string   "ecdis"
     t.string   "type_of_lifeboat"
+    t.string   "status"
   end
 
 end
