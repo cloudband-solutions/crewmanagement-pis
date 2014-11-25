@@ -5,15 +5,19 @@
         <label>Vessel</label><br>
         <%= select_tag :vessel_id, options_from_collection_for_select(Vessel.select("*").order(:name), :id, :name, @vessel.try(:id)), class: "form-control", prompt: "-- Select Vessel --" %>
       </div>
-      <div class="col-md-4 lcs">
+      <div class="col-md-3 lcs">
         <label>Licenses</label><br>
         <%= select_tag :license_types, options_for_select(LicenseType.all.map { |lt| [lt.name, lt.id]}, @license_types.try(:map) { |lt| lt.id }), class: "form-control select-select2", multiple: true %>
       </div>
-      <div class="col-md-4 lcs">
+      <div class="col-md-3 lcs">
         <label>Certificates</label><br>
         <%= select_tag :certificate_types, options_for_select(CertificateType.all.map { |ct| [ct.name, ct.id]}, @certificate_types.try(:map) { |ct| ct.id }), class: "form-control select-select2", multiple: true %>
       </div>
-      <div class="col-md-2 actions">
+      <div class="col-md-3 lcs">
+        <label>Documents</label><br>
+        <%= select_tag :document_kinds, options_for_select(DocumentKind.all.map { |dk| [dk.name, dk.id]}, @document_kinds.try(:map) { |dk| dk.id }), class: "form-control select-select2", multiple: true %>
+      </div>
+      <div class="col-md-1 actions">
         <label>Actions</label><br>
         <%= submit_tag "Display", class: "btn btn-primary btn-block" %>
       </div>

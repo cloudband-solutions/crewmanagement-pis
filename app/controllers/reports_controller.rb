@@ -12,6 +12,7 @@ class ReportsController < ApplicationController
         @vessel = Vessel.find(params[:vessel_id])
         @license_types = LicenseType.where("license_types.id IN (?)", params[:license_types])
         @certificate_types = CertificateType.where("certificate_types.id IN (?)", params[:certificate_types])
+        @document_kinds = DocumentKind.where("document_kinds.id IN (?)", params[:document_kinds])
         @crews = Crew.all_by_vessel(@vessel)
       end
     end
@@ -22,6 +23,7 @@ class ReportsController < ApplicationController
     vessel = Vessel.find(params[:vessel_id])
     license_types = LicenseType.where("license_types.id IN (?)", params[:license_type_ids].split(" "))
     certificate_types = CertificateType.where("certificate_types.id IN (?)", params[:certificate_type_ids].split(" "))
+    document_kinds = DocumentKind.where("document_kinds.id IN (?)", params[:document_kind_ids].split(" "))
     prepared_by = params[:prepared_by]
     certified_by = params[:certified_by]
     noted_by = params[:noted_by]
@@ -32,7 +34,7 @@ class ReportsController < ApplicationController
       layout: false,
       orientation: 'Landscape',
       page_size: 'Legal',
-      locals: { crews: crews, vessel: vessel, license_types: license_types, certificate_types: certificate_types, prepared_by: prepared_by, certified_by: certified_by, noted_by: noted_by }
+      locals: { crews: crews, vessel: vessel, license_types: license_types, certificate_types: certificate_types, document_kinds: document_kinds, prepared_by: prepared_by, certified_by: certified_by, noted_by: noted_by }
     )
   end
 
