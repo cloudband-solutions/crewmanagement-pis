@@ -1,16 +1,18 @@
 <table class="table table-bordered table-stripped">
   <tr>
     <th> NAME </th>
+    <th> STATUS </th>
     <th> FLAG </th>
     <th> VESSEL TYPE </th>
     <th> HORSE POWER </th>
     <th> ENGINE MAKE </th>
-    <th> Number of Crews </th>
+    <th> CREW COUNT </th>
     <th> ACTIONS </th>
   </tr>
   <% vessels.each do |vessel| %>
     <tr>  
       <td><%= vessel.name %></td>
+      <td><%= vessel.status %></td>
       <td><%= vessel.flag %></td>
       <td><%= vessel.vessel_type %></td>
       <td><%= vessel.horse_power %></td>
