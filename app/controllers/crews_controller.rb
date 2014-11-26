@@ -37,6 +37,7 @@ class CrewsController < ApplicationController
         pdf_str = render_to_string(
          :pdf => 'MisugaReport',
          :template => "crews/misuga",
+         :page_size => 'Legal',
          :layout => false,
          :locals => { :crew => @crew } )
         
