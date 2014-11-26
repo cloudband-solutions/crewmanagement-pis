@@ -195,7 +195,7 @@
 			</div>
 
 			<div class="table-wrapper">
-				<h1>LICENCES</h1>
+				<h1>LICENSES</h1>
 				<table>
 					<tr>
 						<th width="40%">&nbsp;</th>
@@ -217,7 +217,7 @@
 			</div>
 
 			<div class="table-wrapper">
-				<h1>CERTIFICATES</h1>
+				<h1>DOCUMENTS AND CERTIFICATES</h1>
 				<table>
 					<tr>
 						<th width="40%">&nbsp;</th>
@@ -254,15 +254,26 @@
           	<% end %>
 					<% end %>
 
-					<% crew.certificates.each do |certificate| %>
-						<tr>
-							<td><%= certificate.certificate_type.try(:name) %></td>
-							<td><%= certificate.certificate_number %></td>
-							<td><%= certificate.date_issued %></td>
-							<td><%= certificate.expiry_date %></td>
-							<td><%= certificate.issued_by %></td>
-						</tr>
-					<% end %>
+					<% CertificateType.all.each do |certificate_type| %>
+	      	<tr>
+		  			<td><%= certificate_type.try(:name) %></td>
+
+		  			<% c_certificate = crew.certificates.where(:certificate_type_id=>certificate_type.id).first %>
+		  			<% if(c_certificate != nil) %>
+
+		  				<td><%= c_certificate.certificate_number %></td>
+			  			<td><%= c_certificate.date_issued %></td>
+			  			<td><%= c_certificate.expiry_date %></td>
+			  			<td><%= c_certificate.issued_by %></td>
+			  		<% else %>
+			  			<td>&nbsp;</td>
+			  			<td>&nbsp;</td>
+			  			<td>&nbsp;</td>
+			  			<td>&nbsp;</td>
+			  		<% end %>
+			  	</tr>
+	      <% end %>
+
 				</table>
 			</div>
 
