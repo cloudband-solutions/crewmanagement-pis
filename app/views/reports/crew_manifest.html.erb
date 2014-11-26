@@ -8,6 +8,6 @@
 <% if @crews.nil? %>
   Please fill in vessel and license type details
 <% else %>
-  <%= render partial: "reports/crew_manifest_list", locals: { crews: @crews, license_types: @license_types, certificate_types: @certificate_types } %>
+  <%= render partial: "reports/crew_manifest_list", locals: { crews: @crews, license_types: @license_types, certificate_types: @certificate_types, document_kinds: @document_kinds } %>
   <%= render partial: "reports/crew_manifest_report_download" %>
 <% end %>

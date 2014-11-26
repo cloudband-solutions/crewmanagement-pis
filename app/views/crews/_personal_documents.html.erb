@@ -12,7 +12,7 @@
       <% documents.each do |document| %>
         <tr>
           <td class="label-d-a"><%= document.document_kind %></td>
-          <td class="label-d-a"><%= document.doc_number %></td>
+          <td class="label-d-a"><%= document.reverting? ? "REVERTING" : document.doc_number %></td>
           <td class="label-d-a">
             <% if !document.issued_at.nil? %>
               <%= document.issued_at.strftime('%d-%B-%Y') %>
@@ -25,7 +25,7 @@
           </td>
           <td class="label-d-a"><%= document.issued_by %></td>
           <td class="label-d-a">
-            <%= link_to "Download", document.attachment.url, target: "_blank" %>
+            <%= document.reverting? ? "" : link_to("Download", document.attachment.url, target: "_blank") %>
           </td>
         </tr>
       <% end %>

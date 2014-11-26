@@ -37,6 +37,50 @@
          <%= ff.association :reason_for_disembarkation, label: "Reason of Disembarkation", input_html: { class: "form-control" }, placeholder: "Enter Reason"  %>
       </div>
     </div> 
+
+    <h3>Other Vessel Information</h3>
+    <div class="row">
+      <div class="col-md-4">
+        <%= ff.input :off_numb, label: "Official Number" %>
+      </div>
+      <div class="col-md-4">
+        <%= ff.association :principal, as: :select, collection: Principal.select("*").order(:name), input_html: { class: "form-control" }, placeholder: "Principal" %>
+      </div>
+      <div class="col-md-4">
+        <%= ff.input :horse_power, label: "Horse Power" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <%= ff.input :engine_make, label: "Engine Make" %>
+      </div>
+      <div class="col-md-6">
+        <%= ff.input :engine_model, label: "Engine Model" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <%= ff.input :grt, label: "GRT" %>
+      </div>
+      <div class="col-md-3">
+        <%= ff.input :nrt, label: "NRT" %>
+      </div>
+      <div class="col-md-3">
+        <%= ff.input :dwt, label: "DWT" %>
+      </div>
+      <div class="col-md-3">
+        <%= ff.input :loa, label: "LOA" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <%= ff.input :breadth %>
+      </div>
+      <div class="col-md-6">
+        <%= ff.input :depth %>
+      </div>
+    </div>
+
     <%= ff.link_to_remove "<i class='glyphicon glyphicon-minus'></i> Remove Record".html_safe, class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
   </div>
 <% end %>

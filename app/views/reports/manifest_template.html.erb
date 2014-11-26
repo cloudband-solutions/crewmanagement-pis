@@ -76,6 +76,9 @@
     <% certificate_types.each do |ct| %>
       <th><%= ct %></th>
     <% end %>
+    <% document_kinds.each do |dk| %>
+      <th><%= dk %></th>  
+    <% end %>
   </tr>
   <% crews.each_with_index do |crew, i| %>
     <tr>
@@ -91,6 +94,18 @@
       <% certificate_types.each do |ct| %>
         <% c = crew.certificates.where(certificate_type_id: ct.id).first %>
         <td><%= "#{c.certificate_number} - #{c.expiry_date}" if !c.nil? %></td>
+      <% end %>
+      <% document_kinds.each do |dk| %>
+        <td>
+          <% d = crew.documents.where(document_kind_id: dk.id).first %>
+          <% if !d.nil? %>
+            <% if d.reverting? %>
+              REVERTING
+            <% else %>
+              <%= d.doc_number %>
+            <% end %>
+          <% end %>
+        </td>
       <% end %>
     </tr>
   <% end %>

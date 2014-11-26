@@ -26,3 +26,5 @@ $(document).ready(function() {
 var initDatePicker = function() {
   $(".datepick").datepicker({ dateFormat: "dd-MM-yy" });
 };
+
+

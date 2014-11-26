@@ -11,6 +11,7 @@ ActiveAdmin.register Vessel do
   index do
     selectable_column
     column :name
+    column :status
     column :vessel_type
     column :principal
     column :owner
@@ -20,6 +21,7 @@ ActiveAdmin.register Vessel do
   end
 
   filter :name
+  filter :status
   filter :code
   filter :owner
   filter :classification_society
@@ -46,6 +48,7 @@ ActiveAdmin.register Vessel do
   form do |f|
     f.inputs "Vessel Record" do
       f.input :name
+      f.input :status, as: :select, collection: Vessel::STATUSES
       f.input :code
       f.input :principal
       f.input :classification_society
@@ -79,6 +82,7 @@ ActiveAdmin.register Vessel do
   show do |ad|
     attributes_table do 
       row :name
+      row :status
       row :code
       row :principal
       row :classification_society

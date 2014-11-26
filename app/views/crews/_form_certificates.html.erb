@@ -14,7 +14,7 @@
           <%= ff.input :certificate_number %>
         </div>
         <div class="col-md-3">
-          <%= ff.association :flag, as: :select, collection: Flag.select("*").order(:name), input_html: { class: "select-select2" } %>
+          <%= ff.association :flag, as: :select, collection: Flag.select("*").order(:name), input_html: { class: "select-select2 form-control" } %>
         </div>
       </div>
       <div class="row">

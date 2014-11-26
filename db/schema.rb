@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106033834) do
+ActiveRecord::Schema.define(version: 20141125062408) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -200,6 +200,7 @@ ActiveRecord::Schema.define(version: 20141106033834) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.integer  "document_kind_id"
+    t.boolean  "is_reverting"
   end
 
   create_table "educational_attainments", force: true do |t|
@@ -223,6 +224,17 @@ ActiveRecord::Schema.define(version: 20141106033834) do
     t.integer  "reason_for_disembarkation_id"
     t.string   "other_vessel"
     t.boolean  "is_other_vessel"
+    t.integer  "horse_power"
+    t.string   "engine_make"
+    t.string   "engine_model"
+    t.string   "off_numb"
+    t.decimal  "grt"
+    t.decimal  "nrt"
+    t.decimal  "dwt"
+    t.decimal  "loa"
+    t.decimal  "breadth"
+    t.decimal  "depth"
+    t.integer  "principal_id"
   end
 
   create_table "flags", force: true do |t|
@@ -455,6 +467,7 @@ ActiveRecord::Schema.define(version: 20141106033834) do
     t.string   "engine_model"
     t.string   "ecdis"
     t.string   "type_of_lifeboat"
+    t.string   "status"
   end
 
 end

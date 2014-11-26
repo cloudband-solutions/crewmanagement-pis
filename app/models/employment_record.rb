@@ -4,6 +4,7 @@ class EmploymentRecord < ActiveRecord::Base
   belongs_to :rank
   belongs_to :manning_agent
   belongs_to :reason_for_disembarkation
+  belongs_to :principal
 
   #validates :crew, presence: true
   #validates :vessel, presence: true
