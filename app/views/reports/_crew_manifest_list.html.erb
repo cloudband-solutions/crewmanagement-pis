@@ -14,6 +14,7 @@
     <% document_kinds.each do |dk| %>
       <th><%= dk %></th>
     <% end %>
+    <th>Expected Date of Relief</th>
   </tr>
   <% crews.each_with_index do |crew, i| %>
     <tr>
@@ -42,6 +43,9 @@
           <% end %>
         </td>
       <% end %>
+      <td style="background-color: <%= crew.manifest_status_color %>;">
+        <%= crew.sign_on + 9.months %>
+      </td>
     </tr>
   <% end %>
 </table>

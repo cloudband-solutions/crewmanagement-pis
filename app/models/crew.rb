@@ -89,6 +89,21 @@ class Crew < ActiveRecord::Base
     Time.now.year - birthday.year
   end
 
+  def manifest_status_color
+    if !self.sign_on.nil?
+      end_date = sign_on + 9.months
+      current_date = Time.now
+
+      diff = ((end_date.year * 12 + end_date.month) - (current_date.year * 12 + current_date.month))
+
+      if ((end_date.year * 12 + end_date.month) - (current_date.year * 12 + current_date.month)) <= 6
+        "#ffff4c"
+      else
+        "red"
+      end
+    end
+  end
+
   def toggle_archive
     if self.is_archived != true
       self.is_archived = true
