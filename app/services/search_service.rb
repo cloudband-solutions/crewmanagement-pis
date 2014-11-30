@@ -24,6 +24,10 @@ class SearchService
       crews = crews.joins(:licenses).where("licenses.license_type_id = ?", query[:license_type])
     end
 
+    if !query[:school].blank?
+      crews = crews.joins(:educational_attainments).where("educational_attainments.school = ?", query[:school])
+    end
+
     crews
   end
 end
