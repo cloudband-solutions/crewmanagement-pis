@@ -97,9 +97,9 @@ class Crew < ActiveRecord::Base
       diff = ((end_date.year * 12 + end_date.month) - (current_date.year * 12 + current_date.month))
 
       if ((end_date.year * 12 + end_date.month) - (current_date.year * 12 + current_date.month)) <= 6
-        "#ffff4c"
+        "#ff3232"
       else
-        "red"
+        "#ffff4c"
       end
     end
   end
