@@ -6,7 +6,12 @@ module Api
       def profile
         crew = Crew.where(crew_token: params[:crew_token]).first
 
-        render json: crew
+        if crew.nil?
+          render json: "No crew found", status: 500
+        else
+
+          render json: crew.build_json
+        end
       end
     end
   end

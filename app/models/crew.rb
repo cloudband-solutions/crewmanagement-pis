@@ -126,4 +126,62 @@ class Crew < ActiveRecord::Base
   def license_by_type(id)
     self.licenses.where(license_type_id: id).first
   end
+
+  def build_json
+    document_entries = []
+    Document.where(crew_id: self.id).each do |d|
+      document_entries << { doc_number: d.doc_number,
+                            name: d.name,
+                            issued_at: d.issued_at,
+                            expiry_date: d.expiry_date,
+                            issued_by: d.issued_by,
+                            attachment: d.attachment.url,
+                            document_kind: d.document_kind.to_s,
+                            is_reverting: d.is_reverting }
+    end
+
+    c = {
+      code_number: code_number,
+      date_employed: date_employed,
+      rank: rank.to_s,
+      assigned_vessel: vessel.name,
+      firstname: firstname,
+      middlename: middlename,
+      birhday: birthday,
+      age: age,
+      telephone_no: telephone_no,
+      nationality: nationality,
+      civil_status: civil_status,
+      height: height,
+      weight: weight,
+      eye_color: eye_color,
+      sss_no: sss_no,
+      tin_no: tin_no,
+      shoe_size: shoe_size,
+      cloth_size: cloth_size,
+      nearest_relative_name: nearest_relative_name,
+      nearest_relative_relationship: nearest_relative_relationship,
+      nearest_relative_address: nearest_relative_address,
+      addres: address,
+      cellphone_no: cellphone_no,
+      pagibig_number: pagibig_number,
+      philhealth_number: philhealth_number,
+      distinguishing_marks: distinguishing_marks,
+      sign_on: sign_on,
+      date_of_promotion: date_of_promotion,
+      city_address: city_address,
+      provincial_address: provincial_address,
+      zip_code: zip_code,
+      blood_type: blood_type,
+      status: status,
+      father_name: father_name,
+      mother_maiden_name: mother_maiden_name,
+      spouse_name: spouse_name,
+      number_of_children: number_of_children,
+      is_smoker: is_smoker,
+      blood_pressure: blood_pressure,
+      picture: "#{picture.url}",
+      documents: document_entries
+    }
+  end
 end
