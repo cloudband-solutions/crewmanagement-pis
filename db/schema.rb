@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125062408) do
+ActiveRecord::Schema.define(version: 20141201101819) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -45,6 +45,12 @@ ActiveRecord::Schema.define(version: 20141125062408) do
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+
+  create_table "api_keys", force: true do |t|
+    t.string   "access_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "certificate_categories", force: true do |t|
     t.string   "name"
@@ -175,6 +181,7 @@ ActiveRecord::Schema.define(version: 20141125062408) do
     t.boolean  "is_smoker"
     t.string   "blood_pressure"
     t.string   "status"
+    t.string   "crew_token"
   end
 
   create_table "document_kinds", force: true do |t|
@@ -424,6 +431,10 @@ ActiveRecord::Schema.define(version: 20141125062408) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "user_type"
+    t.string   "access_token"
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

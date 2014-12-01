@@ -12,6 +12,10 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :email
+    column :name do |user|
+      user
+    end
+    column :access_token
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
@@ -28,9 +32,12 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs "User Details" do
       f.input :email
+      f.input :first_name
+      f.input :middle_name
+      f.input :last_name
       f.input :password
-      f.input :user_type, as: :select, collection: User::USER_TYPES
       f.input :password_confirmation
+      f.input :user_type, as: :select, collection: User::USER_TYPES
     end
     f.actions
   end

@@ -65,7 +65,8 @@ class Crew < ActiveRecord::Base
   validates :civil_status, presence: true, inclusion: { in: Crew::CIVIL_STATUSES }
   validates :nationality, presence: true
   validates :is_archived, inclusion: { in: [true, false] }
-  validates :status, presence: true, inclusion: { in: Crew::STATUSES }
+  validates :status, presence: true, inclusion: { in: Crew::STATUSES }  
+  validates :crew_token, presence: true, uniqueness: true
 
   before_validation :load_defaults
 
@@ -115,6 +116,10 @@ class Crew < ActiveRecord::Base
   def load_defaults
     if self.new_record?
       self.is_archived = 'f'
+    end
+
+    if self.crew_token.nil?
+      self.crew_token = "#{SecureRandom.hex(4)}"
     end
   end
 

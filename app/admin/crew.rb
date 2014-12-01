@@ -1,5 +1,6 @@
 ActiveAdmin.register Crew do
   menu parent: "Crew Files"
+
   controller do
     def permitted_params
       params.permit!
@@ -14,8 +15,12 @@ ActiveAdmin.register Crew do
 
   index do
     selectable_column
-    column :to_s_list
-    column :code_number
+    column :name do |crew|
+      "#{crew.to_s_list} (#{crew.code_number})"
+    end
+    column :token do |crew|
+      crew.crew_token
+    end
     column :rank
     column :vessel
     column :is_archived
@@ -123,8 +128,6 @@ ActiveAdmin.register Crew do
       f.input :picture, label: "2x2 Picture"
       f.input :signature, label: "Signature"
     end
-
-  
     
     f.actions
   end
@@ -135,6 +138,7 @@ ActiveAdmin.register Crew do
       row :middlename
       row :lastname
       row :code_number  
+      row :crew_token
       row :date_employed
       row :rank
       row :vessel
