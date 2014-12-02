@@ -89,7 +89,7 @@
     </tbody>
   </div>
 </div>
-<%= render partial: "crews/employment_records", locals: { employment_records: @crew.employment_records.reverse } %>
+<%= render partial: "crews/employment_records", locals: { employment_records: @crew.employment_records_by_sign_on.reverse } %>
 
 <% if current_user.user_type == "manager" %>
   <div class="row">
