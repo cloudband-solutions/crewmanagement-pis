@@ -140,14 +140,95 @@ class Crew < ActiveRecord::Base
                             is_reverting: d.is_reverting }
     end
 
+    educational_attainment_entries = []
+    EducationalAttainment.where(crew_id: self.id).each do |e|
+      educational_attainment_entries << { 
+                            year_graduated: e.year_graduated,
+                            school: e.school,
+                            course_finished: e.course_finished
+                                        }
+    end
+
+    licenses_entries = []
+    License.where(crew_id: self.id).each do |l| 
+      licenses_entries << {
+                          type: l.license_type.name,
+                          license_number: l.license_number,
+                          date_issued: l.date_issued,
+                          expiry_date: l.expiry_date,
+                          issued_by: l.training_center.name
+
+                          }
+    end
+
+    certificates_entries = []
+    Certificate.where(crew_id: self.id).each do |cert|  
+      certificates_entries << {
+                            type: cert.name,
+                            certificate_number: cert.certificate_number,
+                            date_issued: cert.date_issued,
+                            expiry_date: cert.expiry_date,
+                            issued_by: cert.issued_by
+
+                              }
+    end
+
+    employment_records_entries = []
+    EmploymentRecord.where(crew_id: self.id).each do |er| 
+      employment_records_entries << {
+                                vessel: er.vessel.name,
+                                flag: er.vessel.flag.name,
+                                type: er.vessel.vessel_type.name,
+                                manning_agent: er.manning_agent.name,
+                                rank: er.rank.name,
+                                sign_on: er.sign_on,
+                                sign_off: er.sign_off,
+                                reason: er.reason_for_disembarkation.to_s
+                                  }
+    end
+
+    employment_records_index = []
+    EmploymentRecord.where(crew_id: self.id).limit(5).each do |er| 
+      employment_records_index << {
+                                vessel: er.vessel.name,
+                                flag: er.vessel.flag.name,
+                                type: er.vessel.vessel_type.name,
+                                manning_agent: er.manning_agent.name,
+                                rank: er.rank.name,
+                                sign_on: er.sign_on,
+                                sign_off: er.sign_off,
+                                reason: er.reason_for_disembarkation.to_s
+                                  }
+    end
+
+    vessel_evaluation_entries = []
+    CrewVesselEvaluation.where(crew_id: self.id).each do |ve| 
+      vessel_evaluation_entries << {
+                                  vessel: ve.vessel,
+                                  vessel_e: ve.date_of_evaluation
+
+                                   }
+    end
+
+    office_evaluation_entries = []
+    CrewOfficeEvaluation.where(crew_id: self.id).each do |oe| 
+      office_evaluation_entries << {
+                                  vessel: oe.vessel,
+                                  vessel_e: oe.date_of_evaluation
+
+                                   }
+    end
+
     c = {
       code_number: code_number,
       date_employed: date_employed,
       rank: rank.to_s,
-      assigned_vessel: vessel.name,
+      assigned_vessel: vessel,
       firstname: firstname,
       middlename: middlename,
+      lastname: lastname,
       birhday: birthday,
+      birthplace: birthplace,
       age: age,
       telephone_no: telephone_no,
       nationality: nationality,
@@ -162,7 +243,7 @@ class Crew < ActiveRecord::Base
       nearest_relative_name: nearest_relative_name,
       nearest_relative_relationship: nearest_relative_relationship,
       nearest_relative_address: nearest_relative_address,
-      addres: address,
+      address: address,
       cellphone_no: cellphone_no,
       pagibig_number: pagibig_number,
       philhealth_number: philhealth_number,
@@ -181,7 +262,14 @@ class Crew < ActiveRecord::Base
       is_smoker: is_smoker,
       blood_pressure: blood_pressure,
       picture: "#{picture.url}",
-      documents: document_entries
+      documents: document_entries,
+      educational_attainments: educational_attainment_entries,
+      licenses: licenses_entries,
+      certificates: certificates_entries,
+      employment_records: employment_records_entries,
+      crew_vessel_evaluations: vessel_evaluation_entries,
+      crew_office_evaluations: office_evaluation_entries,
+      employment_records_index: employment_records_index
     }
   end
 end
