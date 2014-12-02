@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141201101819) do
+ActiveRecord::Schema.define(version: 20141202090623) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20141201101819) do
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
     t.integer  "flag_id"
+    t.boolean  "is_reverting"
   end
 
   create_table "classification_societies", force: true do |t|
@@ -287,6 +288,7 @@ ActiveRecord::Schema.define(version: 20141201101819) do
     t.integer  "license_category_id"
     t.integer  "training_center_id"
     t.integer  "priority"
+    t.boolean  "is_reverting"
   end
 
   create_table "manning_agents", force: true do |t|

@@ -5,7 +5,7 @@
   <div class="well cform">
     <div class="row">
       <div class="col-md-4">
-        <%= ff.association :vessel, as: :select, collection: Vessel.select("*").order(:name), input_html: { class: "select-select2" } %>
+        <%= ff.association :vessel, as: :select, collection: Vessel.select("*").order(:name), input_html: { class: "select-select2 form-control" } %>
       </div>
       <div class="col-md-4">
         <% if ff.object.date_of_evaluation.nil? %>

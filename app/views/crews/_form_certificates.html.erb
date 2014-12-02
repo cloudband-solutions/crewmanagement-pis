@@ -39,6 +39,11 @@
           <%= ff.input :attachment, as: :file %>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-3">
+          <%= ff.input :is_reverting %>
+        </div>
+      </div>
       <%= ff.link_to_remove "<i class='glyphicon glyphicon-minus'></i> Remove Record".html_safe, class: "btn btn-danger", data: { confirm: "Are you sure?" }  %>
     </div>
   <% end %>

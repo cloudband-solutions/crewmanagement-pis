@@ -12,7 +12,7 @@
       <% certificates.each do |certificate| %>
         <tr>
           <td class="label-d-a"><%= certificate.certificate_type %></td>
-          <td class="label-d-a"><%= certificate.certificate_number %></td>
+          <td class="label-d-a"><%= certificate.reverting? ? 'REVERTING' : certificate.certificate_number %></td>
           <td class="label-d-a">
             <% if !certificate.date_issued.nil? %>
               <%= certificate.date_issued.strftime('%d-%B-%Y') %>

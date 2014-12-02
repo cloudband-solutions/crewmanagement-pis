@@ -12,7 +12,7 @@
       <% licenses.each do |license| %>
         <tr>
           <td class="label-d-a"><%= license.license_type %></td>
-          <td class="label-d-a"><%= license.license_number %></td>
+          <td class="label-d-a"><%= license.reverting? ? 'REVERTING' : license.license_number %></td>
           <td class="label-d-a">
             <% if !license.date_issued.nil? %>
               <%= license.date_issued.strftime('%d-%B-%Y') %>
