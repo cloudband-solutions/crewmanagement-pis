@@ -53,6 +53,7 @@ class CrewsController < ApplicationController
          :pdf => 'BaliwagReport',
          :template => "crews/baliwag",
          :layout => false,
+         page_size: 'Legal',
          :locals => { :crew => @crew } )
 
         send_data(pdf_str, :filename => 'Baliwag Report.pdf',  :type=>"application/pdf")

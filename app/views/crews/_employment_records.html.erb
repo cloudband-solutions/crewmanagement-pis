@@ -18,8 +18,8 @@
             <td class="label-d-a"><%= employment_record.vessel.vessel_type %></td>
             <td class="label-d-a"><%= employment_record.manning_agent %></td>
             <td class="label-d-a"><%= employment_record.rank %></td>
-            <td class="label-d-a"><%= employment_record.sign_on %></td>
-            <td class="label-d-a"><%= employment_record.sign_off %></td>
+            <td class="label-d-a"><%= employment_record.sign_on.strftime('%d-%B-%Y') if !employment_record.sign_on.nil? %></td>
+            <td class="label-d-a"><%= employment_record.sign_off.strftime('%d-%B-%Y') if !employment_record.sign_off.nil? %></td>
             <td class="label-d-a"><%= employment_record.reason_for_disembarkation %></td>
         </tr>
         <% end %>

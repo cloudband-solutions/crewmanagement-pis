@@ -22,7 +22,7 @@
       <td><%= crew %></td>
       <td><%= crew.birthday %></td>
       <td><%= crew.rank %></td>
-      <td><%= crew.sign_on %></td>
+      <td><%= crew.sign_on.strftime("%d-%B-%Y") %></td>
       <% license_types.each do |lt| %>
         <% l = crew.licenses.where(license_type_id: lt.id).first %>
         <td><%= "#{l.license_number} - #{l.expiry_date}" if !l.nil? %></td>
@@ -44,7 +44,7 @@
         </td>
       <% end %>
       <td style="background-color: <%= crew.manifest_status_color %>;">
-        <%= crew.sign_on + 9.months %>
+        <%= (crew.sign_on + 9.months).strftime("%d-%B-%Y") %>
       </td>
     </tr>
   <% end %>

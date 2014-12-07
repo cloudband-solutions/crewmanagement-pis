@@ -22,9 +22,10 @@
 		    box-sizing: border-box;
 		    font-size: 12px;
 		    overflow: hidden;
-		    padding: 0 3px;
 		    vertical-align: middle;
 		    word-wrap: break-word;
+        padding: 2px;
+        font-size: 0.6em;
     	}
     	td.blank_data, th.blank_data{
     		border-bottom: none !important;
@@ -108,7 +109,7 @@
   			<tr>
   				<td class="label" colspan="6"></td>
   				<td class="label">Date:</td>
-  				<td class="data"><%= Time.now().strftime("%Y-%m-%d") %></td>
+  				<td class="data"><%= Time.now().strftime("%d-%B-%Y") %></td>
   			</tr>
   			<tr>
   				<td colspan="2" class="label">&nbsp;</td>
@@ -204,15 +205,30 @@
 						<th>Expiry Date</th>
 						<th>Issued by</th>
 					</tr>
-					<% crew.licenses.each do |license| %>
-						<tr>
-							<td><%= license.license_type.try(:name) %></td>
-							<td><%= license.license_number %></td>
-							<td><%= license.date_issued %></td>
-							<td><%= license.expiry_date %></td>
-							<td><%= license.training_center %></td>
-						</tr>
-					<% end %>
+          <% LicenseType.order(:name).each do |license_type| %>
+            <% license = License.where(crew_id: crew.id, license_type: license_type.id).first %>
+            <tr>
+              <td><%= license_type.try(:name) %></td>
+              <td>
+                <% if license.nil? %>
+                  N/A
+                <% elsif license.reverting? %>
+                  REVERTING
+                <% else %>
+                  <%= license.license_number %>
+                <% end %>
+              </td>
+              <% if license.nil? %>
+                <td></td>
+                <td></td>
+                <td></td>
+              <% else %>
+                <td><%= license.date_issued.strftime('%d-%B-%Y') if !license.date_issued.nil? %></td>
+                <td><%= license.expiry_date.strftime('%d-%B-%Y') if !license.expiry_date.nil? %></td>
+                <td><%= license.training_center if !license.training_center.nil? %></td>
+              <% end %>
+            </tr>
+          <% end %>
 				</table>
 			</div>
 
