@@ -1,8 +1,7 @@
-
 @media only screen and (min-device-width : 1300px){
 
   .for_mobile {
-    display: block;
+    display: none;
   }
 
   .for_non_mobile {
@@ -12,6 +11,11 @@
 
 
 @media only screen and (min-device-width : 320px) and (max-device-width: 1299px) {
+
+  .container {
+    max-width: 100%;
+  }
+
   .for_mobile {
     display: block;
   }
@@ -21,3 +25,19 @@
   }
 }
 
+#latest_crew_mobile {
+  width: 87vw;
+  margin-left: 0;
+}
+
+.add_links_mobile {
+  text-align: left;
+}
+
+.transmittal_p_table_mobile {
+  width: 87vw;
+  th {
+    text-align: left;
+    width: 50%;
+  }
+}
