@@ -1,0 +1,42 @@
+// DESKTOP/LAPTOP
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 1366px) {
+
+  .for_mobile {
+    display: none;
+  }
+
+  .for_non_mobile {
+    display: block;
+  }
+}
+
+// SMARTPHONES
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+
+
+  .for_mobile {
+    display: block;
+  }
+
+  .for_non_mobile {
+    display: none;
+  }
+}
+
+// IPADS
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+
+.for_mobile {
+    display: none;
+  }
+
+  .for_non_mobile {
+    display: block;
+  }
+}
