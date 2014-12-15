@@ -13,10 +13,9 @@
  *= require shared
  *= require style
  *= require notifications
- *= require mobile
+ *= require mediaqueries
  *= require jquery-ui
  *= require select2
- *= require iphone
  *= require reports
  */
 
@@ -102,7 +101,8 @@ th {
   font-weight: bold !important;
 }
 
-#login-box {
+.for_non_mobile {
+.login-box {
   margin-left: auto;
   margin-right: auto;
   width: 30%;
@@ -121,8 +121,10 @@ th {
     border-radius: 4px;
   }
 }
+}
 
-#login-box_mobile {
+.for_mobile {
+.login-box-mobile {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -141,6 +143,9 @@ th {
     border-radius: 4px;
   }
 }
+}
+
+
 
 
 .login-text {

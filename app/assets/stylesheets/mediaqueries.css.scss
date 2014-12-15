@@ -17,13 +17,12 @@ and (max-device-width : 1366px) {
 and (min-device-width : 320px) 
 and (max-device-width : 480px) {
 
-
   .for_mobile {
-    display: block;
+    display: none;
   }
 
   .for_non_mobile {
-    display: none;
+    display: block;
   }
 }
 
@@ -32,7 +31,7 @@ and (max-device-width : 480px) {
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) {
 
-.for_mobile {
+  .for_mobile {
     display: none;
   }
 
