@@ -15,12 +15,12 @@
           <td class="label-d-a"><%= certificate.reverting? ? 'REVERTING' : certificate.certificate_number %></td>
           <td class="label-d-a">
             <% if !certificate.date_issued.nil? %>
-              <%= certificate.date_issued.strftime('%d-%B-%Y') %>
+              <%= certificate.date_issued.strftime('%d-%b-%Y') %>
             <% end %>
           </td>
           <td class="label-d-a">
             <% if !certificate.expiry_date.nil? %>
-              <%= certificate.expiry_date.strftime('%d-%B-%Y') %>
+              <%= certificate.expiry_date.strftime('%d-%b-%Y') %>
             <% end %>
           </td>
           <td class="label-d-a"><%= certificate.issued_by %></td>
