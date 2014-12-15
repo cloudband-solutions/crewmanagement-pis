@@ -10,11 +10,23 @@
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width: 1299px) {
+  .container{
+    max-width: 100%;
+  }
   .for_mobile {
     display: block;
   }
 
   .for_non_mobile {
     display: none;
+  }
+  .for_mobile table{
+    margin-bottom: 15px;
+  }
+  .for_mobile table th{
+    text-align: left;
+  }
+  .for_mobile .label-e{
+    width: auto;
   }
 }
