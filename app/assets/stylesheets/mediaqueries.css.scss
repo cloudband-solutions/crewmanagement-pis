@@ -1,6 +1,5 @@
-// DESKTOP/LAPTOP
-@media only screen and (min-device-width : 1300px) 
- {
+
+@media only screen and (min-device-width : 1300px){
 
   .for_mobile {
     display: block;
@@ -8,6 +7,17 @@
 
   .for_non_mobile {
     display: block;
+  }
+}
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width: 1299px) {
+  .for_mobile {
+    display: block;
+  }
+
+  .for_non_mobile {
+    display: none;
   }
 }
 

@@ -101,8 +101,7 @@ th {
   font-weight: bold !important;
 }
 
-.for_non_mobile {
-.login-box {
+.for_non_mobile .login-box {
   margin-left: auto;
   margin-right: auto;
   width: 30%;
@@ -110,7 +109,8 @@ th {
   padding: 20px;
   margin-top: 30px;
   background: #fff;
-  #banner {
+}
+.for_non_mobile #banner {
     padding: 20px;
     background: rgba(0,0,0,0.8);
     font-size: 0.9em;
@@ -120,8 +120,6 @@ th {
     color: #fff;
     border-radius: 4px;
   }
-}
-}
 
 .for_mobile .login-box-mobile {
   margin-left: auto;
@@ -131,7 +129,8 @@ th {
   padding: 20px;
   margin-top: 30px;
   background: #fff;
-  #banner {
+}
+.for_mobile  #banner {
     padding: 20px;
     background: rgba(0,0,0,0.8);
     font-size: 0.9em;
@@ -140,9 +139,9 @@ th {
     text-align: center;
     color: #fff;
     border-radius: 4px;
-  }
-}
+  
 
+}
 
 .login-text {
   color: #fff;
