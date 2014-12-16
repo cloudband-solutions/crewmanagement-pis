@@ -11,11 +11,9 @@
 
 
 @media only screen and (min-device-width : 320px) and (max-device-width: 1299px) {
-
   .container {
     max-width: 100%;
   }
-
   .for_mobile {
     display: block;
   }
@@ -29,19 +27,29 @@
     text-align: left;
   }
 }
+  .for_mobile table{
+    margin-bottom: 15px;
+  }
+  .for_mobile table th{
+    text-align: left;
+  }
+  .for_mobile .label-e{
+    width: auto;
+  }
 
-#latest_crew_mobile {
-  width: 87vw;
-  margin-left: 0;
-}
+  #latest_crew_mobile {
+    width: 87vw;
+    margin-left: 0;
+  }
 
-.add_links_mobile {
-  text-align: left;
-}
+  .add_links_mobile {
+    text-align: left;
+  }
 
-.transmittal_p_table_mobile {
-  width: 87vw;
-  th {
+  .transmittal_p_table_mobile {
+    width: 87vw;
+  }
+  .transmittal_p_table_mobile th{
     text-align: left;
     width: 50%;
   }
