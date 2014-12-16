@@ -1,25 +1,63 @@
-<h4 class="transmittal_pending">TRANSMITTAL RECORDS PENDING STATUS</h4>
-<table class="tdash table transmittal_p_table" style="border: 1px solid #e2e2e2;">
-  <tr>
-    <th>Vessels</th>
-    <th>Destination</th>
-    <th>Date of Departure</th>
-    <th>Number of Embarking Crews</th>
-    <th>Number of Disembarking Crews</th>
-    <th>Number of Promotions</th>
-    <th>Action</th> 
-  </tr>
-  <% @transmittal_pending_records.each do |transmittal_pending_record| %>
-  <tr>
-    <td class="ttd"> <%= transmittal_pending_record.vessel %></td>
-    <td class="ttd"> <%= transmittal_pending_record.destination %> </td>
-    <td class="ttd"> <%= transmittal_pending_record.date_of_departure %> </td>
-    <td class="ttd1"> <%= transmittal_pending_record.transmittal_record_embarking_crews.count %></td>
-    <td class="ttd1"> <%= transmittal_pending_record.transmittal_record_disembarking_crews.count %> </td>
-    <td class="ttd1"> <%= transmittal_pending_record.transmittal_record_crew_promotions.count %> </td>
-    <td class="ttd"><%= link_to "Show", transmittal_record_path(transmittal_pending_record), class: "btn btn-primary btn-xs" %></td>
-  </tr>
-  <% end %>
-</table>
+<div class="for_non_mobile">
+  <h4 class="transmittal_pending">TRANSMITTAL RECORDS PENDING STATUS</h4>
+  <table class="tdash table transmittal_p_table" style="border: 1px solid #e2e2e2;">
+    <tr>
+      <th>Vessels</th>
+      <th>Destination</th>
+      <th>Date of Departure</th>
+      <th>Number of Embarking Crews</th>
+      <th>Number of Disembarking Crews</th>
+      <th>Number of Promotions</th>
+      <th>Action</th> 
+    </tr>
+    <% @transmittal_pending_records.each do |transmittal_pending_record| %>
+    <tr>
+      <td class="ttd"> <%= transmittal_pending_record.vessel %></td>
+      <td class="ttd"> <%= transmittal_pending_record.destination %> </td>
+      <td class="ttd"> <%= transmittal_pending_record.date_of_departure %> </td>
+      <td class="ttd1"> <%= transmittal_pending_record.transmittal_record_embarking_crews.count %></td>
+      <td class="ttd1"> <%= transmittal_pending_record.transmittal_record_disembarking_crews.count %> </td>
+      <td class="ttd1"> <%= transmittal_pending_record.transmittal_record_crew_promotions.count %> </td>
+      <td class="ttd"><%= link_to "Show", transmittal_record_path(transmittal_pending_record), class: "btn btn-primary btn-xs" %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="for_mobile">
+  <h4 class="transmittal_pending_mobile">TRANSMITTAL RECORDS PENDING STATUS</h4>
+   <% @transmittal_pending_records.each do |transmittal_pending_record| %>
+    <table class="tdash table transmittal_p_table_mobile" style="border: 1px solid #e2e2e2;">
+      <tr>
+        <th>Vessels</th>
+        <td> <%= transmittal_pending_record.vessel %></td>
+      </tr>
+      <tr>
+        <th>Destination</th>
+        <td> <%= transmittal_pending_record.destination %> </td>
+      </tr>
+      <tr>
+        <th>Date of Departure</th>
+        <td> <%= transmittal_pending_record.date_of_departure %> </td>
+      </tr>
+      <tr>
+        <th>Number of Embarking Crews</th>
+        <td> <%= transmittal_pending_record.transmittal_record_embarking_crews.count %></td>
+      </tr>
+      <tr>
+        <th>Number of Disembarking Crews</th>
+        <td> <%= transmittal_pending_record.transmittal_record_disembarking_crews.count %> </td>
+      </tr>
+      <tr>
+        <th>Number of Promotions</th>
+        <td> <%= transmittal_pending_record.transmittal_record_crew_promotions.count %> </td>
+      </tr>
+      <tr>
+        <th>Action</th> 
+        <td><%= link_to "Show", transmittal_record_path(transmittal_pending_record), class: "btn btn-primary btn-xs" %></td>
+      </tr>
+      <% end %>
+    </table>
+</div>
 
 

@@ -1,5 +1,5 @@
-/*DESKTOP/LAPTOP*/
 @media only screen and (min-device-width : 1300px){
+
   .for_mobile {
     display: none;
   }
@@ -9,8 +9,9 @@
   }
 }
 
+
 @media only screen and (min-device-width : 320px) and (max-device-width: 1299px) {
-  .container{
+  .container {
     max-width: 100%;
   }
   .for_mobile {
@@ -28,5 +29,22 @@
   }
   .for_mobile .label-e{
     width: auto;
+  }
+
+  #latest_crew_mobile {
+    width: 87vw;
+    margin-left: 0;
+  }
+
+  .add_links_mobile {
+    text-align: left;
+  }
+
+  .transmittal_p_table_mobile {
+    width: 87vw;
+  }
+  .transmittal_p_table_mobile th{
+    text-align: left;
+    width: 50%;
   }
 }
