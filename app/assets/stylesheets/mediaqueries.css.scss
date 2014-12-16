@@ -23,6 +23,11 @@
   .for_non_mobile {
     display: none;
   }
+
+  table th {
+    width: 40%;
+    text-align: left;
+  }
 }
 
 #latest_crew_mobile {
@@ -41,3 +46,18 @@
     width: 50%;
   }
 }
+
+.fixing_mobile {
+ 
+  margin-left: 1px;
+  padding: 10px;
+  width: 100%;
+  background-color: #3498db;
+  color: white;
+  margin-bottom: 1%;
+}
+
+.signature img {
+  width: 80vw;
+}
+

@@ -1,26 +1,59 @@
-<span class="tccounts">Total Crew Count: <%= Crew.count %></span>
+<div class="for_non_mobile">
+  <span class="tccounts">Total Crew Count: <%= Crew.count %></span>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>NUMBER</th>
+          <th>NAME</th>
+          <th>VESSEL</th>
+          <th>RANK</th>
+          <th>ACTIONS</th>
+        </tr>
+      </thead>
+      <% crews.each do |crew| %>
+        <tr>
+          <td><%= crew.code_number %></td>
+          <td><%= link_to "#{crew.to_s_list}", crew_path(crew) %></td>
+          <td><%= crew.vessel %></td>
+          <td><%= crew.rank %></td>
+          <td>
+            <%= link_to "Show", crew_path(crew), class: "btn btn-xs btn-info" %>
+            <%= link_to "Edit", edit_crew_path(crew.id), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Delete", crew_path(crew), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+  </table>
+</div>
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>NUMBER</th>
-      <th>NAME</th>
-      <th>VESSEL</th>
-      <th>RANK</th>
-      <th>ACTIONS</th>
-    </tr>
-  </thead>
-  <% crews.each do |crew| %>
-    <tr>
-      <td><%= crew.code_number %></td>
-      <td><%= link_to "#{crew.to_s_list}", crew_path(crew) %></td>
-      <td><%= crew.vessel %></td>
-      <td><%= crew.rank %></td>
-      <td>
-        <%= link_to "Show", crew_path(crew), class: "btn btn-xs btn-info" %>
-        <%= link_to "Edit", edit_crew_path(crew.id), class: "btn btn-xs btn-primary" %>
-        <%= link_to "Delete", crew_path(crew), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-danger" %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<div class="for_mobile">
+  <span class="tccounts">Total Crew Count: <%= Crew.count %></span>
+    <% crews.each do |crew| %>
+    <table class="table table-bordered">
+        <tr>
+          <th>NUMBER</th>
+          <td><%= crew.code_number %></td>
+        </tr>
+        <tr>
+          <th>NAME</th>
+          <td><%= link_to "#{crew.to_s_list}", crew_path(crew) %></td>
+        </tr>
+        <tr>
+          <th>VESSEL</th>
+          <td><%= crew.vessel %></td>
+        </tr>
+        <tr>
+          <th>RANK</th>
+          <td><%= crew.rank %></td>
+        </tr>
+        <tr>
+          <th>ACTIONS</th>
+          <td>
+            <%= link_to "Show", crew_path(crew), class: "btn btn-xs btn-info" %>
+            <%= link_to "Edit", edit_crew_path(crew.id), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Delete", crew_path(crew), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-danger" %>
+          </td>
+        </tr>
+    </table>
+    <% end %>
+</div>
