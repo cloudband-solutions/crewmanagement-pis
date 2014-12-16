@@ -1,16 +1,42 @@
-<table class="table table-bordered">
-  <tr>
-    <th></th>
-    <th>Name</th>
-    <th>From</th>
-    <th>To</th>
-  </tr>
-  <% crews.each_with_index do |crew, index| %>
+<div class="for_non_mobile">
+  <table class="table table-bordered">
     <tr>
+      <th></th>
+      <th>Name</th>
+      <th>From</th>
+      <th>To</th>
+    </tr>
+    <% crews.each_with_index do |crew, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= link_to crew.crew, crew_path(crew.crew), target: "_blank" %></td>
+        <td><%= crew.from_rank %></td>
+        <td><%= crew.to_rank %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="for_mobile">
+<% crews.each_with_index do |crew, index| %>
+  <table class="table table-bordered">
+    <tr>
+      <th></th>
       <td><%= index + 1 %></td>
+    </tr>
+    <tr>
+      <th>Name</th>
       <td><%= link_to crew.crew, crew_path(crew.crew), target: "_blank" %></td>
+    </tr>
+    <tr>
+      <th>From</th>
       <td><%= crew.from_rank %></td>
+    </tr>
+    <tr>
+      <th>To</th>
       <td><%= crew.to_rank %></td>
     </tr>
+  </table>
   <% end %>
-</table>
+</div>
+

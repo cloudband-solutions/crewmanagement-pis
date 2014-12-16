@@ -27,33 +27,35 @@
     text-align: left;
   }
 }
-  .for_mobile table{
-    margin-bottom: 15px;
-  }
-  .for_mobile table th{
-    text-align: left;
-  }
-  .for_mobile .label-e{
-    width: auto;
-  }
 
-  #latest_crew_mobile {
-    width: 87vw;
-    margin-left: 0;
-  }
 
-  .add_links_mobile {
-    text-align: left;
-  }
-
-  .transmittal_p_table_mobile {
-    width: 87vw;
-  }
-  .transmittal_p_table_mobile th{
-    text-align: left;
-    width: 50%;
-  }
+.for_mobile table{
+  margin-bottom: 15px;
 }
+.for_mobile table th{
+  text-align: left;
+}
+.for_mobile .label-e{
+  width: auto;
+}
+
+#latest_crew_mobile {
+  width: 87vw;
+  margin-left: 0;
+}
+
+.add_links_mobile {
+  text-align: left;
+}
+
+.transmittal_p_table_mobile {
+  width: 87vw;
+}
+.transmittal_p_table_mobile th{
+  text-align: left;
+  width: 50%;
+}
+
 
 .fixing_mobile {
  
@@ -67,5 +69,9 @@
 
 .signature img {
   width: 80vw;
+}
+
+.trans_mobile {
+  float: left;
 }
 
