@@ -1,3 +1,4 @@
+<div class="for_non_mobile">
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -36,3 +37,55 @@
     <% end %>
   </tbody>
 </table>
+</div>
+
+<div class="for_mobile">
+<% transmittal_records.each do |tr| %>
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th>Date of Departure</th>
+      <td><%= tr.date_of_departure %></td>
+    </tr>
+    <tr>
+      <th>Vessel</th>
+      <td><%= tr.vessel %></td>
+    </tr>
+    <tr>
+      <th>Destination</th>
+      <td><%= tr.destination %></td>
+    </tr>
+    <tr>
+      <th># Embarking Crews</th>
+      <td><%= tr.transmittal_record_embarking_crews.count %></td>
+    </tr>
+    <tr>
+      <th># Disembarking Crews</th>
+      <td><%= tr.transmittal_record_disembarking_crews.count %></td>
+    </tr>
+    <tr>
+      <th>Number of Promotions</th>
+      <td><%= tr.transmittal_record_crew_promotions.count %></td>
+    </tr>
+    <tr>
+      <th>Status</th>
+      <td><span class="status <%= tr.status %>"><%= tr.status %></span></td>
+    </tr>
+    <tr>
+      <th>Actions</th>
+      <td class="btns">
+          <%= link_to "Show", transmittal_record_path(tr), class: "btn btn-primary btn-xs" %>
+          <%= link_to "Edit", edit_transmittal_record_path(tr), class: "btn btn-info btn-xs" if tr.status != "approved" %>
+          <%= link_to "Delete", transmittal_record_path(tr), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } if tr.status != "approved" %>
+          <% if tr.status == "pending" %>
+            <%= link_to "On-Transit", transmittal_record_transit_path(tr), class: "btn btn-info btn-xs", method: :post, data: { confirm: "Are you sure?" } %>
+          <% end %>
+          <% if tr.status == "on-transit" %>
+            <%= link_to "Approve", transmittal_record_approve_path(tr), class: "btn btn-info btn-xs", method: :post, data: { confirm: "Are you sure?" } %>
+          <% end %>
+        </td>
+    </tr> 
+  </tbody>
+</table>
+<% end %>
+</div>

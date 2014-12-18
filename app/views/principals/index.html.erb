@@ -3,18 +3,40 @@
     <%= render partial: "principals/search_tool" %>
   </div>
 </div>
-<table class="table table-bordered table-stripped principallist">
-	<tr>
-		<th>Name</th>
-		<th>Num Vessel</th>
-		<th>Actions</th>
-	</tr>
-	<% @principals.each do |principal| %>
-	<tr>
-		<td><%= principal.name %></td>
-		<td><%= principal.num_vessels %> </td>
-		<td><%= link_to "Show", principal_path(principal.id), class: "btn btn-info btn-xs" %></td>
-	</tr>
-	<% end %> 
-</table>
+
+<div class="for_non_mobile">
+	<table class="table table-bordered table-stripped principallist">
+		<tr>
+			<th>Name</th>
+			<th>Num Vessel</th>
+			<th>Actions</th>
+		</tr>
+		<% @principals.each do |principal| %>
+		<tr>
+			<td><%= principal.name %></td>
+			<td><%= principal.num_vessels %> </td>
+			<td><%= link_to "Show", principal_path(principal.id), class: "btn btn-info btn-xs" %></td>
+		</tr>
+		<% end %> 
+	</table>
+</div>
+
+<div class="for_mobile">
+<% @principals.each do |principal| %>
+	<table class="table table-bordered table-stripped principallist" style="table-layout:fixed;">
+		<tr>
+			<th>Name</th>
+			<td><%= principal.name %></td>
+		</tr>
+		<tr>
+			<th>Num Vessel</th>
+			<td><%= principal.num_vessels %> </td>
+		</tr>
+		<tr>
+			<th>Actions</th>
+			<td><%= link_to "Show", principal_path(principal.id), class: "btn btn-info btn-xs" %></td>
+		</tr>
+	</table>
+<% end %> 
+</div>
 <%= paginate @principals %>
