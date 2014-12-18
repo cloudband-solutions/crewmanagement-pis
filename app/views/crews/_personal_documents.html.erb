@@ -1,34 +1,82 @@
-<div class="row details">
-  <div class="col-md-12">
-    <table class="table table-bordered table-stripped">
-      <tr>  
-        <th class="label-c">Document Kind</th>
-        <th class="label-c">Number</th>
-        <th class="label-c">Date Issued</th>
-        <th class="label-c">Expiry Date</th>
-        <th class="label-c">Issued By</th>
-        <th class="label-c">Actions</th>
-      </tr>
-      <% documents.each do |document| %>
-        <tr>
-          <td class="label-d-a"><%= document.document_kind %></td>
-          <td class="label-d-a"><%= document.reverting? ? "REVERTING" : document.doc_number %></td>
-          <td class="label-d-a">
-            <% if !document.issued_at.nil? %>
-              <%= document.issued_at.strftime('%d-%B-%Y') %>
-            <% end %>
-          </td>
-          <td class="label-d-a">
-            <% if !document.expiry_date.nil? %>
-              <%= document.expiry_date.strftime('%d-%B-%Y') %>
-            <% end %>
-          </td>
-          <td class="label-d-a"><%= document.issued_by %></td>
-          <td class="label-d-a">
-            <%= document.reverting? ? "" : link_to("Download", document.attachment.url, target: "_blank") %>
-          </td>
+<div class="for_non_mobile">
+  <div class="row details">
+    <div class="col-md-12">
+      <table class="table table-bordered table-stripped">
+        <tr>  
+          <th class="label-c">Document Kind</th>
+          <th class="label-c">Number</th>
+          <th class="label-c">Date Issued</th>
+          <th class="label-c">Expiry Date</th>
+          <th class="label-c">Issued By</th>
+          <th class="label-c">Actions</th>
         </tr>
-      <% end %>
-    </table>
+        <% documents.each do |document| %>
+          <tr>
+            <td class="label-d-a"><%= document.document_kind %></td>
+            <td class="label-d-a"><%= document.reverting? ? "REVERTING" : document.doc_number %></td>
+            <td class="label-d-a">
+              <% if !document.issued_at.nil? %>
+                <%= document.issued_at.strftime('%d-%B-%Y') %>
+              <% end %>
+            </td>
+            <td class="label-d-a">
+              <% if !document.expiry_date.nil? %>
+                <%= document.expiry_date.strftime('%d-%B-%Y') %>
+              <% end %>
+            </td>
+            <td class="label-d-a"><%= document.issued_by %></td>
+            <td class="label-d-a">
+              <%= document.reverting? ? "" : link_to("Download", document.attachment.url, target: "_blank") %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>
+
+<div class="for_mobile">
+  <div class="row details">
+    <div class="col-md-12">
+    <% documents.each do |document| %>
+      <table class="table table-bordered table-stripped" style="font-size: 14px;">
+        <tr>  
+          <th>Document Kind</th>
+          <td><%= document.document_kind %></td>
+        </tr>
+        <tr>
+          <th>Number</th>
+          <td><%= document.reverting? ? "REVERTING" : document.doc_number %></td>
+        </tr>
+        <tr>
+          <th>Date Issued</th>
+          <td>
+              <% if !document.issued_at.nil? %>
+                <%= document.issued_at.strftime('%d-%B-%Y') %>
+              <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>Expiry Date</th>
+          <td>
+              <% if !document.expiry_date.nil? %>
+                <%= document.expiry_date.strftime('%d-%B-%Y') %>
+              <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>Issued By</th>
+          <td><%= document.issued_by %></td>
+        </tr>
+        <tr>
+          <th>Actions</th>
+          <td>
+              <%= document.reverting? ? "" : link_to("Download", document.attachment.url, target: "_blank") %>
+          </td>
+        </tr>      
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
+

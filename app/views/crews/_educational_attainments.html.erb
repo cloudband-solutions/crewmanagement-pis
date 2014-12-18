@@ -1,3 +1,4 @@
+<div class="for_non_mobile">
 <div class="row details">
   <div class="col-md-12">
     <table class="table table-bordered table-stripped">
@@ -14,5 +15,29 @@
         </tr>
       <% end %>
     </table>
+  </div>
+</div>
+</div>
+
+<div class="for_mobile">
+  <div class="row details">
+    <div class="col-md-12">
+    <% educational_attainments.each do |ea| %>
+      <table class="table table-bordered table-stripped" style="font-size: 14px;">
+        <tr>
+          <th>Year</th>
+          <td><%= ea.year_graduated %></td>
+        </tr>
+        <tr>
+          <th>School</th>
+          <td><%= ea.school %></td>
+        </tr>
+        <tr>
+          <th>Course Finished</th>
+          <td><%= ea.course_finished %></td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
   </div>
 </div>

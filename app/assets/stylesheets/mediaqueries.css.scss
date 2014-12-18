@@ -25,8 +25,10 @@
     table-layout: fixed;
   }
   .for_mobile table th{
+    width: 40%;
     text-align: left;
   }
+
   .for_mobile .label-e{
     width: auto;
   }
@@ -46,5 +48,20 @@
   .transmittal_p_table_mobile th{
     text-align: left;
     width: 50%;
+  }
+  .fixing_mobile {
+    margin-left: 1px;
+    padding: 10px;
+    width: 100%;
+    background-color: #3498db;
+    color: white;
+    margin-bottom: 1%;
+  }
+
+  .signature img {
+    width: 80vw;
+  }
+  .trans_mobile {
+    float: left;
   }
 }
