@@ -38,7 +38,7 @@
             <% if d.reverting? %>
               REVERTING
             <% else %>
-              <%= d.doc_number %>
+              <%= "#{d.doc_number} - #{d.expiry_date} %>
             <% end %>
           <% end %>
         </td>

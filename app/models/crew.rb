@@ -97,10 +97,12 @@ class Crew < ActiveRecord::Base
 
       diff = ((end_date.year * 12 + end_date.month) - (current_date.year * 12 + current_date.month))
 
-      if ((end_date.year * 12 + end_date.month) - (current_date.year * 12 + current_date.month)) <= 6
+      if ((end_date.year * 12 + end_date.month) - (current_date.year * 12 + current_date.month)) <= 3
+        "#ffff4c"
+      elsif ((end_date.year * 12 + end_date.month) - (current_date.year * 12 + current_date.month)) <= 6
         "#ff3232"
       else
-        "#ffff4c"
+        "green"
       end
     end
   end
