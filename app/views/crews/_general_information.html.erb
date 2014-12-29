@@ -1,249 +1,528 @@
-<div class="row details">
-  <div class="col-md-12">
-    <table class="table table-bordered table-stripped">
-      <tr>
-        <td class="label-a">
-          Vessel Assigned
-        </td>
-        <td class="label-b">
-          <%= crew.vessel %>
-        </td>
-         <td class="label-a">
-          Age
-        </td>
-        <td class="label-b">
-          <%= crew.age %>
-        </td>
-      </tr>
-      <tr>
-        <td class="label-a">
-          Home Address
-        </td>
-        <td class="label-b">
-          <%= crew.address %>
-        </td>
-         <td class="label-a">
-          City Address
-        </td>
-        <td class="label-b">
-          <%= crew.city_address %>
-        </td>
-      </tr>
-      <tr>  
-        <td class="label-a">
-          Provincial Address
-        </td>
-        <td class="label-b">
-          <%= crew.provincial_address %>
-        </td>
+<div class="for_non_mobile">
+  <div class="row details">
+    <div class="col-md-12">
+      <table class="table table-bordered table-stripped">
+        <tr>
+          <td class="label-a">
+            Vessel Assigned
+          </td>
+          <td class="label-b">
+            <%= crew.vessel %>
+          </td>
+           <td class="label-a">
+            Age
+          </td>
+          <td class="label-b">
+            <%= crew.age %>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-a">
+            Home Address
+          </td>
+          <td class="label-b">
+            <%= crew.address %>
+          </td>
+           <td class="label-a">
+            City Address
+          </td>
+          <td class="label-b">
+            <%= crew.city_address %>
+          </td>
+        </tr>
+        <tr>  
+          <td class="label-a">
+            Provincial Address
+          </td>
+          <td class="label-b">
+            <%= crew.provincial_address %>
+          </td>
 
+           <td class="label-a">
+            Zipcode
+          </td>
+          <td class="label-b">
+            <%= crew.zip_code %>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-a">
+             Birthday
+          </td>
+          <td class="label-b">
+           <%= crew.birthday.strftime('%d-%B-%Y') %>
+          </td>
+          <td class="label-a">
+           Birth Place
+          </td>
+          <td class="label-b">
+            <%= crew.birthplace %>
+          </td>
+        </tr>
+        <tr>
          <td class="label-a">
-          Zipcode
-        </td>
-        <td class="label-b">
-          <%= crew.zip_code %>
-        </td>
-      </tr>
-      <tr>
+            Telephone
+          </td>
+          <td class="label-b">
+          <%= crew.telephone_no %>
+          </td>
+          <td class="label-a">
+           Cellphone
+          </td>
+          <td class="label-b">
+            <%= crew.cellphone_no %>
+          </td>
+        </tr>
+      </table>
+       <table class="table table-bordered table-stripped">
+         <tr>
+          <td class="label-a">
+            Civil Status
+          </td>
+          <td class="label-b">
+            <%= crew.civil_status %>
+          </td>
+          <td class="label-a">
+           Nationality
+          </td>
+          <td class="label-b">
+            <%= crew.nationality %>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-a">
+              Height
+          </td>
+          <td class="label-b">
+            <%= crew.height %> cm
+          </td>
+          <td class="label-a">
+           Weight
+          </td>
+          <td class="label-b">
+            <%= crew.weight %> kg
+          </td>
+         </tr>
+         <tr>
         <td class="label-a">
-           Birthday
-        </td>
-        <td class="label-b">
-         <%= crew.birthday.strftime('%d-%B-%Y') %>
-        </td>
-        <td class="label-a">
-         Birth Place
-        </td>
-        <td class="label-b">
-          <%= crew.birthplace %>
-        </td>
-      </tr>
-      <tr>
-       <td class="label-a">
-          Telephone
-        </td>
-        <td class="label-b">
-        <%= crew.telephone_no %>
-        </td>
-        <td class="label-a">
-         Cellphone
-        </td>
-        <td class="label-b">
-          <%= crew.cellphone_no %>
-        </td>
-      </tr>
-    </table>
-     <table class="table table-bordered table-stripped">
-       <tr>
-        <td class="label-a">
-          Civil Status
-        </td>
-        <td class="label-b">
-          <%= crew.civil_status %>
-        </td>
-        <td class="label-a">
-         Nationality
-        </td>
-        <td class="label-b">
-          <%= crew.nationality %>
-        </td>
-      </tr>
-      <tr>
-        <td class="label-a">
-            Height
-        </td>
-        <td class="label-b">
-          <%= crew.height %> cm
-        </td>
-        <td class="label-a">
-         Weight
-        </td>
-        <td class="label-b">
-          <%= crew.weight %> kg
-        </td>
-       </tr>
-       <tr>
-      <td class="label-a">
-          Shoe Size
-       </td>
-       <td class="label-b">
-        <%= crew.shoe_size %>
-        </td>
+            Shoe Size
+         </td>
+         <td class="label-b">
+          <%= crew.shoe_size %>
+          </td>
 
-        <td class="label-a">
-         Cloth Size
-        </td>
-        <td class="label-b">
-          <%= crew.cloth_size %>
-        </td>   
-      </tr>
-      <tr>
-       <td class="label-a">
-          Eye Color
-        </td>
-        <td class="label-b">
-          <%= crew.eye_color %>
-        </td>
-        <td class="label-a">
-          Distinguishing Marks
-        </td>
-        <td class="label-b">
-          <%= crew.distinguishing_marks %>
-        </td>
-      </tr>
-      <tr>  
-        <td class="label-a">
-          Blood Type
-        </td>
-        <td class="label-b">
-          <%= crew.blood_type %>
-        </td>
-
+          <td class="label-a">
+           Cloth Size
+          </td>
+          <td class="label-b">
+            <%= crew.cloth_size %>
+          </td>   
+        </tr>
+        <tr>
          <td class="label-a">
-          Blood Pressure
-        </td>
-        <td class="label-b">
-          <%= crew.blood_pressure %>
-        </td>
-      </tr>
-      <tr>  
-        <td class="label-a">
-          TIN Number
-        </td>
-        <td class="label-b">
-          <%= crew.tin_no %>
-        </td>
+            Eye Color
+          </td>
+          <td class="label-b">
+            <%= crew.eye_color %>
+          </td>
+          <td class="label-a">
+            Distinguishing Marks
+          </td>
+          <td class="label-b">
+            <%= crew.distinguishing_marks %>
+          </td>
+        </tr>
+        <tr>  
+          <td class="label-a">
+            Blood Type
+          </td>
+          <td class="label-b">
+            <%= crew.blood_type %>
+          </td>
 
+           <td class="label-a">
+            Blood Pressure
+          </td>
+          <td class="label-b">
+            <%= crew.blood_pressure %>
+          </td>
+        </tr>
+        <tr>  
+          <td class="label-a">
+            TIN Number
+          </td>
+          <td class="label-b">
+            <%= crew.tin_no %>
+          </td>
+
+           <td class="label-a">
+            SSS Number
+          </td>
+          <td class="label-b">
+            <%= crew.sss_no %>
+          </td>
+        </tr>
+         <tr>  
+          <td class="label-a">
+            Pag-ibig Number
+          </td>
+          <td class="label-b">
+            <%= crew.pagibig_number %>
+          </td>
+          <td class="label-a">
+            Philhealth Number
+          </td>
+          <td class="label-b">
+            <%= crew.philhealth_number %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row details">
+    <div class="col-md-12 nearest-rel">
+      <table class="table table-bordered table-stripped">
+        <tr>  
+          <td class="label-a">
+           Father's Name
+          </td>
+          <td class="label-b">
+            <%= crew.father_name %>
+          </td>
+
+           <td class="label-a">
+            Mother's Maiden Name
+          </td>
+          <td class="label-b">
+            <%= crew.mother_maiden_name %>
+          </td>
+        </tr>
+        <tr>  
+          <td class="label-a">
+           Spouse Name
+          </td>
+          <td class="label-b">
+            <%= crew.spouse_name %>
+          </td>
+           <td class="label-a">
+            Number of Children
+          </td>
+          <td class="label-b">
+            <%= crew.number_of_children %>
+          </td>
+        </tr>
+        <tr>  
+          <td class="label-a">
+           Are you a smoker?
+          </td>
+          <td class="label-b">
+            <%= crew.is_smoker ? "Yes" : "No" %>
+          </td>
+        </tr>
+      </table>
+      <table class="table table-bordered table-stripped">
+        <tr>  
+          <td class="label-a">
+            Nearest Relative Name
+          </td>
+          <td class="label-b">
+            <%= crew.nearest_relative_name %>
+          </td>
+        </tr>
+        <tr>  
          <td class="label-a">
-          SSS Number
-        </td>
-        <td class="label-b">
-          <%= crew.sss_no %>
-        </td>
-      </tr>
-       <tr>  
-        <td class="label-a">
-          Pag-ibig Number
-        </td>
-        <td class="label-b">
-          <%= crew.pagibig_number %>
-        </td>
-        <td class="label-a">
-          Philhealth Number
-        </td>
-        <td class="label-b">
-          <%= crew.philhealth_number %>
-        </td>
-      </tr>
-    </table>
+            Relationship
+          </td>
+          <td class="label-b">
+            <%= crew.nearest_relative_relationship %>
+          </td>
+        </tr>
+        <tr>
+          <td class="label-a">
+            Address
+          </td>
+          <td class="label-b">
+            <%= crew.nearest_relative_address %>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
-<div class="row details">
-  <div class="col-md-12 nearest-rel">
-    <table class="table table-bordered table-stripped">
-      <tr>  
-        <td class="label-a">
-         Father's Name
-        </td>
-        <td class="label-b">
-          <%= crew.father_name %>
-        </td>
 
-         <td class="label-a">
-          Mother's Maiden Name
-        </td>
-        <td class="label-b">
-          <%= crew.mother_maiden_name %>
-        </td>
-      </tr>
-      <tr>  
-        <td class="label-a">
-         Spouse Name
-        </td>
-        <td class="label-b">
-          <%= crew.spouse_name %>
-        </td>
-         <td class="label-a">
-          Number of Children
-        </td>
-        <td class="label-b">
-          <%= crew.number_of_children %>
-        </td>
-      </tr>
-      <tr>  
-        <td class="label-a">
-         Are you a smoker?
-        </td>
-        <td class="label-b">
-          <%= crew.is_smoker ? "Yes" : "No" %>
-        </td>
-      </tr>
-    </table>
-    <table class="table table-bordered table-stripped">
-      <tr>  
-        <td class="label-a">
-          Nearest Relative Name
-        </td>
-        <td class="label-b">
-          <%= crew.nearest_relative_name %>
-        </td>
-      </tr>
-      <tr>  
-       <td class="label-a">
-          Relationship
-        </td>
-        <td class="label-b">
-          <%= crew.nearest_relative_relationship %>
-        </td>
-      </tr>
-      <tr>
-        <td class="label-a">
-          Address
-        </td>
-        <td class="label-b">
-          <%= crew.nearest_relative_address %>
-        </td>
-      </tr>
-    </table>
+<div class="for_mobile">
+  <div class="row details">
+    <div class="col-md-12">
+      <table class="table table-bordered table-stripped" style="font-size: 14px;">
+        <tr>
+          <th>
+            Vessel Assigned
+          </th>
+          <td>
+            <%= crew.vessel %>
+          </td>
+         </tr>
+         <tr>
+          <th>
+            Age
+          </th>
+          <td>
+            <%= crew.age %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Home Address
+          </th>
+          <td>
+            <%= crew.address %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            City Address
+          </th>
+          <td>
+            <%= crew.city_address %>
+          </td>
+        </tr>
+        <tr>  
+          <th>
+            Provincial Address
+          </th>
+          <td>
+            <%= crew.provincial_address %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Zipcode
+          </th>
+          <td>
+            <%= crew.zip_code %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+             Birthday
+          </th>
+          <td>
+           <%= crew.birthday.strftime('%d-%B-%Y') %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+           Birth Place
+          </th>
+          <td>
+            <%= crew.birthplace %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Telephone
+          </th>
+          <td>
+          <%= crew.telephone_no %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+           Cellphone
+          </th>
+          <td>
+            <%= crew.cellphone_no %>
+          </td>
+        </tr>
+      </table>
+
+      <table class="table table-bordered table-stripped"  style="font-size: 14px;">
+        <tr>
+          <th>
+            Civil Status
+          </th>
+          <td>
+            <%= crew.civil_status %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+           Nationality
+          </th>
+          <td>
+            <%= crew.nationality %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+              Height
+          </th>
+          <td>
+            <%= crew.height %> cm
+          </td>
+        </tr>
+        <tr>
+          <th>
+           Weight
+          </th>
+          <td>
+            <%= crew.weight %> kg
+          </td>
+        </tr>
+        <tr>
+          <th>
+              Shoe Size
+           </th>
+           <td>
+            <%= crew.shoe_size %>
+           </td>
+         </tr>
+         <tr>
+          <th>
+           Cloth Size
+          </th>
+          <td>
+            <%= crew.cloth_size %>
+          </td>   
+         </tr>
+        <tr>
+         <th>
+            Eye Color
+          </th>
+          <td>
+            <%= crew.eye_color %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Distinguishing Marks
+          </th>
+          <td>
+            <%= crew.distinguishing_marks %>
+          </td>
+        </tr>
+        <tr>  
+          <th>
+            Blood Type
+          </th>
+          <td>
+            <%= crew.blood_type %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Blood Pressure
+          </th>
+          <td>
+            <%= crew.blood_pressure %>
+          </td>
+        </tr>
+        <tr>  
+          <th>
+            TIN Number
+          </th>
+          <td>
+            <%= crew.tin_no %>
+          </td>
+        </tr>
+         <tr>
+          <th>
+            SSS Number
+          </th>
+          <td>
+            <%= crew.sss_no %>
+          </td>
+        </tr>
+        <tr>  
+          <th>
+            Pag-ibig Number
+          </th>
+          <td>
+            <%= crew.pagibig_number %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Philhealth Number
+          </th>
+          <td>
+            <%= crew.philhealth_number %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row details">
+    <div class="col-md-12 nearest-rel">
+      <table class="table table-bordered table-stripped" style="font-size: 14px;">
+        <tr>  
+          <th>
+           Father's Name
+          </th>
+          <td>
+            <%= crew.father_name %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Mother's Maiden Name
+          </th>
+          <td>
+            <%= crew.mother_maiden_name %>
+          </td>
+        </tr>
+        <tr>  
+          <th>
+           Spouse Name
+          </th>
+          <td>
+            <%= crew.spouse_name %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Number of Children
+          </th>
+          <td>
+            <%= crew.number_of_children %>
+          </td>
+        </tr>
+        <tr>  
+          <th>
+           Are you a smoker?
+          </th>
+          <td>
+            <%= crew.is_smoker ? "Yes" : "No" %>
+          </td>
+        </tr>
+      </table>
+      <table class="table table-bordered table-stripped"  style="font-size: 14px;">
+        <tr>  
+          <th>
+            Nearest Relative Name
+          </th>
+          <td>
+            <%= crew.nearest_relative_name %>
+          </td>
+        </tr>
+        <tr>  
+         <th>
+            Relationship
+          </th>
+          <td>
+            <%= crew.nearest_relative_relationship %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Address
+          </th>
+          <td>
+            <%= crew.nearest_relative_address %>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>

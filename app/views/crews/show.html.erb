@@ -1,24 +1,53 @@
-<div class="row details_crew">
-  <div class="col-md-2">
-    <div class="box-image">
-    <%= image_tag @crew.picture.url(:standard) %>
+<div class="for_non_mobile">
+  <div class="row details_crew">
+    <div class="col-md-2">
+      <div class="box-image">
+      <%= image_tag @crew.picture.url(:standard) %>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3><%= @crew %> <small><%= @crew.code_number %></small></h3>
+      <h4><%= @crew.rank %> <small><%= @crew.status %></small></h4>
+      <div class="">
+        <%= link_to edit_crew_path(@crew), class: "btn btn-xs btn-default" do %>
+          <i class="glyphicon glyphicon-pencil"></i> Edit
+        <% end %>
+        <%= link_to crews_path, class: "btn btn-xs btn-default" do %>
+          <i class="glyphicon glyphicon-folder-open"></i> Back to Crew List
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <%= render partial: "crews/show_download_report_filter", locals: { crew: @crew } %>
     </div>
   </div>
-  <div class="col-md-4">
-    <h3><%= @crew %> <small><%= @crew.code_number %></small></h3>
-    <h4><%= @crew.rank %> <small><%= @crew.status %></small></h4>
-    <div class="">
-      <%= link_to edit_crew_path(@crew), class: "btn btn-xs btn-default" do %>
-        <i class="glyphicon glyphicon-pencil"></i> Edit
-      <% end %>
-      <%= link_to crews_path, class: "btn btn-xs btn-default" do %>
-        <i class="glyphicon glyphicon-folder-open"></i> Back to Crew List
-      <% end %>
+</div>
+
+<div class="for_mobile">  
+  <center>
+    <div class="row details_crew">
+      <div class="col-md-2">
+        <div class="box-image">
+           <%= image_tag @crew.picture.url(:standard) %>
+        </div>
+      </div>
+      <div class="col-md-4" style="margin-bottom: 1%;">
+        <h3><%= @crew %> <small><%= @crew.code_number %></small></h3>
+        <h4><%= @crew.rank %> <small><%= @crew.status %></small></h4>
+        <div class="">
+          <%= link_to edit_crew_path(@crew), class: "btn btn-xs btn-default" do %>
+            <i class="glyphicon glyphicon-pencil"></i> Edit
+          <% end %>
+          <%= link_to crews_path, class: "btn btn-xs btn-default" do %>
+            <i class="glyphicon glyphicon-folder-open"></i> Back to Crew List
+          <% end %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <%= render partial: "crews/show_download_report_filter", locals: { crew: @crew } %>
+      </div>
     </div>
-  </div>
-  <div class="col-md-6">
-    <%= render partial: "crews/show_download_report_filter", locals: { crew: @crew } %>
-  </div>
+  </center>
 </div>
 
 <div class="row info">
@@ -125,9 +154,18 @@
     </tbody>
   </div>
 </div>
-<div class="row details">
-  <div class="col-md-12">
-    <%= image_tag @crew.signature.url(:list) %>
+<div class="for_non_mobile">
+  <div class="row details">
+    <div class="col-md-12">
+      <%= image_tag @crew.signature.url(:list) %>
+    </div>
+  </div>
+</div>
+<div class="for_mobile">
+  <div class="row details">
+    <div class="col-md-12 signature">
+      <%= image_tag @crew.signature.url(:list) %>
+    </div>
   </div>
 </div>
 <hr>

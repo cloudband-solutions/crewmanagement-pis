@@ -1,27 +1,67 @@
-<table class="table table-bordered table-stripped">
-  <tr>
-    <th> NAME </th>
-    <th> STATUS </th>
-    <th> FLAG </th>
-    <th> VESSEL TYPE </th>
-    <th> HORSE POWER </th>
-    <th> ENGINE MAKE </th>
-    <th> CREW COUNT </th>
-    <th> ACTIONS </th>
-  </tr>
-  <% vessels.each do |vessel| %>
-    <tr>  
-      <td><%= vessel.name %></td>
-      <td><%= vessel.status %></td>
-      <td><%= vessel.flag %></td>
-      <td><%= vessel.vessel_type %></td>
-      <td><%= vessel.horse_power %></td>
-      <td><%= vessel.engine_make %></td>
-      <td><%= vessel.crews.count %></td>
-      <td>
-        <%= link_to "Show", vessel_path(vessel), class: "btn btn-primary btn-xs" %>
-      </td>
+<div class="for_non_mobile">
+  <table class="table table-bordered table-stripped">
+    <tr>
+      <th> NAME </th>
+      <th> STATUS </th>
+      <th> FLAG </th>
+      <th> VESSEL TYPE </th>
+      <th> HORSE POWER </th>
+      <th> ENGINE MAKE </th>
+      <th> CREW COUNT </th>
+      <th> ACTIONS </th>
     </tr>
-  <% end %>
-</table>
+    <% vessels.each do |vessel| %>
+      <tr>  
+        <td><%= vessel.name %></td>
+        <td><%= vessel.status %></td>
+        <td><%= vessel.flag %></td>
+        <td><%= vessel.vessel_type %></td>
+        <td><%= vessel.horse_power %></td>
+        <td><%= vessel.engine_make %></td>
+        <td><%= vessel.crews.count %></td>
+        <td>
+          <%= link_to "Show", vessel_path(vessel), class: "btn btn-primary btn-xs" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
 
+<div class="for_mobile">
+  <% vessels.each do |vessel| %>
+  <table class="table table-bordered" style="width:100%; table-layout:fixed; margin-bottom:20px;">
+    <tr>
+      <th> NAME </th>
+      <td><%= vessel.name %></td>
+    </tr>
+    <tr>
+      <th> STATUS </th>
+      <td><%= vessel.status %></td>
+    </tr>
+    <tr>
+      <th> FLAG </th>
+      <td><%= vessel.flag %></td>
+    </tr>
+    <tr>
+      <th> VESSEL TYPE </th>
+      <td><%= vessel.vessel_type %></td>
+    </tr>
+    <tr>
+      <th> HORSE POWER </th>
+      <td><%= vessel.horse_power %></td>
+    </tr>
+    <tr>
+      <th> ENGINE MAKE </th>
+      <td><%= vessel.engine_make %></td>
+    </tr>
+    <tr>
+      <th> CREW COUNT </th>
+      <td><%= vessel.crews.count %></td>
+    </tr>
+    <tr style="margin-bottom: 30px;">
+      <th> ACTIONS </th>
+      <td><%= link_to "Show", vessel_path(vessel), class: "btn btn-primary btn-xs" %></td>
+    </tr>
+  </table>
+  <% end %>
+</div>

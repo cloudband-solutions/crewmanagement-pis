@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row for_non_mobile">
 	<div class="col-md-12">
 			<table class="table table-bordered table-stripped">
 				<tr> 
@@ -82,8 +82,112 @@
 			</table>
 		
 	</div>
+</div>	
 
-
-
-
+<div class="row for_mobile">
+	<div class="col-md-12">
+			<table class="table table-bordered table-stripped"  style="margin-left: -4.5%;">
+				<tr> 
+					<th>Name:</td> 
+					<td><%= @vessel.name %></td>
+				</tr>
+				<tr>
+					<th>Telephone Number:</td> 
+					<td><%= @vessel.tel_number %></td>
+				</tr>
+				<tr> 
+					<th>Flag: </td>
+					<td> <%= @vessel.flag %></td>
+				</tr>
+				<tr>
+					<th>Fax Number: </td>
+					<td><%= @vessel.fax_number %></td>
+				</tr>
+				<tr>
+					<th>Vessel Type: </td> 
+					<td><%= @vessel.vessel_type %></td>
+				</tr>
+				<tr>
+					<th>IMO Number: </td> 
+					<td><%= @vessel.imo_number %></td>
+				</tr>
+				<tr>
+					<th>Type of Lifeboat: </td> 
+					<td><%= @vessel.type_of_lifeboat %></td>
+				</tr>
+				<tr>
+					<th>ECDIS: </td> 
+					<td><%= @vessel.ecdis %></td>
+				</tr>
+				<tr>
+					<th>Owner: </td> 
+					<td><%= @vessel.owner %></td>
+				</tr>
+				<tr>
+					<th>Callsign: </td> 
+					<td><%= @vessel.callsign %></td>
+				</tr>
+				<tr>
+					<th>Off Numb: </td> 
+					<td><%= @vessel.off_numb %></td>
+				</tr>
+				<tr>
+					<th>Classification Soceity: </td> 
+					<td><%= @vessel.classification_society %></td>
+				</tr>
+				<tr>
+					<th>Code: </td> 
+					<td><%= @vessel.code %> </td>
+				</tr>
+				<tr>
+					<th>GRT: </td> 
+					<td><%= @vessel.grt %></td>
+				</tr>
+				<tr>	
+					<th>Principal:</td> 
+					<td><%= @vessel.principal %> </td>
+				</tr>
+				<tr>
+					<th>NRT</td> 
+					<td><%= @vessel.nrt %> </td>
+				</tr>	
+				<tr>
+					<th>POEA Company: </td> 
+					<td><%= @vessel.poea_company %> </td>
+				</tr>
+				<tr>
+					<th>DWT </td> 
+					<td><%= @vessel.dwt %> </td>
+				</tr>
+				<tr>
+					<th>Salary Scale: </td> 
+					<td><%= @vessel.salary_scale %></td>
+				</tr>
+				<tr>
+					<th>LOA</td> 
+					<td><%= @vessel.loa %> meters</td>
+				</tr>
+				<tr>
+					<th>E-mail: </td> 
+					<td><%= @vessel.email %> </td>
+				</tr>
+				<tr>
+					<th>Breadth</td> 
+					<td><%= @vessel.breadth %> meters</td>
+				</tr>
+				<tr>
+					<th>Inmarsat ID Number: </td> 
+					<td><%= @inmarsat_id_number %></td>
+				</tr>
+				<tr>
+					<th>Depth</td> 
+					<td><%= @vessel.depth %> meters</td>
+				</tr>
+				<tr>
+					<th>Engine Make / Horse Power</td> 
+					<td><%= @vessel.engine_make %> / <%= @vessel.engine_model %> / <%= @vessel.horse_power %></td>
+				</tr>
+			</table>
+		
+	</div>
 </div>	

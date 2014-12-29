@@ -95,7 +95,8 @@ class Crew < ActiveRecord::Base
       end_date = sign_on + 9.months
       current_date = Time.now
 
-      diff = ((end_date.year * 12 + end_date.month) - (current_date.year * 12 + current_date.month))
+      difference = end_date.month - current_date.month
+      puts "HERE: #{difference}"
 
       if ((end_date.year * 12 + end_date.month) - (current_date.year * 12 + current_date.month)) <= 3
         "#ffff4c"
