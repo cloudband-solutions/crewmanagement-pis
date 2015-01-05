@@ -99,9 +99,9 @@ class Crew < ActiveRecord::Base
       puts "HERE: #{difference}"
 
       if ((end_date.year * 12 + end_date.month) - (current_date.year * 12 + current_date.month)) <= 3
-        "#ffff4c"
-      elsif ((end_date.year * 12 + end_date.month) - (current_date.year * 12 + current_date.month)) <= 6
         "#ff3232"
+      elsif ((end_date.year * 12 + end_date.month) - (current_date.year * 12 + current_date.month)) <= 6
+        "#ffff4c"
       else
         "#5EDF44"
       end
