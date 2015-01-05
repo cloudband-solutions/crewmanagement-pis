@@ -87,7 +87,7 @@
       <td><%= crew %></td>
       <td><%= crew.birthday %></td>
       <td><%= crew.rank %></td>
-      <td><%= crew.sign_on %></td>
+      <td><%= crew.sign_on.strftime("%d-%b-%Y") %></td>
       <% license_types.each do |lt| %>
         <% l = crew.licenses.where(license_type_id: lt.id).first %>
         <td><%= "#{l.license_number} - #{l.expiry_date}" if !l.nil? %></td>
