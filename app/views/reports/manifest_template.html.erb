@@ -108,6 +108,9 @@
           <% end %>
         </td>
       <% end %>
+      <td>
+        <%= (crew.sign_on + 9.months).strftime("%d-%b-%Y") %>
+      </td>
     </tr>
   <% end %>
     
