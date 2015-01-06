@@ -1,30 +1,30 @@
-<div class="for_non_mobile">
-  <%= simple_nested_form_for crew, defaults: { wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control'} }, html: { multipart: true, novalidate: true } do |f| %>
-      <div class="row crew_form fixing">
-        <div class="col-md-4">
-          <%= f.input :firstname, label: "First Name", input_html: { class: "form-control" }, placeholder: "Enter First Name"%>
-        </div>
-        <div class="col-md-4">
-          <%= f.input :middlename, label: "Middle Name", input_html: { class: "form-control" }, placeholder: "Enter Middle Name" %>
-        </div>
-        <div class="col-md-4">
-          <%= f.input :lastname, label: "Last Name", input_html: { class: "form-control" }, placeholder: "Enter Last Name" %>
-        </div>
+ <%= simple_nested_form_for crew, defaults: { wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control'} }, html: { multipart: true, novalidate: true } do |f| %>
+
+  <div class="for_non_mobile">
+    <div class="row crew_form fixing">
+      <div class="col-md-4">
+        <%= f.input :firstname, label: "First Name", input_html: { class: "form-control" }, placeholder: "Enter First Name"%>
       </div>
+      <div class="col-md-4">
+        <%= f.input :middlename, label: "Middle Name", input_html: { class: "form-control" }, placeholder: "Enter Middle Name" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :lastname, label: "Last Name", input_html: { class: "form-control" }, placeholder: "Enter Last Name" %>
+      </div>
+    </div>
 
-      <ul class="nav nav-tabs nav-justified">
-        <li class="active"><%= link_to "General", "#biodata", "data-toggle" => "tab" %></li>
-        <li class=""><%= link_to "Licenses", "#licenses", "data-toggle" => "tab" %></li>
-        <li class=""><%= link_to "Certificates", "#certificates", "data-toggle" => "tab" %></li>
-        <li class=""><%= link_to "Personal Documents", "#documents", "data-toggle" => "tab" %></li>
-        <% if current_user.user_type == "manager" %>
-          <li class=""><%= link_to "Vessel Evaluations", "#vessel-evaluations", "data-toggle" => "tab" %></li>
-          <li class=""><%= link_to "Office Evaluations", "#office-evaluations", "data-toggle" => "tab" %></li>
-        <% end %>
-        <li class=""><%= link_to "Employment", "#employment-record", "data-toggle" => "tab" %></li>
-      </ul>
+    <ul class="nav nav-tabs nav-justified">
+      <li class="active"><%= link_to "General", "#biodata", "data-toggle" => "tab" %></li>
+      <li class=""><%= link_to "Licenses", "#licenses", "data-toggle" => "tab" %></li>
+      <li class=""><%= link_to "Certificates", "#certificates", "data-toggle" => "tab" %></li>
+      <li class=""><%= link_to "Personal Documents", "#documents", "data-toggle" => "tab" %></li>
+      <% if current_user.user_type == "manager" %>
+        <li class=""><%= link_to "Vessel Evaluations", "#vessel-evaluations", "data-toggle" => "tab" %></li>
+        <li class=""><%= link_to "Office Evaluations", "#office-evaluations", "data-toggle" => "tab" %></li>
+      <% end %>
+      <li class=""><%= link_to "Employment", "#employment-record", "data-toggle" => "tab" %></li>
+    </ul>
 
-  
     <div class="tab-content tab-content-inner infiniscroll">
       <div class="tab-pane active" id="biodata">
         <%= render partial: "crews/form_bio", locals: { f: f } %>
@@ -50,11 +50,9 @@
         </div>
       <% end %>
     </div>
-  <% end %>
-</div>
+ </div>
 
 <div class="for_mobile">
-  <%= simple_nested_form_for crew, defaults: { wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control'} }, html: { multipart: true, novalidate: true } do |f| %>
     <div class="row crew_form fixing_mobile">
       <div class="col-md-4">
         <%= f.input :firstname, label: "First Name", input_html: { class: "form-control" }, placeholder: "Enter First Name"%>
@@ -104,9 +102,9 @@
         </div>
       <% end %>
     </div>
-
-  <% end %>
 </div>
+<% end %>
+
 
 <script type="text/javascript">
 $(document).ready(function() {
