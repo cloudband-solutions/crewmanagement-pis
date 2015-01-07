@@ -6,8 +6,8 @@
   .for_non_mobile {
     display: block;
   }
-}
 
+}
 
 @media only screen and (min-device-width : 320px) and (max-device-width: 1299px) {
   .container {
@@ -63,5 +63,9 @@
   }
   .trans_mobile {
     float: left;
+  }
+
+  .for_mobile_css {
+    width: auto;
   }
 }
