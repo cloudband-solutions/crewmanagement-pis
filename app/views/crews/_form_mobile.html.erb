@@ -1,7 +1,6 @@
  <%= simple_nested_form_for crew, defaults: { wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control' } }, html: { multipart: true, novalidate: true } do |f| %>
-
-  <div class="">
-    <div class="row crew_form fixing for_mobile_css">
+  <div class="for_mobile">
+    <div class="row crew_form fixing_mobile">
       <div class="col-md-4">
         <%= f.input :firstname, label: "First Name", input_html: { class: "form-control" }, placeholder: "Enter First Name"%>
       </div>
@@ -14,46 +13,44 @@
     </div>
 
     <ul class="nav nav-tabs nav-justified">
-      <li class="active"><%= link_to "General", "#biodata", "data-toggle" => "tab" %></li>
-      <li class=""><%= link_to "Licenses", "#licenses", "data-toggle" => "tab" %></li>
-      <li class=""><%= link_to "Certificates", "#certificates", "data-toggle" => "tab" %></li>
-      <li class=""><%= link_to "Personal Documents", "#documents", "data-toggle" => "tab" %></li>
+      <li class="active"><%= link_to "General", "#biodata-mobile", "data-toggle" => "tab" %></li>
+      <li class=""><%= link_to "Licenses", "#licenses-mobile", "data-toggle" => "tab" %></li>
+      <li class=""><%= link_to "Certificates", "#certificates-mobile", "data-toggle" => "tab" %></li>
+      <li class=""><%= link_to "Personal Documents", "#documents-mobile", "data-toggle" => "tab" %></li>
       <% if current_user.user_type == "manager" %>
-        <li class=""><%= link_to "Vessel Evaluations", "#vessel-evaluations", "data-toggle" => "tab" %></li>
-        <li class=""><%= link_to "Office Evaluations", "#office-evaluations", "data-toggle" => "tab" %></li>
+        <li class=""><%= link_to "Vessel Evaluations", "#vessel-evaluations-mobile", "data-toggle" => "tab" %></li>
+        <li class=""><%= link_to "Office Evaluations", "#office-evaluations-mobile", "data-toggle" => "tab" %></li>
       <% end %>
-      <li class=""><%= link_to "Employment", "#employment-record", "data-toggle" => "tab" %></li>
+      <li class=""><%= link_to "Employment", "#employment-record-mobile", "data-toggle" => "tab" %></li>
     </ul>
-
+    
     <div class="tab-content tab-content-inner infiniscroll">
-      <div class="tab-pane active" id="biodata">
+      <div class="tab-pane active" id="biodata-mobile">
         <%= render partial: "crews/form_bio", locals: { f: f } %>
       </div>
-      <div class="tab-pane" id="licenses">
+      <div class="tab-pane" id="licenses-mobile">
         <%= render partial: "crews/form_licenses", locals: { f: f } %>
       </div>
-      <div class="tab-pane" id="certificates">
+      <div class="tab-pane" id="certificates-mobile">
         <%= render partial: "crews/form_certificates", locals: { f: f } %>
       </div>
-      <div class="tab-pane" id="employment-record">
+      <div class="tab-pane" id="employment-record-mobile">
         <%= render partial: "crews/form_employment_records", locals: { f: f } %>
       </div>
-      <div class="tab-pane" id="documents">
+      <div class="tab-pane" id="documents-mobile">
         <%= render partial: "crews/form_documents", locals: { f: f } %>
       </div>
       <% if current_user.user_type == "manager" %>
-        <div class="tab-pane" id="vessel-evaluations">
+        <div class="tab-pane" id="vessel-evaluations-mobile">
           <%= render partial: "crews/form_crew_vessel_evaluation", locals: { f: f } %>
         </div>
-        <div class="tab-pane" id="office-evaluations">
+        <div class="tab-pane" id="office-evaluations-mobile">
           <%= render partial: "crews/form_crew_office_evaluation", locals: { f: f } %>
         </div>
       <% end %>
     </div>
- </div>
-
+  </div>
 <% end %>
-
 
 <script type="text/javascript">
 $(document).ready(function() {
