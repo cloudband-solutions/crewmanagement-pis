@@ -8,7 +8,7 @@
 </div>
 
 <% if @crews.nil? %>
-  Please fill in vessel and license type details
+  Please fill in vessel and licenses/certificates/documents
 <% else %>
   <%= render partial: "reports/crew_manifest_list", locals: { crews: @crews, license_types: @license_types, certificate_types: @certificate_types, document_kinds: @document_kinds } %>
   <%= render partial: "reports/crew_manifest_report_download" %>
