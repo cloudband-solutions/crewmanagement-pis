@@ -13,6 +13,11 @@ class VesselsController < ApplicationController
       @vessels = @vessels.where("name LIKE :q OR code LIKE :q", q: "%#{@q}%")
     end
 
+    if params[:status].present?
+      @status = params[:status]
+      @vessels = @vessels.where("status = :q", q: "#{@status}")
+    end
+
     if params[:flag_id].present?
       @flag = Flag.find(params[:flag_id])
       @vessels = @vessels.where(flag_id: @flag.id)

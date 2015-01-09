@@ -115,6 +115,11 @@ class CrewsController < ApplicationController
       end
     end
 
+    if params[:code_number].present?
+      @code_number = params[:code_number]
+      @crews = @crews.where("crews.code_number LIKE :q", q: "%#{@code_number}%")
+    end
+
     if params[:vessel_id].present?
       @vessel = Vessel.find(params[:vessel_id])
       @crews = @crews.where("crews.vessel_id = ?", @vessel.id)
