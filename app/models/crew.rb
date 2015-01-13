@@ -144,6 +144,10 @@ class Crew < ActiveRecord::Base
     self.licenses.where(license_type_id: id).first
   end
 
+  def document_by_kind(id)
+    self.documents.where(document_kind_id: id).first
+  end
+
   def employment_records_by_sign_off
     EmploymentRecord.where(crew_id: self.id).order(:sign_off)
   end

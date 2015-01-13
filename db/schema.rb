@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109142451) do
+ActiveRecord::Schema.define(version: 20150113165728) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -385,6 +385,13 @@ ActiveRecord::Schema.define(version: 20150109142451) do
     t.integer  "manning_agent_id"
     t.date     "sign_off"
   end
+
+  create_table "transmittal_record_document_kinds", id: false, force: true do |t|
+    t.integer "transmittal_record_id"
+    t.integer "document_kind_id"
+  end
+
+  add_index "transmittal_record_document_kinds", ["transmittal_record_id", "document_kind_id"], name: "tr_dk_index", unique: true
 
   create_table "transmittal_record_embarking_crews", force: true do |t|
     t.integer  "transmittal_record_id"

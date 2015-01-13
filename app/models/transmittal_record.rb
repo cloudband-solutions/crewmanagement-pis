@@ -2,6 +2,8 @@ class TransmittalRecord < ActiveRecord::Base
 
   STATUSES = ["pending", "approved", "archived"]
 
+  validate :crew_uniqueness, on: :create
+
   validates :transmittal_code, presence: true, uniqueness: true
   #validates :prepared_by, presence: true
   #validates :prepared_by_position, presence: true
@@ -31,7 +33,24 @@ class TransmittalRecord < ActiveRecord::Base
   has_many :transmittal_record_license_types
   has_many :license_types, through: :transmittal_record_license_types
 
+  has_many :transmittal_record_document_kinds
+  has_many :document_kinds, through: :transmittal_record_document_kinds
+
   before_validation :load_defaults
+
+  def crew_uniqueness
+    if self.transmittal_record_embarking_crews.map(&:crew_id).count != self.transmittal_record_embarking_crews.map(&:crew_id).uniq.count
+      errors.add(:base, "Duplicate crew detected")
+    end
+
+    if self.transmittal_record_disembarking_crews.map(&:crew_id).count != self.transmittal_record_disembarking_crews.map(&:crew_id).uniq.count
+      errors.add(:base, "Duplicate crew detected")
+    end
+
+    if self.transmittal_record_crew_promotions.map(&:crew_id).count != self.transmittal_record_crew_promotions.map(&:crew_id).uniq.count
+      errors.add(:base, "Duplicate crew detected")
+    end
+  end
 
   # TODO: Proper error handling
   def approve!

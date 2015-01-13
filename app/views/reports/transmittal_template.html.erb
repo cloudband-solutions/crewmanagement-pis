@@ -47,6 +47,10 @@
         <th><%= trlt.license_type %> No.</th>
         <th>Expiry Date</th>
       <% end %>
+      <% transmittal_record.transmittal_record_document_kinds.each do |trdk| %>
+        <th><%= trdk.document_kind %> No.</th>
+        <th>Expiry Date</th>
+      <% end %>
       <th>Cloth Size</th>
       <th>Shoe Size</th>
       <th>Contact Number</th>
@@ -61,6 +65,16 @@
           <% if !license.nil? %>
             <td><%= license %></td>
             <td><%= license.expiry_date %></td>
+          <% else %>
+            <td></td>
+            <td></td>
+          <% end %>
+        <% end %>
+        <% transmittal_record.transmittal_record_document_kinds.each do |trdk| %>
+          <% document = transmittal_record_embarking_crew.crew.document_by_kind(trdk.document_kind.id) %>
+          <% if !document.nil? %>
+            <td><%= document %></td>
+            <td><%= document.expiry_date %></td>
           <% else %>
             <td></td>
             <td></td>

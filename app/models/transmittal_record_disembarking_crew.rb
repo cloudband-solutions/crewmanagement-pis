@@ -13,8 +13,8 @@ class TransmittalRecordDisembarkingCrew < ActiveRecord::Base
   belongs_to :reason_for_disembarkation
   validates :reason_for_disembarkation, presence: true
 
-  belongs_to :manning_agent
-  validates :manning_agent, presence: true
+  #belongs_to :manning_agent
+  #validates :manning_agent, presence: true
 
   before_validation :load_defaults
 

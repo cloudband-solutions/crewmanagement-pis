@@ -53,8 +53,7 @@ class TransmittalRecordsController < ApplicationController
       flash[:success] = "Successfully saved transmittal record"
       redirect_to transmittal_records_path
     else
-      flash.now[:error] = "Error in saving transmittal record."
-      raise @transmittal_record.errors.inspect
+      flash.now[:error] = "Error in saving transmittal record. #{@transmittal_record.errors.full_messages.to_sentence}"
       render :new
     end
   end

@@ -12,8 +12,11 @@
 </div>
 
 <div class="row well">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <%= f.association :license_types, input_html: { class: "select-select2 form-control" } %>
+  </div>
+  <div class="col-md-6">
+    <%= f.association :document_kinds, input_html: { class: "select-select2 form-control" } %>
   </div>
 </div>
 
