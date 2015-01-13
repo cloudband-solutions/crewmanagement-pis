@@ -2,7 +2,7 @@ class TransmittalRecordEmbarkingCrew < ActiveRecord::Base
   belongs_to :transmittal_record
 
   belongs_to :crew
-  validates :crew, presence: true
+  validates :crew, presence: true, uniqueness: { scope: :transmittal_record_id }
 
   belongs_to :rank
   validates :rank, presence: true

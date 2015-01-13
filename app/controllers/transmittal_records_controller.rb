@@ -21,7 +21,24 @@ class TransmittalRecordsController < ApplicationController
   end
 
   def new
-    @transmittal_record = TransmittalRecord.new
+    if params[:vessel_id].blank?
+      flash[:error] = "No Vessel ID specified."
+      redirect_to transmittal_records_path
+    end
+
+    @vessel = Vessel.find(params[:vessel_id])
+
+    if @vessel.nil?
+      flash[:error] = "No vessel found."
+      redirect_to transmittal_records_path
+    end
+
+    if TransmittalRecord.where(vessel_id: @vessel.id, status: "pending").count > 0
+      flash[:error] = "There are still pending records for vessel #{@vessel}"
+      redirect_to transmittal_records_path
+    end
+
+    @transmittal_record = TransmittalRecord.new(vessel_id: @vessel.id)
   end
 
   def create
@@ -31,7 +48,8 @@ class TransmittalRecordsController < ApplicationController
       flash[:success] = "Successfully saved transmittal record"
       redirect_to transmittal_records_path
     else
-      flash[:error] = "Error in saving transmittal record."
+      flash.now[:error] = "Error in saving transmittal record."
+      raise @transmittal_record.errors.inspect
       render :new
     end
   end
@@ -51,7 +69,7 @@ class TransmittalRecordsController < ApplicationController
       flash[:success] = "Successfully saved transmittal record"
       redirect_to transmittal_records_path
     else
-      flash[:error] = "Error in saving transmittal record."
+      flash.now[:error] = "Error in saving transmittal record."
       render :edit
     end
   end

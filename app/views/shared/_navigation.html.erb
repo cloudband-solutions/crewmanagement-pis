@@ -13,7 +13,7 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav my_nav">
       <li><%= link_to "DASHBOARD", root_path, class: "#{'active' if params[:controller] == 'pages'}" %></li> 
-      <li><%= link_to "ACTIVE CREW", crews_path, class: "#{'active' if params[:controller] == 'crews' and params[:action] != 'advanced_search'}" %></li> 
+      <li><%= link_to "CREW LIST", crews_path, class: "#{'active' if params[:controller] == 'crews' and params[:action] != 'advanced_search'}" %></li> 
       <li><%= link_to "ADVANCED SEARCH", crews_advanced_search_path, class: "#{'active' if params[:controller] == 'crews' and params[:action] == 'advanced_search'}" %></li> 
       <li><%= link_to "VESSELS", vessels_path, class: "#{'active' if params[:controller] == 'vessels'}" %></li>
       <li>

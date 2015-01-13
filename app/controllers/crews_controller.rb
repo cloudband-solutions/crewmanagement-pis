@@ -115,6 +115,11 @@ class CrewsController < ApplicationController
       end
     end
 
+    if params[:status].present?
+      @status = params[:status]
+      @crews = @crews.where("crews.status = ?", @status)
+    end
+
     if params[:code_number].present?
       @code_number = params[:code_number]
       @crews = @crews.where("crews.code_number LIKE :q", q: "%#{@code_number}%")

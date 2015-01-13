@@ -29,10 +29,27 @@
 <% end %>
 
 <script>
+var disembarkingCrews = [];
+
 $(document).ready(function() {
   initDatePicker();
-  $(document).on('nested:fieldAdded', function() {
+  $(document).on('nested:fieldAdded', function(event) {
     initDatePicker();
+
+    var field = event.field;
+    var selectField = field.find('.select-select2');
+    selectField.select2();
+
+  });
+
+  $('select#vessel').change(function() {
+    var vessel_id = $('option:selected', this).val(); 
+    console.log(vessel_id);
+
+    $.ajax({
+      url: "/internal/vessels/" + vessel_id + "/crews"
+    }).done(function(data) {
+    });
   });
 });
 </script>

@@ -10,16 +10,13 @@
   <div class="col-md-10">
     <div class="well">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
           <%= f.association :rank, label: "Current Rank", input_html: { class: "form-control select-select2" } %>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <%= f.association :vessel, label: "Vessel Assigned", input_html: { class: "form-control select-select2" }, as: :select, collection: Vessel.active, include_blank: "NONE" %>
         </div>
-        <div class="col-md-3">
-          <%= f.input :status, as: :select, collection: Crew::STATUSES %>
-        </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <% if f.object.sign_on.nil? %>
             <%= f.input :sign_on, as: :string, input_html: { class: "datepick form-control" } %>
           <% else %>

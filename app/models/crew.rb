@@ -20,7 +20,11 @@ class Crew < ActiveRecord::Base
   validates :rank, presence: true
 
   belongs_to :vessel
-  #validates :vessel, presence: true
+  validates :vessel, presence: true, if: :is_active?
+
+  def is_active?
+    self.status == 'ACTIVE'
+  end
 
   belongs_to :rank
 
@@ -74,12 +78,16 @@ class Crew < ActiveRecord::Base
 
   scope :active, -> { where("is_archived = ?", false) }
 
+  scope :inactive, -> { where("is_archived = ? AND status = ?", false, 'INACTIVE') }
+
+  scope :on_board, -> { where("is_archived = ? AND status = ?", false, 'ACTIVE') }
+
   def self.all_by_vessel(v)
     self.active_by_rank.where(vessel_id: v.id)
   end
 
   def to_s
-    "#{firstname.upcase} #{middlename.upcase} #{lastname.upcase}"
+    "#{firstname.upcase} #{middlename.upcase} #{lastname.upcase} (#{code_number})"
   end
 
   def to_s_list
@@ -123,6 +131,12 @@ class Crew < ActiveRecord::Base
 
     if self.crew_token.nil?
       self.crew_token = "#{SecureRandom.hex(4)}"
+    end
+
+    if self.vessel.nil?
+      self.status = 'INACTIVE'
+    else
+      self.status = 'ACTIVE'
     end
   end
 

@@ -16,6 +16,7 @@
         <tr>
           <th>NUMBER</th>
           <th>NAME</th>
+          <th>STATUS</th>
           <th>VESSEL</th>
           <th>RANK</th>
           <th>ACTIONS</th>
@@ -24,8 +25,9 @@
           <%= form_tag send("crews_path"), method: :get do |f| %>
             <td><%= text_field_tag :code_number, @code_number, class: "form-control", placeholder: "Search by Number" %></td>
             <td><%= text_field_tag :q, @q, class: "form-control", placeholder: "Search by Name" %></td>
-            <td><%= select_tag :vessel_id, options_from_collection_for_select(Vessel.select("*").order(:name), :id, :name, @vessel.try(:id)), class: "form-control select-select2", prompt: "By Vessel" %></td>
-            <td><%= select_tag :rank_id, options_from_collection_for_select(Rank.all, :id, :name, @rank.try(:id)), prompt: "By Rank", class: "form-control select-select2" %></td>
+            <td><%= select_tag :status, options_for_select(Crew::STATUSES, @status), prompt: "--SELECT--", class: "form-control select-select2" %></td>
+            <td><%= select_tag :vessel_id, options_from_collection_for_select(Vessel.select("*").order(:name), :id, :name, @vessel.try(:id)), class: "form-control select-select2", prompt: "--SELECT--" %></td>
+            <td><%= select_tag :rank_id, options_from_collection_for_select(Rank.all, :id, :name, @rank.try(:id)), prompt: "--SELECT--", class: "form-control select-select2" %></td>
             <td><%= submit_tag "Filter", class: "btn btn-info btn-block" %>
           <% end %>
         </tr>
@@ -34,6 +36,7 @@
         <tr>
           <td><%= crew.code_number %></td>
           <td><%= link_to "#{crew.to_s_list}", crew_path(crew) %></td>
+          <td><%= crew.status %></td>
           <td><%= crew.vessel %></td>
           <td><%= crew.rank %></td>
           <td>
