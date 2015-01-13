@@ -1,6 +1,6 @@
 class TransmittalRecordsController < ApplicationController
   def index
-    @transmittal_records = TransmittalRecord.where("status = 'pending' OR status = 'approved' OR status = 'on-transit'").order("status DESC").page(params[:page]).per(20)
+    @transmittal_records = TransmittalRecord.where("status = 'pending' OR status = 'approved' OR status = 'on-transit'").order("status DESC").order("date_of_departure DESC").page(params[:page]).per(20)
 
     if params[:vessel_id].present?
       @vessel = Vessel.find(params[:vessel_id])
@@ -18,6 +18,11 @@ class TransmittalRecordsController < ApplicationController
     end
 
     @transmittal_records = @transmittal_records.page(params[:page]).per(20)
+  end
+
+  def new_tr
+    vessel_id = Vessel.find(params[:vessel_id]).id
+    redirect_to new_transmittal_record_path(vessel_id)
   end
 
   def new
@@ -60,6 +65,7 @@ class TransmittalRecordsController < ApplicationController
 
   def edit
     @transmittal_record = TransmittalRecord.find(params[:id])
+    @vessel = @transmittal_record.vessel
   end
 
   def update

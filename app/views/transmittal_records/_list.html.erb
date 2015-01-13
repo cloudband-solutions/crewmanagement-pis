@@ -1,4 +1,23 @@
 <div class="for_non_mobile">
+  <div class="basicBoxHeader">
+    <div class="row">
+      <div class="col-md-6">
+        Transmittal Records
+      </div>
+      <div class="col-md-6">
+        <%= form_tag send("new_tr_path"), method: :post do |f| %>
+          <div class="row">
+            <div class="col-md-8">
+              <%= select_tag :vessel_id, options_from_collection_for_select(Vessel.select("*").order(:name), :id, :name), class: "form-control select-select2" %>
+            </div>
+            <div class="col-md-4">
+              <%= submit_tag "New Transmittal Record", class: "btn btn-block btn-default btn-xs" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -10,6 +29,18 @@
         <th>Number of Promotions</th>
         <th>Status</th>
         <th>Actions</th>
+      </tr>
+      <tr>
+        <%= form_tag send("transmittal_records_path"), method: :get do |f| %>
+          <td></td>
+          <td><%= select_tag :vessel_id, options_from_collection_for_select(Vessel.select("*").order(:name), :id, :name, @vessel.try(:id)), class: "form-control select-select2", prompt: "--SELECT--" %></td>
+          <td><%= select_tag :destination, options_for_select(TransmittalRecord.select(:destination).map(&:destination).uniq, @destination), prompt: "--SELECT--", class: "form-control select-select2" %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><%= select_tag :status, options_for_select(TransmittalRecord::STATUSES, @status),  prompt: "By Status", class: "form-control select-select2" %></td>
+          <td><%= submit_tag "Search", class: "btn btn-info btn-block" %></td>
+        <% end %>
       </tr>
     </thead>
     <tbody>
