@@ -178,8 +178,7 @@ class CrewsController < ApplicationController
   # Admin users can toggle the archived status of a crew via admin
   def destroy
     crew = Crew.find(params[:id])
-    crew.is_archived = true
-    crew.save!
+    crew.archive!
     flash[:success] = "Successfully archived crew record."
     redirect_to crews_path
   end

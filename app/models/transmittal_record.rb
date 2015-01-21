@@ -63,7 +63,7 @@ class TransmittalRecord < ActiveRecord::Base
         employment_record.crew_id = trdc.crew.id
         employment_record.vessel_id = self.vessel.id
         employment_record.rank_id = trdc.crew.rank.id
-        employment_record.manning_agent_id = trdc.manning_agent.id
+        employment_record.manning_agent_id = trdc.crew.manning_agent.id
         employment_record.sign_on = trdc.date_embarked
         employment_record.sign_off = trdc.sign_off
         employment_record.reason_for_disembarkation_id = trdc.reason_for_disembarkation.id

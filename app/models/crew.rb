@@ -2,7 +2,7 @@ class Crew < ActiveRecord::Base
   REPORT_TEMPLATES = ["baliwag", "misuga", "fleet_personnel", "dcm"]
   CIVIL_STATUSES = ["MARRIED", "SINGLE", "WIDOWED"]
   UNIFORM_SIZES = ["EXTRA SMALL", "SMALL", "MEDIUM", "LARGE", "EXTRA LARGE", "DOUBLE XL"]
-  STATUSES = ["ACTIVE", "INACTIVE", "DECEASED"]
+  STATUSES = ["ONBOARD", "DISEMBARKED", "INACTIVE"]
 
   has_attached_file :picture,
     styles: { thumb: "80x80#",
@@ -16,14 +16,25 @@ class Crew < ActiveRecord::Base
     default_url: "/assets/:attachment/missing_:style.png"
   validates_attachment_content_type :picture, content_type: %w(image/jpg image/jpeg image/png)
 
+  belongs_to :manning_agent
+  validates :manning_agent, presence: true
+
   belongs_to :rank
   validates :rank, presence: true
 
   belongs_to :vessel
-  validates :vessel, presence: true, if: :is_active?
+  validates :vessel, presence: true, if: :onboard?
+
+  def onboard?
+    self.status == "ONBOARD"
+  end
 
   def is_active?
-    self.status == 'ACTIVE'
+    self.status == "DISEMBARKED" or self.status == "ONBOARD"
+  end
+
+  def is_inactive?
+    self.status == "INACTIVE"
   end
 
   belongs_to :rank
@@ -76,11 +87,13 @@ class Crew < ActiveRecord::Base
 
   scope :active_by_rank, -> { includes(:rank).where("is_archived = ?", false).order("ranks.priority ASC") }
 
-  scope :active, -> { where("is_archived = ?", false) }
+  scope :active, -> { where("status = ? OR status = ?", "ONBOARD", "DISEMBARKED") }
 
-  scope :inactive, -> { where("is_archived = ? AND status = ?", false, 'INACTIVE') }
+  scope :inactive, -> { where("status = ?", 'INACTIVE') }
 
-  scope :on_board, -> { where("is_archived = ? AND status = ?", false, 'ACTIVE') }
+  scope :onboard, -> { where("status = ?", 'ONBOARD') }
+
+  scope :disembarked, -> { where("status = ?", 'DISEMBARKED') }
 
   def self.all_by_vessel(v)
     self.active_by_rank.where(vessel_id: v.id)
@@ -116,17 +129,17 @@ class Crew < ActiveRecord::Base
     end
   end
 
-  def toggle_archive
-    if self.is_archived != true
-      self.is_archived = true
+  def toggle_archive!
+    if self.is_active?
+      self.update!(status: "INACTIVE")
     else
-      self.is_archived = false
+      self.update!(status: "DISEMBARKED")
     end
   end
 
   def load_defaults
     if self.new_record?
-      self.is_archived = 'f'
+      self.status = "DISEMBARKED"
     end
 
     if self.crew_token.nil?
@@ -134,9 +147,13 @@ class Crew < ActiveRecord::Base
     end
 
     if self.vessel.nil?
-      self.status = 'INACTIVE'
+      self.status = 'DISEMBARKED'
     else
-      self.status = 'ACTIVE'
+      self.status = 'ONBOARD'
+    end
+
+    if self.status == "DISEMBARKED" and !self.vessel.nil?
+      self.vessel = nil
     end
   end
 

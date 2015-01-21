@@ -61,6 +61,7 @@ $(document).ready(function() {
   initDatePicker();
   $(document).on('nested:fieldAdded', function() {
     initDatePicker();
+    $("select.select-select2").select2();
   });
 });
 

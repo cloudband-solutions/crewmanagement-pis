@@ -1,12 +1,14 @@
-<div class="row">
-  <div class="col-md-6">
-    <h1>Edit Transmittal Record <small><%= @vessel %></small></h1>
-  </div>
-  <div class="col-md-6">
-    <div class="add_links" style="padding-top:40px;">
-      <%= link_to transmittal_records_path, class: "btn btn-default btn-xs" do %>
-        <i class="glyphicon glyphicon-folder-open"></i> Back to Database
-      <% end %>
+<div class="basicBoxHeader">
+  <div class="row">
+    <div class="col-md-6">
+      <%= @vessel %>: Edit Transmittal Record
+    </div>
+    <div class="col-md-6">
+      <div class="add_links" style="text-align: right;">
+        <%= link_to transmittal_records_path, class: "btn btn-default btn-xs" do %>
+          <i class="glyphicon glyphicon-folder-open"></i> Back to Database
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

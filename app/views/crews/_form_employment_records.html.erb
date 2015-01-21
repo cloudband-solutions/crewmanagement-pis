@@ -4,13 +4,13 @@
   <div class="well cform">
     <div class="row">
       <div class="col-md-4">
-        <%= ff.association :vessel, label: "Vessel", as: :select, collection: Vessel.select("*").order(:name) %> 
+        <%= ff.association :vessel, label: "Vessel", as: :select, collection: Vessel.select("*").order(:name), input_html: { class: "form-control select-select2" } %> 
       </div>
       <div class="col-md-4">
         <%= ff.input :other_vessel, placeholder: "Specify only if vessel not included in list." %>
       </div>
       <div class="col-md-4">
-        <%= ff.association :rank, label: "Rank"  %>
+        <%= ff.association :rank, label: "Rank", input_html: { class: "form-control select-select2" }  %>
       </div>
     </div>
     <div class="row">
@@ -34,7 +34,7 @@
         <% end %>
       </div>
       <div class="col-md-3">
-         <%= ff.association :reason_for_disembarkation, label: "Reason of Disembarkation", input_html: { class: "form-control" }, placeholder: "Enter Reason"  %>
+         <%= ff.association :reason_for_disembarkation, label: "Reason of Disembarkation", input_html: { class: "form-control select-select2" }, placeholder: "Enter Reason"  %>
       </div>
     </div> 
 
@@ -44,7 +44,7 @@
         <%= ff.input :off_numb, label: "Official Number" %>
       </div>
       <div class="col-md-4">
-        <%= ff.association :principal, as: :select, collection: Principal.select("*").order(:name), input_html: { class: "form-control" }, placeholder: "Principal" %>
+        <%= ff.association :principal, as: :select, collection: Principal.select("*").order(:name), input_html: { class: "form-control select-select2" }, placeholder: "Principal" %>
       </div>
       <div class="col-md-4">
         <%= ff.input :horse_power, label: "Horse Power" %>

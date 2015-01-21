@@ -1,15 +1,16 @@
-<div class="row">
-  <div class="col-md-6">
-    <h1>Edit Crew Record 
-    <%= link_to crew_path(@crew), class: "btn btn-default btn-xs" do %>
-      <i class="glyphicon glyphicon-user"></i> Go to Profile
-    <% end %>
-    </h1>
-  </div>
-  <div class="col-md-6 add_links d">
-    <%= button_tag class: "btn btn-primary btn-lg", id: "submitButton" do %>
-      <i class="glyphicon glyphicon-ok"></i> Save Record
-    <% end %>
+<div class="basicBoxHeader">
+  <div class="row">
+    <div class="col-md-6">
+      Edit Crew Record 
+    </div>
+    <div class="col-md-6 add_links d">
+      <%= link_to crew_path(@crew), class: "btn btn-default btn-xs" do %>
+        <i class="glyphicon glyphicon-user"></i> Go to Profile
+      <% end %>
+      <%= button_tag class: "btn btn-primary btn-xs", id: "submitButton" do %>
+        <i class="glyphicon glyphicon-ok"></i> Save Record
+      <% end %>
+    </div>
   </div>
 </div>
 <%= render partial: "crews/form", locals: { crew: @crew } %>

@@ -79,13 +79,6 @@ class TransmittalRecordsController < ApplicationController
     end
   end
 
-  def transit
-    @transmittal_record = TransmittalRecord.find(params[:id])
-    @transmittal_record.transit!
-    flash[:success] = "Successfully set transmittal record to on-transit"
-    redirect_to transmittal_records_path
-  end
-
   def approve
     @transmittal_record = TransmittalRecord.find(params[:id])
     @transmittal_record.approve!

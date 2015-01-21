@@ -6,8 +6,9 @@
       </div>
     </div>
     <div class="col-md-4">
-      <h3><%= @crew %> <small><%= @crew.code_number %></small></h3>
-      <h4><%= @crew.rank %> <small><%= @crew.status %></small></h4>
+      <h4><%= @crew.to_s_list %> <small><%= @crew.code_number %></small></h4>
+      <h4><%= @crew.rank %> <small><%= @crew.status == 'ONBOARD' ? "#{@crew.status} - #{@crew.vessel}" : @crew.status %></small></h4>
+      <h5><%= @crew.manning_agent %></h5>
       <div class="">
         <%= link_to edit_crew_path(@crew), class: "btn btn-xs btn-default" do %>
           <i class="glyphicon glyphicon-pencil"></i> Edit

@@ -5,10 +5,10 @@
     <div class="well cform">
       <div class="row">
         <div class="col-md-3">
-          <%= ff.association :certificate_type %>
+          <%= ff.association :certificate_type, input_html: { class: "form-control select-select" } %>
         </div>
         <div class="col-md-3">
-          <%= ff.association :certificate_category %>
+          <%= ff.association :certificate_category, input_html: { class: "form-control select-select2" } %>
         </div>
         <div class="col-md-3">
           <%= ff.input :certificate_number %>

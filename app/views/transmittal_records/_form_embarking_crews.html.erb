@@ -5,7 +5,7 @@
   </tr>
   <%= f.simple_fields_for :transmittal_record_embarking_crews, wrapper: false do |ff| %>
     <tr class="fields">
-      <td><%= ff.association :crew, as: :select, collection: Crew.inactive, input_html: { class: 'form-control select-select2' }, label: false %></td>
+      <td><%= ff.association :crew, as: :select, collection: Crew.disembarked, input_html: { class: 'form-control select-select2' }, label: false %></td>
       <td><%= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" }, label: false %></td>
     </tr>
   <% end %>

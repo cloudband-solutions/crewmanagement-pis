@@ -197,8 +197,7 @@ ActiveAdmin.register Crew do
 
   member_action :toggle_archived, method: :put do
     crew = Crew.find(params[:id])
-    crew.toggle_archive
-    crew.save!
+    crew.toggle_archive!
     message = crew.is_archived ? "Crew #{crew.code_number} is archived" : "Crew #{crew.code_number} is unarchived"
     redirect_to action: :index, notice: message
   end
