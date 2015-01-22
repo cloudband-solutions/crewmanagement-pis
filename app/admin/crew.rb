@@ -10,6 +10,7 @@ ActiveAdmin.register Crew do
   filter :firstname
   filter :lastname
   filter :code_number
+  filter :status, as: :select, collection: Crew::STATUSES
   filter :rank
   filter :vessel
 
@@ -18,6 +19,7 @@ ActiveAdmin.register Crew do
     column :name do |crew|
       "#{crew.to_s_list} (#{crew.code_number})"
     end
+    column :status
     column :token do |crew|
       crew.crew_token
     end
@@ -35,6 +37,7 @@ ActiveAdmin.register Crew do
       f.input :middlename, label: "Middle Name"
       f.input :lastname, label: "Last Name"
       f.input :code_number, label: "Code Number"
+      f.input :status
       f.input :date_employed, label: "Date Employed"
       f.input :rank, label: "Current Rank"
       f.input :vessel, label: "Vessel Assigned"
@@ -194,8 +197,7 @@ ActiveAdmin.register Crew do
 
   member_action :toggle_archived, method: :put do
     crew = Crew.find(params[:id])
-    crew.toggle_archive
-    crew.save!
+    crew.toggle_archive!
     message = crew.is_archived ? "Crew #{crew.code_number} is archived" : "Crew #{crew.code_number} is unarchived"
     redirect_to action: :index, notice: message
   end

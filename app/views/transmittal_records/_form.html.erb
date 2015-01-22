@@ -1,24 +1,27 @@
 <%= simple_nested_form_for transmittal_record, defaults: { wrapper_html: {  class: 'form-group' }, input_html: { class: 'form-group' }, input_html: { class: 'form-control' } }, html: { novalidate: true } do |f| %>
 
   <%= render partial: "transmittal_records/form_general", locals: { f: f } %>
-  <div class="row well">
-    <h3>Crew for Promotion</h3>
-    <%= render partial: "transmittal_records/form_crew_promotions", locals: { f: f } %>
-  </div>
-
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <h3>Embarking Crew</h3>
       <%= render partial: "transmittal_records/form_embarking_crews", locals: { f: f } %>
     </div>
   </div>
+  <hr>
   <div class="row">
     <div class="col-md-12">
       <h3>Disembarking Crew</h3>
       <%= render partial: "transmittal_records/form_disembarking_crews", locals: { f: f } %>
     </div>
   </div>
-  
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Crew for Promotion</h3>
+      <%= render partial: "transmittal_records/form_crew_promotions", locals: { f: f } %>
+    </div>
+  </div>
+  <hr>
   <div class="row wells">
     <div class="col-md-12">
       <div class="form-actions">
@@ -29,10 +32,27 @@
 <% end %>
 
 <script>
+var disembarkingCrews = [];
+
 $(document).ready(function() {
   initDatePicker();
-  $(document).on('nested:fieldAdded', function() {
+  $(document).on('nested:fieldAdded', function(event) {
     initDatePicker();
+
+    var field = event.field;
+    var selectField = field.find('.select-select2');
+    selectField.select2();
+
+  });
+
+  $('select#vessel').change(function() {
+    var vessel_id = $('option:selected', this).val(); 
+    console.log(vessel_id);
+
+    $.ajax({
+      url: "/internal/vessels/" + vessel_id + "/crews"
+    }).done(function(data) {
+    });
   });
 });
 </script>

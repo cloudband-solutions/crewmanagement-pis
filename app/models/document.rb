@@ -17,7 +17,7 @@ class Document < ActiveRecord::Base
   validates :expiry_date, presence: true, if: :not_reverting?
 
   def to_s
-    name
+    doc_number
   end
 
   def reverting?

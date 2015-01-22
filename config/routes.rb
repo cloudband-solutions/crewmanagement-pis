@@ -30,6 +30,11 @@ BaliwagIs::Application.routes.draw do
     get "/crew_count_by_rank", to: "dashboard#crew_count_by_rank", as: :crew_count_by_rank
   end
 
+  namespace :internal do
+    get "/vessels/:vessel_id/crews", to: "vessels#crews", as: :vessel_crews
+    get "/crews/:id", to: "crews#show", as: :crew
+  end
+
   resources :documents
 
   get "/reports/crews", to: "crews#reports", as: :crews_reports
@@ -41,7 +46,11 @@ BaliwagIs::Application.routes.draw do
   get "/reports/download_crew_manifest", to: "reports#download_crew_manifest", as: :reports_download_crew_manifest
 
   resources :principals, only: [:index, :show]
-  resources :transmittal_records
+
+  resources :transmittal_records, except: [:new]
+  get "/transmittal_records/:vessel_id/new", to: "transmittal_records#new", as: :new_transmittal_record
+  post "/transmittal_records/new", to: "transmittal_records#new_tr", as: :new_tr
+
   post "/transmittal_records/:id/approve", to: "transmittal_records#approve", as: :transmittal_record_approve
   post "/transmittal_records/:id/transit", to: "transmittal_records#transit", as: :transmittal_record_transit
 end

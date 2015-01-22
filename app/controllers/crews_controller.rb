@@ -115,6 +115,16 @@ class CrewsController < ApplicationController
       end
     end
 
+    if params[:status].present?
+      @status = params[:status]
+      @crews = @crews.where("crews.status = ?", @status)
+    end
+
+    if params[:code_number].present?
+      @code_number = params[:code_number]
+      @crews = @crews.where("crews.code_number LIKE :q", q: "%#{@code_number}%")
+    end
+
     if params[:vessel_id].present?
       @vessel = Vessel.find(params[:vessel_id])
       @crews = @crews.where("crews.vessel_id = ?", @vessel.id)
@@ -168,8 +178,7 @@ class CrewsController < ApplicationController
   # Admin users can toggle the archived status of a crew via admin
   def destroy
     crew = Crew.find(params[:id])
-    crew.is_archived = true
-    crew.save!
+    crew.archive!
     flash[:success] = "Successfully archived crew record."
     redirect_to crews_path
   end

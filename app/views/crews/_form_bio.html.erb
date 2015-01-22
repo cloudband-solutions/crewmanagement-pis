@@ -17,7 +17,7 @@
           <%= f.association :vessel, label: "Vessel Assigned", input_html: { class: "form-control select-select2" }, as: :select, collection: Vessel.active, include_blank: "NONE" %>
         </div>
         <div class="col-md-3">
-          <%= f.input :status, as: :select, collection: Crew::STATUSES %>
+          <%= f.association :manning_agent, label: "Current Manning Agent", input_html: { class: "form-control select-select2" }, as: :select, collection: ManningAgent.all, include_blank: "NONE" %>
         </div>
         <div class="col-md-3">
           <% if f.object.sign_on.nil? %>

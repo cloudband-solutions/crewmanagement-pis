@@ -10,7 +10,7 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-8">
-          <h3><%= crew %> <small><%= crew.code_number %></small></h3>
+          <h3><%= crew.to_s_list %> <small><%= crew.code_number %></small></h3>
           <h4><%= crew.rank %></h4>
           <div class="">
             <%= link_to edit_crew_path(crew), class: "btn btn-xs btn-default" do %>
@@ -44,7 +44,7 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-8">
-          <h3><%= crew %> <small><%= crew.code_number %></small></h3>
+          <h3><%= crew.to_s_list %> <small><%= crew.code_number %></small></h3>
           <h4><%= crew.rank %></h4>
           <div class="">
             <%= link_to edit_crew_path(crew), class: "btn btn-xs btn-default" do %>

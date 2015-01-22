@@ -18,24 +18,19 @@
           <% end %>
       </li>
       <!-- DROPDOWN -->
-      <li class="dropdown">
-      <%= link_to "#", :class => "dropdown-toggle", "data-toggle" => "dropdown" do %>
-          <span class="glyphicon glyphicon-user"></span> CREW LIST <b class="caret"></b>
-      <% end %>
-        <ul class="dropdown-menu">
-          <li>
-            <%= link_to crews_path do%>
-              <span class="glyphicon glyphicon-chevron-right"></span> Active Crew
-            <% end %>
-          </li>
 
-           <li>
-            <%= link_to crews_advanced_search_path do%>
-              <span class="glyphicon glyphicon-chevron-right"></span> Advanced Search
-            <% end %>
-          </li>
-        </ul>
+      <li class="<%= params[:controller] == 'crews' ? 'active' : '' %>"> 
+         <%= link_to crews_path do %>
+            <span class="glyphicon glyphicon-user"></span> CREW LIST
+          <% end %>
       </li>
+
+      <li class="<%= params[:controller] == 'crews' ? 'active' : '' %>"> 
+         <%= link_to crews_advanced_search_path do %>
+            <span class="glyphicon glyphicon-search"></span> ADVANCED SEARCH
+          <% end %>
+      </li>
+  
       <li class="<%= params[:controller] == 'vessels' ? 'active' : '' %>"> 
          <%= link_to vessels_path do %>
             <span class="icon-flag"></span> VESSELS
@@ -46,26 +41,18 @@
             <span class="icon-user"></span> PRINCIPAL
           <% end %>
       </li>
-
        <li class="<%= params[:controller] == 'transmittal_records' ? 'active' : '' %>"> 
          <%= link_to transmittal_records_path do %>
             <span class="glyphicon glyphicon-list-alt"></span> TRANSMITTAL RECORDS
           <% end %>
-      </li>
+        </li>
 
-      <li class="dropdown">
-      <%= link_to "#", :class => "dropdown-toggle", "data-toggle" => "dropdown" do %>
-           <span class="icon-copy"></span> REPORTS <b class="caret"></b>
-      <% end %>
+       <li class="<%= params[:controller] == 'reports' ? 'active' : '' %>"> 
+         <%= link_to reports_crew_manifest_path do %>
+            <span class="icon-copy"></span> CREW MANIFEST
+          <% end %>
+       </li>
 
-        <ul class="dropdown-menu">
-          <li>
-            <%= link_to reports_crew_manifest_path do%>
-              <span class="glyphicon glyphicon-chevron-right"></span> Crew Manifest
-            <% end %>
-          </li>
-        </ul>
-      </li>
     </ul> 
     <div class="navbar-form navbar-right">
       <!--<b class="logged-in" style="color:white;">Logged in as:</b> <span class="login-text"><%= current_user.email %></span>-->

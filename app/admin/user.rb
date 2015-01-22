@@ -10,7 +10,6 @@ ActiveAdmin.register User do
 
   index do
     selectable_column
-    id_column
     column :email
     column :name do |user|
       user
@@ -18,8 +17,8 @@ ActiveAdmin.register User do
     column :access_token
     column :current_sign_in_at
     column :sign_in_count
-    column :created_at
     column :user_type
+    column :principal
     actions
   end
 
@@ -38,6 +37,7 @@ ActiveAdmin.register User do
       f.input :password
       f.input :password_confirmation
       f.input :user_type, as: :select, collection: User::USER_TYPES
+      f.input :principal
     end
     f.actions
   end

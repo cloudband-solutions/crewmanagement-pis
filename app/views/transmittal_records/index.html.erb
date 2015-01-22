@@ -1,13 +1,3 @@
-<div class="row new_transmittal">
-  <div class="col-md-3 newt" style="padding-top: 15px;">
-    <%= link_to new_transmittal_record_path, class: "btn btn-primary btn-lg btn-block" do %>
-      <span class="glyphicon glyphicon-folder-close"></span> New Transmittal Record
-    <% end %>
-  </div>
-  <div class="col-md-9 search_trans">
-    <%= render partial: "transmittal_records/search_tool" %>
-  </div>
-</div>
 <div class="row">
   <div class="col-md-12 tlists">
     <%= render partial: "transmittal_records/list", locals: { transmittal_records: @transmittal_records } %>

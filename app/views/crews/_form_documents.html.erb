@@ -5,7 +5,7 @@
     <div class="well cform">
       <div class="row">
         <div class="col-md-4">
-          <%= ff.association :document_kind %>
+          <%= ff.association :document_kind, input_html: { class: "form-control select-select2" }%>
         </div>
         <div class="col-md-4">
           <%= ff.input :doc_number, label: "Document Number", input_html: { class: "form-control" }, placeholder: "Enter Document Number" %>

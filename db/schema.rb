@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202090623) do
+ActiveRecord::Schema.define(version: 20150122035420) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -168,7 +168,6 @@ ActiveRecord::Schema.define(version: 20141202090623) do
     t.string   "pagibig_number"
     t.string   "philhealth_number"
     t.string   "distinguishing_marks"
-    t.boolean  "is_archived"
     t.date     "sign_on"
     t.date     "date_of_promotion"
     t.string   "city_address"
@@ -183,6 +182,7 @@ ActiveRecord::Schema.define(version: 20141202090623) do
     t.string   "blood_pressure"
     t.string   "status"
     t.string   "crew_token"
+    t.integer  "manning_agent_id"
   end
 
   create_table "document_kinds", force: true do |t|
@@ -386,6 +386,13 @@ ActiveRecord::Schema.define(version: 20141202090623) do
     t.date     "sign_off"
   end
 
+  create_table "transmittal_record_document_kinds", id: false, force: true do |t|
+    t.integer "transmittal_record_id"
+    t.integer "document_kind_id"
+  end
+
+  add_index "transmittal_record_document_kinds", ["transmittal_record_id", "document_kind_id"], name: "tr_dk_index", unique: true
+
   create_table "transmittal_record_embarking_crews", force: true do |t|
     t.integer  "transmittal_record_id"
     t.integer  "crew_id"
@@ -437,6 +444,7 @@ ActiveRecord::Schema.define(version: 20141202090623) do
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
+    t.integer  "principal_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

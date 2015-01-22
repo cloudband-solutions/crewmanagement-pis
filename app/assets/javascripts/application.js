@@ -19,7 +19,7 @@
 //= require select2
 //= require_tree .
 
-$(document).ready(function() {
+$(document).on("ready page:load", function() {
   $(".select-select2").select2();
 });
 
@@ -27,4 +27,4 @@ var initDatePicker = function() {
   $(".datepick").datepicker({ dateFormat: "dd-MM-yy" });
 };
 
-
+initDatePicker();

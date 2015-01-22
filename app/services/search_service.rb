@@ -8,6 +8,10 @@ class SearchService
       end
     end
 
+    if !query[:status].blank? && !crews.blank?
+      crews = crews.where("crews.status = ?", query[:status])
+    end
+
     if !query[:school].blank? && !crews.blank?
       crews = crews.joins(:educational_attainments).where("educational_attainments.school = ?", query[:school])
     end

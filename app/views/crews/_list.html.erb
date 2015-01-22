@@ -1,19 +1,42 @@
 <div class="for_non_mobile">
-  <span class="tccounts">Total Crew Count: <%= Crew.count %></span>
+    <div class="basicBoxHeader">
+      <div class="row">
+        <div class="col-md-6">
+          Active Crew
+        </div>
+        <div class="col-md-6">
+          <%= link_to new_crew_path, class: "btn btn-default btn-xs", style: "float: right;" do %>
+            <span class="glyphicon glyphicon-plus"></span> New Crew Record
+          <% end %>
+        </div>
+      </div>
+    </div>
     <table class="table table-bordered">
       <thead>
         <tr>
           <th>NUMBER</th>
           <th>NAME</th>
+          <th>STATUS</th>
           <th>VESSEL</th>
           <th>RANK</th>
           <th>ACTIONS</th>
+        </tr>
+        <tr>
+          <%= form_tag send("crews_path"), method: :get do |f| %>
+            <td><%= text_field_tag :code_number, @code_number, class: "form-control", placeholder: "Search by Number" %></td>
+            <td><%= text_field_tag :q, @q, class: "form-control", placeholder: "Search by Name" %></td>
+            <td><%= select_tag :status, options_for_select(Crew::STATUSES, @status), prompt: "--SELECT--", class: "form-control select-select2" %></td>
+            <td><%= select_tag :vessel_id, options_from_collection_for_select(Vessel.select("*").order(:name), :id, :name, @vessel.try(:id)), class: "form-control select-select2", prompt: "--SELECT--" %></td>
+            <td><%= select_tag :rank_id, options_from_collection_for_select(Rank.all, :id, :name, @rank.try(:id)), prompt: "--SELECT--", class: "form-control select-select2" %></td>
+            <td><%= submit_tag "Filter", class: "btn btn-info btn-block" %>
+          <% end %>
         </tr>
       </thead>
       <% crews.each do |crew| %>
         <tr>
           <td><%= crew.code_number %></td>
           <td><%= link_to "#{crew.to_s_list}", crew_path(crew) %></td>
+          <td><%= crew.status %></td>
           <td><%= crew.vessel %></td>
           <td><%= crew.rank %></td>
           <td>
