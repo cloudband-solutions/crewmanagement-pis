@@ -36,13 +36,9 @@ ActiveAdmin.register TransmittalRecord do
 			f.input :prepared_on
 			f.has_many :transmittal_record_embarking_crews do |ff|
 				ff.input :crew
-				ff.input :rank
-				ff.input :manning_agent
 			end
 			f.has_many :transmittal_record_disembarking_crews do |ff|
 				ff.input :crew
-				ff.input :rank
-				ff.input :manning_agent
 				ff.input :date_embarked, as: :datepicker
 				ff.input :reason_for_disembarkation
 			end

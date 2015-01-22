@@ -79,13 +79,12 @@ class Crew < ActiveRecord::Base
   validates :address, presence: true
   validates :civil_status, presence: true, inclusion: { in: Crew::CIVIL_STATUSES }
   validates :nationality, presence: true
-  validates :is_archived, inclusion: { in: [true, false] }
   validates :status, presence: true, inclusion: { in: Crew::STATUSES }  
   validates :crew_token, presence: true, uniqueness: true
 
   before_validation :load_defaults
 
-  scope :active_by_rank, -> { includes(:rank).where("is_archived = ?", false).order("ranks.priority ASC") }
+  scope :active_by_rank, -> { includes(:rank).order("ranks.priority ASC") }
 
   scope :active, -> { where("status = ? OR status = ?", "ONBOARD", "DISEMBARKED") }
 
