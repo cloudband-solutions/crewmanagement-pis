@@ -13,42 +13,42 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav my_nav">
       <li class="<%= params[:controller] == 'pages' && params[:action] ? 'active' : '' %>">
-          <%= link_to root_path do %>
+          <%= link_to root_path, class: "#{ params[:controller] == 'pages' and params[:action] ? 'active' : '' }" do %>
             <span class="glyphicon glyphicon-home"></span> DASHBOARD
           <% end %>
       </li>
       <!-- DROPDOWN -->
 
-      <li class="<%= params[:controller] == 'crews' ? 'active' : '' %>"> 
-         <%= link_to crews_path do %>
+      <li class="<%= params[:controller] == 'crews' and params[:action] == 'index' ? 'active' : '' %>"> 
+         <%= link_to crews_path, class: "#{ params[:controller] == 'crews' and params[:action] == 'index' ? 'active' : ''}" do %>
             <span class="glyphicon glyphicon-user"></span> CREW LIST
           <% end %>
       </li>
 
-      <li class="<%= params[:controller] == 'crews' ? 'active' : '' %>"> 
-         <%= link_to crews_advanced_search_path do %>
+      <li class="<%= params[:controller] == 'crews' and params[:action] == 'advanced_search' ? 'active' : '' %>"> 
+         <%= link_to crews_advanced_search_path, class: "#{ params[:controller] == 'crews' and params[:action] == 'advanced_search' ? 'active' : '' }" do %>
             <span class="glyphicon glyphicon-search"></span> ADVANCED SEARCH
           <% end %>
       </li>
   
       <li class="<%= params[:controller] == 'vessels' ? 'active' : '' %>"> 
-         <%= link_to vessels_path do %>
+         <%= link_to vessels_path, class: "#{params[:controller] == 'vessels' ? 'active' : ''}" do %>
             <span class="icon-flag"></span> VESSELS
           <% end %>
       </li>
       <li class="<%= params[:controller] == 'principals' ? 'active' : '' %>"> 
-         <%= link_to principals_path do %>
+         <%= link_to principals_path, class: "#{params[:controller] == 'principals' ? 'active' : '' }" do %>
             <span class="icon-user"></span> PRINCIPAL
           <% end %>
       </li>
        <li class="<%= params[:controller] == 'transmittal_records' ? 'active' : '' %>"> 
-         <%= link_to transmittal_records_path do %>
+         <%= link_to transmittal_records_path, class: "#{params[:controller] == 'transmittal_records' ? 'active' : '' }" do %>
             <span class="glyphicon glyphicon-list-alt"></span> TRANSMITTAL RECORDS
           <% end %>
         </li>
 
        <li class="<%= params[:controller] == 'reports' ? 'active' : '' %>"> 
-         <%= link_to reports_crew_manifest_path do %>
+         <%= link_to reports_crew_manifest_path, class: "#{params[:controller] == 'reports' ? 'active' : ''}" do %>
             <span class="icon-copy"></span> CREW MANIFEST
           <% end %>
        </li>
