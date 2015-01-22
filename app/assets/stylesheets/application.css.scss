@@ -17,7 +17,8 @@
  *= require jquery-ui
  *= require select2
  *= require reports
-  *= require icomoon-free/style
+ *= require icomoon-free/style
+ *= require dashboard
  */
 
 @import "bootstrap-sprockets";
@@ -42,6 +43,7 @@ h1,h2,h3,h4 {
 
 .add_links {
   text-align: right;
+
 }
 
 #main {

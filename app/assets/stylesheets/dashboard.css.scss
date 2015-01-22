@@ -1,0 +1,38 @@
+#latest_crew {
+
+  color: white;
+  .lcdash {
+    background-color: #2ecc71;
+    padding: 20px;
+    padding-right: 0;
+    margin-top: -1.4%;
+  }
+
+  h4 {
+   
+  }
+
+  .cname {
+    font-size: 1.2em;
+    font-weight: bold;
+     background-color: rgba(0,0,0, 0.4);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+    padding: 8px;
+    
+  }
+
+  .info {
+    padding-left: 50px;
+
+  }
+
+  .rank {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: -8%;
+  }
+
+
+
+}
