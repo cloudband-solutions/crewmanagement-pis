@@ -6,6 +6,8 @@ class PagesController < ApplicationController
     @crew_updated = Crew.active.order("crews.updated_at").last
     @transmittal_pending_records = TransmittalRecord.where(status: "pending").order(:prepared_on).limit(5)
     @transmittal_ontransit_records = TransmittalRecord.where(status: "on-transit").order(:prepared_on).limit(5)
+
+    @crews = Crew.all
   end
   
 end

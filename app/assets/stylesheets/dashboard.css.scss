@@ -1,17 +1,14 @@
 #latest_crew {
-
+  margin-top: 3%;
   color: white;
+
   .lcdash {
-    background-color: #2ecc71;
+    background-color: #446CB3;
     padding: 20px;
     padding-right: 0;
+    padding-top: 10px;
     margin-top: -1.4%;
   }
-
-  h4 {
-   
-  }
-
   .cname {
     font-size: 1.2em;
     font-weight: bold;
@@ -19,12 +16,13 @@
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
     padding: 8px;
-    
+    padding-right: 0;
+
   }
 
   .info {
     padding-left: 50px;
-
+    padding-right: 0;
   }
 
   .rank {
@@ -33,6 +31,159 @@
     margin-top: -8%;
   }
 
+}
+
+.onboard_s {
+  background-color: #27ae60;
+  padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 30px;
 
 
+  .count {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    padding-left: 41px;
+  }
+
+  .title {
+    font-size: 1.3em;
+    color: white;
+
+  }
+
+  .icon-support {
+    font-size: 5em;
+    color: white;
+
+  }
+
+
+}
+
+.disem_s {
+  background-color: #F22613;
+  padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+
+   .count {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    padding-left: 41px;
+  }
+
+  .title {
+    font-size: 1.3em;
+    color: white;
+
+  }
+
+  .glyphicon-user {
+    font-size: 5em;
+    color: white;
+    padding-bottom: 30px;
+  }
+
+}
+
+.inac_s {
+  background-color: #c0392b;
+  padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 30px;
+
+   .count {
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    padding-left: 41px;
+  }
+
+  .title {
+    font-size: 1.3em;
+    color: white;
+
+  }
+
+  .glyphicon-remove {
+    font-size: 5em;
+    color: white;
+    padding-bottom: 30px;
+  }
+
+}
+
+
+.view_more {
+    background-color: rgba(0,0,0, 0.4);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+    padding: 10px;
+    margin-top: -10.5%;
+    text-align: center;
+    color: white;
+
+    a {
+      text-decoration: none;  
+      color: white;
+    }
+
+    a:hover {
+      color: #e2e2e2;
+    }
+  }
+
+
+
+.crew_count {
+  h4 {
+    background-color: #34495e;
+    padding: 10px;
+    color: white;
+  }
+
+  .pp {
+    margin-top: -2%;
+  }
+}
+
+.row {
+  margin: 0;
+}
+
+
+.status {
+  .col-md-4:hover {
+    .icon-support {
+      font-size: 5.1em;
+    }
+    .glyphicon-user {
+    font-size: 5.1em;
+   }
+  .glyphicon-remove {
+    font-size: 5.1em;
+  }
+
+  }
+}
+
+.listHeader {
+  background-color: #F7F6F2;
+  width: auto;
+  padding: 10px;
+  font-weight: bold;
+  margin-top: 15px;
+  padding-left: 0;
+  border-top: 1px solid #e2e2e2;
+  border-left: 1px solid #e2e2e2;
+  border-right: 1px solid #e2e2e2;
+}
+
+.basicBox {
+  border: 1px solid #e2e2e2;
+  padding: 10px;
+  margin-bottom: 10px;
 }

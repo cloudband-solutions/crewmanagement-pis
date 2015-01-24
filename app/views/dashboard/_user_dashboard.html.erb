@@ -1,30 +1,40 @@
-<div class="row">
-  <div class="col-md-12">
-    <%= render partial: "dashboard/user_dashboard_add_links" %>
+<div class="dashboard">
+  <div class="row listHeader">
+    <div class="col-md-6">DASHBOARD</div>
+    <div class="col-md-6"><%= render partial: "dashboard/user_dashboard_add_links" %> </div>
   </div>
-</div>
-<div class="row latest_crew">
-  <div class="col-md-6">
-    <%= render partial: "dashboard/latest_crew", locals: { crew: @crew_added } %>
-  </div>
-  <div class="col-md-6">
-    <%= render partial: "dashboard/latest_updated_crew", locals: { crew: @crew_updated } %>
-  </div>
-</div>
-<div class="transmittal_record_status">
-  <div class="row">
-    <div class="col-md-12">
-      <%= render partial: "dashboard/transmittal_records_pending", locals: { transmittal_records: @transmittal_pending_records } %>
+  <div class="basicBox">
+    <div class="row">
+      <div class="status">
+       <%= render partial: "dashboard/status" %>
+      </div>
+    </div>
+    <div class="row">
+     <div class="col-md-6">
+       <%= render partial: "dashboard/latest_crew", locals: { crew: @crew_added } %>
+     </div>
+      <div class="col-md-6">
+       <%= render partial: "dashboard/latest_updated_crew", locals: { crew: @crew_updated } %>
+      </div>
+    </div>
+
+    <div class="transmittal_record_status">
+      <div class="row">
+        <div class="col-md-12">
+          <%= render partial: "dashboard/transmittal_records_pending", locals: { transmittal_records: @transmittal_pending_records } %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <%= render partial: "dashboard/crews_by_vessel" %>
+      </div>
+      <div class="col-md-6">
+        <%= render partial: "dashboard/crews_by_rank" %>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-6">
-    <%= render partial: "dashboard/crews_by_vessel" %>
-  </div>
-  <div class="col-md-6">
-    <%= render partial: "dashboard/crews_by_rank" %>
-  </div>
-</div>
 
