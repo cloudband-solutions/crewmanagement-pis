@@ -2,7 +2,7 @@
   <div class="row onboard_s"> 
     <div class="col-md-8">
       <div class="count"><%= @crews.where(status: "ONBOARD").count %></div>
-      <div class="title">Onboard Crews</div>
+      <div class="title">Onboard Crew</div>
     </div>
     <div class="col-md-4">
      <span class="icon-support"></span>
@@ -21,7 +21,7 @@
   <div class="row disem_s"> 
     <div class="col-md-8">
       <div class="count"><%= @crews.where(status: "DISEMBARKED").count %></div>
-      <div class="title">Disembarked Crews</div>
+      <div class="title">Disembarked Crew</div>
     </div>
     <div class="col-md-4">
      <span class="glyphicon glyphicon-user"></span>
