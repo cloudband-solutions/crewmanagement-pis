@@ -1,57 +1,121 @@
-<div class="col-md-4">
-  <div class="row onboard_s"> 
-    <div class="col-md-8">
-      <div class="count"><%= @crews.where(status: "ONBOARD").count %></div>
-      <div class="title">Onboard Crews</div>
+<div class="for_non_mobile">
+  <div class="col-md-4">
+    <div class="row onboard_s"> 
+      <div class="col-md-8">
+        <div class="count"><%= @crews.where(status: "ONBOARD").count %></div>
+        <div class="title">Onboard Crews</div>
+      </div>
+      <div class="col-md-4">
+       <span class="icon-support"></span>
+      </div>
     </div>
-    <div class="col-md-4">
-     <span class="icon-support"></span>
-    </div>
-  </div>
-  <div class="row">
-    <div class="view_more"> 
-      <%= link_to crews_path do %>
-      View Crew List <span class="glyphicon glyphicon-arrow-right"></span>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<div class="col-md-4">
-  <div class="row disem_s"> 
-    <div class="col-md-8">
-      <div class="count"><%= @crews.where(status: "DISEMBARKED").count %></div>
-      <div class="title">Disembarked Crews</div>
-    </div>
-    <div class="col-md-4">
-     <span class="glyphicon glyphicon-user"></span>
-    </div>
-  </div>
-  <div class="row">
-    <div class="view_more"> 
-      <%= link_to crews_path do %>
-      View Crew List <span class="glyphicon glyphicon-arrow-right"></span>
-      <% end %>
-   </div>
-  </div>
-</div>
-
- <div class="col-md-4">
-  <div class="row inac_s"> 
-    <div class="col-md-8">
-      <div class="count"><%= @crews.where(status: "INACTIVE").count %></div>
-      <div class="title">Inactive Crews</div>
-    </div>
-    <div class="col-md-4">
-     <span class="glyphicon glyphicon-remove"></span>
-    </div>
-  </div>
-  <div class="row">
-     <div class="view_more"> 
+    <div class="row">
+      <div class="view_more"> 
         <%= link_to crews_path do %>
         View Crew List <span class="glyphicon glyphicon-arrow-right"></span>
         <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="row disem_s"> 
+      <div class="col-md-8">
+        <div class="count"><%= @crews.where(status: "DISEMBARKED").count %></div>
+        <div class="title">Disembarked Crews</div>
+      </div>
+      <div class="col-md-4">
+       <span class="glyphicon glyphicon-user"></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="view_more"> 
+        <%= link_to crews_path do %>
+        View Crew List <span class="glyphicon glyphicon-arrow-right"></span>
+        <% end %>
+     </div>
+    </div>
+  </div>
+
+   <div class="col-md-4">
+    <div class="row inac_s"> 
+      <div class="col-md-8">
+        <div class="count"><%= @crews.where(status: "INACTIVE").count %></div>
+        <div class="title">Inactive Crews</div>
+      </div>
+      <div class="col-md-4">
+       <span class="glyphicon glyphicon-remove"></span>
+      </div>
+    </div>
+    <div class="row">
+       <div class="view_more"> 
+          <%= link_to crews_path do %>
+          View Crew List <span class="glyphicon glyphicon-arrow-right"></span>
+          <% end %>
+      </div>
     </div>
   </div>
 </div>
+
+<div class="for_mobile">
+  <div class="col-md-4">
+    <div class="row onboard_s"> 
+      <div class="col-md-8">
+        <div class="count"><%= @crews.where(status: "ONBOARD").count %></div>
+        <div class="title">Onboard Crews</div>
+      </div>
+      <div class="col-md-4">
+       <span class="icon-support"></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="view_more"> 
+        <%= link_to crews_path do %>
+        View Crew List <span class="glyphicon glyphicon-arrow-right"></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="row disem_s"> 
+      <div class="col-md-8">
+        <div class="count"><%= @crews.where(status: "DISEMBARKED").count %></div>
+        <div class="title">Disembarked Crews</div>
+      </div>
+      <div class="col-md-4">
+       <span class="glyphicon glyphicon-user"></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="view_more"> 
+        <%= link_to crews_path do %>
+        View Crew List <span class="glyphicon glyphicon-arrow-right"></span>
+        <% end %>
+     </div>
+    </div>
+  </div>
+
+   <div class="col-md-4">
+    <div class="row inac_s"> 
+      <div class="col-md-8">
+        <div class="count"><%= @crews.where(status: "INACTIVE").count %></div>
+        <div class="title">Inactive Crews</div>
+      </div>
+      <div class="col-md-4">
+       <span class="glyphicon glyphicon-remove"></span>
+      </div>
+    </div>
+    <div class="row">
+       <div class="view_more"> 
+          <%= link_to crews_path do %>
+          View Crew List <span class="glyphicon glyphicon-arrow-right"></span>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 

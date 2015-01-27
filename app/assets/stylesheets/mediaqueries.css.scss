@@ -69,3 +69,14 @@
     width: auto;
   }
 }
+
+
+@media only screen and (min-device-width : 760px) and (max-device-width: 1160px) {
+  .navs {
+    display: none;
+  }
+
+  .dropdown .drop_nav {
+    display: block;
+  }
+}
