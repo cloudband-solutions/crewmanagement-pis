@@ -70,7 +70,7 @@ class TransmittalRecord < ActiveRecord::Base
         employment_record.save!
 
         # inactivate this crew
-        trdc.crew.update!(vessel: nil)
+        trdc.crew.update!(vessel: nil, sign_on: trdc.date_embarked, date_of_promotion: nil)
       end
 
       self.transmittal_record_embarking_crews.each do |trec|
@@ -80,11 +80,10 @@ class TransmittalRecord < ActiveRecord::Base
 
       self.transmittal_record_crew_promotions.each do |trcp|
         # promote this crew
-        trcp.crew.update!(rank: trcp.to_rank)
+        trcp.crew.update!(rank: trcp.to_rank, date_of_promotion: Time.now)
       end
 
-      self.status = "approved"
-      self.save!
+      self.update!(status: "approved")
     end
   end
 

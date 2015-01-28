@@ -69,6 +69,7 @@
     <th style="width: 20%;">Name</th>
     <th>Date of Birth</th>
     <th>Rank</th>
+    <th>Date of Promotion</th>
     <th>Date of Embarkation</th>
     <% license_types.each do |lt| %>
       <th><%= lt %></th>
@@ -85,9 +86,10 @@
     <tr>
       <td><%= i + 1 %></td>
       <td><%= crew %></td>
-      <td><%= crew.birthday %></td>
+      <td><%= crew.birthday.strftime("%d-%b-%Y") %></td>
       <td><%= crew.rank %></td>
-      <td><%= crew.sign_on.strftime("%d-%b-%Y") %></td>
+      <td><%= crew.date_of_promotion.strftime("%d-%b-%Y") if !crew.date_of_promotion.nil?%></td>
+      <td><%= crew.sign_on.strftime("%d-%b-%Y") if !crew.sign_on.nil? %></td>
       <% license_types.each do |lt| %>
         <% l = crew.licenses.where(license_type_id: lt.id).first %>
         <td><%= "#{l.license_number} - #{l.expiry_date}" if !l.nil? %></td>
@@ -109,7 +111,7 @@
         </td>
       <% end %>
       <td>
-        <%= (crew.sign_on + 9.months).strftime("%d-%b-%Y") %>
+        <%= (crew.sign_on + 9.months).strftime("%d-%b-%Y") if !crew.sign_on.nil? %>
       </td>
     </tr>
   <% end %>
