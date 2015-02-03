@@ -27,12 +27,6 @@ table {
   margin-top: -3%;
 }
 
-.table_report {
-  border: 1px solid black;
-  th, td {
-    border: 1px solid black;
-  }
-}
 
 .lcc {
   border: 1px solid black;
@@ -40,5 +34,34 @@ table {
   margin-left: 50%;
   margin-top: -5.5%;
   text-align: center;
+}
+
+.table_report {
+  table{
+    table-layout: fixed;
+  }
+  table, .table, table td {
+    border-collapse: collapse;
+    border: 1px solid #000;
+    width: 100%;
+  }
+
+  th {
+    border-collapse: collapse;
+    border: 1px solid #000;
+
+  }
+
+  table td.first{
+      text-align: left !important;
+      width: 70px !important;
+   }
+}
+
+
+.table_report td, .table-report th{
+  border: 1px solid black;
+  padding: 0px 5px;
+  font-size: 13px;
 }
 

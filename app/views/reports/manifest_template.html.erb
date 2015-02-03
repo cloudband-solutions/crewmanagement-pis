@@ -20,7 +20,7 @@
       </div>
     </center>
    
-    <table style="width: 25%; font-size: 12px;">
+    <table class="no" style="width: 25%; font-size: 12px;">
       <tr>
        <th style="text-align: left; width: 35%;">Vessel Name:</th> 
        <td style="text-align: left; border-bottom: 1px solid black; "><%= vessel.name %></td>
@@ -30,7 +30,7 @@
        <td style="text-align: left; border-bottom: 1px solid black;"><%= vessel.flag %></td>
       </tr>
     </table>
-    <table style="width: 25%; margin-left: 28%; margin-top: -4.5%;  font-size: 12px;">
+    <table class="no" style="width: 25%; margin-left: 28%; margin-top: -4.5%;  font-size: 12px;">
       <tr>
        <th style="text-align: left;">Principal:</th> 
        <td style="text-align: left; border-bottom: 1px solid black; width:50%;"><%= vessel.principal %></td>
@@ -41,7 +41,7 @@
       </tr>
     </table>
 
-    <table style="width: 13%; margin-left: 55%; margin-top: -5.2%;  font-size: 12px; ">
+    <table class="no" style="width: 13%; margin-left: 55%; margin-top: -5.2%;  font-size: 12px; ">
       <tr>
        <th style="text-align: left; width: 10%;">GRT:</th> 
        <td style="text-align: left; border-bottom: 1px solid black;"><%= vessel.grt %></td>
@@ -52,7 +52,7 @@
       </tr>
     </table>
 
-    <table style="width: 15%; margin-left: 70%; margin-top: -5.1%; font-size: 12px;">
+    <table class="no" style="width: 15%; margin-left: 70%; margin-top: -5.1%; font-size: 12px;">
       <tr>
        <th style="text-align: left;width: 20%;" >DWT:</th> 
        <td style="text-align: left; border-bottom: 1px solid black; "><%= vessel.dwt %></td>
@@ -62,59 +62,59 @@
        <td style="text-align: left;border-bottom: 1px solid black;"><%= vessel.loa %></td>
       </tr>
     </table>
-   
-    <table class="table_report" style="margin-top: 2%; font-size: 13px; ">
+   <div class="table_report">
+    <table style="margin-top: 2%; font-size: 13px; ">
       <tr>
-    <th>No.</th>
-    <th style="width: 20%;">Name</th>
-    <th>Date of Birth</th>
-    <th>Rank</th>
-    <th>Date of Embarkation</th>
-    <% license_types.each do |lt| %>
-      <th><%= lt %></th>
-    <% end %>
-    <% certificate_types.each do |ct| %>
-      <th><%= ct %></th>
-    <% end %>
-    <% document_kinds.each do |dk| %>
-      <th><%= dk %></th>  
-    <% end %>
-    <th>Expected Date of Relief</th>
-  </tr>
-  <% crews.each_with_index do |crew, i| %>
-    <tr>
-      <td><%= i + 1 %></td>
-      <td><%= crew %></td>
-      <td><%= crew.birthday %></td>
-      <td><%= crew.rank %></td>
-      <td><%= crew.sign_on.strftime("%d-%b-%Y") %></td>
-      <% license_types.each do |lt| %>
-        <% l = crew.licenses.where(license_type_id: lt.id).first %>
-        <td><%= "#{l.license_number} - #{l.expiry_date}" if !l.nil? %></td>
-      <% end %>
-      <% certificate_types.each do |ct| %>
-        <% c = crew.certificates.where(certificate_type_id: ct.id).first %>
-        <td><%= "#{c.certificate_number} - #{c.expiry_date}" if !c.nil? %></td>
-      <% end %>
-      <% document_kinds.each do |dk| %>
-        <td>
-          <% d = crew.documents.where(document_kind_id: dk.id).first %>
-          <% if !d.nil? %>
-            <% if d.reverting? %>
-              REVERTING
-            <% else %>
-              <%= d.doc_number %>
-            <% end %>
+        <th>No.</th>
+        <th style="width: 20%;">Name</th>
+        <th>Date of Birth</th>
+        <th>Rank</th>
+        <th>Date of Embarkation</th>
+        <% license_types.each do |lt| %>
+          <th><%= lt %></th>
+        <% end %>
+        <% certificate_types.each do |ct| %>
+          <th><%= ct %></th>
+        <% end %>
+        <% document_kinds.each do |dk| %>
+          <th><%= dk %></th>  
+        <% end %>
+        <th>Expected Date of Relief</th>
+      </tr>
+      <% crews.each_with_index do |crew, i| %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <td><%= crew %></td>
+          <td><%= crew.birthday %></td>
+          <td><%= crew.rank %></td>
+          <td><%= crew.sign_on.strftime("%d-%b-%Y") %></td>
+          <% license_types.each do |lt| %>
+            <% l = crew.licenses.where(license_type_id: lt.id).first %>
+            <td><%= "#{l.license_number} - #{l.expiry_date}" if !l.nil? %></td>
           <% end %>
-        </td>
+          <% certificate_types.each do |ct| %>
+            <% c = crew.certificates.where(certificate_type_id: ct.id).first %>
+            <td><%= "#{c.certificate_number} - #{c.expiry_date}" if !c.nil? %></td>
+          <% end %>
+          <% document_kinds.each do |dk| %>
+            <td>
+              <% d = crew.documents.where(document_kind_id: dk.id).first %>
+              <% if !d.nil? %>
+                <% if d.reverting? %>
+                  REVERTING
+                <% else %>
+                  <%= d.doc_number %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+          <td>
+            <%= (crew.sign_on + 9.months).strftime("%d-%b-%Y") %>
+          </td>
+        </tr>
       <% end %>
-      <td>
-        <%= (crew.sign_on + 9.months).strftime("%d-%b-%Y") %>
-      </td>
-    </tr>
-  <% end %>
-    
     </table>
+    </div>
 
     <table style="margin-top: 2%; font-size: 13px;">
       <tr style="text-align: left;">
