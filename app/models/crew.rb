@@ -102,6 +102,10 @@ class Crew < ActiveRecord::Base
     "#{firstname.upcase} #{middlename.upcase} #{lastname.upcase} (#{code_number})"
   end
 
+  def to_s_report
+    "#{firstname.upcase} #{middlename.upcase} #{lastname.upcase}"
+  end
+
   def to_s_list
     "#{lastname.upcase}, #{firstname.upcase} #{middlename.upcase}"
   end

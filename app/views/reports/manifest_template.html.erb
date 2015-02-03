@@ -65,7 +65,7 @@
      <div class="table_report">
       <table style="margin-top: 2%; font-size: 13px; ">
         <tr>
-          <th>No.</th>
+          <th width="5%">No.</th>
           <th style="width: 20%;">Name</th>
           <th>Date of Birth</th>
           <th>Rank</th>
@@ -83,18 +83,18 @@
         </tr>
         <% crews.each_with_index do |crew, i| %>
           <tr>
-            <td><%= i + 1 %></td>
-            <td><%= crew %></td>
-            <td><%= crew.birthday %></td>
+            <td style="text-align: center;"><%= i + 1 %></td>
+            <td><%= crew.to_s_report %></td>
+            <td><%= crew.birthday.strftime("%d-%b-%Y") %></td>
             <td><%= crew.rank %></td>
             <td><%= crew.sign_on.strftime("%d-%b-%Y") %></td>
             <% license_types.each do |lt| %>
               <% l = crew.licenses.where(license_type_id: lt.id).first %>
-              <td><%= "#{l.license_number} - #{l.expiry_date}" if !l.nil? %></td>
+              <td><%= "#{l.license_number} - #{l.expiry_date.strftime('%d-%b-%Y') if !l.expiry_date.nil?}" if !l.nil? %></td>
               <% end %>
               <% certificate_types.each do |ct| %>
               <% c = crew.certificates.where(certificate_type_id: ct.id).first %>
-              <td><%= "#{c.certificate_number} - #{c.expiry_date}" if !c.nil? %></td>
+              <td><%= "#{c.certificate_number} - #{c.expiry_date.strftime('%d-%b-%Y') if !c.expiry_date.nil?}" if !c.nil? %></td>
              <% end %>
            <% document_kinds.each do |dk| %>
              <td>
