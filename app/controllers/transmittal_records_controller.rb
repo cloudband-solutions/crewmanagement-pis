@@ -1,4 +1,10 @@
 class TransmittalRecordsController < ApplicationController
+  before_filter :load_defaults
+
+  def load_defaults
+    @disembarked_crews = Crew.disembarked
+  end
+
   def index
     @transmittal_records = TransmittalRecord.where("status = 'pending' OR status = 'approved' OR status = 'on-transit'").order("status DESC").order("date_of_departure DESC").page(params[:page]).per(20)
 
