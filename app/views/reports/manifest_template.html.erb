@@ -84,7 +84,7 @@
         <% crews.each_with_index do |crew, i| %>
           <tr>
             <td style="text-align: center;"><%= i + 1 %></td>
-            <td><%= crew %></td>
+            <td><%= crew.to_s_report %></td>
             <td><%= crew.birthday.strftime("%d-%b-%Y") %></td>
             <td><%= crew.rank %></td>
             <td><%= crew.sign_on.strftime("%d-%b-%Y") %></td>
