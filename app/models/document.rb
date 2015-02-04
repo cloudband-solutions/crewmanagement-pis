@@ -5,8 +5,7 @@ class Document < ActiveRecord::Base
   DOC_TYPES = %w(certificate quarantine)
 
   has_attached_file :attachment
-  validates_attachment_content_type :attachment, content_type: %w(image/jpg image/jpeg image/png application/pdf), if: :not_reverting?
-  validates :attachment, presence: true, if: :not_reverting?
+  validates_attachment_content_type :attachment, content_type: %w(image/jpg image/jpeg image/png application/pdf)
 
   #validates :crew, presence: true
   #validates :name, presence: true
@@ -15,6 +14,14 @@ class Document < ActiveRecord::Base
   validates :issued_by, presence: true, if: :not_reverting?
   validates :issued_at, presence: true, if: :not_reverting?
   validates :expiry_date, presence: true, if: :not_reverting?
+
+  before_validation :load_defaults
+
+  def load_defaults
+    if self.expiry_date.nil? and !self.issued_at.nil?
+      self.expiry_date = self.issued_at + 10.years
+    end
+  end
 
   def to_s
     doc_number

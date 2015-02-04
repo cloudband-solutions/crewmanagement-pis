@@ -26,7 +26,7 @@
             </td>
             <td class="label-d-a"><%= document.issued_by %></td>
             <td class="label-d-a">
-              <%= document.reverting? ? "" : link_to("Download", document.attachment.url, target: "_blank") %>
+              <%= document.reverting? ? "" : link_to("Download", document.attachment.url, target: "_blank", class: "btn btn-default btn-xs") if document.attachment.exists? %>
             </td>
           </tr>
         <% end %>

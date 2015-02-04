@@ -27,7 +27,7 @@
             <td class="label-d-a"><%= license.training_center %></td>
             <td class="label-d-a">
               <% if license.attachment.exists? %>
-                <%= link_to "Download", license.attachment.url, target: "_blank" %>
+                <%= link_to "Download", license.attachment.url, target: "_blank", class: "btn btn-default btn-xs" %>
               <% end %>
             </td>
           </tr>

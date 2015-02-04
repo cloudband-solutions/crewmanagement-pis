@@ -15,8 +15,7 @@ class Certificate < ActiveRecord::Base
   belongs_to :flag
 
   has_attached_file :attachment
-  validates :attachment, presence: true, if: :not_reverting?
-  validates_attachment_content_type :attachment, content_type: %w(image/jpg image/jpeg image/png application/pdf), if: :not_reverting?
+  validates_attachment_content_type :attachment, content_type: %w(image/jpg image/jpeg image/png application/pdf)
 
   def to_s
     certificate_number

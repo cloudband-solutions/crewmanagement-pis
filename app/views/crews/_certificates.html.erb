@@ -27,7 +27,7 @@
             <td class="label-d-a"><%= certificate.issued_by %></td>
             <td class="label-d-a">
               <% if certificate.attachment.exists? %>
-                <%= link_to "Download", certificate.attachment.url, target: "_blank" %>
+                <%= link_to "Download", certificate.attachment.url, target: "_blank", class: "btn btn-default btn-xs" %>
               <% end %>
             </td>
           </tr>
