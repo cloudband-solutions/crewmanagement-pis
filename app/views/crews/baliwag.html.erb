@@ -145,7 +145,7 @@
   				<% age = Date.today.year - crew.birthday.year %>
     			<% age -= 1 if crew.birthday > Date.today.years_ago( age ) %>
   				<td class="label">Age:</td>
-  				<td class="data"><%= age %></td>
+  				<td class="data"><%= crew.age %></td>
   				<td class="label">Birthplace:</td>
   				<td class="data"><%= crew.birthplace %></td>
   				<td class="label">Nationality:</td>
