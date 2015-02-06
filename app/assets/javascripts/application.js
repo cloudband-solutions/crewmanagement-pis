@@ -22,6 +22,13 @@
 
 $(document).on("ready page:load", function() {
   $(".select-select2").select2();
+
+  toastr.options = {
+    "closeButton": true,
+    "showDuration": "60000",
+    "hideDuration": "1000",
+    "timeOut": "60000"
+  }
 });
 
 var initDatePicker = function() {

@@ -1,5 +1,4 @@
 <% flash.each do |key, value| %>
-
   <% if key == "success" %>
     <script>
     $(document).on("ready page:load", function() {
@@ -9,13 +8,29 @@
     </script>
   <% elsif key == "error" %>
     <script>
-      value = '<%= value %>'
-      toastr.error(value);
+      $(document).on("ready page:load", function() {
+        value = '<%= value %>'
+        toastr.error(value);
+      });
     </script>
   <% else %>
     <script>
-      value = '<%= value %>'
-      toastr.info(value);
+      $(document).on("ready page:load", function() {
+        value = '<%= value %>'
+        toastr.info(value);
+      });
+    </script>
+  <% end %>
+<% end %>
+
+<!-- DISPLAY ERRORS AS NOTIFICATIONS -->
+<% if !@errors.nil? %>
+  <% @errors.each do |error| %>
+    <script>
+      $(document).on("ready page:load", function() {
+        value = '<%= error %>'
+        toastr.error(value);
+      });
     </script>
   <% end %>
 <% end %>

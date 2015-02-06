@@ -154,6 +154,7 @@ class CrewsController < ApplicationController
       redirect_to crew_path(@crew)
     else
       flash.now[:error] = "Please check the form for some errors. #{@crew.errors.full_messages.to_sentence}"
+      @errors = @crew.errors.full_messages
       render :new
     end
   end
