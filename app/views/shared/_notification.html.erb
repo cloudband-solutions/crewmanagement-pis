@@ -1,5 +1,21 @@
 <% flash.each do |key, value| %>
-  <div id="notice" class="bs-callout bs-callout-<%= key %>">
-    <%= value %>
-  </div>
+
+  <% if key == "success" %>
+    <script>
+    $(document).on("ready page:load", function() {
+      value = '<%= value %>'
+      toastr.success(value);
+    });
+    </script>
+  <% elsif key == "error" %>
+    <script>
+      value = '<%= value %>'
+      toastr.error(value);
+    </script>
+  <% else %>
+    <script>
+      value = '<%= value %>'
+      toastr.info(value);
+    </script>
+  <% end %>
 <% end %>
