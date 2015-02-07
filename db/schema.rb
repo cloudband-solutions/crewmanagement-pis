@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128083810) do
+ActiveRecord::Schema.define(version: 20150207114637) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20150128083810) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "short_description"
+    t.boolean  "is_default"
   end
 
   create_table "certificates", force: true do |t|
@@ -191,6 +192,7 @@ ActiveRecord::Schema.define(version: 20150128083810) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "short_description"
+    t.boolean  "is_default"
   end
 
   create_table "documents", force: true do |t|
@@ -268,6 +270,7 @@ ActiveRecord::Schema.define(version: 20150128083810) do
     t.text     "short_description"
     t.integer  "priority"
     t.integer  "license_category_id"
+    t.boolean  "is_default"
   end
 
   create_table "licenses", force: true do |t|

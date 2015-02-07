@@ -20,7 +20,7 @@
   <% crews.each_with_index do |crew, i| %>
     <tr>
       <td><%= i + 1 %></td>
-      <td><%= crew.to_s_report %></td>
+      <td><%= link_to crew.to_s_report, crew_path(crew) %></td>
       <td><%= crew.birthday %></td>
       <td><%= crew.rank %></td>
       <td><%= crew.sign_on.strftime("%d-%b-%Y") if !crew.sign_on.nil?%></td>

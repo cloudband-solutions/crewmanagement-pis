@@ -12,6 +12,7 @@ ActiveAdmin.register DocumentKind do
     selectable_column
     column :name
     column :code
+    column :is_default
     actions
   end
 
@@ -22,6 +23,7 @@ ActiveAdmin.register DocumentKind do
     f.inputs "Document Kind" do
       f.input :name
       f.input :code
+      f.input :is_default
       f.input :short_description
     end
     f.actions
@@ -31,6 +33,7 @@ ActiveAdmin.register DocumentKind do
     attributes_table do
       row :name
       row :code
+      row :is_default
       row :short_description
     end
   end

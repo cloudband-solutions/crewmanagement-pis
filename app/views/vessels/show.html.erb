@@ -16,7 +16,7 @@
         <%= render partial: "vessels/details", locals: { vessel: @vessel } %>
       </div>
       <div class="tab-pane" id="current-crew">
-        <%= render partial: "vessels/crew_list", locals: { crews: Crew.all_by_vessel(@vessel) } %>
+        <%= render partial: "reports/crew_manifest_list", locals: { crews: Crew.all_by_vessel(@vessel), license_types: [], document_kinds: DocumentKind.where(is_default: true), certificate_types: [] } %>
       </div>
     </div>
   </div>

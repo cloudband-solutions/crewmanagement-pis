@@ -11,6 +11,7 @@ ActiveAdmin.register LicenseType do
     selectable_column
     column :name
     column :code
+    column :is_default
     actions
   end
 
@@ -21,6 +22,7 @@ ActiveAdmin.register LicenseType do
     f.inputs "License Type" do
       f.input :name
       f.input :code
+      f.input :is_default
       f.input :priority
       f.input :short_description
       f.input :license_category
@@ -32,6 +34,7 @@ ActiveAdmin.register LicenseType do
     attributes_table do 
       row :name
       row :code
+      row :is_default
       row :priority
       row :short_description
       row :license_category
