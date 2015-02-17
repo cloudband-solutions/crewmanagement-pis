@@ -1,33 +1,71 @@
-<div id="profile">
-  <div class="row">
-    <div class="col-md-3" style="text-align: right;">
-      <%= image_tag current_user.avatar.url(:profile) %>
+<div class="for_non_mobile">
+  <div id="profile">
+    <div class="row">
+      <div class="col-md-3" style="text-align: right;">
+        <%= image_tag current_user.avatar.url(:profile) %>
+      </div>
     </div>
-    <div class="col-md-9">
-      <table class="table table">
+
+    <div class="row">
+      <div class="col-md-5 about">
+       <table class="table">
         <tr>
-          <th>First Name:</th>
-          <td><%= current_user.first_name %></td>
+          <th><span class="glyphicon glyphicon-user"></span> Name</th>
+          <td><%= current_user.first_name %>  <%= current_user.last_name %></td>
         </tr>
         <tr>
-          <th>Last Name:</th>
-          <td><%= current_user.last_name %></td>
-        </tr>
-        <tr>
-          <th>Email:</th>
-          <td><%= current_user.email %></td>
-        </tr>
-        <tr>
-          <th>User Type:</th>
+          <th><span class="glyphicon glyphicon-text-width"></span> User Type</th>
           <td><%= current_user.user_type %></td>
+        </tr>
+        <tr>
+          <th><span class="glyphicon glyphicon-envelope"></span> Email Address</th>
+          <td><%= current_user.email %></td>
         </tr>
         <% if current_user.is_principal? %>
           <tr>
-            <th>Principal:</th>
+            <th><span class="glyphicon glyphicon-eye-open"></span> Principal</th>
             <td><%= current_user.principal %></td>
           </tr>
         <% end %>
       </table>
+      </div>
     </div>
   </div>
 </div>
+
+<div class="for_mobile">
+  <div id="profile">
+    <div class="row">
+      <div class="col-md-3" style="text-align: center;">
+        <%= image_tag current_user.avatar.url(:profile) %>
+      </div>
+    </div>
+    <center>
+    <div class="row">
+      <div class="col-md-12 about_mobile">
+       <table class="table table-bordered table_mobile">
+        <tr>
+          <th><span class="glyphicon glyphicon-user"></span> Name</th>
+          <td><%= current_user.first_name %>  <%= current_user.last_name %></td>
+        </tr>
+        <tr>
+          <th><span class="glyphicon glyphicon-text-width"></span> User Type</th>
+          <td><%= current_user.user_type %></td>
+        </tr>
+        <tr>
+          <th><span class="glyphicon glyphicon-envelope"></span> Email Address</th>
+          <td><%= current_user.email %></td>
+        </tr>
+        <% if current_user.is_principal? %>
+          <tr>
+            <th><span class="glyphicon glyphicon-eye-open"></span> Principal</th>
+            <td><%= current_user.principal %></td>
+          </tr>
+        <% end %>
+      </table>
+      </div>
+    </div>
+    </center>
+  </div>
+</div>
+
