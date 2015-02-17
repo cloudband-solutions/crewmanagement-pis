@@ -12,15 +12,12 @@
       background-color: #ecf0f1;
       border: 1px solid #ecf0f1;
     }
-
     td {
       border: 1px solid #ecf0f1;
       color: #3b5998;
       padding-left: 0!important;
     }
-
   }
-
   .about {
     background-color: #ecf0f1;
     border: 1px solid #e2e2e2;
@@ -34,23 +31,16 @@
   .about_mobile {
     margin-top: 1%;
   }
-
-   .table_mobile {
+  .table_mobile {
     font-size: 3.4vw;
     th {
       text-align: left;
       color: $black;
-
     }
-
     td {
       border: 1px solid #ecf0f1;
       color: #3b5998;
       padding-left: 10px!important;
     }
-
   }
-
-
-
 }
