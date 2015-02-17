@@ -1,0 +1,11 @@
+<% if params[:change_password] == "true" %>
+  <h2>Change Password</h2>
+<% else %>
+  <h2>Edit Profile</h2>
+<% end %>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <%= render partial: "form" %>
+  </div>
+</div>
