@@ -14,6 +14,8 @@ class PrincipalsController < ApplicationController
 
 	def show
 		@principal = Principal.find(params[:id])
+
+    @vessels = @principal.vessels.page(params[:page]).per(10)
 	end
 	
 

@@ -21,6 +21,10 @@ BaliwagIs::Application.routes.draw do
   resources :vessels, only: [:index, :show]
   resources :vessel_types
 
+  namespace :account do
+    resources :users, only: [:edit, :update, :show]
+  end
+
   namespace :api do
     get "/vessels/crew_list/:vessel_id", to: "vessels#crew_list", as: :vessel_crew_list
     namespace :v1 do

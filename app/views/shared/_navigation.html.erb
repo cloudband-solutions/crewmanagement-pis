@@ -36,28 +36,41 @@
             <span class="icon-flag"></span> VESSELS
           <% end %>
       </li>
-      <li class="<%= params[:controller] == 'principals' ? 'active' : '' %>"> 
-         <%= link_to principals_path, class: "#{params[:controller] == 'principals' ? 'active' : '' }" do %>
-            <span class="icon-user"></span> PRINCIPAL
-          <% end %>
-      </li>
-       <li class="<%= params[:controller] == 'transmittal_records' ? 'active' : '' %>"> 
-         <%= link_to transmittal_records_path, class: "#{params[:controller] == 'transmittal_records' ? 'active' : '' }" do %>
-            <span class="glyphicon glyphicon-list-alt"></span> TRANSMITTAL RECORDS
-          <% end %>
+      <% if !current_user.is_principal? %>
+
+        <li class="<%= params[:controller] == 'principals' ? 'active' : '' %>"> 
+           <%= link_to principals_path, class: "#{params[:controller] == 'principals' ? 'active' : '' }" do %>
+              <span class="icon-user"></span> PRINCIPAL
+            <% end %>
         </li>
 
-       <li class="<%= params[:controller] == 'reports' ? 'active' : '' %>"> 
-         <%= link_to reports_crew_manifest_path, class: "#{params[:controller] == 'reports' ? 'active' : ''}" do %>
+         <li class="<%= params[:controller] == 'transmittal_records' ? 'active' : '' %>"> 
+           <%= link_to transmittal_records_path, class: "#{params[:controller] == 'transmittal_records' ? 'active' : '' }" do %>
+              <span class="glyphicon glyphicon-list-alt"></span> TRANSMITTAL RECORDS
+            <% end %>
+          </li>
+
+        <li class="<%= params[:controller] == 'reports' ? 'active' : '' %>"> 
+          <%= link_to reports_crew_manifest_path, class: "#{params[:controller] == 'reports' ? 'active' : ''}" do %>
             <span class="icon-copy"></span> CREW MANIFEST
           <% end %>
-       </li>
+        </li>
+      <% end %>
 
     </ul> 
     <div class="navbar-form navbar-right">
-      <!--<b class="logged-in" style="color:white;">Logged in as:</b> <span class="login-text"><%= current_user.email %></span>-->
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure you want to log-out?" }, class: "btn btn-danger" %>
-  </div><!-- /.navbar-collapse -->
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+          <span class="glyphicon glyphicon-off"></span>
+          Settings
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+          <li role="presentation"><%= link_to "Profile", account_user_path(current_user) %></li>
+          <li role="presentation"><%= link_to "Logout", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %></li>
+        </ul>
+      </div>
+    </div><!-- /.navbar-collapse -->
 </nav>
 </div>
 

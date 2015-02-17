@@ -1,16 +1,8 @@
 <div class="for_non_mobile">
   <div class="row">
-    <div class="col-md-4">
-      <div class="principalUserDashboard" style="display: inline-block">
-        <div style="float: left;">
-          <%= image_tag current_user.avatar.url(:thumb) %>
-        </div>
-        <div style="float: left; margin-left: 20px;">
-          <h4><%= current_user %> <br><small><%= @principal %></small></h4>
-          <%= link_to "Edit Profile", "#", class: "btn btn-default btn-xs" %>
-          <%= link_to "Change Password", "#", class: "btn btn-default btn-xs" %>
-        </div>
-      </div>
+    <div class="col-md-12">
+      <h3>WELCOME <%= current_user %> <small><%= current_user.principal %></h3>
+      <hr>
     </div>
     <!--
      <div class="col-md-2">

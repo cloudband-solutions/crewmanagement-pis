@@ -5,6 +5,10 @@ class CrewsController < ApplicationController
   def advanced_search
     if params[:search].nil?
       @crews = Crew.active
+
+      if current_user.is_principal?
+        @crews = @crews
+      end
     else
       if !params[:search][:name].nil?
         params[:search][:name] = params[:search][:name].upcase
@@ -105,7 +109,7 @@ class CrewsController < ApplicationController
     if %w( admin encoder manager ).include? current_user.user_type
       @crews = Crew.active.order("crews.lastname")
     elsif current_user.user_type == "principal"
-      @crews = Crew.active.order("crews.lastname")
+      @crews = @crews.order("crews.lastname")
     end
 
     if params[:q].present?

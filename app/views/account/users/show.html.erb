@@ -1,0 +1,33 @@
+<div id="profile">
+  <div class="row">
+    <div class="col-md-3" style="text-align: right;">
+      <%= image_tag current_user.avatar.url(:profile) %>
+    </div>
+    <div class="col-md-9">
+      <table class="table table-bordered">
+        <tr>
+          <th>First Name:</th>
+          <td><%= current_user.first_name %></td>
+        </tr>
+        <tr>
+          <th>Last Name:</th>
+          <td><%= current_user.last_name %></td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td><%= current_user.email %></td>
+        </tr>
+        <tr>
+          <th>User Type:</th>
+          <td><%= current_user.user_type %></td>
+        </tr>
+        <% if current_user.is_principal? %>
+          <tr>
+            <th>Principal:</th>
+            <td><%= current_user.principal %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

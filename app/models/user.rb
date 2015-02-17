@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   before_validation :load_defaults
 
   has_attached_file :avatar,
-                    styles: { thumb: "100x100#" },
+                    styles: { thumb: "100x100#", profile: "200x200#" },
                     default_url: ":attachment/missing_:style.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
