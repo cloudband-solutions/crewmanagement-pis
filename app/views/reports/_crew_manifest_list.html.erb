@@ -27,7 +27,11 @@
       <td><%= crew.date_of_promotion.strftime("%d-%b-%Y") if !crew.date_of_promotion.nil? %></td>
       <% license_types.each do |lt| %>
         <% l = crew.licenses.where(license_type_id: lt.id).first %>
-        <td><%= "#{l.license_number} - #{l.expiry_date}" if !l.nil? %></td>
+        <% if !l.nil? %>
+          <td style="background-color: <%= l.license_expiry %>;"><%= "#{l.license_number} - #{l.expiry_date}" %></td>
+        <% else %>
+          <td> </td>
+        <% end %>
       <% end %>
       <% certificate_types.each do |ct| %>
         <% c = crew.certificates.where(certificate_type_id: ct.id).first %>

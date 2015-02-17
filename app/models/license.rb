@@ -37,10 +37,12 @@ class License < ActiveRecord::Base
     is_reverting
   end
 
-  def license_expiry 
-    time = expiry_date - 12.months
-    if Time.now > time
-      "red"
+  def license_expiry
+    if !expiry_date.nil?
+      time = expiry_date - 12.months
+      if Time.now > time
+        "#ff3232"
+      end
     end
   end
 

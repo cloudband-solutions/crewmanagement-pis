@@ -8,6 +8,13 @@ class PagesController < ApplicationController
     @transmittal_ontransit_records = TransmittalRecord.where(status: "on-transit").order(:prepared_on).limit(5)
 
     @crews = Crew.all
+
+    if current_user.is_principal? 
+      @vessel_types = VesselType.all
+      @ranks = Rank.all
+    end
+
   end
   
+
 end
