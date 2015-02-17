@@ -5,9 +5,11 @@ class CrewsController < ApplicationController
   def advanced_search
     if params[:search].nil?
       @crews = Crew.active
+      @vessels = Vessel.all
 
       if current_user.is_principal?
         @crews = @crews
+        @vessels = current_user.principal.vessels
       end
     else
       if !params[:search][:name].nil?
@@ -108,6 +110,7 @@ class CrewsController < ApplicationController
   def index
     if %w( admin encoder manager ).include? current_user.user_type
       @crews = Crew.active.order("crews.lastname")
+      @vessels = Vessel.all
     elsif current_user.user_type == "principal"
       @crews = @crews.order("crews.lastname")
     end
