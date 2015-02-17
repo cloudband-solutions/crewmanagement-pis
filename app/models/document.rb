@@ -31,6 +31,15 @@ class Document < ActiveRecord::Base
     is_reverting
   end
 
+  def document_expiry
+    if !expiry_date.nil?
+      time = expiry_date - 12.months
+      if Time.now > time
+        "#ff3232"
+      end
+    end
+  end
+
   def not_reverting?
     if is_reverting == true
       false

@@ -19,7 +19,7 @@
                 <%= document.issued_at.strftime('%d-%B-%Y') %>
               <% end %>
             </td>
-            <td class="label-d-a">
+            <td class="label-d-a" style="background-color: <%= document.document_expiry %>;">
               <% if !document.expiry_date.nil? %>
                 <%= document.expiry_date.strftime('%d-%B-%Y') %>
               <% end %>
