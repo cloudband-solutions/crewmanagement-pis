@@ -1,30 +1,173 @@
+<div class="for_non_mobile">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="principalUserDashboard" style="display: inline-block">
+        <div style="float: left;">
+          <%= image_tag current_user.avatar.url(:thumb) %>
+        </div>
+        <div style="float: left; margin-left: 20px;">
+          <h4><%= current_user %> <br><small><%= @principal %></small></h4>
+          <%= link_to "Edit Profile", "#", class: "btn btn-default btn-xs" %>
+          <%= link_to "Change Password", "#", class: "btn btn-default btn-xs" %>
+        </div>
+      </div>
+    </div>
+    <!--
+     <div class="col-md-2">
+       <div class="pdf">
+         <center>
+          <%= link_to "#" do %>
+            <%= image_tag "dl.png" %>
+          <% end %>
+          <h5>Download Vessel List</h5>
+         </center>
+       </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-2">
+      <div class="pdf">
+       <center>
+        <%= link_to "#" do %>
+          <%= image_tag "dl.png" %>
+        <% end %>
+        <h5>Download Crew List</h5>
+       </center>
+      </div>
+    </div>
+  -->
+  </div>
+</div>
+
+<div class="for_mobile">
 <div class="row">
   <div class="col-md-6">
     <div class="principalUserDashboard" style="display: inline-block">
-      <div style="float: left;">
+      <div style="float: center;">
         <%= image_tag current_user.avatar.url(:thumb) %>
       </div>
-      <div style="float: left; margin-left: 20px;">
+      <div style="float: center; margin-bottom: 10px;">
         <h4><%= current_user %> <br><small><%= @principal %></small></h4>
         <%= link_to "Edit Profile", "#", class: "btn btn-default btn-xs" %>
         <%= link_to "Change Password", "#", class: "btn btn-default btn-xs" %>
       </div>
     </div>
   </div>
+  <!--
+  <div class="col-md-2">
+    <div class="pdf_mobile">
+     <center>
+      <%= link_to "#" do %>
+        <%= image_tag "dl.png" %>
+      <% end %>
+      <h5>Download Crew List</h5>
+     </center>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="pdf_mobile">
+       <center>
+        <%= link_to "#" do %>
+          <%= image_tag "dl.png" %>
+        <% end %>
+        <h5>Download Vessel List</h5>
+       </center>
+    </div>
+  </div>
+  -->
+</div>
 </div>
 
 <!-- display active crew and vessels -->
 <div class ="row">
   <div class="col-md-6">
-    <div class="basicBox">
-      Active Vessels
-      <%= @vessels.count %>
+    <div class="basicBoxDash">
+      <div class="row">
+       <div class="col-md-6">
+          <center>
+           <span class="icon-support"></span>
+          </center>
+        </div>
+        <div class="col-md-6">
+          <center>
+            <h2><%= @vessels.count %></h2>
+            <h4>Active Vessels</h4>
+          </center>
+        </div>
+      </div>
+    </div>
+     <div class="row">
+       <div class="view_more"> 
+        <%= link_to vessels_path do %>
+        View Vessel List <span class="glyphicon glyphicon-arrow-right"></span>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="col-md-6">
-    <div class="basicBox">
-      Active Crew
-      <%= @crews.count %>
+    <div class="basicBoxDash">
+      <div class="row">
+        <div class="col-md-6">
+          <center>
+           <span class="glyphicon glyphicon-user"></span>
+          </center>
+        </div>
+        <div class="col-md-6">
+          <center>
+           <h2><%= @crews.count %></h2>
+           <h4>Active Crews</h4>
+          </center>
+        </div>
+      </div>
+   </div>
+  <div class="row">
+   <div class="view_more"> 
+    <%= link_to crews_path do %>
+    View Crew List <span class="glyphicon glyphicon-arrow-right"></span>
+      <% end %>
     </div>
   </div>
+  </div>
 </div>
+
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+         <th>Vessel</th>
+         <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @vessel_types.each do |v| %>
+        <tr>
+          <td><%= v.name %></td>
+          <td><%= v.vessel_count_by_principal(@principal.id) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+  </div>
+
+  <div class="col-md-6 ">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+         <th>Rank</th>
+         <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @ranks.each do |v| %>
+        <tr>
+          <td><%= v.name %></td>
+          <td><%= v.crew_count_by_principal(@principal.id) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
