@@ -51,6 +51,7 @@ ActiveAdmin.register Vessel do
   form do |f|
     f.inputs "Vessel Record" do
       f.input :name
+      f.input :vessel_image, as: :file, hint: image_tag(f.object.vessel_image.url(:medium))
       f.input :status, as: :select, collection: Vessel::STATUSES
       f.input :code
       f.input :principal
@@ -88,6 +89,9 @@ ActiveAdmin.register Vessel do
   show do |ad|
     attributes_table do 
       row :name
+      row :vessel_image do
+        image_tag(ad.vessel_image.url(:medium))
+      end
       row :status
       row :code
       row :principal
