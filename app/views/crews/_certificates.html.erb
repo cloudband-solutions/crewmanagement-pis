@@ -19,7 +19,7 @@
                 <%= certificate.date_issued.strftime('%d-%b-%Y') %>
               <% end %>
             </td>
-            <td class="label-d-a">
+            <td class="label-d-a" style="background-color: <%= certificate.certificate_expiry %>;">
               <% if !certificate.expiry_date.nil? %>
                 <%= certificate.expiry_date.strftime('%d-%b-%Y') %>
               <% end %>

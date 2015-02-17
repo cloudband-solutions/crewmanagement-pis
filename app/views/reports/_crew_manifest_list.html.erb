@@ -23,34 +23,40 @@
       <td><%= link_to crew.to_s_report, crew_path(crew) %></td>
       <td><%= crew.birthday %></td>
       <td><%= crew.rank %></td>
-      <td><%= crew.sign_on.strftime("%d-%b-%Y") if !crew.sign_on.nil?%></td>
-      <td><%= crew.date_of_promotion.strftime("%d-%b-%Y") if !crew.date_of_promotion.nil? %></td>
+      <td><%= crew.sign_on.strftime('%d-%b-%Y') if !crew.sign_on.nil?%></td>
+      <td><%= crew.date_of_promotion.strftime('%d-%b-%Y') if !crew.date_of_promotion.nil? %></td>
       <% license_types.each do |lt| %>
         <% l = crew.licenses.where(license_type_id: lt.id).first %>
         <% if !l.nil? %>
-          <td style="background-color: <%= l.license_expiry %>;"><%= "#{l.license_number} - #{l.expiry_date}" %></td>
+          <td style="background-color: <%= l.license_expiry %>;"><%= "#{l.license_number} - #{l.expiry_date.strftime('%d-%b-%Y') if !l.expiry_date.nil?}" %></td>
         <% else %>
           <td> </td>
         <% end %>
       <% end %>
       <% certificate_types.each do |ct| %>
         <% c = crew.certificates.where(certificate_type_id: ct.id).first %>
-        <td><%= "#{c.certificate_number} - #{c.expiry_date}" if !c.nil? %></td>
+        <% if !c.nil? %>
+          <td style="background-color: <%= c.certificate_expiry %>;"><%= "#{c.certificate_number} - #{c.expiry_date.strftime('%d-%b-%Y') if !c.expiry_date.nil? }" %></td>
+        <% else %>
+          <td> </td>
+        <% end %>
       <% end %>
       <% document_kinds.each do |dk| %>
         <% d = crew.documents.where(document_kind_id: dk.id).first %>
-        <td>
           <% if !d.nil? %>
+           <td style="background-color: <%= d.document_expiry %>;">
             <% if d.reverting? %>
               REVERTING
             <% else %>
-              <%= "#{d.doc_number} - #{d.expiry_date}" %>
+              <%= "#{d.doc_number} - #{d.expiry_date.strftime('%d-%b-%Y') if !d.expiry_date.nil?}" %>
             <% end %>
-          <% end %>
-        </td>
+            </td>
+         <% else %>
+          <td></td>
+         <% end %>
       <% end %>
       <td style="background-color: <%= crew.manifest_status_color %>;">
-        <%= (crew.sign_on + 9.months).strftime("%d-%b-%Y") if !crew.sign_on.nil? %>
+        <%= (crew.sign_on + 9.months).strftime('%d-%b-%Y') if !crew.sign_on.nil? %>
       </td>
     </tr>
   <% end %>
