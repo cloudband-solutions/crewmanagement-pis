@@ -179,12 +179,12 @@
 	  			<td><%= certificate_type.try(:name) %></td>
 	  			<% c_certificate = crew.certificates.where(:certificate_type_id=>certificate_type.id).first %>
 	  			<% if(c_certificate != nil) %>
-		  			<td><%= c_certificate.certificate_number %></td>
-		  			<td><%= c_certificate.date_issued %></td>
-		  			<td><%= c_certificate.expiry_date %></td>
-		  			<% if(count > 12) %>
+	  				<td><%= c_certificate.certificate_number %></td>
+	  				<td><%= c_certificate.date_issued %></td>
+	  				<td><%= c_certificate.expiry_date %></td>
+		  		<% if(count > 12) %>
 		  				<td>&nbsp;</td>
-		  			<% end %>
+		  		<% end %>
 		  		<% else %>
 		  			<td>&nbsp;</td>
 		  			<td>&nbsp;</td>
@@ -196,6 +196,33 @@
 		  	</tr>
 		  	<% count = count + 1 %>
       <% end %>
+
+      <% DocumentKind.all.each do |dk| %>
+						<% d = crew.documents.where(document_kind_id: dk.id).first %>
+						<% if !d.nil? %>
+          		<tr>
+          			<td><%= dk.name %></td>
+          			<td>
+          				<% if d.reverting? %>
+          					REVERTING
+          				<% else %>
+          					<%= d.doc_number %>
+          				<% end %>
+          			</td>
+          			<td><%= d.issued_at %></td>
+          			<td><%= d.expiry_date %></td>
+          			<td>&nbsp;</td>
+          		</tr>
+          	<% else %>
+          		<tr>
+          			<td><%= dk.name %></td>
+          			<td>&nbsp;</td>
+          			<td>&nbsp;</td>
+          			<td>&nbsp;</td>
+          			<td>&nbsp;</td>
+          		</tr>
+          	<% end %>
+					<% end %>
 
       <% while count<11 do %>
       	<tr>
