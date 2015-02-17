@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216175357) do
+ActiveRecord::Schema.define(version: 20150217031727) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -500,6 +500,10 @@ ActiveRecord::Schema.define(version: 20150216175357) do
     t.string   "port_of_registry"
     t.decimal  "bale"
     t.decimal  "grain"
+    t.string   "vessel_image_file_name"
+    t.string   "vessel_image_content_type"
+    t.integer  "vessel_image_file_size"
+    t.datetime "vessel_image_updated_at"
   end
 
 end

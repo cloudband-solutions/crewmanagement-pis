@@ -5,7 +5,7 @@ class VesselsController < ApplicationController
     @vessels = Vessel.select("*").order(:name)
 
     if current_user.user_type == 'principal'
-      @vessels = @vessels.where(user_id: current_user.id)
+      @vessels = @principal.vessels.active
     end
 
     if params[:q].present?

@@ -10,4 +10,10 @@ class ApiController < ActionController::Base
     end
   end
 
+  def authenticate_api_user!
+    if !user_signed_in?
+      render json: "Please sign in first", status: 500
+    end
+  end
+
 end

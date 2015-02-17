@@ -17,6 +17,11 @@ class Vessel < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   #validates :owner, presence: true
 
+  has_attached_file :vessel_image,
+                    styles: { medium: "300x150#" },
+                    default_url: ":attachment/missing_:style.png"
+  validates_attachment_content_type :vessel_image, content_type: /\Aimage\/.*\Z/
+
   #validates :email, presence: true, uniqueness: true
   #validates :inmarsat_id_number, presence: true, uniqueness: true
   #validates :tel_number, presence: true, uniqueness: true

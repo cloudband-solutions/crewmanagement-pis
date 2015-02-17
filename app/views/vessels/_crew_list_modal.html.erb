@@ -1,0 +1,40 @@
+<div class="modal fade crew-list-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">CREW LIST - <span class="vesselName"></span></h4>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body-content">
+          <center>
+            <%= image_tag "loading_spinner.gif", class: "spinner" %>
+          </center>
+        </div>
+        <script id="entry-template" type="text/x-handlebars-template">
+          <table class='table table-bordered'>
+            <thead>
+              <tr>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Rank</th>
+                <th>Actions</th>
+              </tr>
+              {{#each crews}}
+                <tr>
+                  <td>{{number}}</td>
+                  <td>{{name}}</td>
+                  <td>{{rank}}</td>
+                  <td><a href="{{link}}" class='btn btn-default btn-xs'>Show</a></td>
+                </tr>
+              {{/each}}
+            </thead>
+          </table>
+        </script>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -22,6 +22,7 @@ BaliwagIs::Application.routes.draw do
   resources :vessel_types
 
   namespace :api do
+    get "/vessels/crew_list/:vessel_id", to: "vessels#crew_list", as: :vessel_crew_list
     namespace :v1 do
       # Crew related information
       get "/crews/:crew_token", to: "crews#profile", as: :crew_profile

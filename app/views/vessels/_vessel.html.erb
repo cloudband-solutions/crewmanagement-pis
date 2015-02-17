@@ -1,0 +1,49 @@
+<div class="vessel">
+  <div class="basicBox">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="vesselImage">
+          <%= image_tag vessel.vessel_image.url(:medium) %>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h4><%= vessel %><br><small><%= vessel.principal %></small></h4>
+        <div class="crewCount">
+          <b>Crew Count:</b> <%= vessel.crews.count %>
+          <div>
+            <%= link_to "#", class: "btn btn-xs btn-default", onclick: "callCrewListModal(#{vessel.id})" do %>
+              <span class="glyphicon glyphicon-user"></span> View Crew
+            <% end %>
+            <%= link_to vessel_path(vessel), class: "btn btn-xs btn-info" do %>
+              <span class="glyphicon glyphicon-file"></span> View Details
+            <% end %>
+          </div>
+        </div>
+        <div class="vesselInfo">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Flag / Port of Registry:</th>
+              <td><%= "#{vessel.flag} / #{vessel.port_of_registry}" %></td>
+            </tr>
+            <tr>
+              <th>Vessel Type:</th>
+              <td><%= vessel.vessel_type %></td>
+            </tr>
+            <tr>
+              <th>Horse Power:</th>
+              <td><%= vessel.horse_power %></td>
+            </tr>
+            <tr>
+              <th>Engine Make:</th>
+              <td><%= vessel.engine_make %></td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

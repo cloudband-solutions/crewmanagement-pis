@@ -1,4 +1,4 @@
-<div class="row vessell">
-    <%= render partial: "vessels/list", locals: { vessels: @vessels } %>
-    <%= paginate @vessels %>
+<div id="vessels">
+  <%= render partial: "vessels/crew_list_modal" %>
+  <%= render partial: "vessels/list", locals: { vessels: @vessels } %>
 </div>

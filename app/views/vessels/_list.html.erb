@@ -1,80 +1,9 @@
-<div class="for_non_mobile">
-  <div class="basicBoxHeader">
-    Vessels Database
-  </div>
-  <table class="table table-bordered table-stripped">
-    <tr>
-      <th> NAME </th>
-      <th> STATUS </th>
-      <th> FLAG / PORT OF REGISTRY </th>
-      <th> VESSEL TYPE </th>
-      <th> HORSE POWER </th>
-      <th> ENGINE MAKE </th>
-      <th width="5%"> CREW COUNT </th>
-      <th> ACTIONS </th>
-    </tr>
-    <tr>
-      <%= form_tag send("vessels_path"), method: :get do |f| %>
-        <td><%= text_field_tag :q, @q, class: "form-control", placeholder: "Search by Name" %></td>
-        <td><%= select_tag :status, options_for_select(Vessel::STATUSES), prompt: "By Status", class: "form-control select-select2" %></td>
-        <td><%= select_tag :flag_id, options_from_collection_for_select(Flag.all, :id, :name, @flag.try(:id)), class: "form-control select-select2", prompt: "By Flag" %></td>
-        <td><%= select_tag :vessel_type_id, options_from_collection_for_select(VesselType.all, :id, :name, @vessel_type.try(:id)), class: "form-control select-select2", prompt: "By Type" %></td>
-        <td colspan="3"></td>
-        <td><%= submit_tag "Filter", class: "btn btn-info btn-block" %>
-      <% end %>
-    </tr>
-    <% vessels.each do |vessel| %>
-      <tr>  
-        <td><%= vessel.name %></td>
-        <td><%= vessel.status %></td>
-        <td><%= "#{vessel.flag} / #{vessel.port_of_registry}" %></td>
-        <td><%= vessel.vessel_type %></td>
-        <td><%= vessel.horse_power %></td>
-        <td><%= vessel.engine_make %></td>
-        <td><%= vessel.crews.count %></td>
-        <td>
-          <%= link_to "Show", vessel_path(vessel), class: "btn btn-primary btn-xs" %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-</div>
+<% @vessels.each do |vessel| %>
+  <%= render partial: "vessel", locals: { vessel: vessel } %>
+<% end %>
 
-<div class="for_mobile">
-  <% vessels.each do |vessel| %>
-  <table class="table table-bordered" style="width:100%; table-layout:fixed; margin-bottom:20px;">
-    <tr>
-      <th> NAME </th>
-      <td><%= vessel.name %></td>
-    </tr>
-    <tr>
-      <th> STATUS </th>
-      <td><%= vessel.status %></td>
-    </tr>
-    <tr>
-      <th> FLAG </th>
-      <td><%= vessel.flag %></td>
-    </tr>
-    <tr>
-      <th> VESSEL TYPE </th>
-      <td><%= vessel.vessel_type %></td>
-    </tr>
-    <tr>
-      <th> HORSE POWER </th>
-      <td><%= vessel.horse_power %></td>
-    </tr>
-    <tr>
-      <th> ENGINE MAKE </th>
-      <td><%= vessel.engine_make %></td>
-    </tr>
-    <tr>
-      <th> CREW COUNT </th>
-      <td><%= vessel.crews.count %></td>
-    </tr>
-    <tr style="margin-bottom: 30px;">
-      <th> ACTIONS </th>
-      <td><%= link_to "Show", vessel_path(vessel), class: "btn btn-primary btn-xs" %></td>
-    </tr>
-  </table>
-  <% end %>
+<div class="row">
+  <div class="col-md-12">
+    <%= paginate @vessels %>
+  </div>
 </div>
