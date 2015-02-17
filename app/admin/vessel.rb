@@ -27,6 +27,7 @@ ActiveAdmin.register Vessel do
   filter :classification_society
   filter :principal
   filter :flag
+  filter :port_of_registry
   filter :engine_make
   filter :engine_model
   filter :poea_company
@@ -43,6 +44,8 @@ ActiveAdmin.register Vessel do
   filter :loa
   filter :breadth
   filter :depth
+  filter :bale
+  filter :grain
   filter :type_of_lifeboat, as: :select, collection: Vessel::LIFEBOAT_TYPES
 
   form do |f|
@@ -53,6 +56,7 @@ ActiveAdmin.register Vessel do
       f.input :principal
       f.input :classification_society
       f.input :flag
+      f.input :port_of_registry
       f.input :poea_company
       f.input :salary_scale
       f.input :vessel_type
@@ -73,6 +77,8 @@ ActiveAdmin.register Vessel do
       f.input :loa
       f.input :breadth
       f.input :depth
+      f.input :bale
+      f.input :grain
       f.input :ecdis, label: "ECDIS"
       f.input :type_of_lifeboat, as: :select, collection: Vessel::LIFEBOAT_TYPES
     end

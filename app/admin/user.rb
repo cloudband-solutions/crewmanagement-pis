@@ -23,6 +23,7 @@ ActiveAdmin.register User do
   end
 
   filter :email
+  filter :user_type, as: :select, collection: User::USER_TYPES
   filter :current_sign_in_at
   filter :sign_in_count
   filter :created_at

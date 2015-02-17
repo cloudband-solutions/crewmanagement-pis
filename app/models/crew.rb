@@ -94,6 +94,13 @@ class Crew < ActiveRecord::Base
 
   scope :disembarked, -> { where("status = ?", 'DISEMBARKED') }
 
+  def document_expiry_status(expiry_date)
+    current_date = Time.now
+    if ((expiry_date.year * 12 + expiry_date.month) - (current_date.year * 12 + current_date.month)) <= 15
+      "red"
+    end
+  end
+
   def self.all_by_vessel(v)
     self.active_by_rank.where(vessel_id: v.id)
   end

@@ -8,8 +8,8 @@
 					<td class="label-f"><%= @vessel.tel_number %></td>
 				</tr>
 				<tr> 
-					<td class="label-e">Flag: </td>
-					<td class="label-f"> <%= @vessel.flag %></td>
+					<td class="label-e">Flag / Port of Registry: </td>
+					<td class="label-f"> <%= "#{@vessel.flag} / #{@vessel.port_of_registry}" %></td>
 					<td class="label-e">Fax Number: </td>
 					<td class="label-f"><%= @vessel.fax_number %></td>
 				</tr>
@@ -77,6 +77,8 @@
 				<tr>
 					<td class="label-e">Engine Make / Horse Power</td> 
 					<td class="label-f"><%= @vessel.engine_make %> / <%= @vessel.engine_model %> / <%= @vessel.horse_power %></td>
+					<td class="label-e">Bale / Grain capacity</td> 
+					<td class="label-f"><%= @vessel.bale %> / <%= @vessel.grain %> cbm</td>
 				</tr>
 				
 			</table>
@@ -186,6 +188,10 @@
 				<tr>
 					<th>Engine Make / Horse Power</td> 
 					<td><%= @vessel.engine_make %> / <%= @vessel.engine_model %> / <%= @vessel.horse_power %></td>
+				</tr>
+				<tr>
+					<th>Bale</td> 
+					<td><%= @vessel.bale %></td>
 				</tr>
 			</table>
 		

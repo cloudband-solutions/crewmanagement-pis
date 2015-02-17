@@ -16,6 +16,31 @@ class User < ActiveRecord::Base
 
   before_validation :load_defaults
 
+  has_attached_file :avatar,
+                    styles: { thumb: "100x100#" },
+                    default_url: ":attachment/missing_:style.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
+  def is_principal?
+    user_type == "principal"
+  end
+  
+  def is_normal?
+    user_type == "normal"
+  end
+
+  def is_admin?
+    user_type == "admin"
+  end
+
+  def is_encoder?
+    user_type == "encoder"
+  end
+
+  def is_manager?
+    user_type == "manager"
+  end
+
   def load_defaults
     if self.access_token.nil?
       self.access_token = "#{SecureRandom.hex(6)}"
