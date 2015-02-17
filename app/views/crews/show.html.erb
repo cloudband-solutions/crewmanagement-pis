@@ -21,7 +21,7 @@
       <% end %>
     </div>
     <div class="col-md-6">
-      <%= render partial: "crews/show_download_report_filter", locals: { crew: @crew } if !current_user.is_principal?%>
+      <%= render partial: "crews/show_download_report_filter", locals: { crew: @crew } %>
     </div>
   </div>
 </div>

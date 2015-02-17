@@ -4,12 +4,12 @@ class CrewsController < ApplicationController
 
   def advanced_search
     if params[:search].nil?
-      @crews = Crew.active
-      @vessels = Vessel.all
-
       if current_user.is_principal?
-        @crews = @crews
+        @crews = @crews.order(:lastname)
         @vessels = current_user.principal.vessels
+      else
+        @crews = Crew.active
+        @vessels = Vessel.all
       end
     else
       if !params[:search][:name].nil?
@@ -179,7 +179,6 @@ class CrewsController < ApplicationController
       flash.now[:error] = "Please check the form for some errors. #{@crew.errors.full_messages.to_sentence}"
       render :edit
     end
-
   end
 
   # NOTE: We only archive a crew deleted via the main application
@@ -202,8 +201,7 @@ class CrewsController < ApplicationController
     end
   end
 
-  def crew_params
-    
+  def crew_params 
     params.require(:crew).permit!
   end
 end
