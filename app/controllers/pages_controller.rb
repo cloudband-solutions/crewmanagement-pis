@@ -15,6 +15,10 @@ class PagesController < ApplicationController
     end
 
   end
+
+  def about_this_software
+
+  end
   
 
 end
