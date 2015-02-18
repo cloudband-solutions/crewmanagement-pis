@@ -10,22 +10,18 @@
   <div class="col-md-10">
     <div class="well">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
           <%= f.association :rank, label: "Current Rank", input_html: { class: "form-control select-select2" } %>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <%= f.association :vessel, label: "Vessel Assigned", input_html: { class: "form-control select-select2" }, as: :select, collection: Vessel.active, include_blank: "NONE" %>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <%= f.association :manning_agent, label: "Current Manning Agent", input_html: { class: "form-control select-select2" }, as: :select, collection: ManningAgent.all, include_blank: "NONE" %>
         </div>
-        <div class="col-md-3">
-          <% if f.object.sign_on.nil? %>
-            <%= f.input :sign_on, as: :string, input_html: { class: "datepick form-control" } %>
-          <% else %>
-            <%= f.input :sign_on, as: :string, input_html: { value: f.object.sign_on.strftime('%d-%B-%Y'), class: "datepick form-control" } %>
-          <% end %>
-        </div>
+      </div>
+      <div class="row">  
+        <%= f.input :sign_on, label: "Sign on" %>
       </div>
     </div>
   </div>
@@ -40,15 +36,10 @@
         <div class="col-md-4">
           <%= f.input :code_number, label: "Code Number", input_html: { class: "form-control" }, placeholder: "Enter Code Number" %>
         </div>
-        <div class="col-md-4">
-          <% if f.object.new_record? %>
-            <%= f.input :date_employed, label: "Date Employed", as: :string, input_html: { value: (Time.now - 5.years).strftime('%d-%B-%Y'), class: "datepick form-control" } %>
-          <% else %>
-            <%= f.input :date_employed, label: "Date Employed", as: :string, input_html: { value: f.object.date_employed.strftime('%d-%B-%Y'), class: "datepick form-control" } %>
-          <% end %>
+        <div class="col-md-8">
+          <%= f.input :date_employed, label: "Date Employed" %>
         </div>
       </div>
-
       <div class="row crew_form">
       </div>
     </div>
@@ -74,12 +65,8 @@
      <%= f.input :city_address, label: "City Address", input_html: { class: "form-control" },placeholder: "Enter City Address", :id => "other_address" %> 
      <input type="button" class="btn address" value="Copy Address" onclick="showText()">
   </div>
-  <div class="col-md-6">
-    <% if f.object.birthday.nil? %>
-      <%= f.input :birthday, label: "Birthday", as: :string, input_html: { class: "form-control datepick" } %>
-    <% else %>
-      <%= f.input :birthday, label: "Birthday", as: :string, input_html: { value: f.object.birthday.strftime('%d-%B-%Y'), class: "form-control datepick" } %>
-    <% end %>
+  <div class="col-md-6 bmove">
+      <%= f.input :birthday, label: "Birthday" %>
   </div>
 </div>
 

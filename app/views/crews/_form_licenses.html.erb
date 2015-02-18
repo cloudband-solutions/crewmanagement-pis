@@ -18,24 +18,18 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-3">
-          <% if ff.object.date_issued.nil? %>
-            <%= ff.input :date_issued, as: :string, input_html: { class: "datepick form-control" } %>
-          <% else %>
-            <%= ff.input :date_issued, as: :string, input_html: { value: ff.object.date_issued.strftime('%d-%B-%Y'), class: "datepick form-control" } %>
-          <% end %>
+        <div class="col-md-6">
+           <%= ff.input :date_issued %>
         </div>
-        <div class="col-md-3">
-          <% if ff.object.expiry_date.nil? %>
-            <%= ff.input :expiry_date, as: :string, input_html: { class: "datepick form-control" } %>
-          <% else %>
-            <%= ff.input :expiry_date, as: :string, input_html: { value: ff.object.expiry_date.strftime('%d-%B-%Y'), class: "datepick form-control" } %>
-          <% end %>
+        <div class="col-md-6">
+            <%= ff.input :expiry_date %>
         </div>
-        <div class="col-md-3">
-          <%= ff.association :training_center, input_html: { class: "form-control select-select2" } %>
-        </div>
-        <div class="col-md-3">
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+        <%= ff.association :training_center, input_html: { class: "form-control select-select2" } %>
+       </div>
+        <div class="col-md-6">
           <%= ff.input :attachment, as: :file %>
         </div>
       </div>

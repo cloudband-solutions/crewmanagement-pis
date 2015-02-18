@@ -80,3 +80,18 @@
     display: block;
   }
 }
+
+@media only screen and (min-device-width : 320px) and (max-device-width: 480px) {
+.form-group {
+  .date {
+    margin-left: 10px;
+    width: 30vw;
+    display: block;
+
+  }
+
+  label.required {
+    display: block;
+  }
+}
+}
