@@ -1,46 +1,43 @@
 <div class="for_non_mobile">
-  <div class="row details">
-    <div class="col-md-12">
-      <table class="table table-bordered table-stripped">
-        <tr>  
-          <th class="label-c">Type</th>
-          <th class="label-c">Number</th>
-          <th class="label-c">Date Issued</th>
-          <th class="label-c">Expiry Date</th>
-          <th class="label-c">Issued By</th>
-          <th class="label-c">Actions</th>
-        </tr>
-        <% licenses.each do |license| %>
-          <tr>
-            <td class="label-d-a"><%= license.license_type %></td>
-            <td class="label-d-a"><%= license.reverting? ? 'REVERTING' : license.license_number %></td>
-            <td class="label-d-a">
-              <% if !license.date_issued.nil? %>
-                <%= license.date_issued.strftime('%d-%B-%Y') %>
-              <% end %>
-            </td>
-            <td class="label-d-a" style="background-color: <%= license.license_expiry %>;">
-            <% if !license.expiry_date.nil? %>
-                <%= license.expiry_date.strftime('%d-%B-%Y') %>
-              <% end %>
+  <div class="row">
+    <table class="table table-bordered table-stripped">
+      <tr>  
+        <th class="label-c">Type</th>
+        <th class="label-c">Number</th>
+        <th class="label-c">Date Issued</th>
+        <th class="label-c">Expiry Date</th>
+        <th class="label-c">Issued By</th>
+        <th class="label-c">Actions</th>
+      </tr>
+      <% licenses.each do |license| %>
+        <tr>
+          <td class="label-d-a"><%= license.license_type %></td>
+          <td class="label-d-a"><%= license.reverting? ? 'REVERTING' : license.license_number %></td>
+          <td class="label-d-a">
+            <% if !license.date_issued.nil? %>
+              <%= license.date_issued.strftime('%d-%B-%Y') %>
+            <% end %>
+          </td>
+          <td class="label-d-a" style="background-color: <%= license.license_expiry %>;">
+          <% if !license.expiry_date.nil? %>
+              <%= license.expiry_date.strftime('%d-%B-%Y') %>
+            <% end %>
 
-            </td>
-            <td class="label-d-a"><%= license.training_center %></td>
-            <td class="label-d-a">
-              <% if license.attachment.exists? %>
-                <%= link_to "Download", license.attachment.url, target: "_blank", class: "btn btn-default btn-xs" %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
+          </td>
+          <td class="label-d-a"><%= license.training_center %></td>
+          <td class="label-d-a">
+            <% if license.attachment.exists? %>
+              <%= link_to "Download", license.attachment.url, target: "_blank", class: "btn btn-default btn-xs" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>
 
 <div class="for_mobile">
-  <div class="row details">
-    <div class="col-md-12">
+  <div class="row">
     <% licenses.each do |license| %>
       <table class="table table-bordered table-stripped" style="font-size: 14px;">
         <tr>  
@@ -82,6 +79,5 @@
         <% end %>
       </table>
     </div>
-  </div>
 </div>
 

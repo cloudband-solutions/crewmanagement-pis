@@ -1,9 +1,11 @@
-<div class="basicBoxHeader">
-  Crew Manifest Report Generator
-</div>
-<div class="row">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <b>Crew Manifest Report Generator</b>
+  </div>
+
+<div class="panel-body">
     <%= render partial: "reports/crew_manifest_form" %>
-</div>
+
 
 <% if @crews.nil? %>
   Please fill in vessel and licenses/certificates/documents
@@ -11,3 +13,5 @@
   <%= render partial: "reports/crew_manifest_list", locals: { crews: @crews, license_types: @license_types, certificate_types: @certificate_types, document_kinds: @document_kinds } %>
   <%= render partial: "reports/crew_manifest_report_download" %>
 <% end %>
+</div>
+</div>

@@ -1,6 +1,5 @@
 <div class="for_non_mobile">
-<div class="row details">
-  <div class="col-md-12">
+  <div class="row">
     <table class="table table-bordered table-stripped">
         <tr>  
             <th class="label-d">Vessel</th>
@@ -25,13 +24,11 @@
         </tr>
         <% end %>
     </table>
-  </div>
-</div>
+    </div>
 </div>
 
 <div class="for_mobile">
-<div class="row details">
-  <div class="col-md-12">
+  <div class="row">
    <% employment_records.each do |employment_record| %> 
     <table class="table table-bordered table-stripped" style="font-size: 14px;">
         <tr>  
@@ -66,9 +63,8 @@
           <th>Reason of Disembarkation</th>
           <td><%= employment_record.reason_for_disembarkation %></td>
         </tr>  
-    </table>
-  <% end %>
+      </table>
+    <% end %>
   </div>
-</div>
 </div>
 

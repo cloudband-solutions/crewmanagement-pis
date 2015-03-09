@@ -1,23 +1,25 @@
-<div class="basicBoxHeader">
-  <div class="row">
-    <div class="col-md-6">
-      <%= @transmittal_record.vessel %> TRANSMITTAL RECORD <span class="status <%= @transmittal_record.status %>"><%= @transmittal_record.status %></span>
-    </div>
-    <div class="col-md-6">
-      <div style="text-align: right;">
-        <% if @transmittal_record.status == "pending" %>
-          <%= link_to "Edit", edit_transmittal_record_path(@transmittal_record), class: "btn btn-xs btn-default edit" %>
-        <% end %>
-        <%= link_to "Download", generate_transmittal_record_path(@transmittal_record), class: "btn btn-xs btn-default" %>
-        <%= link_to "Back to Database", transmittal_records_path, class: "btn btn-default btn-xs" %>
-        <% if @transmittal_record.status == "pending" %>
-          <%= link_to "Approve", transmittal_record_approve_path(@transmittal_record), class: "btn btn-xs btn-success", method: :post, data: { confirm: "Are you sure?" } %>
-        <% end %>
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-md-6">
+        <%= @transmittal_record.vessel %> TRANSMITTAL RECORD <span class="status <%= @transmittal_record.status %>"><%= @transmittal_record.status %></span>
+      </div>
+      <div class="col-md-6">
+        <div style="text-align: right;">
+          <% if @transmittal_record.status == "pending" %>
+            <%= link_to "Edit", edit_transmittal_record_path(@transmittal_record), class: "btn btn-xs btn-default edit" %>
+          <% end %>
+          <%= link_to "Download", generate_transmittal_record_path(@transmittal_record), class: "btn btn-xs btn-default" %>
+          <%= link_to "Back to Database", transmittal_records_path, class: "btn btn-default btn-xs" %>
+          <% if @transmittal_record.status == "pending" %>
+            <%= link_to "Approve", transmittal_record_approve_path(@transmittal_record), class: "btn btn-xs btn-success", method: :post, data: { confirm: "Are you sure?" } %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
 </div>
-<div class="basicBox">
+
+<div class="panel-body">
   <h3>Embarking Crew</h3>
   <%= render partial: "transmittal_records/embarking_crews", locals: { transmittal_record: @transmittal_record } %>
 
@@ -30,4 +32,5 @@
   <%= render partial: "transmittal_records/destination_view", locals: { transmittal_record: @transmittal_record } %>
 
   <%= render partial: "transmittal_records/signatories", locals: { transmittal_record: @transmittal_record } %>
+</div>
 </div>

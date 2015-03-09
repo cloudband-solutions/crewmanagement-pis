@@ -53,120 +53,97 @@
   </center>
 </div>
 
-<div class="row info">
-  <div class="col-md-12 form-number">
-    <tbody>
-      <tr>
-        <td>General Information</td>
-      </tr>
-    </tbody>
+<div class="panel panel-info info">
+  <div class="panel-heading">
+    <b>General Information</b>
+  </div>
+  <div class="panel-body">
+    <%= render partial: "crews/general_information", locals: { crew: @crew } %>
   </div>
 </div>
 
-<%= render partial: "crews/general_information", locals: { crew: @crew } %>
-
-<div class="row info">
-  <div class="col-md-12 form-number">
-    <tbody>
-      <tr>
-        <td>Educational Attainment</td>
-      </tr>
-    </tbody>
+<div class="panel panel-info info">
+  <div class="panel-heading">
+   <b>Educational Attainment</b>
+  </div>
+  <div class="panel-body">
+    <%= render partial: "crews/educational_attainments", locals: { educational_attainments: @crew.educational_attainments } %>
   </div>
 </div>
 
-<%= render partial: "crews/educational_attainments", locals: { educational_attainments: @crew.educational_attainments } %>
-
-<div class="row info">
-  <div class="col-md-12 form-number">
-    <tbody>
-      <tr>
-        <td>Licenses</td>
-      </tr>
-    </tbody>
+<div class="panel panel-info info">
+ <div class="panel-heading">
+  <b>Licenses</b>
+ </div>
+  <div class="panel-body">
+    <%= render partial: "crews/licenses", locals: { licenses: @crew.licenses } %>
   </div>
 </div>
 
-<%= render partial: "crews/licenses", locals: { licenses: @crew.licenses } %>
-
-<div class="row info">
-  <div class="col-md-12 form-number">
-    <tbody>
-      <tr>
-        <td>Certificates</td>
-      </tr>
-    </tbody>
+<div class="panel panel-info info">
+  <div class="panel-heading">
+    <b>Certificates</b>
+  </div>
+  <div class="panel-body">
+   <%= render partial: "crews/certificates", locals: { certificates: @crew.certificates } %>
   </div>
 </div>
 
-<%= render partial: "crews/certificates", locals: { certificates: @crew.certificates } %>
-
-<div class="row info">
-  <div class="col-md-12 form-number">
-    <tbody>
-      <tr>
-        <td>Personal Documents</td>
-      </tr>
-    </tbody>
+<div class="panel panel-info info">
+  <div class="panel-heading">
+    <b>Personal Documents</b>
+  </div>
+  <div class="panel-body">
+    <%= render partial: "crews/personal_documents", locals: { documents: @crew.documents } %>
   </div>
 </div>
-<%= render partial: "crews/personal_documents", locals: { documents: @crew.documents } %>
 
-<div class="row">
-  <div class="col-md-12 form-number">
-    <tbody>
-      <tr>
-        <td>Employment Records</td>
-      </tr>
-    </tbody>
+<div class="panel panel-info info">
+  <div class="panel-heading">
+    <b>Employment Records</b>
+  </div>
+  <div class="panel-body">
+    <%= render partial: "crews/employment_records", locals: { employment_records: @crew.employment_records_by_sign_on.reverse } %>
   </div>
 </div>
-<%= render partial: "crews/employment_records", locals: { employment_records: @crew.employment_records_by_sign_on.reverse } %>
 
 <% if current_user.user_type == "manager" %>
-  <div class="row">
-    <div class="col-md-12 form-number">
-      <tbody>
-        <tr>
-          <td>Vessel Evaluations</td>
-        </tr>
-      </tbody>
+  <div class="panel panel-info info">
+    <div class="panel-heading">
+      <b>Vessel Evaluations</b>
+    </div>
+    <div class="panel-body">
+      <%= render partial: "crews/vessel_evaluations", locals: { evaluations: @crew.crew_vessel_evaluations } %>
     </div>
   </div>
-  <%= render partial: "crews/vessel_evaluations", locals: { evaluations: @crew.crew_vessel_evaluations } %>
-
-  <div class="row">
-    <div class="col-md-12 form-number">
-      <tbody>
-        <tr>
-          <td>Office Evaluations</td>
-        </tr>
-      </tbody>
+  
+  <div class="panel panel-info info">
+    <div class="panel-heading">
+      <b>Office Evaluations</b>
+    </div>
+    <div class="panel-body">
+      <%= render partial: "crews/office_evaluations", locals: { evaluations: @crew.crew_office_evaluations } %>
     </div>
   </div>
-  <%= render partial: "crews/office_evaluations", locals: { evaluations: @crew.crew_office_evaluations } %>
 <% end %>
 
-
-<div class="row">
-  <div class="col-md-12 form-number">
-    <tbody>
-      <tr>
-        <td>Signature</td>
-      </tr>
-    </tbody>
-  </div>
-</div>
 <div class="for_non_mobile">
-  <div class="row details">
-    <div class="col-md-12">
+  <div class="panel panel-info info">
+    <div class="panel-heading">
+      <b>Signature</b>
+    </div>
+    <div class="panel-body">
       <%= image_tag @crew.signature.url(:list) %>
     </div>
   </div>
 </div>
+
 <div class="for_mobile">
-  <div class="row details">
-    <div class="col-md-12 signature">
+  <div class="panel panel-info info">
+    <div class="panel-heading">
+      <b>Signature</b>
+    </div>
+    <div class="panel-body">
       <%= image_tag @crew.signature.url(:list) %>
     </div>
   </div>
