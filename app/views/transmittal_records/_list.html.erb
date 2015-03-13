@@ -1,75 +1,75 @@
 <div class="for_non_mobile">
-<div class="panel panel-success">
-  <div class="panel-heading">
-    <div class="row">
-      <div class="col-md-6">
-        <b>Transmittal Records</b>
-      </div>
-      <div class="col-md-6">
-        <%= form_tag send("new_tr_path"), method: :post do |f| %>
-          <div class="row">
-            <div class="col-md-8">
-              <%= select_tag :vessel_id, options_from_collection_for_select(Vessel.select("*").order(:name), :id, :name), class: "form-control select-select2" %>
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <div class="row">
+        <div class="col-md-6">
+          <b>Transmittal Records</b>
+        </div>
+        <div class="col-md-6">
+          <%= form_tag send("new_tr_path"), method: :post do |f| %>
+            <div class="row">
+              <div class="col-md-8">
+                <%= select_tag :vessel_id, options_from_collection_for_select(Vessel.select("*").order(:name), :id, :name), class: "form-control select-select2" %>
+              </div>
+              <div class="col-md-4">
+                <%= submit_tag "New Transmittal Record", class: "btn btn-block btn-default btn-xs" %>
+              </div>
             </div>
-            <div class="col-md-4">
-              <%= submit_tag "New Transmittal Record", class: "btn btn-block btn-default btn-xs" %>
-            </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="panel-body">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Date of Departure</th>
-          <th>Vessel</th>
-          <th>Destination</th>
-          <th># Embarking Crews</th>
-          <th># Disembarking Crews</th>
-          <th>Number of Promotions</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-        <tr>
-          <%= form_tag send("transmittal_records_path"), method: :get do |f| %>
-            <td></td>
-            <td><%= select_tag :vessel_id, options_from_collection_for_select(Vessel.select("*").order(:name), :id, :name, @vessel.try(:id)), class: "form-control select-select2", prompt: "--SELECT--" %></td>
-            <td><%= select_tag :destination, options_for_select(TransmittalRecord.select(:destination).map(&:destination).uniq, @destination), prompt: "--SELECT--", class: "form-control select-select2" %></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><%= select_tag :status, options_for_select(TransmittalRecord::STATUSES, @status),  prompt: "By Status", class: "form-control select-select2" %></td>
-            <td><%= submit_tag "Search", class: "btn btn-info btn-block" %></td>
-          <% end %>
-        </tr>
-      </thead>
-      <tbody>
-        <% transmittal_records.each do |tr| %>  
+    <div class="panel-body">
+      <table class="table table-bordered">
+        <thead>
           <tr>
-            <td><%= tr.date_of_departure %></td>
-            <td><%= tr.vessel %></td>
-            <td><%= tr.destination %></td>
-            <td><%= tr.transmittal_record_embarking_crews.count %></td>
-            <td><%= tr.transmittal_record_disembarking_crews.count %></td>
-            <td><%= tr.transmittal_record_crew_promotions.count %></td>
-            <td><span class="status <%= tr.status %>"><%= tr.status %></span></td>
-            <td class="btns">
-              <%= link_to "Show", transmittal_record_path(tr), class: "btn btn-primary btn-xs" %>
-              <%= link_to "Edit", edit_transmittal_record_path(tr), class: "btn btn-info btn-xs" if tr.status != "approved" %>
-              <%= link_to "Delete", transmittal_record_path(tr), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } if tr.status != "approved" %>
-              <% if tr.status == "pending" %>
-                <%= link_to "Approve", transmittal_record_approve_path(tr), class: "btn btn-xs btn-success", method: :post, data: { confirm: "Are you sure?" } %>
-              <% end %>
-            </td>
+            <th>Date of Departure</th>
+            <th>Vessel</th>
+            <th>Destination</th>
+            <th># Embarking Crews</th>
+            <th># Disembarking Crews</th>
+            <th>Number of Promotions</th>
+            <th>Status</th>
+            <th>Actions</th>
           </tr>
-        <% end %>
-      </tbody>
-  </table>
-</div>
-</div>
+          <tr>
+            <%= form_tag send("transmittal_records_path"), method: :get do |f| %>
+              <td></td>
+              <td><%= select_tag :vessel_id, options_from_collection_for_select(Vessel.select("*").order(:name), :id, :name, @vessel.try(:id)), class: "form-control select-select2", prompt: "--SELECT--" %></td>
+              <td><%= select_tag :destination, options_for_select(TransmittalRecord.select(:destination).map(&:destination).uniq, @destination), prompt: "--SELECT--", class: "form-control select-select2" %></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><%= select_tag :status, options_for_select(TransmittalRecord::STATUSES, @status),  prompt: "By Status", class: "form-control select-select2" %></td>
+              <td><%= submit_tag "Search", class: "btn btn-info btn-block" %></td>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% transmittal_records.each do |tr| %>  
+            <tr>
+              <td><%= tr.date_of_departure %></td>
+              <td><%= tr.vessel %></td>
+              <td><%= tr.destination %></td>
+              <td><%= tr.transmittal_record_embarking_crews.count %></td>
+              <td><%= tr.transmittal_record_disembarking_crews.count %></td>
+              <td><%= tr.transmittal_record_crew_promotions.count %></td>
+              <td><span class="status <%= tr.status %>"><%= tr.status %></span></td>
+              <td class="btns">
+                <%= link_to "Show", transmittal_record_path(tr), class: "btn btn-primary btn-xs" %>
+                <%= link_to "Edit", edit_transmittal_record_path(tr), class: "btn btn-info btn-xs" if tr.status != "approved" %>
+                <%= link_to "Delete", transmittal_record_path(tr), method: :delete, class: "btn btn-danger btn-xs", data: { confirm: "Are you sure?" } if tr.status != "approved" %>
+                <% if tr.status == "pending" %>
+                  <%= link_to "Approve", transmittal_record_approve_path(tr), class: "btn btn-xs btn-success", method: :post, data: { confirm: "Are you sure?" } %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+    </table>
+  </div>
+  </div>
 </div>
 
 <div class="for_mobile">

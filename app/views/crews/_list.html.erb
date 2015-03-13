@@ -1,16 +1,11 @@
 <div class="for_non_mobile">
   <div class="panel panel-success">
     <div class="panel-heading">
-      <div class="row">
-        <div class="col-md-6">
-          <b>Active Crew</b>
-        </div>
-        <div class="col-md-6">
-          <%= link_to new_crew_path, class: "btn btn-default btn-xs", style: "float: right;" do %>
-            <span class="glyphicon glyphicon-plus"></span> New Crew Record
-          <% end %>
-        </div>
-      </div>
+      <b>Active Crew</b>
+      <%= link_to new_crew_path, class: "btn btn-default btn-xs", style: "float: right;" do %>
+        <span class="glyphicon glyphicon-plus"></span> New Crew Record
+      <% end %>
+  
     </div>
     <table class="table table-bordered">
       <thead>
@@ -52,9 +47,13 @@
 </div>
 
 <div class="for_mobile">
-  <div class="row" style="background-color: #e2e2e2; padding: 8px;">
-    <span class="tccounts">Total Crew Count: <%= Crew.count %></span>
-  </div>
+  <div class="pane panel-success">
+    <div class="panel-heading">
+      <b>Crew Count: <%= Crew.count %></b>
+      <%= link_to new_crew_path, class: "btn btn-default btn-xs", style: "float: right;" do %>
+            <span class="glyphicon glyphicon-plus"></span> New Crew Record
+        <% end %>
+    </div>
   <% crews.each do |crew| %>
   <table class="table table-bordered">
       <tr>
@@ -84,3 +83,4 @@
   </table>
   <% end %>
 </div>
+  </div>
