@@ -19,7 +19,7 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-           <%= ff.input :date_issued %>
+           <%= ff.input :date_issued, as: :date, start_year: Date.today.year - 20 %>
         </div>
         <div class="col-md-6">
             <%= ff.input :expiry_date %>
