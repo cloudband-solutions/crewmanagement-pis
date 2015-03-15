@@ -1,21 +1,18 @@
-<div class="basicBoxHeader">
-  <div class="row">
-    <div class="col-md-6">
-      <%= @vessel %>: Edit Transmittal Record
-    </div>
-    <div class="col-md-6">
-      <div class="add_links" style="text-align: right;">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <b><%= @vessel %>: Edit Transmittal Record</b>
+      <div style="float: right;">
         <%= link_to transmittal_records_path, class: "btn btn-default btn-xs" do %>
           <i class="glyphicon glyphicon-folder-open"></i> Back to Database
         <% end %>
       </div>
-    </div>
   </div>
-</div>
-<div class="basicBox">
+
+<div class="panel-body">
   <div class="row">
     <div class="col-md-12">
       <%= render partial: "transmittal_records/form", locals: { transmittal_record: @transmittal_record } %>
     </div>
   </div>
+</div>
 </div>

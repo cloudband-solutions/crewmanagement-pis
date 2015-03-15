@@ -10,34 +10,27 @@
         <div class="col-md-4">
           <%= ff.input :doc_number, label: "Document Number", input_html: { class: "form-control" }, placeholder: "Enter Document Number" %>
         </div>
-        <div class="col-md-4">
-          <%= ff.input :is_reverting %>
+         <div class="col-md-4">
+          <%= ff.input :issued_by, label: "Issued by", input_html: { class: "form-control" } %>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
-          <% if ff.object.issued_at.nil? %>
-            <%= ff.input :issued_at, as: :string, input_html: { class: "datepick form-control" } %>
-          <% else %>
-            <%= ff.input :issued_at, as: :string, input_html: { value: ff.object.issued_at.strftime('%d-%B-%Y'), class: "datepick form-control" } %>
-          <% end %>
+        <div class="col-md-6">
+         <%= ff.input :issued_at %>
         </div>
-        <div class="col-md-4">
-          <% if ff.object.expiry_date.nil? %>
-            <%= ff.input :expiry_date, as: :string, input_html: { class: "datepick form-control" } %>
-          <% else %>
-            <%= ff.input :expiry_date, as: :string, input_html: { value: ff.object.expiry_date.strftime('%d-%B-%Y'), class: "datepick form-control" } %>
-          <% end %>
-        </div>
-        <div class="col-md-4">
-        <%= ff.input :issued_by, label: "Issued by", input_html: { class: "form-control" } %>
+        <div class="col-md-6">
+            <%= ff.input :expiry_date %>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <%= ff.input :attachment, as: :file %>
         </div>
+        <div class="col-md-4" style="margin-top: 20px;">
+        <%= ff.input :is_reverting %>
+      </div> 
       </div>
+
       <%= ff.link_to_remove "<i class='glyphicon glyphicon-minus'></i> Remove Record".html_safe, class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
     </div>
   <% end %>

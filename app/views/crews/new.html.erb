@@ -1,16 +1,18 @@
-<div class="basicBoxHeader">
-  <div class="row">
-    <div class="col-md-6">
-      New Crew Record
-    </div>
-    <div class="col-md-6 add_links d">
-      <%= button_tag class: "btn btn-primary btn-xs", id: "submitButton" do %>
-        <i class="glyphicon glyphicon-ok"></i> Save Record
-      <% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row">
+     <b>New Crew Record</b>
+      <div style="float: right;">
+        <%= button_tag class: "btn btn-primary btn-xs", id: "submitButton" do %>
+          <i class="glyphicon glyphicon-ok"></i> Save Record
+        <% end %>
+      </div>
     </div>
   </div>
+  <div class="panel-body">
+    <%= render partial: "crews/form", locals: { crew: @crew } %>
+  </div>
 </div>
-<%= render partial: "crews/form", locals: { crew: @crew } %>
 <script>
 $("#submitButton").click(function() {
   $(".simple_form").submit();

@@ -1,18 +1,16 @@
-<div class="row details">
-  <div class="col-md-12">
-    <table class="table table-bordered table-stripped">
-      <tr>  
-        <th class="label-c">Vessel</th>
-        <th class="label-c">Date of Evaluation</th>
-        <th class="label-c">Actions</th>
+<div class="row">
+  <table class="table table-bordered table-stripped">
+    <tr>  
+      <th class="label-c">Vessel</th>
+      <th class="label-c">Date of Evaluation</th>
+      <th class="label-c">Actions</th>
+    </tr>
+    <% evaluations.each do |evaluation| %>
+      <tr>
+        <td class="label-d-a"><%= evaluation.vessel %></td>
+        <td class="label-d-a"><%= evaluation.date_of_evaluation %></td>
+        <td class="label-d-a"><%= link_to "Download", evaluation.attachment.url, target: "_blank" %></td>
       </tr>
-      <% evaluations.each do |evaluation| %>
-        <tr>
-          <td class="label-d-a"><%= evaluation.vessel %></td>
-          <td class="label-d-a"><%= evaluation.date_of_evaluation %></td>
-          <td class="label-d-a"><%= link_to "Download", evaluation.attachment.url, target: "_blank" %></td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
+    <% end %>
+  </table>
 </div>

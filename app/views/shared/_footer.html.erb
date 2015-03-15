@@ -2,9 +2,11 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <span class="csc"> Copyright &copy;</span> <a href="http://www.cloudbandsolutions.com/">Cloudband Solutions, Co.</a> <%= Time.now.year %> - All Rights Reserved - <%= link_to "About this Software", "#"  %><br>
+        <span class="csc"> Copyright &copy;</span> <%= link_to "Cloudband Solutions, Co.", "http://www.cloudbandsolutions.com", target: "_blank" %> <%= Time.now.year %> - All Rights Reserved - <%= link_to "About this Software", about_this_software_path  %><br>
         <br>
-        <%= image_tag "cbs.png", width: "250" %>
+        <%= link_to "http://www.cloudbandsolutions.com", target: "_blank" do %>
+         <%= image_tag "cbs.png", width: "250" %>
+        <% end %>
       </div>
     </div>
   </div>

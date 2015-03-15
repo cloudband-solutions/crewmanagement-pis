@@ -3,6 +3,7 @@ BaliwagIs::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
   root to: "pages#index"
+  get "/about_this_software", to: "pages#about_this_software"
 
   # Creates a URL /vessels and attaches to controller vessels_controller.rb method index
   # as: :vessels --> Creates a variable for the URL called vessels_path

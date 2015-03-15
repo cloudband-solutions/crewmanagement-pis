@@ -1,15 +1,11 @@
 <div class="for_non_mobile">
-    <div class="basicBoxHeader">
-      <div class="row">
-        <div class="col-md-6">
-          Active Crew
-        </div>
-        <div class="col-md-6">
-          <%= link_to new_crew_path, class: "btn btn-default btn-xs", style: "float: right;" do %>
-            <span class="glyphicon glyphicon-plus"></span> New Crew Record
-          <% end %>
-        </div>
-      </div>
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <b>Active Crew</b>
+      <%= link_to new_crew_path, class: "btn btn-default btn-xs", style: "float: right;" do %>
+        <span class="glyphicon glyphicon-plus"></span> New Crew Record
+      <% end %>
+  
     </div>
     <table class="table table-bordered">
       <thead>
@@ -48,35 +44,43 @@
       <% end %>
   </table>
 </div>
+</div>
 
 <div class="for_mobile">
-  <span class="tccounts">Total Crew Count: <%= Crew.count %></span>
-    <% crews.each do |crew| %>
-    <table class="table table-bordered">
-        <tr>
-          <th>NUMBER</th>
-          <td><%= crew.code_number %></td>
-        </tr>
-        <tr>
-          <th>NAME</th>
-          <td><%= link_to "#{crew.to_s_list}", crew_path(crew) %></td>
-        </tr>
-        <tr>
-          <th>VESSEL</th>
-          <td><%= crew.vessel %></td>
-        </tr>
-        <tr>
-          <th>RANK</th>
-          <td><%= crew.rank %></td>
-        </tr>
-        <tr>
-          <th>ACTIONS</th>
-          <td>
-            <%= link_to "Show", crew_path(crew), class: "btn btn-xs btn-info" %>
-            <%= link_to "Edit", edit_crew_path(crew.id), class: "btn btn-xs btn-primary" %>
-            <%= link_to "Delete", crew_path(crew), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-danger" %>
-          </td>
-        </tr>
-    </table>
-    <% end %>
+  <div class="pane panel-success">
+    <div class="panel-heading">
+      <b>Crew Count: <%= Crew.count %></b>
+      <%= link_to new_crew_path, class: "btn btn-default btn-xs", style: "float: right;" do %>
+            <span class="glyphicon glyphicon-plus"></span> New Crew Record
+        <% end %>
+    </div>
+  <% crews.each do |crew| %>
+  <table class="table table-bordered">
+      <tr>
+        <th>NUMBER</th>
+        <td><%= crew.code_number %></td>
+      </tr>
+      <tr>
+        <th>NAME</th>
+        <td><%= link_to "#{crew.to_s_list}", crew_path(crew) %></td>
+      </tr>
+      <tr>
+        <th>VESSEL</th>
+        <td><%= crew.vessel %></td>
+      </tr>
+      <tr>
+        <th>RANK</th>
+        <td><%= crew.rank %></td>
+      </tr>
+      <tr>
+        <th>ACTIONS</th>
+        <td>
+          <%= link_to "Show", crew_path(crew), class: "btn btn-xs btn-info" %>
+          <%= link_to "Edit", edit_crew_path(crew.id), class: "btn btn-xs btn-primary" %>
+          <%= link_to "Delete", crew_path(crew), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-xs btn-danger" %>
+        </td>
+      </tr>
+  </table>
+  <% end %>
 </div>
+  </div>

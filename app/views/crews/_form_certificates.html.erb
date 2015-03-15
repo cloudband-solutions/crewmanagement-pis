@@ -17,25 +17,19 @@
           <%= ff.association :flag, as: :select, collection: Flag.select("*").order(:name), input_html: { class: "select-select2 form-control" } %>
         </div>
       </div>
+       <div class="row">
+        <div class="col-md-6">
+         <%= ff.input :date_issued %>
+        </div>
+        <div class="col-md-6">
+         <%= ff.input :expiry_date %>
+        </div>
+      </div>
       <div class="row">
-        <div class="col-md-3">
-          <% if ff.object.date_issued.nil? %>
-            <%= ff.input :date_issued, as: :string, input_html: { class: "datepick form-control" } %>
-          <% else %>
-            <%= ff.input :date_issued, as: :string, input_html: { value: ff.object.date_issued.strftime('%d-%B-%Y'), class: "datepick form-control" } %>
-          <% end %>
-        </div>
-        <div class="col-md-3">
-          <% if ff.object.expiry_date.nil? %>
-            <%= ff.input :expiry_date, as: :string, input_html: { class: "datepick form-control" } %>
-          <% else %>
-            <%= ff.input :expiry_date, as: :string, input_html: { value: ff.object.expiry_date.strftime('%d-%B-%Y'), class: "datepick form-control" } %>
-          <% end %>
-        </div>
-        <div class="col-md-3">
+        <div class="col-md-6">
           <%= ff.input :issued_by %>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-6">
           <%= ff.input :attachment, as: :file %>
         </div>
       </div>

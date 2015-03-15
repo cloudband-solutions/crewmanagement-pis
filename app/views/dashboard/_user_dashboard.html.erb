@@ -1,8 +1,13 @@
 <div class="dashboard">
-  <div class="row listHeader">
-    <div class="col-md-6">DASHBOARD</div>
-    <div class="col-md-6"><%= render partial: "dashboard/user_dashboard_add_links" %> </div>
-  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="row">
+        <b>DASHBOARD</b>
+        <div style="float: right;">
+          <%= render partial: "dashboard/user_dashboard_add_links" %>
+        </div>
+     </div>
+   </div>
   <div class="basicBox">
     <div class="row">
       <div class="status">
@@ -35,6 +40,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 
 

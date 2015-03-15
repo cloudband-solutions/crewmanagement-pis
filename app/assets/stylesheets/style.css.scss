@@ -307,3 +307,22 @@ width: 283px;
   padding-bottom: 10px;
 }
 
+.form-group {
+  .date {
+    width: 10vw;
+    display: inline;
+  }
+
+  label.required {
+    display: block;
+  }
+
+  label.date {
+     display: block;
+  }
+
+}
+
+.info {
+  margin-top: 1%;
+}

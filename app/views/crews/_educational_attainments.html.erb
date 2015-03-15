@@ -1,27 +1,24 @@
 <div class="for_non_mobile">
-<div class="row details">
-  <div class="col-md-12">
-    <table class="table table-bordered table-stripped">
-      <tr>
-        <th class="label-d">Year</th>
-        <th class="label-d">School</th>
-        <th class="label-d">Course Finished</th>
-      </tr>
-      <% educational_attainments.each do |ea| %>
+  <div class="row">
+      <table class="table table-bordered table-stripped">
         <tr>
-          <td class="label-d-a"><%= ea.year_graduated %></td>
-          <td class="label-d-a"><%= ea.school %></td>
-          <td class="label-d-a"><%= ea.course_finished %></td>
+          <th class="label-d">Year</th>
+          <th class="label-d">School</th>
+          <th class="label-d">Course Finished</th>
         </tr>
-      <% end %>
-    </table>
-  </div>
-</div>
+        <% educational_attainments.each do |ea| %>
+          <tr>
+            <td class="label-d-a"><%= ea.year_graduated %></td>
+            <td class="label-d-a"><%= ea.school %></td>
+            <td class="label-d-a"><%= ea.course_finished %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
 </div>
 
 <div class="for_mobile">
-  <div class="row details">
-    <div class="col-md-12">
+  <div class="row">
     <% educational_attainments.each do |ea| %>
       <table class="table table-bordered table-stripped" style="font-size: 14px;">
         <tr>
@@ -40,4 +37,3 @@
       <% end %>
     </div>
   </div>
-</div>

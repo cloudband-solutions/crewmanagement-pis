@@ -13,31 +13,22 @@
         <%= ff.association :rank, label: "Rank", input_html: { class: "form-control select-select2" }  %>
       </div>
     </div>
-    <div class="row">
-    </div> 
     <div class="row crew_doc">
-      <div class="col-md-3">
+      <div class="col-md-6">
         <%= ff.association :manning_agent %>
       </div>
-      <div class="col-md-3">
-        <% if ff.object.sign_on.nil? %>
-          <%= ff.input :sign_on, as: :string, input_html: { class: "datepick form-control" } %>
-        <% else %>
-          <%= ff.input :sign_on, as: :string, input_html: { value: ff.object.sign_on.strftime('%d-%B-%Y'),class: "datepick form-control" } %>
-        <% end %>
-      </div>
-      <div class="col-md-3">
-        <% if ff.object.sign_off.nil? %>
-          <%= ff.input :sign_off, as: :string, input_html: { class: "datepick form-control" } %>
-        <% else %>
-          <%= ff.input :sign_off, as: :string, input_html: { value: ff.object.sign_off.strftime('%d-%B-%Y'), class: "datepick form-control" } %>
-        <% end %>
-      </div>
-      <div class="col-md-3">
+      <div class="col-md-6">
          <%= ff.association :reason_for_disembarkation, label: "Reason of Disembarkation", input_html: { class: "form-control select-select2" }, placeholder: "Enter Reason"  %>
       </div>
     </div> 
-
+    <div class="row">
+     <div class="col-md-6">
+        <%= ff.input :sign_on %>
+     </div>
+     <div class="col-md-6">
+        <%= ff.input :sign_off %>
+     </div>
+    </div>
     <h3>Other Vessel Information</h3>
     <div class="row">
       <div class="col-md-4">

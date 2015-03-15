@@ -1,12 +1,11 @@
 <div class="vessel">
-  <div class="basicBox">
     <div class="row">
       <div class="col-md-3">
         <div class="vesselImage">
           <%= image_tag vessel.vessel_image.url(:medium) %>
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4" text-align: center;>
         <h4><%= vessel %><br><small><%= vessel.principal %></small></h4>
         <div class="crewCount">
           <b>Crew Count:</b> <%= vessel.crews.count %>
@@ -22,7 +21,7 @@
         <div class="vesselInfo">
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-5">
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -46,4 +45,3 @@
       </div>
     </div>
   </div>
-</div>
