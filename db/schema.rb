@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150315121704) do
+ActiveRecord::Schema.define(version: 20150315124854) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -293,6 +293,7 @@ ActiveRecord::Schema.define(version: 20150315121704) do
     t.integer  "training_center_id"
     t.integer  "priority"
     t.boolean  "is_reverting"
+    t.boolean  "no_expiry"
   end
 
   create_table "manning_agents", force: true do |t|
