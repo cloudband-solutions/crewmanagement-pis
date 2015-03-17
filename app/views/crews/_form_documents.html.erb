@@ -16,10 +16,10 @@
       </div>
       <div class="row">
         <div class="col-md-6">
-         <%= ff.input :issued_at %>
+         <%= ff.input :issued_at, start_year: Date.today.year - 100 %>
         </div>
         <div class="col-md-6">
-            <%= ff.input :expiry_date %>
+            <%= ff.input :expiry_date, start_year: Date.today.year + 100 %>
         </div>
       </div>
       <div class="row">

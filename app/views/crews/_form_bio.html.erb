@@ -37,7 +37,7 @@
           <%= f.input :code_number, label: "Code Number", input_html: { class: "form-control" }, placeholder: "Enter Code Number" %>
         </div>
         <div class="col-md-8">
-          <%= f.input :date_employed, label: "Date Employed" %>
+          <%= f.input :date_employed, label: "Date Employed", as: :date, start_year: Date.today.year - 100 %>
         </div>
       </div>
       <div class="row crew_form">
