@@ -2,16 +2,32 @@
 <%= link_to "Back to Database", principals_path %>
 <%= render partial: "vessels/crew_list_modal" %>
 <hr>
-<ul class="nav nav-tabs nav-justified">
-	<li class="active"><%= link_to "General Info", "#biodata", "data-toggle" => "tab" %></li>
-	<li class=""><%= link_to "Vessel List", "#vessels", "data-toggle" => "tab" %></li>
-</ul>
 
-<div class="tab-content tab-content-inner pinner">
-    <div class="tab-pane active" id="biodata">
-      <%= render partial: "principals/general_info", locals: { principal: @principal } %>
-    </div>
-     <div class="tab-pane" id="vessels">
-      <%= render partial: "vessels/list", locals: { vessels: @principal.vessels } %>
-    </div>
+<ul class="tabs2 group">
+  <li><%= link_to "General Info", "#/one2", class: "active" %></li>
+  <li><%= link_to "Vessel List", "#/two2" %></li>
+</ul>
+<div id="panel2">
+  <span id="one2">
+     <%= render partial: "principals/general_info", locals: { principal: @principal } %>
+  </span>
+  <span id="two2">
+    <%= render partial: "vessels/list", locals: { vessels: @principal.vessels } %>
+  </span>
 </div>
+
+<script>
+$(document).ready(function() {
+var tabs2 =  $(".tabs2 li a");
+  
+  tabs2.click(function() {
+    var panel2 = this.hash.replace('/','');
+    tabs2.removeClass("active");
+    $(this).addClass("active");
+    $("#panel2").find('span').hide();
+    $(panel2).fadeIn(200);
+  });
+
+  $('[data-toggle="tooltip"]').tooltip()
+});
+</script>
