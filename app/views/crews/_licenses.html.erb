@@ -18,11 +18,15 @@
               <%= license.date_issued.strftime('%d-%B-%Y') %>
             <% end %>
           </td>
-          <td class="label-d-a" style="background-color: <%= license.license_expiry %>;">
-          <% if !license.expiry_date.nil? %>
+          <% if license.no_expiry == true %>
+            <td class="label-d-a">
+              NO EXPIRY
+          <% else %>
+            <td class="label-d-a" style="background-color: <%= license.license_expiry %>;">
+            <% if !license.expiry_date.nil? %>
               <%= license.expiry_date.strftime('%d-%B-%Y') %>
             <% end %>
-
+          <% end %>
           </td>
           <td class="label-d-a"><%= license.training_center %></td>
           <td class="label-d-a">

@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="row">  
-        <%= f.input :sign_on, label: "Sign on" %>
+        <%= f.input :sign_on, label: "Sign on", as: :date, start_year: Date.today.year - 100  %>
       </div>
     </div>
   </div>
@@ -37,7 +37,7 @@
           <%= f.input :code_number, label: "Code Number", input_html: { class: "form-control" }, placeholder: "Enter Code Number" %>
         </div>
         <div class="col-md-8">
-          <%= f.input :date_employed, label: "Date Employed" %>
+          <%= f.input :date_employed, label: "Date Employed", as: :date, start_year: Date.today.year - 100 %>
         </div>
       </div>
       <div class="row crew_form">
@@ -66,7 +66,7 @@
      <input type="button" class="btn address" value="Copy Address" onclick="showText()">
   </div>
   <div class="col-md-6 bmove">
-      <%= f.input :birthday, label: "Birthday" %>
+      <%= f.input :birthday, label: "Birthday", as: :date, start_year: Date.today.year - 100 %>
   </div>
 </div>
 

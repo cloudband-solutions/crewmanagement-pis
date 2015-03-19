@@ -19,7 +19,9 @@ class CrewsController < ApplicationController
       query = params[:search]
 
       @crews = SearchService.advanced_search(query)
+      @vessels = Vessel.all
     end
+
 
     @crews = @crews.page(params[:page]).per(10)
   end

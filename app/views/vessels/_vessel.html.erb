@@ -10,7 +10,7 @@
         <div class="crewCount">
           <b>Crew Count:</b> <%= vessel.crews.count %>
           <div>
-            <%= link_to "#", class: "btn btn-xs btn-default", onclick: "callCrewListModal(#{vessel.id})" do %>
+            <%= link_to "#", class: "crew-list-btn btn btn-xs btn-default", data: { vessel_id: vessel.id } do %>
               <span class="glyphicon glyphicon-user"></span> View Crew
             <% end %>
             <%= link_to vessel_path(vessel), class: "btn btn-xs btn-info" do %>
