@@ -12,20 +12,33 @@
 
   <div class="row">
     <div class="col-md-12 vessel_show">
-      <ul class="nav nav-tabs nav-justified vshow">
-        <li class="active"><%= link_to "Details", "#details", "data-toggle" => "tab" %></li>
-        <li class=""><%= link_to "Current Crew", "#current-crew", "data-toggle" => "tab" %></li>
+      <ul class="tabs1 group">
+        <li><%= link_to "Details", "#/one1", class: "active" %></li>
+        <li><%= link_to "Current Crew", "#/two1" %></li>
       </ul>
-      <div class="tab-content tab-content-inner">
-        <div class="tab-pane active" id="details">
-          <%= render partial: "vessels/details", locals: { vessel: @vessel } %>
-        </div>
-        <div class="tab-pane" id="current-crew">
+      <div id="panel1">
+        <span id="one1">
+           <%= render partial: "vessels/details", locals: { vessel: @vessel } %>
+        </span>
+        <span id="two1">
           <%= render partial: "reports/crew_manifest_list", locals: { crews: Crew.all_by_vessel(@vessel), license_types: [], document_kinds: DocumentKind.where(is_default: true), certificate_types: [] } %>
-        </div>
-      </div>
+        </span>
+    </div>
+ </div>
     </div>
   </div>
 </div>
 </div>
 </div>
+
+<script>
+  var tabs1 =  $(".tabs1 li a");
+  
+  tabs1.click(function() {
+    var panel1 = this.hash.replace('/','');
+    tabs1.removeClass("active");
+    $(this).addClass("active");
+    $("#panel1").find('span').hide();
+    $(panel1).fadeIn(200);
+  });
+</script>

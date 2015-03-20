@@ -1,63 +1,144 @@
-<table class="table table-bordered well cmanifest">
-  <tr>
-    <th>No.</th>
-    <th style="width: 20%;">Name</th>
-    <th>Date of Birth</th>
-    <th>Rank</th>
-    <th>Date of Embarkation</th>
-    <th>Date of Promotion</th>
-    <% license_types.each do |lt| %>
-      <th><%= lt %></th>
-    <% end %>
-    <% certificate_types.each do |ct| %>
-      <th><%= ct %></th>
-    <% end %>
-    <% document_kinds.each do |dk| %>
-      <th><%= dk %></th>
-    <% end %>
-    <th>Expected Date of Relief</th>
-  </tr>
-  <% crews.each_with_index do |crew, i| %>
+<div class="for_non_mobile">
+  <table class="table table-bordered well cmanifest">
     <tr>
-      <td><%= i + 1 %></td>
-      <td><%= link_to crew.to_s_report, crew_path(crew) %></td>
-      <td><%= crew.birthday %></td>
-      <td><%= crew.rank %></td>
-      <td><%= crew.sign_on.strftime('%d-%b-%Y') if !crew.sign_on.nil?%></td>
-      <td><%= crew.date_of_promotion.strftime('%d-%b-%Y') if !crew.date_of_promotion.nil? %></td>
+      <th>No.</th>
+      <th style="width: 20%;">Name</th>
+      <th>Date of Birth</th>
+      <th>Rank</th>
+      <th>Date of Embarkation</th>
+      <th>Date of Promotion</th>
       <% license_types.each do |lt| %>
-        <% l = crew.licenses.where(license_type_id: lt.id).first %>
-        <% if !l.nil? %>
-          <td style="background-color: <%= l.license_expiry %>;"><%= "#{l.license_number} - #{l.expiry_date.strftime('%d-%b-%Y') if !l.expiry_date.nil?}" %></td>
-        <% else %>
-          <td> </td>
-        <% end %>
+        <th><%= lt %></th>
       <% end %>
       <% certificate_types.each do |ct| %>
-        <% c = crew.certificates.where(certificate_type_id: ct.id).first %>
-        <% if !c.nil? %>
-          <td style="background-color: <%= c.certificate_expiry %>;"><%= "#{c.certificate_number} - #{c.expiry_date.strftime('%d-%b-%Y') if !c.expiry_date.nil? }" %></td>
-        <% else %>
-          <td> </td>
-        <% end %>
+        <th><%= ct %></th>
       <% end %>
       <% document_kinds.each do |dk| %>
-        <% d = crew.documents.where(document_kind_id: dk.id).first %>
-          <% if !d.nil? %>
-           <td style="background-color: <%= d.document_expiry %>;">
-            <% if d.reverting? %>
-              REVERTING
-            <% else %>
-              <%= "#{d.doc_number} - #{d.expiry_date.strftime('%d-%b-%Y') if !d.expiry_date.nil?}" %>
-            <% end %>
-            </td>
-         <% else %>
-          <td></td>
-         <% end %>
+        <th><%= dk %></th>
       <% end %>
+      <th>Expected Date of Relief</th>
+    </tr>
+    <% crews.each_with_index do |crew, i| %>
+      <tr>
+        <td><%= i + 1 %></td>
+        <td><%= link_to crew.to_s_report, crew_path(crew) %></td>
+        <td><%= crew.birthday %></td>
+        <td><%= crew.rank %></td>
+        <td><%= crew.sign_on.strftime('%d-%b-%Y') if !crew.sign_on.nil?%></td>
+        <td><%= crew.date_of_promotion.strftime('%d-%b-%Y') if !crew.date_of_promotion.nil? %></td>
+        <% license_types.each do |lt| %>
+          <% l = crew.licenses.where(license_type_id: lt.id).first %>
+          <% if !l.nil? %>
+            <td style="background-color: <%= l.license_expiry %>;"><%= "#{l.license_number} - #{l.expiry_date.strftime('%d-%b-%Y') if !l.expiry_date.nil?}" %></td>
+          <% else %>
+            <td> </td>
+          <% end %>
+        <% end %>
+        <% certificate_types.each do |ct| %>
+          <% c = crew.certificates.where(certificate_type_id: ct.id).first %>
+          <% if !c.nil? %>
+            <td style="background-color: <%= c.certificate_expiry %>;"><%= "#{c.certificate_number} - #{c.expiry_date.strftime('%d-%b-%Y') if !c.expiry_date.nil? }" %></td>
+          <% else %>
+            <td> </td>
+          <% end %>
+        <% end %>
+        <% document_kinds.each do |dk| %>
+          <% d = crew.documents.where(document_kind_id: dk.id).first %>
+            <% if !d.nil? %>
+             <td style="background-color: <%= d.document_expiry %>;">
+              <% if d.reverting? %>
+                REVERTING
+              <% else %>
+                <%= "#{d.doc_number} - #{d.expiry_date.strftime('%d-%b-%Y') if !d.expiry_date.nil?}" %>
+              <% end %>
+              </td>
+           <% else %>
+            <td></td>
+           <% end %>
+        <% end %>
+        <td style="background-color: <%= crew.manifest_status_color %>;">
+          <%= (crew.sign_on + 9.months).strftime('%d-%b-%Y') if !crew.sign_on.nil? %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="for_mobile">
+  <% crews.each_with_index do |crew, i| %>
+  <table class="table table-bordered well cmanifest">
+    <tr>
+      <th>No.</th>
+      <td><%= i + 1 %></td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <td><%= link_to crew.to_s_report, crew_path(crew) %></td>
+    </tr>
+    <tr>
+      <th>Date of Birth</th>
+      <td><%= crew.birthday %></td>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <td><%= crew.rank %></td>
+    </tr>
+    <tr>
+      <th>Date of Embarkation</th>
+      <td><%= crew.sign_on.strftime('%d-%b-%Y') if !crew.sign_on.nil?%></td>
+    </tr>
+    <tr>
+      <th>Date of Promotion</th>
+      <td><%= crew.date_of_promotion.strftime('%d-%b-%Y') if !crew.date_of_promotion.nil? %></td>
+    </tr>
+    <tr>
+      <% license_types.each do |lt| %>
+        <th><%= lt %></th>
+      <% end %>
+      <% certificate_types.each do |ct| %>
+        <th><%= ct %></th>
+      <% end %>
+      <% document_kinds.each do |dk| %>
+        <th><%= dk %></th>
+      <% end %>
+
+       <% license_types.each do |lt| %>
+          <% l = crew.licenses.where(license_type_id: lt.id).first %>
+          <% if !l.nil? %>
+            <td style="background-color: <%= l.license_expiry %>;"><%= "#{l.license_number} - #{l.expiry_date.strftime('%d-%b-%Y') if !l.expiry_date.nil?}" %></td>
+          <% else %>
+            <td> </td>
+          <% end %>
+        <% end %>
+        <% certificate_types.each do |ct| %>
+          <% c = crew.certificates.where(certificate_type_id: ct.id).first %>
+          <% if !c.nil? %>
+            <td style="background-color: <%= c.certificate_expiry %>;"><%= "#{c.certificate_number} - #{c.expiry_date.strftime('%d-%b-%Y') if !c.expiry_date.nil? }" %></td>
+          <% else %>
+            <td> </td>
+          <% end %>
+        <% end %>
+        <% document_kinds.each do |dk| %>
+          <% d = crew.documents.where(document_kind_id: dk.id).first %>
+            <% if !d.nil? %>
+             <td style="background-color: <%= d.document_expiry %>;">
+              <% if d.reverting? %>
+                REVERTING
+              <% else %>
+                <%= "#{d.doc_number} - #{d.expiry_date.strftime('%d-%b-%Y') if !d.expiry_date.nil?}" %>
+              <% end %>
+              </td>
+           <% else %>
+            <td></td>
+           <% end %>
+        <% end %>
+    </tr>
+    <tr>
+      <th>Expected Date of Relief</th>
       <td style="background-color: <%= crew.manifest_status_color %>;">
         <%= (crew.sign_on + 9.months).strftime('%d-%b-%Y') if !crew.sign_on.nil? %>
       </td>
     </tr>
-  <% end %>
 </table>
+<% end %>
+</div>
