@@ -117,31 +117,14 @@ class CrewsController < ApplicationController
       @crews = @crews.order("crews.lastname")
     end
 
-    if params[:q].present?
-      @q = params[:q]
-      @q.split(" ").each do |n|
-        @crews = @crews.where("crews.firstname LIKE :q OR crews.middlename LIKE :q OR crews.lastname LIKE :q", q: "%#{n}%")
+    if !params[:search].nil?
+      if !params[:search][:name].nil?
+        params[:search][:name] = params[:search][:name].upcase
       end
-    end
 
-    if params[:status].present?
-      @status = params[:status]
-      @crews = @crews.where("crews.status = ?", @status)
-    end
+      query = params[:search]
 
-    if params[:code_number].present?
-      @code_number = params[:code_number]
-      @crews = @crews.where("crews.code_number LIKE :q", q: "%#{@code_number}%")
-    end
-
-    if params[:vessel_id].present?
-      @vessel = Vessel.find(params[:vessel_id])
-      @crews = @crews.where("crews.vessel_id = ?", @vessel.id)
-    end
-
-    if params[:rank_id].present?
-      @rank = Rank.find(params[:rank_id])
-      @crews = @crews.where("crews.rank_id = ?", @rank.id)
+      @crews = SearchService.advanced_search(query, @crews)
     end
 
     @crews = @crews.page(params[:page]).per(10)

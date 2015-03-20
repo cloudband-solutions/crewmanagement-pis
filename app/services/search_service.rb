@@ -1,6 +1,5 @@
 class SearchService
-  def self.advanced_search(query)
-    crews = Crew.active
+  def self.advanced_search(query, crews)
 
     if !query[:name].blank? && !crews.blank?
       query[:name].split(" ").each do |n|

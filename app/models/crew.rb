@@ -23,7 +23,7 @@ class Crew < ActiveRecord::Base
   validates :rank, presence: true
 
   belongs_to :vessel
-  validates :vessel, presence: true, if: :onboard?
+  validates :vessel, presence: { message: "Crew status is still onboard. Please disembark first." }, if: :onboard?
 
   def onboard?
     self.status == "ONBOARD"
@@ -142,8 +142,6 @@ class Crew < ActiveRecord::Base
   def toggle_archive!
     if self.is_active?
       self.update!(status: "INACTIVE")
-    else
-      self.update!(status: "DISEMBARKED")
     end
   end
 
@@ -154,16 +152,6 @@ class Crew < ActiveRecord::Base
 
     if self.crew_token.nil?
       self.crew_token = "#{SecureRandom.hex(4)}"
-    end
-
-    if self.vessel.nil?
-      self.status = 'DISEMBARKED'
-    else
-      self.status = 'ONBOARD'
-    end
-
-    if self.status == "DISEMBARKED" and !self.vessel.nil?
-      self.vessel = nil
     end
   end
 
