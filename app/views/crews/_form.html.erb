@@ -1,5 +1,4 @@
  <%= simple_nested_form_for crew, defaults: { wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control' } }, html: { multipart: true, novalidate: true } do |f| %>
-
   <div class="">
     <div class="row crew_form fixing for_mobile_css">
       <div class="col-md-4">
@@ -13,43 +12,41 @@
       </div>
     </div>
 
-    <ul class="tabs group">
-      <li><%= link_to "General", "#/one", class: "active" %></li>
-      <li><%= link_to "Licenses", "#/two" %></li>
-      <li><%= link_to "Certificates", "#/three" %></li>
-      <li><%= link_to "Personal Documents", "#/four" %></li>
+    <ul class="nav nav-tabs nav-justified">
+      <li class="active"><%= link_to "General", "#bio", "data-toggle" => "tab" %></li>
+      <li><%= link_to "Licenses", "#licenses", "data-toggle" => "tab" %></li>
+      <li><%= link_to "Certificates", "#certificates", "data-toggle" => "tab" %></li>
+      <li><%= link_to "Personal Documents", "#documents", "data-toggle" => "tab" %></li>
       <% if current_user.user_type == "manager" %>
-        <li><%= link_to "Vessel Evaluations", "#/five" %></li>
-        <li><%= link_to "Office Evaluations", "#/six" %></li>
+        <li><%= link_to "Vessel Evals", "#vessel_evaluations", "data-toggle" => "tab" %></li>
+        <li><%= link_to "Office Evals", "#office_evaluations", "data-toggle" => "tab" %></li>
       <% end %>
-      <li><%= link_to "Employment", "#/seven" %></li>
+      <li><%= link_to "Employment", "#employment_records", "data-toggle" => "tab" %></li>
     </ul>
 
-    <div id="panels">
-      <div class="infiniscroll">
-        <span id="one">
-          <%= render partial: "crews/form_bio", locals: { f: f } %>
-        </span>
-        <span id="two">
-          <%= render partial: "crews/form_licenses", locals: { f: f } %>
-        </span>
-        <span id="three">
-          <%= render partial: "crews/form_certificates", locals: { f: f } %>
-        </span>
-        <span id="four">
-          <%= render partial: "crews/form_documents", locals: { f: f } %>
-        </span>
-        <% if current_user.user_type == "manager" %>
-         <span id="five">
+    <div class="tab-content tab-content-inner infiniscroll">
+      <div id="bio" class="tab-pane active">
+        <%= render partial: "crews/form_bio", locals: { f: f } %>
+      </div>
+      <div id="licenses" class="tab-pane">
+        <%= render partial: "crews/form_licenses", locals: { f: f } %>
+      </div>
+      <div id="certificates" class="tab-pane">
+        <%= render partial: "crews/form_certificates", locals: { f: f } %>
+      </div>
+      <div id="documents" class="tab-pane">
+        <%= render partial: "crews/form_documents", locals: { f: f } %>
+      </div>
+      <% if current_user.user_type == "manager" %>
+        <div id="vessel_evaluations" class="tab-pane">
           <%= render partial: "crews/form_crew_vessel_evaluation", locals: { f: f } %>
-         </span>
-         <span id="six">
+        </div>
+        <div id="office_evaluations" class="tab-pane">
           <%= render partial: "crews/form_crew_office_evaluation", locals: { f: f } %>
-         </span>
-        <% end %>
-         <span id="seven">
-          <%= render partial: "crews/form_employment_records", locals: { f: f } %>
-        </span>
+        </div>
+      <% end %>
+       <div id="employment_records" class="tab-pane">
+        <%= render partial: "crews/form_employment_records", locals: { f: f } %>
       </div>
     </div>
  </div>
@@ -59,25 +56,14 @@
 
 <script type="text/javascript">
 
-$(document).ready(function() {
+$(document).on("ready page:load", function() {
   initDatePicker();
+
   $(document).on('nested:fieldAdded', function() {
     initDatePicker();
     $("select.select-select2").select2();
   });
 
-
-  var tabs =  $(".tabs li a");
-  
-  tabs.click(function() {
-    var panels = this.hash.replace('/','');
-    tabs.removeClass("active");
-    $(this).addClass("active");
-    $("#panels").find('span').hide();
-    $(panels).fadeIn(200);
-  });
-
-  $('[data-toggle="tooltip"]').tooltip()
 });
 
 window.nestedFormEvents.insertFields = function(content, assoc, link) {
