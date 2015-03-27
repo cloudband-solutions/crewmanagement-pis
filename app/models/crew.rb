@@ -146,9 +146,18 @@ class Crew < ActiveRecord::Base
   end
 
   def load_defaults
-    if self.new_record?
+    if self.vessel.nil? and self.status != "INACTIVE"
+      self.status = "DISEMBARKED"
+    elsif !self.vessel.nil? and self.status != "INACTIVE"
+      self.status = "ONBOARD"
+    else
       self.status = "DISEMBARKED"
     end
+
+    # Upcase all name values
+    self.firstname = self.firstname.upcase unless self.firstname.nil?
+    self.middlename = self.middlename.upcase unless self.middlename.nil?
+    self.lastname = self.lastname.upcase unless self.lastname.nil?
 
     if self.crew_token.nil?
       self.crew_token = "#{SecureRandom.hex(4)}"
