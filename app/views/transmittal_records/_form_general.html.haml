@@ -1,0 +1,36 @@
+= f.association :vessel, as: :hidden
+.row
+  .col-md-12
+    = f.input :destination
+    = f.input :date_of_departure, as: :date
+    = f.input :prepared_on
+
+.row
+  .col-md-12
+    %label
+      Prepared By
+.row
+  .col-md-6
+    = f.input :prepared_by, label: false, placeholder: "Name"
+  .col-md-6
+    = f.input :prepared_by_position, label: false, placeholder: "Position"
+
+.row
+  .col-md-12
+    %label
+      Approved By
+.row
+  .col-md-6
+    = f.input :approved_by, label: false, placeholder: "Name"
+  .col-md-6
+    = f.input :approved_by_position, label: false, placeholder: "Position"
+
+.row
+  .col-md-12
+    %label
+      Noted By
+.row
+  .col-md-6
+    = f.input :noted_by, label: false, placeholder: "Name"
+  .col-md-6
+    = f.input :noted_by_position, label: false, placeholder: "Position"

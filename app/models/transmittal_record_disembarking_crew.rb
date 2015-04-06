@@ -22,5 +22,6 @@ class TransmittalRecordDisembarkingCrew < ActiveRecord::Base
 
   def load_defaults
     self.rank = self.crew.rank
+    self.date_embarked = self.crew.sign_on
   end
 end

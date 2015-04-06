@@ -7,7 +7,7 @@
     </div>
     <div class="col-md-4">
       <h4><%= @crew.to_s_list %> <small><%= @crew.code_number %></small></h4>
-      <h4><%= @crew.rank %><br> <small><%= @crew.status == 'ONBOARD' ? "#{@crew.status} - #{@crew.vessel}" : @crew.status %></small></h4>
+      <h4><%= @crew.rank %><br> <small><%= @crew.status == 'ONBOARD' ? "#{@crew.status} - #{@crew.vessel}" : @crew.status %> - <%= @crew.sign_on %></small></h4>
       <h5><%= @crew.manning_agent %></h5>
       <% if !current_user.is_principal? %>
         <div class="">

@@ -57,6 +57,20 @@ class TransmittalRecord < ActiveRecord::Base
     if self.status != "pending"
       raise "error in approve!"
     else
+      # Create employment history of embarking crew
+      self.transmittal_record_embarking_crews.each do |trec|
+        employment_record = EmploymentRecord.new  
+        employment_record.crew_id = trec.crew.id
+        employment_record.vessel_id = self.vessel.id
+        employment_record.rank_id = trec.crew.rank.id
+        employment_record.manning_agent_id = trec.crew.manning_agent.id
+        employment_record.sign_on = self.date_of_departure
+        employment_record.save!
+
+        # inactivate this crew
+        trec.crew.update!(vessel: nil, sign_on: trec.date_embarked, date_of_promotion: nil)
+      end
+
       # Update employment history of disembarking crew
       self.transmittal_record_disembarking_crews.each do |trdc|
         employment_record = EmploymentRecord.new  

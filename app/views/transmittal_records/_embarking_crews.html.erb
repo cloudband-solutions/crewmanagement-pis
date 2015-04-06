@@ -16,7 +16,7 @@
       <th>Shoe Size</th>
       <th>Contact Number</th>
     </tr>
-    <% transmittal_record.transmittal_record_embarking_crews.each_with_index do |transmittal_record_embarking_crew, index| %>
+    <% transmittal_record.transmittal_record_embarking_crews.joins(:crew).order("crews.rank_id").each_with_index do |transmittal_record_embarking_crew, index| %>
       <tr>
         <td><%= index + 1%></td>
         <td><%= link_to transmittal_record_embarking_crew.crew, crew_path(transmittal_record_embarking_crew.crew), target: "_blank" %></td>

@@ -25,3 +25,11 @@ $(function() {
     });
   })
 });
+
+$(function() {
+  $('#newTransmittalRecordBtn').on('click', function(evt) {
+    evt.preventDefault();
+    var $modal = $('.vessel-select-modal');
+    $modal.modal();
+  });
+});
