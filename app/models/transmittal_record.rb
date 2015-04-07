@@ -36,6 +36,8 @@ class TransmittalRecord < ActiveRecord::Base
   has_many :transmittal_record_document_kinds
   has_many :document_kinds, through: :transmittal_record_document_kinds
 
+  has_many :employment_records
+
   before_validation :load_defaults
 
   def crew_uniqueness
@@ -65,6 +67,9 @@ class TransmittalRecord < ActiveRecord::Base
         employment_record.rank_id = trec.crew.rank.id
         employment_record.manning_agent_id = trec.crew.manning_agent.id
         employment_record.sign_on = self.date_of_departure
+
+        # Add transmittal record
+        employment_record.transmittal_record_id = self.id
         employment_record.save!
 
         # inactivate this crew
@@ -73,7 +78,12 @@ class TransmittalRecord < ActiveRecord::Base
 
       # Update employment history of disembarking crew
       self.transmittal_record_disembarking_crews.each do |trdc|
-        employment_record = EmploymentRecord.new  
+        employment_record = EmploymentRecord.new 
+
+        if trdc.crew.employment_records.where(transmittal_record_id: self.id).count > 0
+          employment_record = trdc.crew.employment_records.where(transmittal_record_id: self.id).first
+        end
+
         employment_record.crew_id = trdc.crew.id
         employment_record.vessel_id = self.vessel.id
         employment_record.rank_id = trdc.crew.rank.id
