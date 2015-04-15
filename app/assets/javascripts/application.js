@@ -18,6 +18,7 @@
 //= require Chart
 //= require select2
 //= require toastr
+//= require cocoon
 //= require_tree .
 
 $(document).on("ready page:load", function() {

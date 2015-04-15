@@ -4,6 +4,7 @@
       <th></th>
       <th>Name</th>
       <th>Rank</th>
+      <th>Birthday</th>
       <% transmittal_record.transmittal_record_license_types.each do |trlt| %>
         <th><%= trlt.license_type %> No.</th>
         <th>Expiry Date</th>
@@ -21,6 +22,7 @@
         <td><%= index + 1%></td>
         <td><%= link_to transmittal_record_embarking_crew.crew, crew_path(transmittal_record_embarking_crew.crew), target: "_blank" %></td>
         <td><%= transmittal_record_embarking_crew.rank %></td>
+        <td><%= transmittal_record_embarking_crew.crew.birthday %></td>
         <% transmittal_record.transmittal_record_license_types.each do |trlt| %>
           <% license = transmittal_record_embarking_crew.crew.license_by_type(trlt.license_type.id) %>
           <% if !license.nil? %>

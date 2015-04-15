@@ -7,3 +7,12 @@
       %td= ff.association :crew, as: :select, collection: @disembarked_crews, input_html: { class: 'form-control select-select2' }, label: false
       %td= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" }, label: false
 = f.link_to_add "Add Embarking Crew", :transmittal_record_embarking_crews, class: "btn btn-info", data: { target: "#embarkingCrewsTable" }
+
+%hr
+
+#embarkingCrews
+  = f.simple_fields_for :transmittal_record_embarking_crews do |embarking_crew|
+    .nested_fields
+      = embarking_crew.association :crew, as: :select, collection: @disembarked_crews
+      = link_to_remove_association "Remove", embarking_crew
+  = link_to_add_association "Add", f, :transmittal_record_embarking_crews
