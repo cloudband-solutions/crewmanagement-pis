@@ -66,7 +66,7 @@ class TransmittalRecord < ActiveRecord::Base
         employment_record.vessel_id = self.vessel.id
         employment_record.rank_id = trec.crew.rank.id
         employment_record.manning_agent_id = trec.crew.manning_agent.id
-        employment_record.sign_on = self.date_of_departure
+        employment_record.sign_on = trec.date_embarked
 
         # Add transmittal record
         employment_record.transmittal_record_id = self.id
