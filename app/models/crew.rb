@@ -66,13 +66,13 @@ class Crew < ActiveRecord::Base
   validates :lastname, presence: true
   validates :middlename, presence: true
   validates :birthday, presence: true
-  validates :birthplace, presence: true
-  validates :telephone_no, presence: true
-  validates :height, presence: true, numericality: true
-  validates :weight, presence: true, numericality: true
-  validates :eye_color, presence: true
-  validates :shoe_size, presence: true
-  validates :cloth_size, presence: true
+  #validates :birthplace, presence: true
+  #validates :telephone_no, presence: true
+  #validates :height, presence: true, numericality: true
+  #validates :weight, presence: true, numericality: true
+  #validates :eye_color, presence: true
+  #validates :shoe_size, presence: true
+  #validates :cloth_size, presence: true
   #validates :nearest_relative_name, presence: true
   #validates :nearest_relative_relationship, presence: true
   #validates :nearest_relative_address, presence: true
