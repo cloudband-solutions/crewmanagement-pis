@@ -1,9 +1,11 @@
 %table#embarkingCrewsTable.table.table-bordered
   %tr
     %th{:width => "50%"} Crew
+    %th Date Embarked
     %th Actions
   = f.simple_fields_for :transmittal_record_embarking_crews, wrapper: false do |ff|
     %tr.fields
       %td= ff.association :crew, as: :select, collection: @disembarked_crews, input_html: { class: 'form-control select-select2' }, label: false
+      %td= ff.input :date_embarked, as: :string, input_html: { class: 'form-control datepick' }, label: false
       %td= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" }, label: false
 = f.link_to_add "Add Embarking Crew", :transmittal_record_embarking_crews, class: "btn btn-info", data: { target: "#embarkingCrewsTable" }

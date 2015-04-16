@@ -7,7 +7,7 @@ class TransmittalRecordEmbarkingCrew < ActiveRecord::Base
   belongs_to :rank
   validates :rank, presence: true
 
-  #validates :date_embarked, presence: true
+  validates :date_embarked, presence: true
 
   # no need anymore?
   #belongs_to :manning_agent
