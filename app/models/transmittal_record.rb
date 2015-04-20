@@ -73,7 +73,7 @@ class TransmittalRecord < ActiveRecord::Base
         employment_record.save!
 
         # activate this crew
-        trec.crew.update!(vessel_id: self.vessel.id, sign_on: self.date_of_departure, date_of_promotion: nil)
+        trec.crew.update!(vessel_id: self.vessel.id, sign_on: trec.date_embarked, date_of_promotion: nil)
       end
 
       # Update employment history of disembarking crew
@@ -98,8 +98,19 @@ class TransmittalRecord < ActiveRecord::Base
       end
 
       self.transmittal_record_crew_promotions.each do |trcp|
+        employment_record = EmploymentRecord.new  
+        employment_record.crew_id = trcp.crew.id
+        employment_record.vessel_id = self.vessel.id
+        employment_record.rank_id = trcp.crew.rank.id
+        employment_record.manning_agent_id = trcp.crew.manning_agent.id
+        employment_record.sign_on = trcp.date_embarked
+
+        # Add transmittal record
+        employment_record.transmittal_record_id = self.id
+        employment_record.save!
+
         # promote this crew
-        trcp.crew.update!(rank: trcp.to_rank, date_of_promotion: Time.now)
+        trcp.crew.update!(vessel_id: self.vessel.id, sign_on: trcp.date_embarked, rank: trcp.to_rank, date_of_promotion: Time.now)
       end
 
       self.transmittal_record_disembarking_crews.each do |trdc|
