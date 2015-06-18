@@ -21,16 +21,10 @@
 
       <li class="<%= params[:controller] == 'crews' and params[:action] == 'index' ? 'active' : '' %>"> 
          <%= link_to crews_path, class: "#{ params[:controller] == 'crews' and params[:action] == 'index' ? 'active' : ''}" do %>
-            <span class="glyphicon glyphicon-user"></span> CREW LIST
+            <span class="glyphicon glyphicon-user"></span> CREW DATABASE
           <% end %>
       </li>
 
-      <li class="<%= params[:controller] == 'crews' and params[:action] == 'advanced_search' ? 'active' : '' %>"> 
-         <%= link_to crews_advanced_search_path, class: "#{ params[:controller] == 'crews' and params[:action] == 'advanced_search' ? 'active' : '' }" do %>
-            <span class="glyphicon glyphicon-search"></span> ADVANCED SEARCH
-          <% end %>
-      </li>
-  
       <li class="<%= params[:controller] == 'vessels' ? 'active' : '' %>"> 
          <%= link_to vessels_path, class: "#{params[:controller] == 'vessels' ? 'active' : ''}" do %>
             <span class="icon-flag"></span> VESSELS

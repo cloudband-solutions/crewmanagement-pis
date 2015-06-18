@@ -24,12 +24,25 @@
  *= require toastr
  *= require vessels
  *= require profile
+ *= require crews
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-datepicker";
 @import "colors";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.filter {
+  &.affix {
+    width: 30%;
+  }
+}
+
+.listHeaderActions {
+  float: right;
+}
 
 h1,h2,h3,h4 {
   font-weight: bolder;

@@ -36,6 +36,8 @@ class TransmittalRecord < ActiveRecord::Base
   has_many :transmittal_record_document_kinds
   has_many :document_kinds, through: :transmittal_record_document_kinds
 
+  has_many :employment_records
+
   before_validation :load_defaults
 
   def crew_uniqueness
@@ -57,9 +59,31 @@ class TransmittalRecord < ActiveRecord::Base
     if self.status != "pending"
       raise "error in approve!"
     else
+      # Create employment history of embarking crew
+      self.transmittal_record_embarking_crews.each do |trec|
+        employment_record = EmploymentRecord.new  
+        employment_record.crew_id = trec.crew.id
+        employment_record.vessel_id = self.vessel.id
+        employment_record.rank_id = trec.crew.rank.id
+        employment_record.manning_agent_id = trec.crew.manning_agent.id
+        employment_record.sign_on = trec.date_embarked
+
+        # Add transmittal record
+        employment_record.transmittal_record_id = self.id
+        employment_record.save!
+
+        # activate this crew
+        trec.crew.update!(vessel_id: self.vessel.id, sign_on: trec.date_embarked, date_of_promotion: nil)
+      end
+
       # Update employment history of disembarking crew
       self.transmittal_record_disembarking_crews.each do |trdc|
-        employment_record = EmploymentRecord.new  
+        employment_record = EmploymentRecord.new 
+
+        if trdc.crew.employment_records.where(transmittal_record_id: self.id).count > 0
+          employment_record = trdc.crew.employment_records.where(transmittal_record_id: self.id).first
+        end
+
         employment_record.crew_id = trdc.crew.id
         employment_record.vessel_id = self.vessel.id
         employment_record.rank_id = trdc.crew.rank.id
@@ -70,17 +94,29 @@ class TransmittalRecord < ActiveRecord::Base
         employment_record.save!
 
         # inactivate this crew
-        trdc.crew.update!(vessel: nil, sign_on: trdc.date_embarked, date_of_promotion: nil)
-      end
-
-      self.transmittal_record_embarking_crews.each do |trec|
-        # activate this crew
-        trec.crew.update!(vessel: vessel)
+        trdc.crew.update!(vessel: nil, sign_on: nil, date_of_promotion: nil)
       end
 
       self.transmittal_record_crew_promotions.each do |trcp|
+        employment_record = EmploymentRecord.new  
+        employment_record.crew_id = trcp.crew.id
+        employment_record.vessel_id = self.vessel.id
+        employment_record.rank_id = trcp.crew.rank.id
+        employment_record.manning_agent_id = trcp.crew.manning_agent.id
+        employment_record.sign_on = trcp.date_embarked
+
+        # Add transmittal record
+        employment_record.transmittal_record_id = self.id
+        employment_record.save!
+
         # promote this crew
-        trcp.crew.update!(rank: trcp.to_rank, date_of_promotion: Time.now)
+        trcp.crew.update!(vessel_id: self.vessel.id, sign_on: trcp.date_embarked, rank: trcp.to_rank, date_of_promotion: Time.now)
+      end
+
+      self.transmittal_record_disembarking_crews.each do |trdc|
+        if !trdc.valid?
+          raise trdc.errors.inspect
+        end
       end
 
       self.update!(status: "approved")

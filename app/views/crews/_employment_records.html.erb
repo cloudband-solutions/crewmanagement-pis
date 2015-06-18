@@ -1,4 +1,4 @@
-<div class="for_non_mobile">
+<div class="">
   <div class="row">
     <table class="table table-bordered table-stripped">
         <tr>  
@@ -13,9 +13,9 @@
         </tr>
         <% employment_records.each do |employment_record| %> 
         <tr>
-            <td class="label-d-a"><%= employment_record.vessel.name %></td>
-            <td class="label-d-a"><%= employment_record.vessel.flag %></td>
-            <td class="label-d-a"><%= employment_record.vessel.vessel_type %></td>
+            <td class="label-d-a"><%= employment_record.vessel.try(:name) %></td>
+            <td class="label-d-a"><%= employment_record.vessel.try(:flag) %></td>
+            <td class="label-d-a"><%= employment_record.vessel.try(:vessel_type) %></td>
             <td class="label-d-a"><%= employment_record.manning_agent %></td>
             <td class="label-d-a"><%= employment_record.rank %></td>
             <td class="label-d-a"><%= employment_record.sign_on.strftime('%d-%B-%Y') if !employment_record.sign_on.nil? %></td>
@@ -26,45 +26,3 @@
     </table>
     </div>
 </div>
-
-<div class="for_mobile">
-  <div class="row">
-   <% employment_records.each do |employment_record| %> 
-    <table class="table table-bordered table-stripped" style="font-size: 14px;">
-        <tr>  
-          <th>Vessel</th>
-          <td><%= employment_record.vessel.name %></td>
-        </tr>
-        <tr>
-          <th>Flag</th>
-          <td><%= employment_record.vessel.flag %></td>
-        </tr>
-        <tr>
-          <th>Type</th>
-          <td><%= employment_record.vessel.vessel_type %></td>
-        </tr>
-        <tr>
-          <th>Manning Agent</th>
-          <td><%= employment_record.manning_agent %></td>
-        </tr>
-        <tr>
-          <th>Rank</th>
-          <td><%= employment_record.rank %></td>
-        </tr>
-        <tr>
-          <th>Sign On</th>
-          <td><%= employment_record.sign_on.strftime('%d-%B-%Y') if !employment_record.sign_on.nil? %></td>
-        </tr>
-        <tr>
-          <th>Sign Off</th>
-          <td><%= employment_record.sign_off.strftime('%d-%B-%Y') if !employment_record.sign_off.nil? %></td>
-        </tr>
-        <tr>
-          <th>Reason of Disembarkation</th>
-          <td><%= employment_record.reason_for_disembarkation %></td>
-        </tr>  
-      </table>
-    <% end %>
-  </div>
-</div>
-

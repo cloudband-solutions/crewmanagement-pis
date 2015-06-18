@@ -1,0 +1,108 @@
+= simple_nested_form_for transmittal_record, defaults: { wrapper_html: {  class: 'form-group' }, input_html: { class: 'form-group' }, input_html: { class: 'form-control' } }, html: { novalidate: true } do |f|
+  .row
+    %ul.col-md-3.nav.nav-pills.nav-stacked
+      %li.active
+        = link_to "#general", "data-toggle" => "tab" do
+          .fa.fa-arrow-right
+          Step 1: Transmittal Information
+      %li
+        = link_to "#documentsAndLicenses", "data-toggle" => "tab" do
+          .fa.fa-arrow-right
+          Step 2: Documents and Licenses
+      %li
+        = link_to "#embarkingCrew", "data-toggle" => "tab" do
+          .fa.fa-arrow-right
+          Step 3: Manage Embarking Crew
+      %li
+        = link_to "#disembarkingCrew", "data-toggle" => "tab" do
+          .fa.fa-arrow-right
+          Step 4: Manage Disembarking Crew
+      %li
+        = link_to "#promotingCrew", "data-toggle" => "tab" do
+          .fa.fa-arrow-right
+          Step 5: Manage Crew for Promotion
+      %li
+        = link_to "#save", "data-toggle" => "tab" do
+          .fa.fa-arrow-right
+          Step 6: Save Transmittal Record
+    .col-md-9.tab-content
+      .tab-pane.active#general
+        .row
+          .col-md-12
+            %h4
+              Step 1: Transmittal Information
+              %small
+                Basic information for transmittal record
+            %hr
+        = render partial: "form_general", locals: { f: f }
+      .tab-pane#documentsAndLicenses
+        .row
+          .col-md-12
+            %h4
+              Step 2: Documents and Licenses
+              %small
+                Document and license information to be included
+              %hr
+        = render partial: "form_documents_and_licenses", locals: { f: f }
+      .tab-pane#embarkingCrew
+        .row
+          .col-md-12
+            %h4
+              Step 3: Manage Embarking Crew
+              %small
+                Embarking crew for #{@vessel}
+            %hr
+        = render partial: "form_embarking_crews", locals: { f: f }
+      .tab-pane#disembarkingCrew
+        .row
+          .col-md-12
+            %h4
+              Step 4: Manage Disembarking Crew
+              %small
+                Disembarking crew for #{@vessel}
+            %hr
+        = render partial: "form_disembarking_crews", locals: { f: f }
+      .tab-pane#promotingCrew
+        .row
+          .col-md-12
+            %h4
+              Step 5: Promoting Crew
+              %small
+                Crew for promotion for #{@vessel}
+            %hr
+        = render partial: "form_crew_promotions", locals: { f: f }
+      .tab-pane#save
+        .row
+          .col-md-12
+            .bs-callout.bs-callout-info
+              Please review all information before saving. If the information is ready for submission, please select save
+            .form-actions
+              = f.submit "Save Record", class: "btn btn-primary"
+              = link_to transmittal_records_path, class: "btn btn-default" do
+                .fa.fa-arrow-left
+                Back to Transmittal Records
+
+:javascript
+  var disembarkingCrews = [];
+
+  $(document).ready(function() {
+    initDatePicker();
+    $(document).on('nested:fieldAdded', function(event) {
+      initDatePicker();
+
+      var field = event.field;
+      var selectField = field.find('.select-select2');
+      selectField.select2();
+
+    });
+
+    $('select#vessel').change(function() {
+      var vessel_id = $('option:selected', this).val(); 
+      console.log(vessel_id);
+
+      $.ajax({
+        url: "/internal/vessels/" + vessel_id + "/crews"
+      }).done(function(data) {
+      });
+    });
+  });

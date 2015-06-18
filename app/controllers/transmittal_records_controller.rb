@@ -1,5 +1,6 @@
 class TransmittalRecordsController < ApplicationController
   before_filter :load_defaults
+  before_filter :authenticate_user!
 
   def load_defaults
     @disembarked_crews = Crew.disembarked

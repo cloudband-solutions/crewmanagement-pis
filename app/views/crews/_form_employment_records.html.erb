@@ -26,7 +26,7 @@
         <%= ff.input :sign_on, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year + 100 %>
      </div>
      <div class="col-md-6">
-        <%= ff.input :sign_off, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year + 100 %>
+        <%= ff.input :sign_off, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year + 100, include_blank: true %>
      </div>
     </div>
     <h3>Other Vessel Information</h3>

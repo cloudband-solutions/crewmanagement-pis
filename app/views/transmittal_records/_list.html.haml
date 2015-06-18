@@ -1,0 +1,27 @@
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Date of Departure
+      %th Vessel
+      %th Destination
+      %th # Embarking Crews
+      %th # Disembarking Crews
+      %th Number of Promotions
+      %th Status
+      %th Actions
+  %tbody
+    - transmittal_records.each do |tr|
+      %tr
+        %td= tr.date_of_departure
+        %td= tr.vessel
+        %td= tr.destination
+        %td= tr.transmittal_record_embarking_crews.count
+        %td= tr.transmittal_record_disembarking_crews.count
+        %td= tr.transmittal_record_crew_promotions.count
+        %td
+          %span.status
+            = tr.status
+        %td.btns
+          = link_to transmittal_record_path(tr), class: "btn btn-default btn-xs" do
+            .fa.fa-search
+            Details

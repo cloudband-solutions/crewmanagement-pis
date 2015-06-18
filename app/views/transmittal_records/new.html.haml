@@ -1,0 +1,9 @@
+.panel.panel-default
+  .panel-heading
+    New Transmittal Record for #{@vessel}
+    .panel-actions
+      = link_to transmittal_records_path, class: "btn btn-default btn-xs" do
+        .fa.fa-arrow-left
+        Back to Database
+  .panel-body
+    = render partial: "transmittal_records/form", locals: { transmittal_record: @transmittal_record }

@@ -1,0 +1,47 @@
+.panel.panel-default
+  .panel-heading
+    %b Crew List
+    .listHeaderActions
+      = link_to new_crew_path, class: "btn btn-default btn-xs" do
+        .glyphicon.glyphicon-plus
+        New Crew Record
+  .panel-body
+    - if crews.count == 0
+      No crew record/s found.
+    - else
+      - crews.each do |crew|
+        .crew
+          .basicBox
+            .profile-picture
+              = image_tag crew.picture.url(:standard)
+            .profile-details
+              .name
+                = crew.to_s_list
+                %small
+                  = crew.code_number
+              %ul
+                %li
+                  %label 
+                    .fa.fa-bookmark-o
+                    Rank:
+                  = crew.rank
+                %li
+                  %label
+                    .fa.fa-flag-o
+                    Vessel:
+                  = crew.vessel
+                %li
+                  %label
+                    .fa.fa-heartbeat
+                    Status:
+                  = crew.status
+              .actions
+                = link_to crew_path(crew), class: "btn btn-xs btn-default" do
+                  .fa.fa-search
+                  Details
+
+                - if !current_user.is_principal?
+                  = link_to edit_crew_path(crew), class: "btn btn-xs btn-default" do
+                    .fa.fa-pencil
+                    Edit
+      = paginate crews

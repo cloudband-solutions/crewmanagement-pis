@@ -1,0 +1,32 @@
+.panel.panel-default
+  .panel-heading
+    Transmittal Records
+    .panel-actions
+      = link_to "#", class: "btn btn-xs btn-default", id: "newTransmittalRecordBtn" do
+        .fa.fa-plus
+        New Transmittal Record
+  .panel-body
+    = render partial: "transmittal_records/list", locals: { transmittal_records: @transmittal_records } 
+    = paginate @transmittal_records
+
+.modal.fade.vessel-select-modal{tabindex: "-1", role: "dialog", "aria-labelledby" => "myLargeModalLabel", "aria-hidden" => true}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h4
+          New Transmittal Record
+          %small
+            Vessel Select
+        %button.close{"data-dismiss" => "modal", "aria-label" => "Close"}
+          %span{"aria-hidden" => "true"}
+      = form_tag send("new_tr_path"), method: :post do |f|
+        .modal-body
+          .modal-body-content
+            .bs-callout.bs-callout-info
+              Please select a vessel to create a transmittal record
+            = select_tag :vessel_id, options_from_collection_for_select(Vessel.select("*").order(:name), :id, :name, @vessel.try(:id)), class: "form-control select-select2", prompt: "-- SELECT VESSEL --"
+        .modal-footer
+          = submit_tag "New Record", class: "btn btn-primary"
+          %button.btn.btn-default{"data-dismiss" => "modal"}
+            .fa.fa-times
+            Close

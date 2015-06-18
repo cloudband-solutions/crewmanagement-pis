@@ -1,0 +1,13 @@
+%table#crewPromotionsTable.table.table-bordered
+  %tr
+    %th{:width => "25%"} Crew
+    %th{:width => "25%"} To
+    %th{:width => "25%"} Date Embarked
+    %th{:width => "25%"} Actions
+  = f.simple_fields_for :transmittal_record_crew_promotions, wrapper: false do |ff|
+    %tr.fields
+      %td= ff.association :crew, collection: @disembarked_crews, label: false, input_html: { class: 'form-control select-select2 here' }
+      %td= ff.association :to_rank, label: false, input_html: { class: 'form-control select-select2' }
+      %td= ff.input :date_embarked, as: :string, label: false, input_html: { class: 'form-control datepick' }
+      %td= ff.link_to_remove "Remove Record", class: "btn btn-danger", data: { confirm: "Are you sure?" }
+= f.link_to_add "Add Crew for Promotion", :transmittal_record_crew_promotions, class: "btn btn-info", data: { target: "#crewPromotionsTable" }

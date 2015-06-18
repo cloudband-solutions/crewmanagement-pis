@@ -23,7 +23,7 @@ class Crew < ActiveRecord::Base
   validates :rank, presence: true
 
   belongs_to :vessel
-  validates :vessel, presence: true, if: :onboard?
+  validates :vessel, presence: { message: "Crew status is still onboard. Please disembark first." }, if: :onboard?
 
   def onboard?
     self.status == "ONBOARD"
@@ -61,21 +61,21 @@ class Crew < ActiveRecord::Base
   accepts_nested_attributes_for :crew_vessel_evaluations, allow_destroy: true
 
   validates :date_employed, presence: true
-  validates :code_number, presence: true, uniqueness: true
+  #validates :code_number, presence: true, uniqueness: true
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :middlename, presence: true
   validates :birthday, presence: true
-  validates :birthplace, presence: true
-  validates :telephone_no, presence: true
-  validates :height, presence: true, numericality: true
-  validates :weight, presence: true, numericality: true
-  validates :eye_color, presence: true
-  validates :shoe_size, presence: true
-  validates :cloth_size, presence: true
-  validates :nearest_relative_name, presence: true
-  validates :nearest_relative_relationship, presence: true
-  validates :nearest_relative_address, presence: true
+  #validates :birthplace, presence: true
+  #validates :telephone_no, presence: true
+  #validates :height, presence: true, numericality: true
+  #validates :weight, presence: true, numericality: true
+  #validates :eye_color, presence: true
+  #validates :shoe_size, presence: true
+  #validates :cloth_size, presence: true
+  #validates :nearest_relative_name, presence: true
+  #validates :nearest_relative_relationship, presence: true
+  #validates :nearest_relative_address, presence: true
   validates :address, presence: true
   validates :civil_status, presence: true, inclusion: { in: Crew::CIVIL_STATUSES }
   validates :nationality, presence: true
@@ -142,28 +142,25 @@ class Crew < ActiveRecord::Base
   def toggle_archive!
     if self.is_active?
       self.update!(status: "INACTIVE")
-    else
-      self.update!(status: "DISEMBARKED")
     end
   end
 
   def load_defaults
-    if self.new_record?
+    if self.vessel.nil? and self.status != "INACTIVE"
+      self.status = "DISEMBARKED"
+    elsif !self.vessel.nil? and self.status != "INACTIVE"
+      self.status = "ONBOARD"
+    else
       self.status = "DISEMBARKED"
     end
 
+    # Upcase all name values
+    self.firstname = self.firstname.upcase unless self.firstname.nil?
+    self.middlename = self.middlename.upcase unless self.middlename.nil?
+    self.lastname = self.lastname.upcase unless self.lastname.nil?
+
     if self.crew_token.nil?
       self.crew_token = "#{SecureRandom.hex(4)}"
-    end
-
-    if self.vessel.nil?
-      self.status = 'DISEMBARKED'
-    else
-      self.status = 'ONBOARD'
-    end
-
-    if self.status == "DISEMBARKED" and !self.vessel.nil?
-      self.vessel = nil
     end
   end
 
